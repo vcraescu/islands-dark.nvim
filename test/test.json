@@ -1,0 +1,65 @@
+{
+  "name": "islands-dark-test",
+  "version": "1.0.0",
+  "description": "JSON syntax highlighting test for Islands Dark theme",
+  "author": {
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "json",
+    "test",
+    "syntax",
+    "highlighting"
+  ],
+  "numbers": {
+    "integer": 42,
+    "negative": -17,
+    "float": 3.14159,
+    "scientific": 1.5e-3,
+    "large": 1000000
+  },
+  "booleans": {
+    "enabled": true,
+    "disabled": false
+  },
+  "nullValue": null,
+  "nested": {
+    "level1": {
+      "level2": {
+        "level3": {
+          "deepValue": "This is deeply nested"
+        }
+      }
+    }
+  },
+  "array": [
+    "first",
+    "second",
+    "third"
+  ],
+  "mixed": [
+    1,
+    "two",
+    true,
+    null,
+    {
+      "key": "value"
+    }
+  ],
+  "config": {
+    "database": {
+      "host": "localhost",
+      "port": 5432,
+      "name": "myapp",
+      "ssl": true
+    },
+    "api": {
+      "url": "https://api.example.com",
+      "timeout": 5000,
+      "retries": 3
+    }
+  }
+}

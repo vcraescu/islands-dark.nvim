@@ -1,0 +1,70 @@
+-- Islands Dark colorscheme for Neovim
+-- A faithful port of JetBrains IntelliJ IDEA Islands Dark theme
+
+local M = {}
+
+--- Load the colorscheme
+function M.load()
+	-- Reset highlights
+	vim.cmd("highlight clear")
+	if vim.fn.exists("syntax_on") then
+		vim.cmd("syntax reset")
+	end
+
+	-- Set colorscheme name and options
+	vim.g.colors_name = "islands-dark"
+	vim.o.background = "dark"
+	vim.o.termguicolors = true
+
+	-- Set LSP semantic tokens priority higher than Treesitter
+	vim.highlight.priorities.semantic_tokens = 125
+
+	-- Load modules
+	local config_module = require("islands-dark.config")
+	local colors_module = require("islands-dark.colors")
+	local util = require("islands-dark.util")
+	local highlights = require("islands-dark.highlights")
+
+	-- Get configuration
+	local config = config_module.get()
+
+	-- Get colors and apply overrides
+	local colors = vim.deepcopy(colors_module)
+	colors = util.apply_overrides(colors, config)
+
+	-- Get all highlights
+	local highlight_groups = highlights.setup(colors, config, util)
+
+	-- Apply all highlights
+	util.load_highlights(highlight_groups)
+
+	-- Set terminal colors if enabled
+	if config.terminal_colors then
+		vim.g.terminal_color_0 = colors.bg_dark
+		vim.g.terminal_color_1 = colors.error
+		vim.g.terminal_color_2 = colors.string
+		vim.g.terminal_color_3 = colors.metadata
+		vim.g.terminal_color_4 = colors.func
+		vim.g.terminal_color_5 = colors.constant
+		vim.g.terminal_color_6 = colors.number
+		vim.g.terminal_color_7 = colors.fg
+
+		vim.g.terminal_color_8 = colors.fg_dimmer
+		vim.g.terminal_color_9 = colors.error
+		vim.g.terminal_color_10 = colors.string
+		vim.g.terminal_color_11 = colors.warning
+		vim.g.terminal_color_12 = colors.identifier
+		vim.g.terminal_color_13 = colors.template_var
+		vim.g.terminal_color_14 = colors.number
+		vim.g.terminal_color_15 = colors.cursor
+	end
+end
+
+--- Setup the colorscheme with custom configuration
+---@param user_config table|nil User configuration options
+function M.setup(user_config)
+	local config_module = require("islands-dark.config")
+	config_module.setup(user_config or {})
+end
+
+return M

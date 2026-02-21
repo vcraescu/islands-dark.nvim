@@ -1,0 +1,309 @@
+*islands-dark.txt*  A faithful port of IntelliJ IDEA Islands Dark theme
+
+==============================================================================
+CONTENTS                                                *islands-dark-contents*
+
+    1. Introduction .................................. |islands-dark-intro|
+    2. Installation .................................. |islands-dark-installation|
+    3. Usage ......................................... |islands-dark-usage|
+    4. Configuration ................................. |islands-dark-configuration|
+    5. Color Palette ................................. |islands-dark-colors|
+    6. Highlight Groups .............................. |islands-dark-highlights|
+    7. Plugin Support ................................ |islands-dark-plugins|
+    8. Troubleshooting ............................... |islands-dark-troubleshooting|
+    9. License ....................................... |islands-dark-license|
+
+==============================================================================
+1. INTRODUCTION                                            *islands-dark-intro*
+
+Islands Dark is a faithful port of the JetBrains IntelliJ IDEA Islands Dark
+theme for Neovim. It provides a beautiful dark color scheme with excellent
+syntax highlighting support through Treesitter and LSP semantic tokens.
+
+Features:
+  • Accurate color reproduction from IntelliJ IDEA
+  • Full Treesitter support
+  • LSP semantic token highlighting
+  • Support for popular plugins
+  • Customizable colors and styles
+  • Terminal color integration
+
+==============================================================================
+2. INSTALLATION                                    *islands-dark-installation*
+
+Using lazy.nvim: >lua
+    {
+      "vcraescu/islands-dark.nvim",
+      priority = 1000,
+      config = function()
+        require("islands-dark").setup()
+        vim.cmd("colorscheme islands-dark")
+      end,
+    }
+<
+
+Using packer.nvim: >lua
+    use {
+      "vcraescu/islands-dark.nvim",
+      config = function()
+        require("islands-dark").setup()
+        vim.cmd("colorscheme islands-dark")
+      end
+    }
+<
+
+Using vim-plug: >vim
+    Plug 'vcraescu/islands-dark.nvim'
+<
+
+Then in your init.lua: >lua
+    require("islands-dark").setup()
+    vim.cmd("colorscheme islands-dark")
+<
+
+==============================================================================
+3. USAGE                                                  *islands-dark-usage*
+
+Basic usage:
+>lua
+    -- Load with default settings
+    require("islands-dark").load()
+
+    -- Or use the colorscheme command
+    vim.cmd("colorscheme islands-dark")
+<
+
+With configuration:
+>lua
+    require("islands-dark").setup({
+      transparent = false,
+      terminal_colors = true,
+      styles = {
+        comments = { italic = true },
+        keywords = { bold = false },
+      },
+    })
+    require("islands-dark").load()
+<
+
+==============================================================================
+4. CONFIGURATION                                  *islands-dark-configuration*
+
+                                                      *islands-dark.setup()*
+islands-dark.setup({opts})
+    Configure the Islands Dark theme. Must be called before |islands-dark.load()|
+
+    Parameters: ~
+        {opts} (table|nil) Configuration table with the following keys:
+
+        • transparent (boolean)
+            Enable transparent background (default: false)
+
+        • terminal_colors (boolean)
+            Set terminal colors (default: true)
+
+        • styles (table)
+            Style overrides for syntax elements:
+            - comments: Style for comments
+            - keywords: Style for keywords
+            - functions: Style for functions
+            - strings: Style for strings
+            - variables: Style for variables
+
+            Each style can have:
+            - italic: boolean
+            - bold: boolean
+            - underline: boolean
+            - strikethrough: boolean
+
+        • on_colors (function)
+            Callback to modify colors before applying
+            Signature: function(colors) -> nil
+            Modifies colors table in place
+
+        • on_highlights (function)
+            Callback to modify highlight groups before applying
+            Signature: function(highlights, colors) -> nil
+            Modifies highlights table in place
+
+Example configuration:
+>lua
+    require("islands-dark").setup({
+      transparent = false,
+      terminal_colors = true,
+      
+      styles = {
+        comments = { italic = true },
+        keywords = { bold = false },
+        functions = { italic = false },
+        strings = { italic = false },
+        variables = { italic = false },
+      },
+      
+      on_colors = function(colors)
+        colors.keyword = "#ff6b9d"
+      end,
+      
+      on_highlights = function(highlights, colors)
+        highlights.Function = {
+          fg = colors.blue,
+          bold = true,
+        }
+      end,
+    })
+<
+
+                                                      *islands-dark.load()*
+islands-dark.load()
+    Apply the Islands Dark colorscheme with the current configuration.
+
+==============================================================================
+5. COLOR PALETTE                                        *islands-dark-colors*
+
+Core Colors:
+    bg              #21252B     Editor background
+    fg              #BAC0C9     Default text
+    comment         #7A7E85     Comments
+    string          #6AAB73     String literals
+    number          #2AACB8     Numbers
+    keyword         #CF8E6D     Keywords
+    function        #56A8F5     Functions
+    type            #16BAAC     Types/Classes
+    variable        #BAC0C9     Variables
+    constant        #C77DBB     Constants
+
+UI Colors:
+    cursor_line     #2C313A     Current line background
+    selection       #2F4B5C     Visual selection
+    search          #B36100     Search matches
+    line_nr         #5F6672     Line numbers
+    border          #3A3F4B     Window borders
+
+Diagnostic Colors:
+    error           #E65452     Error messages
+    warning         #CE9632     Warning messages
+    info            #57AAF7     Info messages
+    hint            #8EADB0     Hint messages
+
+Git Colors:
+    git_add         #58A55C     Added lines
+    git_change      #57AAF7     Changed lines
+    git_delete      #E65452     Deleted lines
+
+==============================================================================
+6. HIGHLIGHT GROUPS                                  *islands-dark-highlights*
+
+Islands Dark defines highlights for:
+
+Vim Syntax Groups:
+    Comment, Constant, String, Character, Number, Boolean, Float,
+    Identifier, Function, Statement, Conditional, Repeat, Label,
+    Operator, Keyword, Exception, PreProc, Include, Define, Macro,
+    PreCondit, Type, StorageClass, Structure, Typedef, Special,
+    SpecialChar, Tag, Delimiter, SpecialComment, Debug, Underlined,
+    Ignore, Error, Todo
+
+Treesitter Highlights:
+    @variable, @function, @keyword, @string, @number, @boolean,
+    @type, @constant, @comment, @operator, @punctuation,
+    and many more...
+
+LSP Semantic Tokens:
+    @lsp.type.function, @lsp.type.method, @lsp.type.variable,
+    @lsp.type.parameter, @lsp.type.type, @lsp.type.class,
+    @lsp.type.interface, @lsp.type.namespace, @lsp.type.enum,
+    and many more...
+
+Diagnostic Highlights:
+    DiagnosticError, DiagnosticWarn, DiagnosticInfo, DiagnosticHint,
+    DiagnosticUnderlineError, DiagnosticUnderlineWarn,
+    and related groups...
+
+==============================================================================
+7. PLUGIN SUPPORT                                       *islands-dark-plugins*
+
+Islands Dark includes optimized highlights for:
+
+Completion:
+    • nvim-cmp
+    • blink.cmp
+
+File Explorers:
+    • nvim-tree
+    • neo-tree
+
+Fuzzy Finders:
+    • fzf-lua
+    • telescope.nvim
+
+Git Integration:
+    • gitsigns
+    • diffview.nvim
+    • neogit
+
+Status Lines:
+    • lualine.nvim
+    • feline.nvim
+
+Other:
+    • which-key.nvim
+    • indent-blankline.nvim
+    • todo-comments.nvim
+    • trouble.nvim
+    • nvim-treesitter-context
+
+==============================================================================
+8. TROUBLESHOOTING                              *islands-dark-troubleshooting*
+
+Colors don't look right ~
+    Make sure your terminal supports true color (24-bit):
+>lua
+    vim.opt.termguicolors = true
+<
+
+Treesitter colors not working ~
+    Ensure Treesitter is properly installed and enabled:
+>lua
+    require("nvim-treesitter.configs").setup({
+      highlight = { enable = true },
+    })
+<
+
+LSP semantic tokens not working ~
+    Check if your LSP server supports semantic tokens. Most modern LSP
+    servers do, but some may require additional configuration.
+
+Transparent background not working ~
+    Make sure you set the option before loading:
+>lua
+    require("islands-dark").setup({ transparent = true })
+    require("islands-dark").load()
+<
+
+==============================================================================
+9. LICENSE                                              *islands-dark-license*
+
+Islands Dark is distributed under the MIT License.
+
+Copyright (c) 2024 Viorel Craescu
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+==============================================================================
+vim:tw=78:ts=8:ft=help:norl:

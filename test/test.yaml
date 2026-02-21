@@ -1,0 +1,349 @@
+# YAML syntax highlighting test for Islands Dark theme
+
+# Comments should be gray (#7A7E85)
+# This file tests various YAML syntax elements
+
+# Basic key-value pairs
+# Keys should be property color (#C77DBB)
+# Strings should be green (#6AAB73)
+name: "John Doe"
+email: john@example.com
+age: 30  # Numbers should be cyan (#2AACB8)
+is_active: true  # Booleans should be keywords (orange #CF8E6D)
+is_verified: false
+nullable_field: null
+
+# Nested objects
+user:
+  id: 12345
+  username: johndoe
+  profile:
+    first_name: John
+    last_name: Doe
+    bio: "Software engineer passionate about clean code"
+    location:
+      city: "San Francisco"
+      state: "CA"
+      country: "USA"
+      coordinates:
+        latitude: 37.7749
+        longitude: -122.4194
+
+# Arrays/Lists
+tags:
+  - programming
+  - golang
+  - typescript
+  - devops
+
+# Inline array syntax
+colors: [red, green, blue, yellow]
+
+# Array of objects
+users:
+  - id: 1
+    name: "Alice Smith"
+    role: admin
+    permissions:
+      - read
+      - write
+      - delete
+  - id: 2
+    name: "Bob Johnson"
+    role: user
+    permissions:
+      - read
+      - write
+  - id: 3
+    name: "Charlie Brown"
+    role: guest
+    permissions:
+      - read
+
+# Multi-line strings with pipe (preserve newlines)
+description: |
+  This is a multi-line string.
+  Each line will be preserved.
+  Great for longer text blocks.
+  
+  Even with blank lines in between.
+
+# Multi-line strings with > (fold newlines)
+summary: >
+  This is also a multi-line string,
+  but newlines will be folded into spaces.
+  It's useful for long paragraphs
+  that need to wrap.
+
+# Anchors and aliases
+defaults: &default_settings
+  timeout: 5000
+  retries: 3
+  debug: false
+
+# Merge key to reuse common settings
+development:
+  <<: *default_settings
+  host: localhost
+  port: 8080
+  debug: true  # Override default
+
+production:
+  <<: *default_settings
+  host: api.example.com
+  port: 443
+  ssl: true
+
+# Environment variables
+api:
+  url: "https://api.example.com"
+  key: "${API_KEY}"  # Environment variable reference
+  timeout: 30
+  endpoints:
+    users: "/api/v1/users"
+    posts: "/api/v1/posts"
+    comments: "/api/v1/comments"
+
+# Database configuration
+database:
+  driver: postgres
+  host: db.example.com
+  port: 5432
+  name: myapp_production
+  username: dbuser
+  password: "${DB_PASSWORD}"
+  pool:
+    min: 5
+    max: 20
+    idle_timeout: 300
+  options:
+    ssl_mode: require
+    timezone: UTC
+
+# Complex nested structure
+application:
+  name: "My Application"
+  version: "1.0.0"
+  
+  server:
+    host: 0.0.0.0
+    port: 8080
+    tls:
+      enabled: true
+      cert_file: "/etc/ssl/certs/server.crt"
+      key_file: "/etc/ssl/private/server.key"
+  
+  logging:
+    level: info
+    format: json
+    outputs:
+      - type: stdout
+        level: debug
+      - type: file
+        level: info
+        path: "/var/log/app.log"
+        max_size: 100  # MB
+        max_age: 30    # days
+        max_backups: 10
+  
+  cache:
+    type: redis
+    host: redis.example.com
+    port: 6379
+    db: 0
+    password: "${REDIS_PASSWORD}"
+    ttl: 3600  # seconds
+  
+  queue:
+    type: rabbitmq
+    url: "amqp://guest:guest@localhost:5672/"
+    exchange: app_events
+    queues:
+      - name: high_priority
+        durable: true
+        auto_delete: false
+      - name: low_priority
+        durable: true
+        auto_delete: false
+
+# Feature flags
+features:
+  new_ui: true
+  experimental_api: false
+  analytics: true
+  a_b_testing:
+    enabled: true
+    variants:
+      - name: control
+        weight: 50
+      - name: variant_a
+        weight: 25
+      - name: variant_b
+        weight: 25
+
+# Kubernetes-style configuration
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: default
+  labels:
+    app: myapp
+    environment: production
+    version: "1.0.0"
+  annotations:
+    description: "Main application service"
+    maintainer: "devops@example.com"
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: myapp
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 8080
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 8443
+  sessionAffinity: ClientIP
+
+# Docker Compose style
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./html:/usr/share/nginx/html:ro
+    environment:
+      - NGINX_HOST=example.com
+      - NGINX_PORT=80
+    depends_on:
+      - api
+    restart: always
+  
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      args:
+        - BUILD_ENV=production
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=${DATABASE_URL}
+      - REDIS_URL=${REDIS_URL}
+      - SECRET_KEY=${SECRET_KEY}
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    command: npm start
+    restart: unless-stopped
+  
+  db:
+    image: postgres:15
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=myapp
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  db_data:
+    driver: local
+
+# GitHub Actions workflow style
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16, 18, 20]
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Run tests
+        run: npm test
+      
+      - name: Upload coverage
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+# Numbers in different formats
+numbers_demo:
+  integer: 42
+  negative: -17
+  float: 3.14159
+  scientific: 1.5e-3
+  octal: 0o755
+  hexadecimal: 0xFF
+  binary: 0b1010
+
+# Special values
+special_values:
+  null_value: null
+  tilde_null: ~
+  empty_string: ""
+  true_value: true
+  false_value: false
+  yes_value: yes  # YAML also accepts yes/no
+  no_value: no
+
+# Quoted strings (different types)
+strings:
+  single_quoted: 'This is a single-quoted string'
+  double_quoted: "This is a double-quoted string"
+  unquoted: This is an unquoted string
+  with_escape: "Line 1\nLine 2\tTabbed"
+  with_unicode: "Unicode: \u263A"
+  literal_block: |
+    Literal block style
+    preserves newlines
+  folded_block: >
+    Folded block style
+    folds newlines
+
+# Complex data types
+complex:
+  timestamp: 2024-02-21T10:30:00Z
+  date: 2024-02-21
+  duration: PT1H30M  # ISO 8601 duration
+  
+  # Set (unique values)
+  unique_items: !!set
+    ? item1
+    ? item2
+    ? item3
+  
+  # Ordered map
+  ordered: !!omap
+    - first: 1
+    - second: 2
+    - third: 3
