@@ -5,10 +5,10 @@ local M = {}
 --- Setup syntax highlight groups
 --- @param c table Color palette
 --- @param config table User configuration
---- @param util table Utility functions
 --- @return table Highlight groups for syntax elements
-function M.setup(c, config, util)
+function M.setup(c, config)
 	local highlights = {}
+	local util = require("islands-dark.util")
 	local constant_style = util.get_style(config, "constants")
 	local comment_style = util.get_style(config, "comments")
 	local variable_style = util.get_style(config, "variables")
@@ -66,20 +66,6 @@ function M.setup(c, config, util)
 	highlights.Ignore = { fg = c.fg_dimmer }
 	highlights.Error = { fg = c.error }
 	highlights.Todo = { fg = c.todo, bold = true }
-
-	-- XML
-	highlights.xmlTag = { link = "Tag" }
-	highlights.xmlEndTag = { link = "xmlTag" }
-	highlights.xmlTagName = { link = "xmlTag" }
-	highlights.xmlAttrib = { fg = c.attribute }
-	highlights.xmlEqual = { link = "Operator" }
-	highlights.xmlString = { link = "String" }
-	highlights.xmlDocTypeKeyword = { link = "xmlTag" }
-	highlights.xmlDocTypeDecl = { link = "xmlTag" }
-	highlights.xmlProcessing = { fg = c.fg }
-	highlights.xmlProcessingDelim = { link = "xmlTag" }
-	highlights.xmlEntity = { link = "Type" }
-	highlights.xmlEntityPunc = { link = "Type" }
 
 	return highlights
 end

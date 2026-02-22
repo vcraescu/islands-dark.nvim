@@ -53,13 +53,7 @@ local colors = {
 	metadata = "#B3AE60", -- DEFAULT_METADATA
 	identifier = "#56A8F5", -- DEFAULT_IDENTIFIER (functions, imports)
 	braces = "#BCBEC4", -- DEFAULT_BRACES, DEFAULT_BRACKETS, DEFAULT_PARENTHESES
-	semicolon = "#BCBEC4", -- DEFAULT_SEMICOLON
 	special = "#2AACB8",
-
-	-- Documentation
-	doc_tag = "#5F826B", -- DOC_COMMENT_TAG
-	doc_markup = "#68A67E", -- DEFAULT_DOC_MARKUP
-	doc_link = "#3887A1", -- DOC_COMMENT_LINK
 
 	-- Diff colors
 	diff_add = "#375239", -- LINE_FULL_COVERAGE
@@ -73,7 +67,6 @@ local colors = {
 	info = "#857042", -- INFORMATION_ATTRIBUTES
 	hint = "#6F737A", -- Default gray for hints
 	todo = "#B3AE60", -- TODO_DEFAULT_ATTRIBUTES
-	fixme = "#F75464", -- Similar to error
 
 	-- Special markers
 	search_bg = "#2D543F", -- SEARCH_RESULT_ATTRIBUTES
@@ -82,9 +75,7 @@ local colors = {
 	search_current_fg = "#BCBEC4",
 	match_paren_bg = "#43454A", -- MATCHED_BRACE_ATTRIBUTES
 	write_identifier_bg = "#402F33", -- WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES
-	write_identifier_border = "#BA6387", -- ERROR_STRIPE_COLOR from WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES
 	identifier_under_caret_bg = "#373B39", -- IDENTIFIER_UNDER_CARET_ATTRIBUTES
-	identifier_under_caret_border = "#5B786A", -- ERROR_STRIPE_COLOR from IDENTIFIER_UNDER_CARET_ATTRIBUTES
 
 	-- VCS colors
 	vcs_added = "#375239", -- LINE_FULL_COVERAGE
@@ -92,12 +83,7 @@ local colors = {
 	vcs_removed = "#5E3838", -- LINE_NONE_COVERAGE
 
 	-- Additional semantic colors
-	unused = "#6F737A", -- NOT_USED_ELEMENT_ATTRIBUTES
 	deprecated = "#6F737A", -- NOT_USED_ELEMENT_ATTRIBUTES
-	bad_character = "#F75464", -- BAD_CHARACTER
-	implicit_anon_param = "#C77DBB", -- IMPLICIT_ANONYMOUS_CLASS_PARAMETER_ATTRIBUTES (FG)
-	reassigned = "#A1A3AB", -- REASSIGNED_LOCAL_VARIABLE_ATTRIBUTES
-	reassigned_param = "#A1A3AB", -- REASSIGNED_PARAMETER_ATTRIBUTES
 
 	-- Template/Interpolation
 	template_var = "#B189F5", -- TEMPLATE_VARIABLE_ATTRIBUTES (lavender)

@@ -5,9 +5,8 @@ local M = {}
 --- Load and combine highlights from all modules
 --- @param colors table Color palette
 --- @param config table User configuration
---- @param util table Utility functions
 --- @return table Combined highlight groups
-function M.setup(colors, config, util)
+function M.setup(colors, config)
 	-- Load all highlight modules
 	local editor = require("islands-dark.highlights.editor")
 	local syntax = require("islands-dark.highlights.syntax")
@@ -22,8 +21,8 @@ function M.setup(colors, config, util)
 	-- Apply each module's highlights
 	local modules = {
 		editor.setup(colors),
-		syntax.setup(colors, config, util),
-		treesitter.setup(colors),
+		syntax.setup(colors, config),
+		treesitter.setup(colors, config),
 		lsp.setup(colors),
 		diagnostics.setup(colors),
 		plugins.setup(colors),
