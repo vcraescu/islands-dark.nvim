@@ -4,69 +4,78 @@ local M = {}
 
 --- Setup LSP semantic token highlights
 --- @param c table Color palette
---- @param config table User configuration
---- @param util table Utility functions
 --- @return table Highlight groups for LSP semantic tokens
-function M.setup(c, config, util)
+function M.setup(c)
 	local highlights = {}
 
 	-- Namespaces and modules
-	highlights["@lsp.type.namespace"] = { fg = c.type }
-	highlights["@lsp.type.module"] = { fg = c.type }
+	highlights["@lsp.type.namespace"] = { link = "@type" }
+	highlights["@lsp.type.module"] = { link = "@lsp.type.namespace" }
 
 	-- Types
-	highlights["@lsp.type.type"] = { fg = c.type }
-	highlights["@lsp.type.class"] = { fg = c.type }
-	highlights["@lsp.type.enum"] = { fg = c.type }
-	highlights["@lsp.type.interface"] = { fg = c.type }
-	highlights["@lsp.type.struct"] = { fg = c.type }
-	highlights["@lsp.type.typeParameter"] = { fg = c.type }
+	highlights["@lsp.type.type"] = { link = "@type" }
+	highlights["@lsp.type.class"] = { link = "@lsp.type.type" }
+	highlights["@lsp.type.enum"] = { link = "@lsp.type.type" }
+	highlights["@lsp.type.interface"] = { link = "@lsp.type.type" }
+	highlights["@lsp.type.struct"] = { link = "@lsp.type.type" }
+	highlights["@lsp.type.typeParameter"] = { link = "@lsp.type.type" }
 
 	-- Functions and methods
-	local function_style = util.get_style(config, "functions")
-	highlights["@lsp.type.function"] = { fg = c.func, bold = function_style.bold, italic = function_style.italic }
-	highlights["@lsp.type.method"] = { fg = c.method }
-	highlights["@lsp.type.macro"] = { fg = c.metadata }
-	highlights["@lsp.type.decorator"] = { fg = c.metadata }
+	highlights["@lsp.type.function"] = { link = "@function" }
+	highlights["@lsp.type.method"] = { link = "@lsp.type.function" }
+	highlights["@lsp.type.macro"] = { link = "Macro" }
+	highlights["@lsp.type.decorator"] = { link = "PreProc" }
 
 	-- Variables
-	local variable_style = util.get_style(config, "variables")
-	highlights["@lsp.type.variable"] = { fg = c.variable, bold = variable_style.bold, italic = variable_style.italic }
-	highlights["@lsp.type.parameter"] = { fg = c.parameter }
-	highlights["@lsp.type.property"] = { fg = c.property }
-	highlights["@lsp.type.field"] = { fg = c.field }
+	highlights["@lsp.type.variable"] = { link = "@variable" }
+	highlights["@lsp.type.parameter"] = { link = "@lsp.type.variable" }
+	highlights["@lsp.type.property"] = { link = "@property" }
+	highlights["@lsp.type.field"] = { link = "@variable.member" }
 	highlights["@lsp.type.enumMember"] = { fg = c.enum_member }
 
 	-- Keywords
-	local keyword_style = util.get_style(config, "keywords")
-	highlights["@lsp.type.keyword"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
+	highlights["@lsp.type.keyword"] = { link = "@keyword" }
 
 	-- Comments
-	local comment_style = util.get_style(config, "comments")
-	highlights["@lsp.type.comment"] = { fg = c.comment, bold = comment_style.bold, italic = comment_style.italic }
+	highlights["@lsp.type.comment"] = { link = "@comment" }
 
 	-- Modifiers
-	local constant_style = util.get_style(config, "constants")
-	highlights["@lsp.mod.readonly"] = { fg = c.constant, bold = constant_style.bold, italic = constant_style.italic }
-	highlights["@lsp.mod.constant"] = { fg = c.constant, bold = constant_style.bold, italic = constant_style.italic }
-	highlights["@lsp.mod.static"] = { fg = c.constant, bold = constant_style.bold, italic = constant_style.italic }
+	highlights["@lsp.mod.constant"] = { link = "@constant" }
+	highlights["@lsp.mod.readonly"] = { link = "@lsp.mod.constant" }
+	highlights["@lsp.mod.static"] = { link = "@lsp.type.function" }
 	highlights["@lsp.mod.deprecated"] = { fg = c.deprecated }
-	highlights["@lsp.mod.abstract"] = {}
-	highlights["@lsp.mod.defaultLibrary"] = { fg = c.keyword }
+	highlights["@lsp.mod.defaultLibrary"] = { link = "@lsp.mod.keyword" }
 
 	-- Specific language semantic tokens
-	highlights["@lsp.typemod.variable.readonly"] = { fg = c.constant, bold = constant_style.bold, italic = constant_style.italic }
-	highlights["@lsp.typemod.variable.constant"] = { fg = c.constant, bold = constant_style.bold, italic = constant_style.italic }
-	highlights["@lsp.typemod.variable.defaultLibrary"] = { fg = c.keyword }
-	highlights["@lsp.typemod.function.defaultLibrary"] = { fg = c.func, bold = function_style.bold, italic = function_style.italic }
-	highlights["@lsp.typemod.method.defaultLibrary"] = { fg = c.method }
-	highlights["@lsp.typemod.type.defaultLibrary"] = { fg = c.keyword }
-	highlights["@lsp.typemod.type.definition"] = { fg = c.type_definition }
-	highlights["@lsp.typemod.class.declaration"] = { fg = c.type_definition }
-	highlights["@lsp.typemod.interface.declaration"] = { fg = c.type_definition }
+	highlights["@lsp.typemod.variable.readonly"] = { link = "@lsp.mod.constant" }
+	highlights["@lsp.typemod.variable.constant"] = { link = "@lsp.mod.constant" }
+	highlights["@lsp.typemod.variable.defaultLibrary"] = { link = "@type.builtin" }
+	highlights["@lsp.typemod.function.defaultLibrary"] = { link = "@keyword" }
+	highlights["@lsp.typemod.method.defaultLibrary"] = { link = "@lsp.type.method" }
+	highlights["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" }
+	highlights["@lsp.typemod.type.definition"] = { link = "@type.definition" }
+	highlights["@lsp.typemod.class.declaration"] = { link = "@lsp.typemod.type.definition" }
+	highlights["@lsp.typemod.interface.declaration"] = { link = "@lsp.typemod.type.definition" }
 
 	-- Go-specific LSP semantic tokens
 	highlights["@lsp.type.namespace.go"] = { fg = c.metadata }
+
+	--- Typescript/JS-specific LSP semantic tokens
+	highlights["@lsp.typemod.variable.readonly.typescript"] = { link = "@constant.typescript" }
+	highlights["@lsp.typemod.variable.readonly.typescriptreact"] = { link = "@constant.typescript" }
+	highlights["@lsp.typemod.variable.readonly.javascript"] = { link = "@constant.typescript" }
+	highlights["@lsp.mod.readonly.typescript"] = {}
+	highlights["@lsp.mod.readonly.typescriptreact"] = {}
+	highlights["@lsp.mod.readonly.javascript"] = {}
+	highlights["@lsp.type.property.javascript"] = {}
+	highlights["@tag.builtin.tsx"] = { link = "@tag" }
+	highlights["@tag.delimiter.tsx"] = { link = "@tag" }
+
+	-- Proto
+	highlights["@lsp.type.property.proto"] = { link = "@property.proto" }
+	highlights["@lsp.type.struct.proto"] = { link = "@type.proto" }
+	highlights["@lsp.type.enum.proto"] = { link = "@type.proto" }
+	highlights["@lsp.type.namespace.proto"] = { link = "@type.proto" }
 
 	return highlights
 end

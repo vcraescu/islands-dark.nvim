@@ -23,8 +23,8 @@ function M.setup(colors, config, util)
 	local modules = {
 		editor.setup(colors),
 		syntax.setup(colors, config, util),
-		treesitter.setup(colors, config, util),
-		lsp.setup(colors, config, util),
+		treesitter.setup(colors),
+		lsp.setup(colors),
 		diagnostics.setup(colors),
 		plugins.setup(colors),
 	}

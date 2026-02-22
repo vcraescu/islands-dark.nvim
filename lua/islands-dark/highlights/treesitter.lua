@@ -4,94 +4,87 @@ local M = {}
 
 --- Setup Treesitter highlights
 --- @param c table Color palette
---- @param config table User configuration
---- @param util table Utility functions
 --- @return table Highlight groups for Treesitter syntax elements
-function M.setup(c, config, util)
+function M.setup(c)
 	local highlights = {}
 
 	-- Comments
-	local comment_style = util.get_style(config, "comments")
-	highlights["@comment"] = { fg = c.comment, bold = comment_style.bold, italic = comment_style.italic }
-	highlights["@comment.documentation"] = { fg = c.doc_comment }
-	highlights["@comment.error"] = { fg = c.error }
-	highlights["@comment.warning"] = { fg = c.warning }
+	highlights["@comment"] = { link = "Comment" }
+	highlights["@comment.documentation"] = { link = "SpecialComment" }
+	highlights["@comment.error"] = { link = "Error" }
+	highlights["@comment.warning"] = { link = "Debug" }
 	highlights["@comment.note"] = { fg = c.info }
-	highlights["@comment.todo"] = { fg = c.todo, bold = true }
+	highlights["@comment.todo"] = { link = "Todo" }
 
 	-- Constants
-	local constant_style = util.get_style(config, "constants")
-	highlights["@constant"] = { fg = c.constant, bold = constant_style.bold, italic = constant_style.italic }
-	highlights["@constant.builtin"] = { fg = c.keyword }
-	highlights["@constant.macro"] = { fg = c.constant }
+	highlights["@constant"] = { link = "Constant" }
+	highlights["@constant.builtin"] = { link = "Keyword" }
+	highlights["@constant.macro"] = { link = "Macro" }
 
 	-- Strings
-	local string_style = util.get_style(config, "strings")
-	highlights["@string"] = { fg = c.string, bold = string_style.bold, italic = string_style.italic }
-	highlights["@string.documentation"] = { fg = c.doc_comment }
-	highlights["@string.escape"] = { fg = c.escape }
+	highlights["@string"] = { link = "String" }
+	highlights["@string.documentation"] = { link = "SpecialComment" }
+	highlights["@string.escape"] = { link = "SpecialChar" }
 	highlights["@string.regexp"] = { fg = c.regex }
-	highlights["@string.special"] = { fg = c.escape }
-	highlights["@string.special.symbol"] = { fg = c.constant }
-	highlights["@string.special.url"] = { fg = c.hyperlink }
+	highlights["@string.special"] = { link = "SpecialChar" }
+	highlights["@string.special.symbol"] = { link = "Constant" }
+	highlights["@string.special.url"] = { link = "Underlined" }
 
 	-- Characters
-	highlights["@character"] = { fg = c.string }
-	highlights["@character.special"] = { fg = c.escape }
+	highlights["@character"] = { link = "Character" }
+	highlights["@character.special"] = { link = "SpecialChar" }
 
 	-- Numbers
-	highlights["@number"] = { fg = c.number }
-	highlights["@number.float"] = { fg = c.number }
+	highlights["@number"] = { link = "Number" }
+	highlights["@number.float"] = { link = "@number" }
 
 	-- Booleans
-	highlights["@boolean"] = { fg = c.keyword }
+	highlights["@boolean"] = { link = "Boolean" }
 
 	-- Functions
-	local function_style = util.get_style(config, "functions")
-	highlights["@function"] = { fg = c.func, bold = function_style.bold, italic = function_style.italic }
-	highlights["@function.builtin"] = { fg = c.func, bold = function_style.bold, italic = function_style.italic }
-	highlights["@function.call"] = { fg = c.func, bold = function_style.bold, italic = function_style.italic }
+	highlights["@function"] = { link = "Function" }
+	highlights["@function.builtin"] = { link = "Function" }
+	highlights["@function.call"] = { link = "Function" }
 	highlights["@function.macro"] = { fg = c.metadata }
 	highlights["@function.method"] = { fg = c.method }
-	highlights["@function.method.call"] = { fg = c.method }
+	highlights["@function.method.call"] = { link = "@function.method" }
 
 	-- Constructors
-	highlights["@constructor"] = { fg = c.method }
+	highlights["@constructor"] = { link = "@function.method" }
 
 	-- Parameters
-	highlights["@parameter"] = { fg = c.parameter }
-	highlights["@parameter.builtin"] = { fg = c.parameter }
+	highlights["@parameter"] = { link = "Identifier" }
+	highlights["@parameter.builtin"] = { link = "Identifier" }
 
 	-- Keywords
-	local keyword_style = util.get_style(config, "keywords")
-	highlights["@keyword"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.conditional"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.conditional.ternary"] = { fg = c.operator }
-	highlights["@keyword.coroutine"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.debug"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.directive"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.directive.define"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.exception"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.function"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.import"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.operator"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.repeat"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.return"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
-	highlights["@keyword.storage"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
+	highlights["@keyword"] = { link = "Keyword" }
+	highlights["@keyword.conditional"] = { link = "@keyword" }
+	highlights["@keyword.conditional.ternary"] = { link = "Operator" }
+	highlights["@keyword.coroutine"] = { link = "@keyword" }
+	highlights["@keyword.debug"] = { link = "@keyword" }
+	highlights["@keyword.directive"] = { link = "@keyword" }
+	highlights["@keyword.directive.define"] = { link = "@keyword" }
+	highlights["@keyword.exception"] = { link = "Exception" }
+	highlights["@keyword.function"] = { link = "@keyword" }
+	highlights["@keyword.import"] = { link = "@keyword" }
+	highlights["@keyword.operator"] = { link = "@keyword" }
+	highlights["@keyword.repeat"] = { link = "@keyword" }
+	highlights["@keyword.return"] = { link = "@keyword" }
+	highlights["@keyword.storage"] = { link = "@keyword" }
 
 	-- Operators
-	highlights["@operator"] = { fg = c.operator }
+	highlights["@operator"] = { link = "Operator" }
 
 	-- Punctuation
-	highlights["@punctuation.delimiter"] = { fg = c.punctuation }
+	highlights["@punctuation.delimiter"] = { link = "Delimiter" }
 	highlights["@punctuation.bracket"] = { fg = c.braces }
-	highlights["@punctuation.special"] = { fg = c.punctuation }
+	highlights["@punctuation.special"] = { link = "Delimiter" }
 
 	-- Types
 	highlights["@type"] = { fg = c.type }
-	highlights["@type.builtin"] = { fg = c.keyword }
-	highlights["@type.definition"] = { fg = c.type_definition }
-	highlights["@type.qualifier"] = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
+	highlights["@type.builtin"] = { fg = c.type_builtin }
+	highlights["@type.definition"] = { link = "Typedef" }
+	highlights["@type.qualifier"] = { link = "@keyword" }
 
 	-- Attributes
 	highlights["@attribute"] = { fg = c.metadata }
@@ -101,40 +94,39 @@ function M.setup(c, config, util)
 	highlights["@property"] = { fg = c.property }
 
 	-- Variables
-	local variable_style = util.get_style(config, "variables")
-	highlights["@variable"] = { fg = c.variable, bold = variable_style.bold, italic = variable_style.italic }
-	highlights["@variable.builtin"] = { fg = c.keyword }
+	highlights["@variable"] = { link = "Identifier" }
+	highlights["@variable.builtin"] = { link = "@keyword" }
 	highlights["@variable.member"] = { fg = c.field }
-	highlights["@variable.parameter"] = { fg = c.parameter }
+	highlights["@variable.parameter"] = { link = "@parameter" }
 
 	-- Modules
 	highlights["@module"] = { fg = c.fg }
 	highlights["@module.builtin"] = { fg = c.fg }
 
 	-- Labels
-	highlights["@label"] = { fg = c.label }
+	highlights["@label"] = { link = "Label" }
 
 	-- Tags (HTML/XML)
-	highlights["@tag"] = { fg = c.tag }
+	highlights["@tag"] = { link = "Tag" }
 	highlights["@tag.attribute"] = { fg = c.attribute }
-	highlights["@tag.delimiter"] = { fg = c.braces }
+	highlights["@tag.delimiter"] = { link = "@punctuation.bracket" }
 
 	-- Markup (Markdown, etc.)
 	highlights["@markup.strong"] = { bold = true }
 	highlights["@markup.italic"] = { italic = true }
 	highlights["@markup.strikethrough"] = { strikethrough = true }
 	highlights["@markup.underline"] = { underline = true }
-	highlights["@markup.heading"] = { fg = c.constant, italic = true }
+	highlights["@markup.heading"] = { link = "@constant" }
 	highlights["@markup.quote"] = { fg = c.keyword }
 	highlights["@markup.quote.markdown"] = { fg = c.string }
-	highlights["@markup.math"] = { fg = c.number }
-	highlights["@markup.link"] = { fg = c.hyperlink }
+	highlights["@markup.math"] = { link = "@number" }
+	highlights["@markup.link"] = { link = "@string.special.url" }
 	highlights["@markup.link.label"] = { link = "@markup.link" }
-	highlights["@markup.link.url"] = { fg = c.hyperlink, underline = true, italic = true }
-	highlights["@markup.raw"] = { fg = c.string }
+	highlights["@markup.link.url"] = { link = "@markup.link" }
+	highlights["@markup.raw"] = { link = "@string" }
 	highlights["@markup.raw.block"] = { fg = c.string, bg = c.injected_lang_bg }
-	highlights["@label.markdown"] = { fg = c.constant }
-	highlights["@markup.list"] = { fg = c.keyword }
+	highlights["@label.markdown"] = { link = "@constant" }
+	highlights["@markup.list"] = { link = "@keyword" }
 	highlights["@markup.list.checked"] = { fg = c.fg }
 	highlights["@markup.list.unchecked"] = { fg = c.fg }
 	highlights["@conceal.markdown_inline"] = { link = "@label" }
@@ -151,22 +143,46 @@ function M.setup(c, config, util)
 	-- Language-specific
 
 	-- Bash
-	highlights["@function.builtin.bash"] = { fg = c.keyword }
+	highlights["@function.builtin.bash"] = { link = "@keyword" }
 
 	-- Go
-	highlights["@type.builtin.go"] = { fg = c.keyword }
-	highlights["@constant.builtin.go"] = { fg = c.keyword }
+	highlights["@type.builtin.go"] = { link = "@keyword" }
+	highlights["@constant.builtin.go"] = { link = "@keyword" }
 	highlights["@module.go"] = { fg = c.metadata }
 	highlights["@namespace.go"] = { fg = c.metadata }
+	highlights["@string.special.url.gomod"] = { link = "@string" }
+	highlights["@string.special.url.gosum"] = { link = "@string" }
 
 	-- TypeScript/JavaScript
-	highlights["@constructor.typescript"] = { fg = c.fg }
-	highlights["@constructor.tsx"] = { fg = c.fg }
+	highlights["@constructor.typescript"] = { link = "@keyword" }
+	highlights["@constructor.javascript"] = { link = "@keyword" }
+	highlights["@constructor.tsx"] = { link = "@constructor.typescript" }
 	highlights["@type.parameter.typescript"] = { fg = c.type_parameter }
+	highlights["@type.parameter.javascript"] = { fg = c.type_parameter }
 	highlights["@type.parameter.tsx"] = { fg = c.type_parameter }
+	highlights["@constant.typescript"] = { link = "@variable" }
+	highlights["@constant.javascript"] = { link = "@variable" }
 
 	-- Lua
 	highlights["@constructor.lua"] = { fg = c.braces }
+
+	-- Yaml
+	highlights["@property.yaml"] = { link = "@keyword" }
+	highlights["@type.yaml"] = { link = "@tag" }
+
+	-- CSS
+	highlights["@tag.css"] = { link = "@tag" }
+	highlights["@constant.css"] = { link = "@tag" }
+	highlights["@punctuation.delimiter.css"] = { link = "@tag.css" }
+
+	-- Proto
+	highlights["@property.proto"] = { link = "@identifier" }
+	highlights["@type.proto"] = { link = "@identifier" }
+	highlights["@variable.member.proto"] = { link = "@property.proto" }
+
+	-- Python
+	highlights["@constructor.python"] = { link = "@keyword" }
+	highlights["@variable.member.python"] = { link = "@indentifier" }
 
 	return highlights
 end

@@ -10,7 +10,6 @@ local M = {}
 --- @property styles table Custom styles for syntax groups (default: empty)
 --- @property overrides function Function that receives colors table and returns highlight overrides (default: returns empty table)
 --- @property on_highlights function Function that receives the final highlights table and can modify it directly (default: does nothing)
---- @field styles table Style options for comments (bold, italic, underline, etc.)
 M.defaults = {
 	-- Transparent background
 	transparent = false,

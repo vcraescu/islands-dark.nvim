@@ -33,6 +33,7 @@ local colors = {
 	type = "#6FAFBD", -- TYPE_PARAMETER_NAME_ATTRIBUTES
 	type_definition = "#BCBEC4", -- TYPE_PARAMETER_NAME_ATTRIBUTES
 	type_parameter = "#16BAAC", -- Type parameters like <T> (TYPE_PARAMETER_NAME_ATTRIBUTES)
+	type_builtin = "#CC7832", -- Built-in types (same as type)
 	comment = "#7A7E85", -- DEFAULT_LINE_COMMENT
 	doc_comment = "#5F826B", -- DEFAULT_DOC_COMMENT
 	tag = "#D5B778", -- DEFAULT_TAG (HTML/XML)
@@ -40,7 +41,7 @@ local colors = {
 	operator = "#BCBEC4", -- DEFAULT_OPERATION_SIGN
 	punctuation = "#BCBEC4", -- DEFAULT_COMMA, DEFAULT_DOT, etc.
 	variable = "#BCBEC4", -- DEFAULT_LOCAL_VARIABLE
-	parameter = "#A1A3AB", -- DEFAULT_PARAMETER
+	parameter = "#BCBEC4", -- DEFAULT_PARAMETER
 	field = "#C77DBB", -- DEFAULT_INSTANCE_FIELD
 	property = "#C77DBB", -- Properties, same as fields
 	enum_member = "#C77DBB", -- DEFAULT_CONSTANT (same as constant)
@@ -53,6 +54,7 @@ local colors = {
 	identifier = "#56A8F5", -- DEFAULT_IDENTIFIER (functions, imports)
 	braces = "#BCBEC4", -- DEFAULT_BRACES, DEFAULT_BRACKETS, DEFAULT_PARENTHESES
 	semicolon = "#BCBEC4", -- DEFAULT_SEMICOLON
+	special = "#2AACB8",
 
 	-- Documentation
 	doc_tag = "#5F826B", -- DOC_COMMENT_TAG
