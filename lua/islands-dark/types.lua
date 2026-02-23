@@ -124,8 +124,6 @@
 --- @field deprecated string Deprecated elements (NOT_USED_ELEMENT_ATTRIBUTES)
 --- Template/Interpolation
 --- @field template_var string Template variable (TEMPLATE_VARIABLE_ATTRIBUTES)
---- Injected language
---- @field injected_lang_bg string Injected language background (INJECTED_LANGUAGE_FRAGMENT)
 --- URL/Hyperlink
 --- @field hyperlink string Hyperlink color (HYPERLINK_ATTRIBUTES)
 --- Special values

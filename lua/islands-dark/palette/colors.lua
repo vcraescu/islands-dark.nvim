@@ -89,9 +89,6 @@ return {
 	-- Template/Interpolation
 	template_var = palette.lavender,
 
-	-- Injected language
-	injected_lang_bg = palette.dark_teal,
-
 	-- URL/Hyperlink
 	hyperlink = palette.blue,
 
