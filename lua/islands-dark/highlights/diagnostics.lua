@@ -1,5 +1,3 @@
--- Diagnostics and LSP for Islands Dark theme
-
 local M = {}
 
 --- Diagnostics and LSP highlights

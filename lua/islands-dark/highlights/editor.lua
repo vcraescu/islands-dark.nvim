@@ -1,5 +1,3 @@
--- Editor UI for Islands Dark theme
-
 local M = {}
 
 --- Basic editor UI highlights

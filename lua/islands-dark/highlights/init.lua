@@ -1,4 +1,3 @@
--- Main highlights loader for Islands Dark theme
 local M = {}
 
 --- Load and combine highlights from all modules

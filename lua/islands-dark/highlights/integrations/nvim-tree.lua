@@ -13,13 +13,13 @@ function M.get(c)
 		NvimTreeCursorLine = { bg = c.cursor_line },
 		NvimTreeCursorLineNr = { fg = c.line_number_current, bg = c.cursor_line },
 
-		NvimTreeRootFolder = { fg = c.fg_dim, bold = true },
+		NvimTreeRootFolder = { fg = c.fg, bold = true },
 
-		NvimTreeFolderName = { fg = c.fg_dim },
-		NvimTreeFolderIcon = { fg = c.fg_dim },
-		NvimTreeEmptyFolderName = { fg = c.fg_dim },
-		NvimTreeOpenedFolderName = { fg = c.fg_dim, bold = true },
-		NvimTreeSymlinkFolderName = { fg = c.hyperlink },
+		NvimTreeFolderName = { fg = c.fg, bold = true },
+		NvimTreeFolderIcon = { fg = c.fg, bold = true },
+		NvimTreeEmptyFolderName = { fg = c.fg, bold = true },
+		NvimTreeOpenedFolderName = { fg = c.fg, bold = true },
+		NvimTreeSymlinkFolderName = { fg = c.hyperlink, bold = true },
 
 		NvimTreeFileIcon = { fg = c.fg },
 		NvimTreeFileName = { fg = c.fg },
