@@ -17,19 +17,19 @@ function M.setup(c, config)
 	local keyword_style = util.get_style(config, "keywords")
 
 	-- Comments
-	highlights.Comment = { fg = c.comment, bold = comment_style.bold, italic = comment_style.italic }
+	highlights.Comment = comment_style({ fg = c.comment })
 
 	-- Constants
-	highlights.Constant = { fg = c.constant, bold = constant_style.bold, italic = constant_style.italic }
-	highlights.String = { fg = c.string, bold = string_style.bold, italic = string_style.italic }
+	highlights.Constant = constant_style({ fg = c.constant })
+	highlights.String = string_style({ fg = c.string })
 	highlights.Character = { fg = c.string }
 	highlights.Number = { fg = c.number }
 	highlights.Boolean = { link = "Keyword" }
 	highlights.Float = { fg = c.number }
 
 	-- Identifiers
-	highlights.Identifier = { fg = c.variable, bold = variable_style.bold, italic = variable_style.italic }
-	highlights.Function = { fg = c.func, bold = function_style.bold, italic = function_style.italic }
+	highlights.Identifier = variable_style({ fg = c.variable })
+	highlights.Function = function_style({ fg = c.func })
 
 	-- Statements
 	highlights.Statement = { link = "Keyword" }
@@ -37,7 +37,7 @@ function M.setup(c, config)
 	highlights.Repeat = { link = "Keyword" }
 	highlights.Label = { fg = c.label }
 	highlights.Operator = { fg = c.operator }
-	highlights.Keyword = { fg = c.keyword, bold = keyword_style.bold, italic = keyword_style.italic }
+	highlights.Keyword = keyword_style({ fg = c.keyword })
 	highlights.Exception = { link = "Keyword" }
 
 	-- PreProc
@@ -51,7 +51,7 @@ function M.setup(c, config)
 	highlights.Type = { fg = c.type }
 	highlights.StorageClass = { link = "Keyword" }
 	highlights.Structure = { link = "Keyword" }
-	highlights.Typedef = { fg = c.type_definition, bold = keyword_style.bold, italic = keyword_style.italic }
+	highlights.Typedef = keyword_style({ fg = c.type_definition })
 
 	-- Special
 	highlights.Special = { fg = c.special }

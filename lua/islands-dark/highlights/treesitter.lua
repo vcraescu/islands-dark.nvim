@@ -17,25 +17,25 @@ function M.setup(c, config)
 
 	-- Comments
 	highlights["@comment"] = { link = "Comment" }
-	highlights["@comment.documentation"] = { link = "SpecialComment", unpack(comment_style) }
-	highlights["@comment.error"] = { fg = c.fg, bg = c.error, unpack(comment_style) }
-	highlights["@comment.warning"] = { link = "Debug", unpack(comment_style) }
-	highlights["@comment.note"] = { fg = c.info, unpack(comment_style) }
-	highlights["@comment.todo"] = { fg = c.fg, bg = c.todo, unpack(comment_style) }
+	highlights["@comment.documentation"] = comment_style({ link = "SpecialComment" })
+	highlights["@comment.error"] = comment_style({ fg = c.fg, bg = c.error })
+	highlights["@comment.warning"] = comment_style({ link = "Debug" })
+	highlights["@comment.note"] = comment_style({ fg = c.info })
+	highlights["@comment.todo"] = comment_style({ fg = c.fg, bg = c.todo })
 
 	-- Constants
 	highlights["@constant"] = { link = "Constant" }
-	highlights["@constant.builtin"] = { link = "Keyword", unpack(constant_style) }
-	highlights["@constant.macro"] = { link = "Macro", unpack(constant_style) }
+	highlights["@constant.builtin"] = constant_style({ link = "Keyword" })
+	highlights["@constant.macro"] = constant_style({ link = "Macro" })
 
 	-- Strings
-	highlights["@string"] = { link = "String", unpack(string_style) }
-	highlights["@string.documentation"] = { link = "SpecialComment", unpack(string_style) }
-	highlights["@string.escape"] = { fg = c.escape, unpack(string_style) }
-	highlights["@string.regexp"] = { fg = c.regex, unpack(string_style) }
-	highlights["@string.special"] = { link = "SpecialChar", unpack(string_style) }
-	highlights["@string.special.symbol"] = { link = "Constant", unpack(string_style) }
-	highlights["@string.special.url"] = { link = "Underlined", unpack(string_style) }
+	highlights["@string"] = string_style({ link = "String" })
+	highlights["@string.documentation"] = string_style({ link = "SpecialComment" })
+	highlights["@string.escape"] = string_style({ fg = c.escape })
+	highlights["@string.regexp"] = string_style({ fg = c.regex })
+	highlights["@string.special"] = string_style({ link = "SpecialChar" })
+	highlights["@string.special.symbol"] = string_style({ link = "Constant" })
+	highlights["@string.special.url"] = string_style({ link = "Underlined" })
 
 	-- Characters
 	highlights["@character"] = { link = "Character" }
@@ -49,12 +49,12 @@ function M.setup(c, config)
 	highlights["@boolean"] = { link = "Boolean" }
 
 	-- Functions
-	highlights["@function"] = { link = "Function", unpack(function_style) }
-	highlights["@function.builtin"] = { link = "Function", unpack(function_style) }
-	highlights["@function.call"] = { link = "Function", unpack(function_style) }
-	highlights["@function.macro"] = { fg = c.metadata, unpack(function_style) }
-	highlights["@function.method"] = { fg = c.method, unpack(function_style) }
-	highlights["@function.method.call"] = { link = "@function.method", unpack(function_style) }
+	highlights["@function"] = function_style({ link = "Function" })
+	highlights["@function.builtin"] = function_style({ link = "Function" })
+	highlights["@function.call"] = function_style({ link = "Function" })
+	highlights["@function.macro"] = function_style({ fg = c.metadata })
+	highlights["@function.method"] = function_style({ fg = c.method })
+	highlights["@function.method.call"] = function_style({ link = "@function.method" })
 
 	-- Constructors
 	highlights["@constructor"] = { link = "@function.method" }
@@ -64,20 +64,20 @@ function M.setup(c, config)
 	highlights["@parameter.builtin"] = { link = "Identifier" }
 
 	-- Keywords
-	highlights["@keyword"] = { link = "Keyword", unpack(keyword_style) }
-	highlights["@keyword.conditional"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.conditional.ternary"] = { link = "Operator", unpack(keyword_style) }
-	highlights["@keyword.coroutine"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.debug"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.directive"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.directive.define"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.exception"] = { link = "Exception", unpack(keyword_style) }
-	highlights["@keyword.function"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.import"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.operator"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.repeat"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.return"] = { link = "@keyword", unpack(keyword_style) }
-	highlights["@keyword.storage"] = { link = "@keyword", unpack(keyword_style) }
+	highlights["@keyword"] = keyword_style({ link = "Keyword" })
+	highlights["@keyword.conditional"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.conditional.ternary"] = keyword_style({ link = "Operator" })
+	highlights["@keyword.coroutine"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.debug"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.directive"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.directive.define"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.exception"] = keyword_style({ link = "Exception" })
+	highlights["@keyword.function"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.import"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.operator"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.repeat"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.return"] = keyword_style({ link = "@keyword" })
+	highlights["@keyword.storage"] = keyword_style({ link = "@keyword" })
 
 	-- Operators
 	highlights["@operator"] = { link = "Operator" }
@@ -101,10 +101,10 @@ function M.setup(c, config)
 	highlights["@property"] = { fg = c.property }
 
 	-- Variables
-	highlights["@variable"] = { link = "Identifier", unpack(variable_style) }
-	highlights["@variable.builtin"] = { link = "@keyword", unpack(variable_style) }
-	highlights["@variable.member"] = { fg = c.field, unpack(variable_style) }
-	highlights["@variable.parameter"] = { link = "@parameter", unpack(variable_style) }
+	highlights["@variable"] = variable_style({ link = "Identifier" })
+	highlights["@variable.builtin"] = variable_style({ link = "@keyword" })
+	highlights["@variable.member"] = variable_style({ fg = c.field })
+	highlights["@variable.parameter"] = variable_style({ link = "@parameter" })
 
 	-- Modules
 	highlights["@module"] = { fg = c.fg }

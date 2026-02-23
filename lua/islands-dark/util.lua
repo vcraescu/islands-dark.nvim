@@ -32,10 +32,10 @@ function M.apply_overrides(colors, config)
 	return colors
 end
 
---- Get style options from config
----@param config table User configuration
----@param style_type string Style type (comments, keywords, functions, etc.)
----@return table Style options
+-- Get style options from config
+-- @param config table User configuration
+-- param style_type string Style type (comments, keywords, functions, etc.)
+-- @return function Function that takes highlight options and returns merged options with style applied
 function M.get_style(config, style_type)
 	if not config.styles or not config.styles[style_type] then
 		return {}
@@ -60,7 +60,9 @@ function M.get_style(config, style_type)
 		style.strikethrough = true
 	end
 
-	return style
+	return function(opts)
+		return vim.tbl_deep_extend("force", opts, style)
+	end
 end
 
 --- Merge two tables deeply
