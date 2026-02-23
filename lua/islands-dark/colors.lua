@@ -2,7 +2,7 @@
 -- Direct port of JetBrains IntelliJ IDEA Islands Dark theme
 -- Based on color definitions from islands_dark.xml
 
---- @class Colors
+--- @class theme.Colors
 local colors = {
 	-- Base colors
 	bg = "#191A1C", -- CONSOLE_BACKGROUND_KEY

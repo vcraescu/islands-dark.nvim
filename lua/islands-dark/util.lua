@@ -33,36 +33,55 @@ function M.apply_overrides(colors, config)
 end
 
 -- Get style options from config
--- @param config table User configuration
--- param style_type string Style type (comments, keywords, functions, etc.)
--- @return function Function that takes highlight options and returns merged options with style applied
-function M.get_style(config, style_type)
-	if not config.styles or not config.styles[style_type] then
-		return {}
+--- @param opts table User configuration
+--- @param style_type string Style type (comments, keywords, functions, etc.)
+--- @return function Function that takes highlight options and returns merged options with style applied
+function M.get_style(opts, style_type)
+	opts = opts or {}
+
+	if not opts.styles or not opts.styles[style_type] then
+		return function(o)
+			return o
+		end
 	end
 
 	local style = {}
-	local user_style = config.styles[style_type]
+	local user_style = opts.styles[style_type]
 
 	if user_style.bold then
 		style.bold = true
 	end
+
 	if user_style.italic then
 		style.italic = true
 	end
+
 	if user_style.underline then
 		style.underline = true
 	end
+
 	if user_style.undercurl then
 		style.undercurl = true
 	end
+
 	if user_style.strikethrough then
 		style.strikethrough = true
 	end
 
-	return function(opts)
-		return vim.tbl_deep_extend("force", opts, style)
+	return function(o)
+		return vim.tbl_deep_extend("force", o, style)
 	end
+end
+
+function M.get_styles(opts)
+	return {
+		comments = M.get_style(opts, "comments"),
+		keywords = M.get_style(opts, "keywords"),
+		functions = M.get_style(opts, "functions"),
+		variables = M.get_style(opts, "variables"),
+		strings = M.get_style(opts, "strings"),
+		constants = M.get_style(opts, "constants"),
+	}
 end
 
 --- Merge two tables deeply

@@ -7,6 +7,7 @@ local M = {}
 function M.load()
 	-- Reset highlights
 	vim.cmd("highlight clear")
+
 	if vim.fn.exists("syntax_on") then
 		vim.cmd("syntax reset")
 	end
@@ -61,10 +62,12 @@ function M.load()
 end
 
 --- Setup the colorscheme with custom configuration
----@param user_config table|nil User configuration options
-function M.setup(user_config)
-	local config_module = require("islands-dark.config")
-	config_module.setup(user_config or {})
+---@param opts theme.Config|nil User configuration options
+function M.setup(opts)
+	opts = opts or {}
+	local config = require("islands-dark.config")
+
+	config.setup(opts)
 end
 
 return M

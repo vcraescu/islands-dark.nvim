@@ -4,7 +4,7 @@ local M = {}
 
 --- Default configuration
 --- Users can override these settings by passing a table to the setup function
---- @class Config
+--- @class theme.Config
 --- @property transparent boolean Whether to use a transparent background (default: false)
 --- @property terminal_colors boolean Whether to set terminal colors (default: true)
 --- @property styles table Custom styles for syntax groups (default: empty)
@@ -28,14 +28,14 @@ M.defaults = {
 	},
 
 	-- Function that receives colors table and returns highlight overrides
-	--- @param colors Colors Base color palette
+	--- @param colors theme.Colors Base color palette
 	overrides = function(colors)
 		return {}
 	end,
 
 	-- Function that receives the final highlights table and can modify it directly
-	-- @param highlights table Final highlights table that will be applied
-	-- @param colors Con Base color palette
+	--- @param highlights table Final highlights table that will be applied
+	--- @param colors theme.Colors Base color palette
 	on_highlights = function(highlights, colors)
 		-- This function can be used to modify the highlights table directly
 	end,
@@ -51,7 +51,7 @@ function M.setup(user_config)
 end
 
 --- Get current configuration
----@return table Current configuration
+--- @return table Current configuration
 function M.get()
 	return M.config
 end

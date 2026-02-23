@@ -1,10 +1,9 @@
 -- Main highlights loader for Islands Dark theme
-
 local M = {}
 
 --- Load and combine highlights from all modules
---- @param colors table Color palette
---- @param config table User configuration
+--- @param colors theme.Colors Color palette
+--- @param config theme.Config User configuration
 --- @return table Combined highlight groups
 function M.setup(colors, config)
 	-- Load all highlight modules
@@ -13,33 +12,23 @@ function M.setup(colors, config)
 	local treesitter = require("islands-dark.highlights.treesitter")
 	local lsp = require("islands-dark.highlights.lsp")
 	local diagnostics = require("islands-dark.highlights.diagnostics")
-	local plugins = require("islands-dark.highlights.plugins")
+	local integrations = require("islands-dark.highlights.integrations")
 
 	-- Combine all highlights
-	local highlights = {}
-
-	-- Apply each module's highlights
-	local modules = {
-		editor.setup(colors),
-		syntax.setup(colors, config),
-		treesitter.setup(colors, config),
-		lsp.setup(colors),
-		diagnostics.setup(colors),
-		plugins.setup(colors),
-	}
-
-	for _, module_highlights in ipairs(modules) do
-		for group, opts in pairs(module_highlights) do
-			highlights[group] = opts
-		end
-	end
+	local highlights = vim.tbl_deep_extend(
+		"force",
+		{},
+		editor.get(colors),
+		syntax.get(colors, config),
+		treesitter.get(colors, config),
+		lsp.get(colors),
+		diagnostics.get(colors),
+		integrations.get(colors)
+	)
 
 	-- Apply user overrides (supports both 'overrides' and 'on_highlights')
 	if config.overrides and type(config.overrides) == "function" then
-		local user_overrides = config.overrides(colors)
-		for group, opts in pairs(user_overrides) do
-			highlights[group] = opts
-		end
+		highlights = vim.tbl_deep_extend("force", highlights, config.overrides(colors))
 	end
 
 	-- Apply on_highlights (receives highlights table and can modify it directly)
