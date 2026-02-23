@@ -25,8 +25,6 @@ function M.apply_overrides(colors, config)
 	if config.transparent then
 		colors.bg = "NONE"
 		colors.bg_alt = "NONE"
-		colors.bg_dark = "NONE"
-		colors.gutter = "NONE"
 	end
 
 	return colors

@@ -7,7 +7,6 @@ local colors = {
 	-- Base colors
 	bg = "#191A1C", -- CONSOLE_BACKGROUND_KEY
 	bg_alt = "#2B2D30", -- DIFF_SEPARATORS_BACKGROUND, FOLDED_TEXT_BORDER_COLOR
-	bg_dark = "#191A1C", -- Same as bg (no darker variant in .icls)
 	fg = "#BCBEC4", -- DEFAULT_FOREGROUND
 	fg_dim = "#A1A3AB", -- Dimmed text
 	fg_dimmer = "#868A91", -- More dimmed text
@@ -19,9 +18,9 @@ local colors = {
 	visual_inactive = "#323438", -- INDENT_GUIDE
 	line_number = "#4B5059", -- LINE_NUMBERS_COLOR
 	line_number_current = "#A1A3AB", -- LINE_NUMBER_ON_CARET_ROW_COLOR
-	gutter = "#191A1C", -- GUTTER_BACKGROUND
 	fold_bg = "#2B2D30", -- FOLDED_TEXT_BORDER_COLOR
-	border = "#6F737A", -- Separator/border color (lighter for better visibility)
+	border = "#323438", -- Separator/border color (lighter for better visibility)
+	color_column = "#323438", -- VERTICAL_LINE_COLOR
 
 	-- Syntax colors (from Islands Dark color scheme)
 	keyword = "#CF8E6D", -- DEFAULT_KEYWORD

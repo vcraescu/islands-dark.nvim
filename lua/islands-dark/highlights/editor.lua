@@ -71,7 +71,7 @@ function M.get(c)
 		Question = { fg = c.info },
 
 		-- Special UI elements
-		ColorColumn = { bg = c.bg_alt },
+		ColorColumn = { bg = c.color_column },
 		Conceal = { fg = c.fg_dimmer },
 		Directory = { fg = c.identifier },
 		NonText = { fg = c.fg_dimmer },

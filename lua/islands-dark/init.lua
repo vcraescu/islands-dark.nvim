@@ -41,7 +41,7 @@ function M.load()
 
 	-- Set terminal colors if enabled
 	if config.terminal_colors then
-		vim.g.terminal_color_0 = colors.bg_dark
+		vim.g.terminal_color_0 = colors.bg
 		vim.g.terminal_color_1 = colors.error
 		vim.g.terminal_color_2 = colors.string
 		vim.g.terminal_color_3 = colors.metadata
