@@ -3,7 +3,7 @@
 -- Based on color definitions from islands_dark.xml
 
 --- @class theme.Colors
-local colors = {
+return {
 	-- Base colors
 	bg = "#191A1C", -- CONSOLE_BACKGROUND_KEY
 	bg_alt = "#2B2D30", -- DIFF_SEPARATORS_BACKGROUND, FOLDED_TEXT_BORDER_COLOR
@@ -96,5 +96,3 @@ local colors = {
 	-- Special values
 	none = "NONE",
 }
-
-return colors

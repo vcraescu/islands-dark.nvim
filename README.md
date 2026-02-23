@@ -14,14 +14,15 @@ A faithful port of JetBrains IntelliJ IDEA Islands Dark theme for Neovim.
 - 🎨 **Faithful Port**: Accurately reproduces IntelliJ IDEA Islands Dark colors
 - 🌲 **Treesitter Support**: Full support for Treesitter syntax highlighting
 - 🔍 **LSP Integration**: Semantic tokens and diagnostics highlighting
-- 🔌 **Plugin Support**: Optimized for popular plugins (nvim-cmp, fzf-lua, nvim-tree, gitsigns, and more)
+- 🔌 **Plugin Support**: Optimized for popular plugins (blink-cmp, fzf-lua, nvim-tree, gitsigns)
 - ⚙️ **Customizable**: Configure transparent backgrounds, styles, and color overrides
 - 🎯 **Semantic Priority**: LSP semantic tokens take precedence over Treesitter for accurate highlighting
 - 🖥️ **Terminal Colors**: 16 ANSI colors matching the theme
 
 ## 📸 Screenshots
 
-> **Note**: Screenshots will be added soon. The theme faithfully reproduces the IntelliJ IDEA Islands Dark color scheme with all its distinctive colors and semantic highlighting.
+> **Note**: Screenshots will be added soon. The theme faithfully reproduces the IntelliJ IDEA Islands Dark color scheme
+> with all its distinctive colors and semantic highlighting.
 
 ## 📦 Installation
 
@@ -249,42 +250,24 @@ Islands Dark has been optimized for popular Neovim plugins:
 
 ### Completion
 
-- **nvim-cmp**: Full support for completion menu, documentation, and kind highlights
 - **blink.cmp**: Matching highlight support
 
 ### File Explorers
 
 - **nvim-tree**: Complete icon and folder highlighting
-- **neo-tree**: Full tree view support
 
 ### Fuzzy Finders
 
 - **fzf-lua**: Optimized colors for search results and prompts
-- **telescope.nvim**: Full support for all Telescope UI elements
 
 ### Git Integration
 
 - **gitsigns**: Added/changed/deleted line indicators
-- **diffview.nvim**: Diff view highlighting
-- **neogit**: Git status and commit UI
-
-### Status Lines
-
-- **lualine.nvim**: Theme-aware status line
-- **feline.nvim**: Custom theme support
 
 ### Syntax
 
 - **Treesitter**: Full support for all language parsers
 - **LSP Semantic Tokens**: Priority highlighting over Treesitter
-- **nvim-treesitter-context**: Sticky context highlighting
-
-### Other
-
-- **which-key.nvim**: Key binding popup
-- **indent-blankline.nvim**: Indent guides
-- **todo-comments.nvim**: TODO/FIXME/NOTE highlighting
-- **trouble.nvim**: Diagnostics list
 
 ## 🌲 Treesitter Support
 
@@ -338,11 +321,13 @@ For consistent colors in shell tools like FZF, add this to your shell configurat
 
 ```bash
 # ~/.zshrc or ~/.bashrc
-export FZF_DEFAULT_OPTS="
-  --color=fg:#BAC0C9,bg:#21252B,hl:#B36100
-  --color=fg+:#BAC0C9,bg+:#2C313A,hl+:#B36100
-  --color=info:#57AAF7,prompt:#CF8E6D,pointer:#C77DBB
-  --color=marker:#6AAB73,spinner:#16BAAC,header:#7A7E85
+export FZF_DEFAULT_OPTS=" \
+--color=fg:#BCBEC4,bg:#191A1C,hl:#B36100 \
+--color=fg+:#DFE1E5,bg+:#2B2D30,hl+:#CF8E6D \
+--color=info:#B3AE60,prompt:#E0BB65,pointer:#C77DBB \
+--color=marker:#6AAB73,spinner:#2AACB8,header:#16BAAC \
+--color=border:#393B40,label:#BCBEC4,query:#DFE1E5 \
+--color=gutter:#191A1C,selected-bg:#2B2D30"
 "
 ```
 
@@ -381,17 +366,6 @@ Test files are included to verify syntax highlighting across multiple languages:
 
 Open these files in Neovim with Islands Dark applied to verify the theme works correctly.
 
-## 🔍 Comparison with IntelliJ
-
-| Feature               | IntelliJ Islands Dark | islands-dark.nvim |
-| --------------------- | --------------------- | ----------------- |
-| Color Accuracy        | ✅ Original           | ✅ Faithful port  |
-| Semantic Highlighting | ✅ Via IntelliJ       | ✅ Via LSP        |
-| Treesitter Support    | ❌ N/A                | ✅ Full support   |
-| Plugin Ecosystem      | ✅ JetBrains          | ✅ Neovim plugins |
-| Customization         | ⚠️ Limited            | ✅ Full control   |
-| Performance           | ✅ Fast               | ✅ Fast           |
-
 ## 🐛 Troubleshooting
 
 ### Colors Don't Look Right
@@ -421,26 +395,6 @@ Make sure your LSP server supports semantic tokens. Most modern LSP servers do, 
 ## 📝 License
 
 MIT License - see [LICENSE](LICENSE) for details
-
-## 🙏 Acknowledgments
-
-- Inspired by the **IntelliJ IDEA Islands Dark** theme by JetBrains
-- Color values extracted from IntelliJ IDEA's `islands_dark.xml` theme file
-- Built for the Neovim community with ❤️
-
-## 🔗 Related Projects
-
-- [IntelliJ IDEA](https://www.jetbrains.com/idea/) - The original source of the Islands Dark theme
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter) - Treesitter support
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) - LSP configuration
-
----
-
-<div align="center">
-
-**[Website](https://github.com/vcraescu/islands-dark.nvim)** •
-**[Report Bug](https://github.com/vcraescu/islands-dark.nvim/issues)** •
-**[Request Feature](https://github.com/vcraescu/islands-dark.nvim/issues)**
 
 Made with ❤️ for Neovim
 

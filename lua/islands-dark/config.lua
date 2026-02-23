@@ -5,11 +5,6 @@ local M = {}
 --- Default configuration
 --- Users can override these settings by passing a table to the setup function
 --- @class theme.Config
---- @property transparent boolean Whether to use a transparent background (default: false)
---- @property terminal_colors boolean Whether to set terminal colors (default: true)
---- @property styles table Custom styles for syntax groups (default: empty)
---- @property overrides function Function that receives colors table and returns highlight overrides (default: returns empty table)
---- @property on_highlights function Function that receives the final highlights table and can modify it directly (default: does nothing)
 M.defaults = {
 	-- Transparent background
 	transparent = false,

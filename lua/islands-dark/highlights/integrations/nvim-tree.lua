@@ -13,7 +13,7 @@ function M.get(c)
 		NvimTreeCursorLine = { bg = c.cursor_line },
 		NvimTreeCursorLineNr = { fg = c.line_number_current, bg = c.cursor_line },
 
-		NvimTreeRootFolder = { fg = c.fg, bold = true },
+		NvimTreeRootFolder = { fg = c.fg_dim, bold = true },
 
 		NvimTreeFolderName = { fg = c.fg, bold = true },
 		NvimTreeFolderIcon = { fg = c.fg, bold = true },
@@ -42,7 +42,7 @@ function M.get(c)
 		NvimTreeLspDiagnosticsInformation = { fg = c.info },
 		NvimTreeLspDiagnosticsHint = { fg = c.hint },
 
-		NvimTreeIndentMarker = { fg = c.border },
+		NvimTreeIndentMarker = { fg = c.fg, bold = true },
 
 		NvimTreeWindowPicker = { bg = c.info, bold = true },
 

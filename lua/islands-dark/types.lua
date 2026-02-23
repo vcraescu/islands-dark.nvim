@@ -1,0 +1,87 @@
+--- @class theme.Config
+--- @field transparent boolean Whether to use a transparent background (default: false)
+--- @field terminal_colors boolean Whether to set terminal colors (default: true)
+--- @field styles table Custom styles for syntax groups (default: empty)
+--- @field overrides function Function that receives colors table and returns highlight overrides (default: returns empty table)
+--- @field on_highlights function Function that receives the final highlights table and can modify it directly (default: does nothing)
+
+--- @class theme.Colors
+--- Base colors
+--- @field bg string Console background color (CONSOLE_BACKGROUND_KEY)
+--- @field bg_alt string Alternative background (DIFF_SEPARATORS_BACKGROUND, FOLDED_TEXT_BORDER_COLOR)
+--- @field fg string Default foreground (DEFAULT_FOREGROUND)
+--- @field fg_dim string Dimmed text
+--- @field fg_dimmer string More dimmed text
+--- UI colors
+--- @field cursor_line string Caret row color (CARET_ROW_COLOR)
+--- @field cursor string Default caret (DEFAULT_CARET)
+--- @field visual string Visual selection (RECENT_LOCATIONS_SELECTION)
+--- @field visual_inactive string Inactive visual (INDENT_GUIDE)
+--- @field line_number string Line numbers color (LINE_NUMBERS_COLOR)
+--- @field line_number_current string Current line number (LINE_NUMBER_ON_CARET_ROW_COLOR)
+--- @field fold_bg string Folded text border color (FOLDED_TEXT_BORDER_COLOR)
+--- @field border string Separator/border color
+--- @field color_column string Vertical line color (VERTICAL_LINE_COLOR)
+--- Syntax colors
+--- @field keyword string Keyword color (DEFAULT_KEYWORD)
+--- @field string string String color (DEFAULT_STRING)
+--- @field number string Number color (DEFAULT_NUMBER)
+--- @field func string Function declaration (DEFAULT_FUNCTION_DECLARATION)
+--- @field method string Instance method (DEFAULT_INSTANCE_METHOD)
+--- @field constant string Constant/static field (DEFAULT_CONSTANT, DEFAULT_STATIC_FIELD)
+--- @field type string Type parameter attributes (TYPE_PARAMETER_NAME_ATTRIBUTES)
+--- @field type_definition string Type definition (TYPE_PARAMETER_NAME_ATTRIBUTES)
+--- @field type_parameter string Type parameters like <T> (TYPE_PARAMETER_NAME_ATTRIBUTES)
+--- @field type_builtin string Built-in types
+--- @field comment string Line comment (DEFAULT_LINE_COMMENT)
+--- @field doc_comment string Doc comment (DEFAULT_DOC_COMMENT)
+--- @field tag string HTML/XML tag (DEFAULT_TAG)
+--- @field attribute string HTML attribute (DEFAULT_ATTRIBUTE)
+--- @field operator string Operation sign (DEFAULT_OPERATION_SIGN)
+--- @field punctuation string Comma, dot, etc. (DEFAULT_COMMA, DEFAULT_DOT)
+--- @field variable string Local variable (DEFAULT_LOCAL_VARIABLE)
+--- @field parameter string Parameter (DEFAULT_PARAMETER)
+--- @field field string Instance field (DEFAULT_INSTANCE_FIELD)
+--- @field property string Properties (same as fields)
+--- @field enum_member string Enum member (DEFAULT_CONSTANT)
+--- @field label string Label (DEFAULT_LABEL)
+--- Special syntax colors
+--- @field escape string Valid string escape (DEFAULT_VALID_STRING_ESCAPE)
+--- @field regex string Regular expression (JS.REGEXP)
+--- @field metadata string Metadata (DEFAULT_METADATA)
+--- @field identifier string Identifier (DEFAULT_IDENTIFIER)
+--- @field braces string Braces, brackets, parentheses (DEFAULT_BRACES)
+--- @field special string Special syntax
+--- Diff colors
+--- @field diff_add string Added lines (LINE_FULL_COVERAGE)
+--- @field diff_delete string Deleted lines (LINE_NONE_COVERAGE)
+--- @field diff_change string Changed lines (MATCHED_TAG_NAME)
+--- @field diff_text string Diff text (METHOD_SEPARATORS_COLOR)
+--- Diagnostics & Messages
+--- @field error string Error messages (ERRORS_ATTRIBUTES)
+--- @field warning string Warning messages (WARNING_ATTRIBUTES)
+--- @field info string Info messages (INFORMATION_ATTRIBUTES)
+--- @field hint string Hint messages
+--- @field todo string TODO markers (TODO_DEFAULT_ATTRIBUTES)
+--- Special markers
+--- @field search_bg string Search result background (SEARCH_RESULT_ATTRIBUTES)
+--- @field search_fg string Search result foreground
+--- @field search_current_bg string Current search result background (TEXT_SEARCH_RESULT_ATTRIBUTES)
+--- @field search_current_fg string Current search result foreground
+--- @field match_paren_bg string Matched paren background (MATCHED_BRACE_ATTRIBUTES)
+--- @field write_identifier_bg string Write identifier background (WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES)
+--- @field identifier_under_caret_bg string Identifier under caret background (IDENTIFIER_UNDER_CARET_ATTRIBUTES)
+--- VCS colors
+--- @field vcs_added string VCS added lines (LINE_FULL_COVERAGE)
+--- @field vcs_modified string VCS modified lines (MATCHED_TAG_NAME)
+--- @field vcs_removed string VCS removed lines (LINE_NONE_COVERAGE)
+--- Additional semantic colors
+--- @field deprecated string Deprecated elements (NOT_USED_ELEMENT_ATTRIBUTES)
+--- Template/Interpolation
+--- @field template_var string Template variable (TEMPLATE_VARIABLE_ATTRIBUTES)
+--- Injected language
+--- @field injected_lang_bg string Injected language background (INJECTED_LANGUAGE_FRAGMENT)
+--- URL/Hyperlink
+--- @field hyperlink string Hyperlink color (HYPERLINK_ATTRIBUTES)
+--- Special values
+--- @field none string Represents no color ("NONE")

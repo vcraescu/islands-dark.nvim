@@ -22,7 +22,7 @@ function M.load()
 
 	-- Load modules
 	local config_module = require("islands-dark.config")
-	local colors_module = require("islands-dark.colors")
+	local colors_module = require("islands-dark.palette")
 	local util = require("islands-dark.util")
 	local highlights = require("islands-dark.highlights")
 
