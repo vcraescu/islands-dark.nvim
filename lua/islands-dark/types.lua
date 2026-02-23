@@ -1,3 +1,48 @@
+--- @class theme.Palette
+--- Raw color palette - all unique colors with visual names
+--- Base & backgrounds
+--- @field base string Darkest background (#191A1C)
+--- @field dark_gray string Dark gray background (#1F2024)
+--- @field charcoal string Charcoal background (#2B2D30)
+--- @field slate string Slate gray (#323438)
+--- @field steel string Steel gray (#4B5059)
+--- Text & foreground
+--- @field text string Default text color (#BCBEC4)
+--- @field silver string Silver text (#A1A3AB)
+--- @field gray string Gray text (#868A91)
+--- @field light_gray string Light gray (#CED0D6)
+--- UI grays
+--- @field dim_gray string Dim gray (#6F737A)
+--- @field muted_gray string Muted gray (#7A7E85)
+--- Blues
+--- @field blue string Blue (#56A8F5)
+--- @field teal_blue string Teal blue (#6FAFBD)
+--- @field dark_blue string Dark blue (#114957)
+--- Cyans
+--- @field cyan string Cyan (#2AACB8)
+--- @field teal string Teal (#16BAAC)
+--- Greens
+--- @field green string Green (#6AAB73)
+--- @field sage string Sage green (#5F826B)
+--- @field dark_green string Dark green (#375239)
+--- @field dark_teal string Dark teal (#293C40)
+--- Reds
+--- @field red string Red (#F75464)
+--- @field dark_red string Dark red (#5E3838)
+--- Yellows
+--- @field yellow string Yellow (#F2C55C)
+--- @field khaki string Khaki (#B3AE60)
+--- Oranges
+--- @field orange string Orange (#CF8E6D)
+--- @field rust string Rust (#CC7832)
+--- Purples
+--- @field mauve string Mauve (#C77DBB)
+--- @field lavender string Lavender (#B189F5)
+--- Neutral
+--- @field gray_blue string Gray blue (#43454A)
+--- Special
+--- @field none string No color ("NONE")
+
 --- @class theme.Config
 --- @field transparent boolean Whether to use a transparent background (default: false)
 --- @field terminal_colors boolean Whether to set terminal colors (default: true)
