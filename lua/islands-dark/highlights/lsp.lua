@@ -28,7 +28,7 @@ function M.get(c)
 		["@lsp.type.parameter"] = { link = "@lsp.type.variable" },
 		["@lsp.type.property"] = { link = "@property" },
 		["@lsp.type.field"] = { link = "@variable.member" },
-		["@lsp.type.enumMember"] = { fg = c.enum_member },
+		["@lsp.type.enumMember"] = { link = "@property" },
 
 		-- Keywords
 		["@lsp.type.keyword"] = { link = "@keyword" },
@@ -40,7 +40,7 @@ function M.get(c)
 		["@lsp.mod.constant"] = { link = "@constant" },
 		["@lsp.mod.readonly"] = { link = "@lsp.mod.constant" },
 		["@lsp.mod.static"] = { link = "@lsp.type.function" },
-		["@lsp.mod.deprecated"] = { fg = c.deprecated },
+		["@lsp.mod.deprecated"] = { fg = c.deprecated, strikethrough = true },
 		["@lsp.mod.defaultLibrary"] = { link = "@lsp.mod.keyword" },
 
 		-- Specific language semantic tokens

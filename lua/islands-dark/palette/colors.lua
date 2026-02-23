@@ -43,9 +43,7 @@ return {
 	punctuation = palette.text,
 	variable = palette.text,
 	parameter = palette.text,
-	field = palette.mauve,
 	property = palette.mauve,
-	enum_member = palette.mauve,
 	label = palette.orange,
 
 	-- Special syntax colors
@@ -70,13 +68,10 @@ return {
 	todo = palette.khaki,
 
 	-- Special markers
-	search_bg = palette.dark_green,
-	search_fg = palette.text,
-	search_current_bg = palette.dark_blue,
-	search_current_fg = palette.text,
-	match_paren_bg = palette.gray_blue,
-	write_identifier_bg = palette.dark_red,
-	identifier_under_caret_bg = palette.dark_teal,
+	search = palette.dark_green, -- Search highlight background
+	inc_search = palette.dark_blue, -- IncSearch/CurSearch background
+	match_paren = palette.gray_blue, -- MatchParen background
+	lsp_ref = palette.dark_teal, -- LspReference* background
 
 	-- VCS colors
 	vcs_added = palette.dark_green,

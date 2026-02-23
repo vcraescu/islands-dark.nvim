@@ -96,7 +96,7 @@ function M.get(c, config)
 		-- Variables
 		["@variable"] = styles.variables({ link = "Identifier" }),
 		["@variable.builtin"] = styles.variables({ link = "@keyword" }),
-		["@variable.member"] = styles.variables({ fg = c.field }),
+		["@variable.member"] = styles.variables({ link = "@property" }),
 		["@variable.parameter"] = styles.variables({ link = "@parameter" }),
 
 		-- Modules

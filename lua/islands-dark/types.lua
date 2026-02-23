@@ -86,9 +86,7 @@
 --- @field punctuation string Comma, dot, etc. (DEFAULT_COMMA, DEFAULT_DOT)
 --- @field variable string Local variable (DEFAULT_LOCAL_VARIABLE)
 --- @field parameter string Parameter (DEFAULT_PARAMETER)
---- @field field string Instance field (DEFAULT_INSTANCE_FIELD)
 --- @field property string Properties (same as fields)
---- @field enum_member string Enum member (DEFAULT_CONSTANT)
 --- @field label string Label (DEFAULT_LABEL)
 --- Special syntax colors
 --- @field escape string Valid string escape (DEFAULT_VALID_STRING_ESCAPE)
@@ -109,13 +107,10 @@
 --- @field hint string Hint messages
 --- @field todo string TODO markers (TODO_DEFAULT_ATTRIBUTES)
 --- Special markers
---- @field search_bg string Search result background (SEARCH_RESULT_ATTRIBUTES)
---- @field search_fg string Search result foreground
---- @field search_current_bg string Current search result background (TEXT_SEARCH_RESULT_ATTRIBUTES)
---- @field search_current_fg string Current search result foreground
---- @field match_paren_bg string Matched paren background (MATCHED_BRACE_ATTRIBUTES)
---- @field write_identifier_bg string Write identifier background (WRITE_IDENTIFIER_UNDER_CARET_ATTRIBUTES)
---- @field identifier_under_caret_bg string Identifier under caret background (IDENTIFIER_UNDER_CARET_ATTRIBUTES)
+--- @field search string Search result background (SEARCH_RESULT_ATTRIBUTES)
+--- @field inc_search string Current search result background (TEXT_SEARCH_RESULT_ATTRIBUTES)
+--- @field match_paren string Matched paren background (MATCHED_BRACE_ATTRIBUTES)
+--- @field lsp_ref string LSP reference highlight background (IDENTIFIER_UNDER_CARET_ATTRIBUTES)
 --- VCS colors
 --- @field vcs_added string VCS added lines (LINE_FULL_COVERAGE)
 --- @field vcs_modified string VCS modified lines (MATCHED_TAG_NAME)

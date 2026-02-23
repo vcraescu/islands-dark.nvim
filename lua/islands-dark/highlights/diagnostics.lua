@@ -43,9 +43,9 @@ function M.get(c)
 		DiagnosticFloatingOk = { fg = c.string, bg = c.none },
 
 		-- LSP references
-		LspReferenceText = { bg = c.identifier_under_caret_bg },
-		LspReferenceRead = { bg = c.identifier_under_caret_bg },
-		LspReferenceWrite = { bg = c.write_identifier_bg },
+		LspReferenceText = { bg = c.lsp_ref },
+		LspReferenceRead = { bg = c.lsp_ref },
+		LspReferenceWrite = { bg = c.lsp_ref },
 
 		-- LSP signature help
 		LspSignatureActiveParameter = { fg = c.parameter, bold = true },

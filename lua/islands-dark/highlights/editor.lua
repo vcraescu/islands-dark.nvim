@@ -32,13 +32,13 @@ function M.get(c)
 		VisualNOS = { bg = c.visual_inactive },
 
 		-- Search
-		Search = { fg = c.search_fg, bg = c.search_bg },
-		IncSearch = { fg = c.search_current_fg, bg = c.search_current_bg },
-		CurSearch = { fg = c.search_current_fg, bg = c.search_current_bg },
-		Substitute = { fg = c.search_current_fg, bg = c.search_current_bg },
+		Search = { fg = c.fg, bg = c.search },
+		IncSearch = { fg = c.fg, bg = c.inc_search },
+		CurSearch = { fg = c.fg, bg = c.inc_search },
+		Substitute = { fg = c.fg, bg = c.inc_search },
 
 		-- Matching
-		MatchParen = { bg = c.match_paren_bg, bold = true },
+		MatchParen = { bg = c.match_paren, bold = true },
 
 		-- Splits and windows
 		VertSplit = { fg = c.border },
