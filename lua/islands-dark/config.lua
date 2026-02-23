@@ -5,7 +5,7 @@ local M = {}
 --- Default configuration
 --- Users can override these settings by passing a table to the setup function
 --- @class theme.Config
-M.defaults = {
+local defaults = {
 	-- Transparent background
 	transparent = false,
 
@@ -36,24 +36,16 @@ M.defaults = {
 	end,
 }
 
---- Current active configuration
-M.config = vim.deepcopy(M.defaults)
-
 --- Setup configuration
----@param user_config table|nil User configuration
-function M.setup(user_config)
-	M.config = vim.tbl_deep_extend("force", M.defaults, user_config or {})
+---@param opts theme.Config|nil User configuration
+function M.setup(opts)
+	M.config = vim.tbl_deep_extend("force", defaults, opts or {})
 end
 
 --- Get current configuration
---- @return table Current configuration
+--- @return theme.Config Current configuration
 function M.get()
 	return M.config
-end
-
---- Reset configuration to defaults
-function M.reset()
-	M.config = vim.deepcopy(M.defaults)
 end
 
 return M

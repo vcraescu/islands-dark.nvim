@@ -17,20 +17,13 @@ function M.load()
 	vim.o.background = "dark"
 	vim.o.termguicolors = true
 
-	-- Set LSP semantic tokens priority higher than Treesitter
-	-- vim.highlight.priorities.semantic_tokens = 125
-
-	-- Load modules
-	local config_module = require("islands-dark.config")
-	local colors_module = require("islands-dark.palette.colors")
+	local config = require("islands-dark.config")
+	local colors = require("islands-dark.palette.colors")
 	local util = require("islands-dark.util")
 	local highlights = require("islands-dark.highlights")
 
 	-- Get configuration
-	local config = config_module.get()
-
-	-- Get colors and apply overrides
-	local colors = vim.deepcopy(colors_module)
+	config = config.get()
 	colors = util.apply_overrides(colors, config)
 
 	-- Get all highlights
