@@ -15,7 +15,7 @@ return {
 	-- Text & foreground (4 levels)
 	text = "#BCBEC4",
 	silver = "#A1A3AB",
-	gray = "#7A7E85",
+	gray = "#868991",
 
 	-- Blues (3 shades)
 	blue = "#56A8F5",
@@ -28,7 +28,6 @@ return {
 
 	-- Greens (4 shades)
 	green = "#6AAB73",
-	sage = "#5F826B",
 	dark_green = "#375239",
 	dark_teal = "#293C40",
 

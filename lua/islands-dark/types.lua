@@ -7,7 +7,7 @@
 --- Text & foreground
 --- @field text string Default text color (#BCBEC4)
 --- @field silver string Silver text (#A1A3AB)
---- @field gray string Dim gray (#7A7E85, AA compliant)
+--- @field gray string Dim gray (#868991, AA compliant)
 --- Blues
 --- @field blue string Blue (#56A8F5)
 --- @field teal_blue string Teal blue (#6FAFBD)
@@ -17,7 +17,6 @@
 --- @field teal string Teal (#16BAAC)
 --- Greens
 --- @field green string Green (#6AAB73)
---- @field sage string Sage green (#5F826B)
 --- @field dark_green string Dark green (#375239)
 --- @field dark_teal string Dark teal (#293C40)
 --- Reds

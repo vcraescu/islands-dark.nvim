@@ -36,7 +36,7 @@ return {
 	type_parameter = palette.teal,
 	type_builtin = palette.rust,
 	comment = palette.gray,
-	doc_comment = palette.sage,
+	doc_comment = palette.green,
 	tag = palette.khaki,
 	attribute = palette.text,
 	operator = palette.text,
