@@ -119,52 +119,6 @@ require("islands-dark").setup({
 require("islands-dark").load()
 ```
 
-## 🎨 Color Palette
-
-The theme uses the following color palette from IntelliJ IDEA Islands Dark:
-
-### Core Colors
-
-| Color Name | Hex       | Preview                                                      | Usage             |
-| ---------- | --------- | ------------------------------------------------------------ | ----------------- |
-| Background | `#21252B` | ![test](https://via.placeholder.com/15/21252B/000000?text=+) | Editor background |
-| Foreground | `#BAC0C9` | ![](https://via.placeholder.com/15/BAC0C9/000000?text=+)     | Default text      |
-| Comment    | `#7A7E85` | ![](https://via.placeholder.com/15/7A7E85/000000?text=+)     | Comments          |
-| String     | `#6AAB73` | ![](https://via.placeholder.com/15/6AAB73/000000?text=+)     | String literals   |
-| Number     | `#2AACB8` | ![](https://via.placeholder.com/15/2AACB8/000000?text=+)     | Numbers           |
-| Keyword    | `#CF8E6D` | ![](https://via.placeholder.com/15/CF8E6D/000000?text=+)     | Keywords          |
-| Function   | `#56A8F5` | ![](https://via.placeholder.com/15/56A8F5/000000?text=+)     | Functions         |
-| Type       | `#16BAAC` | ![](https://via.placeholder.com/15/16BAAC/000000?text=+)     | Types/Classes     |
-| Variable   | `#BAC0C9` | ![](https://via.placeholder.com/15/BAC0C9/000000?text=+)     | Variables         |
-| Constant   | `#C77DBB` | ![](https://via.placeholder.com/15/C77DBB/000000?text=+)     | Constants         |
-
-### UI Colors
-
-| Color Name  | Hex       | Preview                                                  | Usage            |
-| ----------- | --------- | -------------------------------------------------------- | ---------------- |
-| Cursor Line | `#2C313A` | ![](https://via.placeholder.com/15/2C313A/000000?text=+) | Current line     |
-| Selection   | `#2F4B5C` | ![](https://via.placeholder.com/15/2F4B5C/000000?text=+) | Visual selection |
-| Search      | `#B36100` | ![](https://via.placeholder.com/15/B36100/000000?text=+) | Search matches   |
-| Line Number | `#5F6672` | ![](https://via.placeholder.com/15/5F6672/000000?text=+) | Line numbers     |
-| Border      | `#3A3F4B` | ![](https://via.placeholder.com/15/3A3F4B/000000?text=+) | Window borders   |
-
-### Diagnostic Colors
-
-| Color Name | Hex       | Preview                                                  | Usage    |
-| ---------- | --------- | -------------------------------------------------------- | -------- |
-| Error      | `#E65452` | ![](https://via.placeholder.com/15/E65452/000000?text=+) | Errors   |
-| Warning    | `#CE9632` | ![](https://via.placeholder.com/15/CE9632/000000?text=+) | Warnings |
-| Info       | `#57AAF7` | ![](https://via.placeholder.com/15/57AAF7/000000?text=+) | Info     |
-| Hint       | `#8EADB0` | ![](https://via.placeholder.com/15/8EADB0/000000?text=+) | Hints    |
-
-### Git Colors
-
-| Color Name | Hex       | Preview                                                  | Usage         |
-| ---------- | --------- | -------------------------------------------------------- | ------------- |
-| Add        | `#58A55C` | ![](https://via.placeholder.com/15/58A55C/000000?text=+) | Added lines   |
-| Change     | `#57AAF7` | ![](https://via.placeholder.com/15/57AAF7/000000?text=+) | Changed lines |
-| Delete     | `#E65452` | ![](https://via.placeholder.com/15/E65452/000000?text=+) | Deleted lines |
-
 ## 🔧 Configuration Options
 
 ### Transparent Background

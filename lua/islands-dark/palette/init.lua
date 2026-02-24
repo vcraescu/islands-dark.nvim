@@ -11,18 +11,11 @@ return {
 	base = "#191A1C",
 	dark_gray = "#1F2024",
 	charcoal = "#2B2D30",
-	slate = "#323438",
-	steel = "#4B5059",
 
 	-- Text & foreground (4 levels)
 	text = "#BCBEC4",
 	silver = "#A1A3AB",
-	gray = "#868A91",
-	light_gray = "#CED0D6",
-
-	-- UI grays (2 tones)
-	dim_gray = "#6F737A",
-	muted_gray = "#7A7E85",
+	gray = "#7A7E85",
 
 	-- Blues (3 shades)
 	blue = "#56A8F5",

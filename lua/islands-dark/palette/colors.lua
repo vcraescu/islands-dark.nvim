@@ -15,14 +15,14 @@ return {
 
 	-- UI colors
 	cursor_line = palette.dark_gray,
-	cursor = palette.light_gray,
+	cursor = palette.text,
 	visual = palette.charcoal,
-	visual_inactive = palette.slate,
-	line_number = palette.steel,
-	line_number_current = palette.silver,
+	visual_inactive = palette.charcoal,
+	line_number = palette.gray,
+	line_number_current = palette.text,
 	fold_bg = palette.charcoal,
-	border = palette.slate,
-	color_column = palette.slate,
+	border = palette.charcoal,
+	color_column = palette.charcoal,
 
 	-- Syntax colors (from Islands Dark color scheme)
 	keyword = palette.orange,
@@ -35,7 +35,7 @@ return {
 	type_definition = palette.text,
 	type_parameter = palette.teal,
 	type_builtin = palette.rust,
-	comment = palette.muted_gray,
+	comment = palette.gray,
 	doc_comment = palette.sage,
 	tag = palette.khaki,
 	attribute = palette.text,
@@ -64,7 +64,7 @@ return {
 	error = palette.red,
 	warning = palette.yellow,
 	info = palette.khaki,
-	hint = palette.dim_gray,
+	hint = palette.gray,
 	todo = palette.khaki,
 
 	-- Special markers

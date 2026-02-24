@@ -4,16 +4,10 @@
 --- @field base string Darkest background (#191A1C)
 --- @field dark_gray string Dark gray background (#1F2024)
 --- @field charcoal string Charcoal background (#2B2D30)
---- @field slate string Slate gray (#323438)
---- @field steel string Steel gray (#4B5059)
 --- Text & foreground
 --- @field text string Default text color (#BCBEC4)
 --- @field silver string Silver text (#A1A3AB)
---- @field gray string Gray text (#868A91)
---- @field light_gray string Light gray (#CED0D6)
---- UI grays
---- @field dim_gray string Dim gray (#6F737A)
---- @field muted_gray string Muted gray (#7A7E85)
+--- @field gray string Dim gray (#7A7E85, AA compliant)
 --- Blues
 --- @field blue string Blue (#56A8F5)
 --- @field teal_blue string Teal blue (#6FAFBD)
