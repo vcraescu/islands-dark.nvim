@@ -197,6 +197,9 @@ function M.get(c, config)
 		["@keyword.directive.xml"] = { link = "@tag" },
 		["@number.xml"] = { link = "@string" },
 		["@string.special.xml"] = { link = "@string" },
+
+		-- Terraform
+		["@constant.terraform"] = { link = "@keyword" },
 	}
 end
 
