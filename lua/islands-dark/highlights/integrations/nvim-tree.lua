@@ -1,7 +1,7 @@
 local M = {}
 
 --- Load nvim-tree highlights
---- @param c table Color palette
+--- @param c theme.Colors Color palette
 --- @return table Highlight groups for nvim-tree
 function M.get(c)
 	return {
@@ -42,7 +42,7 @@ function M.get(c)
 		NvimTreeLspDiagnosticsInformation = { fg = c.info },
 		NvimTreeLspDiagnosticsHint = { fg = c.hint },
 
-		NvimTreeIndentMarker = { fg = c.fg, bold = true },
+		NvimTreeIndentMarker = { fg = c.fg_dimmer },
 
 		NvimTreeWindowPicker = { bg = c.info, bold = true },
 
