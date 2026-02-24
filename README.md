@@ -322,13 +322,12 @@ For consistent colors in shell tools like FZF, add this to your shell configurat
 ```bash
 # ~/.zshrc or ~/.bashrc
 export FZF_DEFAULT_OPTS=" \
---color=fg:#BCBEC4,bg:#191A1C,hl:#B36100 \
---color=fg+:#DFE1E5,bg+:#2B2D30,hl+:#CF8E6D \
+--color=fg:#BCBEC4,bg:#191A1C,hl:#56A8F5 \
+--color=fg+:#DFE1E5,bg+:#2B2D30,hl+:#56A8F5 \
 --color=info:#B3AE60,prompt:#E0BB65,pointer:#C77DBB \
 --color=marker:#6AAB73,spinner:#2AACB8,header:#16BAAC \
 --color=border:#393B40,label:#BCBEC4,query:#DFE1E5 \
 --color=gutter:#191A1C,selected-bg:#2B2D30"
-"
 ```
 
 For ripgrep colors to match search highlighting:
