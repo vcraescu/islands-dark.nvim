@@ -93,6 +93,7 @@
 --- @field diff_delete string Deleted lines (LINE_NONE_COVERAGE)
 --- @field diff_change string Changed lines (MATCHED_TAG_NAME)
 --- @field diff_text string Diff text (METHOD_SEPARATORS_COLOR)
+--- @field diff_remove string Diff text (METHOD_SEPARATORS_COLOR)
 --- Diagnostics & Messages
 --- @field error string Error messages (ERRORS_ATTRIBUTES)
 --- @field warning string Warning messages (WARNING_ATTRIBUTES)
@@ -106,8 +107,10 @@
 --- @field lsp_ref string LSP reference highlight background (IDENTIFIER_UNDER_CARET_ATTRIBUTES)
 --- VCS colors
 --- @field vcs_added string VCS added lines (LINE_FULL_COVERAGE)
---- @field vcs_modified string VCS modified lines (MATCHED_TAG_NAME)
+--- @field vcs_changed string VCS modified lines (MATCHED_TAG_NAME)
 --- @field vcs_removed string VCS removed lines (LINE_NONE_COVERAGE)
+--- @field vcs_merged string
+--- @field vcs_ignored string
 --- Template/Interpolation
 --- @field template_var string Template variable (TEMPLATE_VARIABLE_ATTRIBUTES)
 --- URL/Hyperlink

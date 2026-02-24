@@ -74,9 +74,11 @@ return {
 	search_match = palette.blue,
 
 	-- VCS colors
-	vcs_added = palette.dark_green,
-	vcs_modified = palette.gray_blue,
-	vcs_removed = palette.dark_red,
+	vcs_added = palette.green,
+	vcs_changed = palette.blue,
+	vcs_removed = palette.red,
+	vcs_merged = palette.mauve,
+	vcs_ignored = palette.gray,
 
 	-- Template/Interpolation
 	template_var = palette.lavender,
