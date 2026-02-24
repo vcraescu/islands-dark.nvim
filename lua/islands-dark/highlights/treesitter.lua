@@ -141,9 +141,9 @@ function M.get(c, config)
 		["@punctuation.special.markdown"] = { link = "@label" },
 
 		-- Diff
-		["@diff.plus"] = { fg = c.vcs_added },
-		["@diff.minus"] = { fg = c.vcs_removed },
-		["@diff.delta"] = { fg = c.vcs_modified },
+		["@diff.plus"] = { link = "DiffAdd" },
+		["@diff.minus"] = { link = "DiffDelete" },
+		["@diff.delta"] = { link = "DiffChange" },
 
 		-- Special
 		["@none"] = {},

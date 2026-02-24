@@ -88,7 +88,7 @@ function M.get(c)
 		-- Diff
 		DiffAdd = { bg = c.diff_add },
 		DiffChange = { bg = c.diff_change },
-		DiffDelete = { fg = c.error, bg = c.diff_delete },
+		DiffDelete = { bg = c.diff_delete },
 		DiffText = { bg = c.diff_text },
 
 		-- Quickfix and location list

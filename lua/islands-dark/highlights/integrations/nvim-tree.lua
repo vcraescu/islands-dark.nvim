@@ -10,23 +10,31 @@ function M.get(c)
 
 		NvimTreeRootFolder = { link = "NvimTreeFolderName", fg = c.fg_dim },
 
-		NvimTreeFolderName = { fg = c.fg, bold = true },
+		NvimTreeFolderName = { fg = c.fg },
 		NvimTreeFolderIcon = { fg = c.fg, bold = true },
 		NvimTreeEmptyFolderName = { link = "NvimTreeFolderName" },
 		NvimTreeOpenedFolderName = { link = "NvimTreeFolderName" },
 
 		NvimTreeOpenedFile = { fg = c.fg },
-		NvimTreeSpecialFile = { fg = c.constant },
+		NvimTreeSpecialFile = {},
+		NvimTreeExecFile = { fg = c.keyword },
 		NvimTreeImageFile = { fg = c.constant },
-		NvimTreeSymlink = { fg = c.hyperlink },
+		NvimTreeSymlink = { fg = c.hyperlink, underline = true },
 
-		NvimTreeGitDirty = { fg = c.func },
+		NvimTreeGitDirty = { fg = c.diff_change },
+		NvimTreeGitDirtyIcon = { link = "NvimTreeGitDirty" },
 		NvimTreeGitStaged = { fg = c.string },
-		NvimTreeGitMerge = { fg = c.error },
+		NvimTreeGitStagedIcon = { link = "NvimTreeGitStaged" },
+		NvimTreeGitMerge = { fg = c.property },
+		NvimTreeGitMergeIcon = { link = "NvimTreeGitMerge" },
 		NvimTreeGitRenamed = { fg = c.warning },
-		NvimTreeGitNew = { fg = c.string },
-		NvimTreeGitDeleted = { fg = c.error },
+		NvimTreeGitRenamedIcon = { link = "NvimTreeGitRenamed" },
+		NvimTreeGitNew = { fg = c.diff_add },
+		NvimTreeGitNewIcon = { link = "NvimTreeGitNew" },
+		NvimTreeGitDeleted = { fg = c.diff_delete },
+		NvimTreeGitDeletedIcon = { link = "NvimTreeGitDeleted" },
 		NvimTreeGitIgnored = { fg = c.comment },
+		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },
 
 		NvimTreeIndentMarker = { fg = c.fg_dimmer },
 

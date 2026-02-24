@@ -5,18 +5,12 @@ local M = {}
 --- @return table Highlight groups for gitsigns plugin
 function M.get(c)
 	return {
-		GitSignsAdd = { fg = c.string, bg = c.none },
-		GitSignsChange = { fg = c.warning, bg = c.none },
-		GitSignsDelete = { fg = c.error, bg = c.none },
-		GitSignsAddLn = { bg = c.vcs_added },
-		GitSignsChangeLn = { bg = c.vcs_modified },
-		GitSignsDeleteLn = { bg = c.vcs_removed },
-		GitSignsAddNr = { fg = c.string, bg = c.none },
-		GitSignsChangeNr = { fg = c.warning, bg = c.none },
-		GitSignsDeleteNr = { fg = c.error, bg = c.none },
-		GitSignsAddInline = { bg = c.vcs_added },
-		GitSignsChangeInline = { bg = c.vcs_modified },
-		GitSignsDeleteInline = { bg = c.vcs_removed },
+		GitSignsAdd = { fg = c.diff_add, bg = c.none },
+		GitSignsChange = { fg = c.diff_change, bg = c.none },
+		GitSignsDelete = { fg = c.diff_remove, bg = c.none },
+		GitSignsAddInline = { bg = c.diff_add },
+		GitSignsChangeInline = { bg = c.diff_change },
+		GitSignsDeleteInline = { bg = c.diff_remove },
 		GitSignsCurrentLineBlame = { fg = c.fg_dimmer },
 	}
 end

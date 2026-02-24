@@ -57,8 +57,8 @@ return {
 	-- Diff colors
 	diff_add = palette.dark_green,
 	diff_delete = palette.dark_red,
-	diff_change = palette.gray_blue,
-	diff_text = palette.gray_blue,
+	diff_change = palette.dark_blue,
+	diff_text = palette.dark_blue,
 
 	-- Diagnostics & Messages
 	error = palette.red,
