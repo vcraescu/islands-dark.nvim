@@ -239,14 +239,6 @@ require("nvim-treesitter.configs").setup({
 require("islands-dark").load()
 ```
 
-Supported language-specific highlights include:
-
-- Go: Proper highlighting for receivers, type parameters, and function calls
-- TypeScript/JavaScript: React components, JSX tags, and ES6+ syntax
-- Python: Decorators, comprehensions, and type hints
-- Rust: Macros, lifetimes, and trait implementations
-- And many more...
-
 ## 🎯 LSP Semantic Tokens
 
 LSP semantic tokens are given priority (125) over Treesitter highlighting for more accurate code semantics:
@@ -256,7 +248,6 @@ LSP semantic tokens are given priority (125) over Treesitter highlighting for mo
 - Types and interfaces
 - Constants and enum members
 - Namespaces and modules
-- And more...
 
 ## 🖥️ Terminal Colors
 

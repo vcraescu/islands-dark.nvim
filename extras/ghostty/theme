@@ -1,0 +1,43 @@
+background = #191A1C
+foreground = #BCBEC4
+
+cursor-color = #BCBEC4
+cursor-text = #191A1C
+
+selection-background = #2B2D30
+selection-foreground = #BCBEC4
+
+# Medium gray
+palette = 0=#2B2D30   
+# Bright red
+palette = 1=#F75464   
+# Medium green
+palette = 2=#6AAB73   
+# Muted yellow-green
+palette = 3=#B3AE60   
+# Bright blue
+palette = 4=#56A8F5   
+# Pink-purple
+palette = 5=#C77DBB   
+# Bright cyan
+palette = 6=#2AACB8   
+# Light gray
+palette = 7=#BCBEC4   
+# Medium-light gray
+palette = 8=#7A7E85   
+# Bright red
+palette = 9=#F75464   
+# Medium green
+palette = 10=#6AAB73  
+# Bright yellow
+palette = 11=#F2C55C  
+# Bright blue
+palette = 12=#56A8F5  
+# Purple
+palette = 13=#B189F5  
+# Bright teal
+palette = 14=#16BAAC  
+# Light gray
+palette = 15=#BCBEC4  
+
+split-divider-color = #43454A
