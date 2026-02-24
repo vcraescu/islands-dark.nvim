@@ -108,15 +108,13 @@
 --- @field todo string TODO markers (TODO_DEFAULT_ATTRIBUTES)
 --- Special markers
 --- @field search string Search result background (SEARCH_RESULT_ATTRIBUTES)
---- @field inc_search string Current search result background (TEXT_SEARCH_RESULT_ATTRIBUTES)
---- @field match_paren string Matched paren background (MATCHED_BRACE_ATTRIBUTES)
+--- @field match string Current search result background (TEXT_SEARCH_RESULT_ATTRIBUTES)
+--- @field search_match string Current search result background (TEXT_SEARCH_RESULT_ATTRIBUTES)
 --- @field lsp_ref string LSP reference highlight background (IDENTIFIER_UNDER_CARET_ATTRIBUTES)
 --- VCS colors
 --- @field vcs_added string VCS added lines (LINE_FULL_COVERAGE)
 --- @field vcs_modified string VCS modified lines (MATCHED_TAG_NAME)
 --- @field vcs_removed string VCS removed lines (LINE_NONE_COVERAGE)
---- Additional semantic colors
---- @field deprecated string Deprecated elements (NOT_USED_ELEMENT_ATTRIBUTES)
 --- Template/Interpolation
 --- @field template_var string Template variable (TEMPLATE_VARIABLE_ATTRIBUTES)
 --- URL/Hyperlink

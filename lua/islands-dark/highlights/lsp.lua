@@ -40,7 +40,6 @@ function M.get(c)
 		["@lsp.mod.constant"] = { link = "@constant" },
 		["@lsp.mod.readonly"] = { link = "@lsp.mod.constant" },
 		["@lsp.mod.static"] = { link = "@lsp.type.function" },
-		["@lsp.mod.deprecated"] = { fg = c.deprecated, strikethrough = true },
 		["@lsp.mod.defaultLibrary"] = { link = "@lsp.mod.keyword" },
 
 		-- Specific language semantic tokens

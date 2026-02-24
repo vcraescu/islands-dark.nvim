@@ -34,7 +34,7 @@ function M.get(c)
 		FzfLuaLiveSym = { fg = c.constant, bg = c.none },
 		FzfLuaFzfNormal = { fg = c.fg, bg = c.none },
 		FzfLuaFzfCursorLine = { bg = c.cursor_line },
-		FzfLuaFzfMatch = { fg = c.inc_search, bg = c.none, bold = true },
+		FzfLuaFzfMatch = { fg = c.search_match, bg = c.none, bold = true },
 		FzfLuaFzfBorder = { fg = c.border, bg = c.none },
 		FzfLuaFzfScrollbar = { fg = c.border, bg = c.none },
 		FzfLuaFzfSeparator = { fg = c.border, bg = c.none },

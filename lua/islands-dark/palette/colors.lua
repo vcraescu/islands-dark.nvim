@@ -69,17 +69,14 @@ return {
 
 	-- Special markers
 	search = palette.dark_green, -- Search highlight background
-	inc_search = palette.dark_blue, -- IncSearch/CurSearch background
-	match_paren = palette.gray_blue, -- MatchParen background
 	lsp_ref = palette.dark_teal, -- LspReference* background
+	match = palette.dark_blue,
+	search_match = palette.blue,
 
 	-- VCS colors
 	vcs_added = palette.dark_green,
 	vcs_modified = palette.gray_blue,
 	vcs_removed = palette.dark_red,
-
-	-- Additional semantic colors
-	deprecated = palette.dim_gray,
 
 	-- Template/Interpolation
 	template_var = palette.lavender,

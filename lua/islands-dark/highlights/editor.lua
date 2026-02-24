@@ -33,12 +33,12 @@ function M.get(c)
 
 		-- Search
 		Search = { fg = c.fg, bg = c.search },
-		IncSearch = { fg = c.fg, bg = c.inc_search },
-		CurSearch = { fg = c.fg, bg = c.inc_search },
-		Substitute = { fg = c.fg, bg = c.inc_search },
+		IncSearch = { fg = c.fg, bg = c.match },
+		CurSearch = { fg = c.fg, bg = c.match },
+		Substitute = { fg = c.fg, bg = c.match },
 
 		-- Matching
-		MatchParen = { bg = c.match_paren, bold = true },
+		MatchParen = { bg = c.match, bold = true },
 
 		-- Splits and windows
 		VertSplit = { fg = c.border },

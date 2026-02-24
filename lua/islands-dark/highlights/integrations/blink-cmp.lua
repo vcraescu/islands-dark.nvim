@@ -5,12 +5,6 @@ local M = {}
 --- @return table Highlight groups for Blink CMP
 function M.get(c)
 	return {
-		CmpItemMenu = { fg = c.fg, bg = c.none },
-		CmpItemAbbr = { fg = c.fg, bg = c.none },
-		CmpItemAbbrMatch = { fg = c.keyword, bg = c.none },
-		CmpItemAbbrMatchFuzzy = { fg = c.keyword, bg = c.none },
-		CmpBorder = { fg = c.border, bg = c.none },
-
 		BlinkCmpMenu = { fg = c.fg, bg = c.none },
 		BlinkCmpMenuBorder = { fg = c.border, bg = c.none },
 		BlinkCmpMenuSelection = { fg = c.fg, bg = c.visual },
@@ -18,8 +12,8 @@ function M.get(c)
 		BlinkCmpScrollBarGutter = { bg = c.none },
 
 		BlinkCmpLabel = { fg = c.fg, bg = c.none },
-		BlinkCmpLabelDeprecated = { fg = c.deprecated, bg = c.none },
-		BlinkCmpLabelMatch = { fg = c.keyword, bg = c.none, bold = true },
+		BlinkCmpLabelDeprecated = { bg = c.none, strikethrough = true },
+		BlinkCmpLabelMatch = { fg = c.search_match, bg = c.none, bold = true },
 		BlinkCmpLabelDetail = { fg = c.fg_dim, bg = c.none },
 		BlinkCmpLabelDescription = { fg = c.fg_dim, bg = c.none },
 
