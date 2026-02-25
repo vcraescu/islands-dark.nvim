@@ -36,7 +36,7 @@ return {
 	dark_red = "#5E3838",
 
 	-- Yellows (2 shades)
-	yellow = "#F2C55C",
+	yellow = "#D5B778",
 	khaki = "#B3AE60",
 
 	-- Oranges (2 shades)
