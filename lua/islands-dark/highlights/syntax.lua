@@ -51,12 +51,12 @@ function M.get(c, config)
 		SpecialChar = { link = "Special" },
 		Tag = { fg = c.tag },
 		Delimiter = { fg = c.punctuation },
-		SpecialComment = { fg = c.doc_comment },
+		SpecialComment = { fg = c.comment_doc },
 		Debug = { fg = c.warning },
 
 		-- Other
-		Underlined = { fg = c.hyperlink, underline = true },
-		Ignore = { fg = c.fg_dimmer },
+		Underlined = { fg = c.link, underline = true },
+		Ignore = { fg = c.fg1 },
 		Error = { fg = c.error },
 		Todo = { fg = c.todo, bold = true },
 	}

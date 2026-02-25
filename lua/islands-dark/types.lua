@@ -1,3 +1,2 @@
---- @class theme.Palette
 --- @class theme.Config
 --- @class theme.Colors

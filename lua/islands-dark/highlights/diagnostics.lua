@@ -43,18 +43,18 @@ function M.get(c)
 		DiagnosticFloatingOk = { fg = c.string, bg = c.none },
 
 		-- LSP references
-		LspReferenceText = { bg = c.lsp_ref },
-		LspReferenceRead = { bg = c.lsp_ref },
-		LspReferenceWrite = { bg = c.lsp_ref },
+		LspReferenceText = { bg = c.lsp_reference },
+		LspReferenceRead = { bg = c.lsp_reference },
+		LspReferenceWrite = { bg = c.lsp_reference },
 
 		-- LSP signature help
 		LspSignatureActiveParameter = { fg = c.parameter, bold = true },
 
 		-- LSP inlay hints
-		LspInlayHint = { fg = c.fg_dimmer },
+		LspInlayHint = { fg = c.fg1 },
 
 		-- LSP Code Lens
-		LspCodeLens = { fg = c.fg_dimmer },
+		LspCodeLens = { fg = c.fg1 },
 		LspCodeLensSeparator = { fg = c.border },
 	}
 end

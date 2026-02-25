@@ -45,6 +45,9 @@ end
 --- Get current configuration
 --- @return theme.Config Current configuration
 function M.get()
+	if not M.config then
+		M.config = vim.deepcopy(defaults)
+	end
 	return M.config
 end
 

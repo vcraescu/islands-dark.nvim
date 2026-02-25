@@ -18,7 +18,7 @@ function M.load()
 	vim.o.termguicolors = true
 
 	local config = require("islands-dark.config")
-	local colors = require("islands-dark.palette.colors")
+	local colors = require("islands-dark.colors")
 	local util = require("islands-dark.util")
 	local highlights = require("islands-dark.highlights")
 
@@ -34,21 +34,21 @@ function M.load()
 
 	-- Set terminal colors if enabled
 	if config.terminal_colors then
-		vim.g.terminal_color_0 = colors.bg
+		vim.g.terminal_color_0 = colors.base
 		vim.g.terminal_color_1 = colors.error
 		vim.g.terminal_color_2 = colors.string
 		vim.g.terminal_color_3 = colors.metadata
 		vim.g.terminal_color_4 = colors.func
 		vim.g.terminal_color_5 = colors.constant
 		vim.g.terminal_color_6 = colors.number
-		vim.g.terminal_color_7 = colors.fg
+		vim.g.terminal_color_7 = colors.text
 
-		vim.g.terminal_color_8 = colors.fg_dimmer
+		vim.g.terminal_color_8 = colors.text2
 		vim.g.terminal_color_9 = colors.error
 		vim.g.terminal_color_10 = colors.string
 		vim.g.terminal_color_11 = colors.warning
 		vim.g.terminal_color_12 = colors.identifier
-		vim.g.terminal_color_13 = colors.template_var
+		vim.g.terminal_color_13 = colors.purple2
 		vim.g.terminal_color_14 = colors.number
 		vim.g.terminal_color_15 = colors.cursor
 	end

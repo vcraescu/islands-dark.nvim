@@ -5,44 +5,44 @@ local M = {}
 --- @return table Highlight groups for nvim-tree
 function M.get(c)
 	return {
-		NvimTreeNormal = { fg = c.fg, bg = c.none },
+		NvimTreeNormal = { fg = c.text, bg = c.none },
 		NvimTreeWinSeparator = { fg = c.border, bg = c.none },
 
-		NvimTreeRootFolder = { link = "NvimTreeFolderName", fg = c.fg_dim },
+		NvimTreeRootFolder = { fg = c.comment },
 
-		NvimTreeFolderName = { fg = c.fg },
-		NvimTreeFolderIcon = { fg = c.fg, bold = true },
+		NvimTreeFolderName = { link = "NvimTreeNormal" },
+		NvimTreeFolderIcon = { link = "NvimTreeNormal" },
 		NvimTreeEmptyFolderName = { link = "NvimTreeFolderName" },
 		NvimTreeOpenedFolderName = { link = "NvimTreeFolderName" },
 
-		NvimTreeOpenedFile = { fg = c.fg },
-		NvimTreeSpecialFile = {},
+		NvimTreeOpenedFile = { link = "NvimTreeNormal" },
+		NvimTreeSpecialFile = { link = "NvimTreeNormal" },
 		NvimTreeExecFile = { fg = c.keyword },
 		NvimTreeImageFile = { fg = c.constant },
-		NvimTreeSymlink = { fg = c.hyperlink, underline = true },
+		NvimTreeSymlink = { fg = c.link, underline = true },
 
-		NvimTreeGitDirty = { fg = c.vcs_changed },
+		NvimTreeGitDirty = { fg = c.git_change },
 		NvimTreeGitDirtyIcon = { link = "NvimTreeGitDirty" },
-		NvimTreeGitStaged = { fg = c.vcs_changed },
+		NvimTreeGitStaged = { fg = c.git_change },
 		NvimTreeGitStagedIcon = { link = "NvimTreeGitStaged" },
-		NvimTreeGitMerge = { fg = c.vcs_merged },
+		NvimTreeGitMerge = { fg = c.purple1 },
 		NvimTreeGitMergeIcon = { link = "NvimTreeGitMerge" },
-		NvimTreeGitRenamed = { fg = c.vcs_changed },
+		NvimTreeGitRenamed = { fg = c.git_change },
 		NvimTreeGitRenamedIcon = { link = "NvimTreeGitRenamed" },
-		NvimTreeGitNew = { fg = c.vcs_added },
+		NvimTreeGitNew = { fg = c.git_add },
 		NvimTreeGitNewIcon = { link = "NvimTreeGitNew" },
-		NvimTreeGitDeleted = { fg = c.vcs_removed },
+		NvimTreeGitDeleted = { fg = c.git_delete },
 		NvimTreeGitDeletedIcon = { link = "NvimTreeGitDeleted" },
-		NvimTreeGitIgnored = { fg = c.vcs_ignored },
+		NvimTreeGitIgnored = { fg = c.git_ignore },
 		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },
 
 		NvimTreeCursorLine = { link = "Visual" },
 
-		NvimTreeIndentMarker = { fg = c.fg_dimmer },
+		NvimTreeIndentMarker = { fg = c.comment },
 
 		NvimTreeWindowPicker = { bg = c.info, bold = true },
 
-		NvimTreeStatusLineNC = { fg = c.fg_dim, bg = c.base2 },
+		NvimTreeStatusLineNC = { fg = c.comment, bg = c.visual },
 	}
 end
 
