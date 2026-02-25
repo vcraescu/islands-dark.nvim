@@ -12,7 +12,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 # fg+:#BCBEC4         - text: Light gray (selected line foreground)
 # bg+:#2B2D30         - charcoal: Medium gray (selected line background)
 # hl+:#56A8F5         - blue: Bright blue (selected line highlight)
-# info:#B3AE60        - khaki: Muted yellow-green info text
+# info:#B3AE60        - olive: Muted yellow-green info text
 # prompt:#F2C55C      - yellow: Bright yellow prompt
 # pointer:#C77DBB     - mauve: Pink-purple pointer
 # marker:#6AAB73      - green: Medium green marker

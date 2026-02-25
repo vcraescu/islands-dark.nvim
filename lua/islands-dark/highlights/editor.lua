@@ -12,9 +12,9 @@ function M.get(c)
 		FloatTitle = { fg = c.fg, bg = c.none, bold = true },
 
 		-- Cursor and lines
-		Cursor = { fg = c.bg, bg = c.cursor },
-		lCursor = { fg = c.bg, bg = c.cursor },
-		CursorIM = { fg = c.bg, bg = c.cursor },
+		Cursor = { fg = c.base, bg = c.cursor },
+		lCursor = { fg = c.base, bg = c.cursor },
+		CursorIM = { fg = c.base, bg = c.cursor },
 		CursorLine = { bg = c.cursor_line },
 		CursorLineNr = { fg = c.line_number_current, bg = c.cursor_line },
 		CursorColumn = { bg = c.cursor_line },
@@ -43,14 +43,14 @@ function M.get(c)
 		-- Splits and windows
 		VertSplit = { fg = c.border },
 		WinSeparator = { fg = c.border },
-		StatusLine = { fg = c.fg, bg = c.bg_alt },
-		StatusLineNC = { fg = c.fg_dim, bg = c.bg_alt },
+		StatusLine = { fg = c.fg, bg = c.base2 },
+		StatusLineNC = { fg = c.fg_dim, bg = c.base2 },
 		WinBar = { fg = c.fg, bg = c.cursor_line },
 		WinBarNC = { fg = c.fg_dim, bg = c.cursor_line },
 
 		-- Tab line
-		TabLine = { fg = c.fg_dim, bg = c.bg_alt },
-		TabLineFill = { bg = c.bg_alt },
+		TabLine = { fg = c.fg_dim, bg = c.base2 },
+		TabLineFill = { bg = c.base2 },
 		TabLineSel = { fg = c.fg, bg = c.none, bold = true },
 
 		-- Popup menu

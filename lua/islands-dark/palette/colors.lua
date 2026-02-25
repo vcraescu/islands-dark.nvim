@@ -7,22 +7,23 @@ local palette = require("islands-dark.palette")
 --- @class theme.Colors
 return {
 	-- Base colors
-	bg = palette.base,
-	bg_alt = palette.charcoal,
+	base = palette.base,
+	base1 = palette.base1,
+	base2 = palette.base2,
 	fg = palette.text,
-	fg_dim = palette.silver,
-	fg_dimmer = palette.gray,
+	fg_dim = palette.text1,
+	fg_dimmer = palette.text2,
 
 	-- UI colors
-	cursor_line = palette.dark_gray,
+	cursor_line = palette.base1,
 	cursor = palette.text,
-	visual = palette.charcoal,
-	visual_inactive = palette.charcoal,
-	line_number = palette.gray,
+	visual = palette.base2,
+	visual_inactive = palette.base2,
+	line_number = palette.text2,
 	line_number_current = palette.text,
-	fold_bg = palette.charcoal,
-	border = palette.charcoal,
-	color_column = palette.charcoal,
+	fold_bg = palette.base2,
+	border = palette.base2,
+	color_column = palette.base2,
 
 	-- Syntax colors (from Islands Dark color scheme)
 	keyword = palette.orange,
@@ -33,11 +34,11 @@ return {
 	constant = palette.mauve,
 	type = palette.teal_blue,
 	type_definition = palette.text,
-	type_parameter = palette.teal,
+	type_parameter = palette.cyan,
 	type_builtin = palette.rust,
-	comment = palette.gray,
+	comment = palette.text2,
 	doc_comment = palette.green,
-	tag = palette.khaki,
+	tag = palette.yellow,
 	attribute = palette.text,
 	operator = palette.text,
 	punctuation = palette.text,
@@ -48,8 +49,8 @@ return {
 
 	-- Special syntax colors
 	escape = palette.orange,
-	regex = palette.teal,
-	metadata = palette.khaki,
+	regex = palette.cyan,
+	metadata = palette.dark_yellow,
 	identifier = palette.blue,
 	braces = palette.text,
 	special = palette.cyan,
@@ -63,9 +64,9 @@ return {
 	-- Diagnostics & Messages
 	error = palette.red,
 	warning = palette.yellow,
-	info = palette.khaki,
-	hint = palette.gray,
-	todo = palette.khaki,
+	info = palette.teal_blue,
+	hint = palette.text2,
+	todo = palette.olive,
 
 	-- Special markers
 	search = palette.dark_green, -- Search highlight background
@@ -78,7 +79,7 @@ return {
 	vcs_changed = palette.blue,
 	vcs_removed = palette.red,
 	vcs_merged = palette.mauve,
-	vcs_ignored = palette.gray,
+	vcs_ignored = palette.text2,
 
 	-- Template/Interpolation
 	template_var = palette.lavender,

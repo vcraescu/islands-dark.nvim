@@ -36,11 +36,13 @@ function M.get(c)
 		NvimTreeGitIgnored = { fg = c.vcs_ignored },
 		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },
 
+		NvimTreeCursorLine = { link = "Visual" },
+
 		NvimTreeIndentMarker = { fg = c.fg_dimmer },
 
 		NvimTreeWindowPicker = { bg = c.info, bold = true },
 
-		NvimTreeStatusLineNC = { fg = c.fg_dim, bg = c.bg_alt },
+		NvimTreeStatusLineNC = { fg = c.fg_dim, bg = c.base2 },
 	}
 end
 
