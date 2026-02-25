@@ -71,7 +71,11 @@ function M.get(c)
 		["@lsp.type.property.proto"] = { link = "@property.proto" },
 		["@lsp.type.struct.proto"] = { link = "@type.proto" },
 		["@lsp.type.enum.proto"] = { link = "@type.proto" },
-		["@lsp.type.namespace.proto"] = { link = "@type.proto" },
+		["@lsp.type.namespace.proto"] = { link = "@variable.member.proto" },
+		["@lsp.type.interface.proto"] = { link = "@type.proto" },
+		["@lsp.type.decorator.proto"] = { link = "@identifier" },
+		["@lsp.typemod.type.defaultLibrary.proto"] = { link = "@type.proto" },
+		["@lsp.type.type.proto"] = { link = "@type.proto" },
 	}
 end
 

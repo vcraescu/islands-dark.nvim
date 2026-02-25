@@ -184,9 +184,8 @@ function M.get(c, config)
 		["@punctuation.delimiter.css"] = { link = "@tag.css" },
 
 		-- Proto
-		["@property.proto"] = { link = "@identifier" },
 		["@type.proto"] = { link = "@identifier" },
-		["@variable.member.proto"] = { link = "@property.proto" },
+		["@variable.member.proto"] = { link = "@identifier" },
 
 		-- Python
 		["@constructor.python"] = { link = "@keyword" },
@@ -200,6 +199,7 @@ function M.get(c, config)
 
 		-- Terraform
 		["@constant.terraform"] = { link = "@keyword" },
+		["@type.terraform"] = { link = "@keyword" },
 	}
 end
 
