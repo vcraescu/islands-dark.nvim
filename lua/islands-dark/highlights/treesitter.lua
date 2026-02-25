@@ -11,10 +11,10 @@ function M.get(c, config)
 		-- Comments
 		["@comment"] = styles.comments({ link = "Comment" }),
 		["@comment.documentation"] = styles.comments({ link = "SpecialComment" }),
-		["@comment.error"] = styles.comments({ fg = c.fg3, bg = c.error }),
+		["@comment.error"] = styles.comments({ fg = c.text, bg = c.error }),
 		["@comment.warning"] = styles.comments({ link = "Debug" }),
 		["@comment.note"] = styles.comments({ fg = c.info }),
-		["@comment.todo"] = styles.comments({ fg = c.fg3, bg = c.todo }),
+		["@comment.todo"] = styles.comments({ fg = c.text, bg = c.todo }),
 
 		-- Constants
 		["@constant"] = styles.constants({ link = "Constant" }),
@@ -100,8 +100,8 @@ function M.get(c, config)
 		["@variable.parameter"] = styles.variables({ link = "@parameter" }),
 
 		-- Modules
-		["@module"] = { fg = c.fg3 },
-		["@module.builtin"] = { fg = c.fg3 },
+		["@module"] = { fg = c.text },
+		["@module.builtin"] = { fg = c.text },
 
 		-- Labels
 		["@label"] = { link = "Label" },
@@ -135,8 +135,8 @@ function M.get(c, config)
 		["@markup.raw"] = { link = "@string" },
 		["@label.markdown"] = { link = "@constant" },
 		["@markup.list"] = { link = "@keyword" },
-		["@markup.list.checked"] = { fg = c.fg3 },
-		["@markup.list.unchecked"] = { fg = c.fg3 },
+		["@markup.list.checked"] = { fg = c.text },
+		["@markup.list.unchecked"] = { fg = c.text },
 		["@conceal.markdown_inline"] = { link = "@label" },
 		["@punctuation.special.markdown"] = { link = "@label" },
 

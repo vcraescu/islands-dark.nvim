@@ -6,17 +6,17 @@ local M = {}
 function M.get(c)
 	return {
 		-- Basic editor UI
-		Normal = { fg = c.fg3, bg = c.none },
-		NormalFloat = { fg = c.fg3, bg = c.none },
+		Normal = { fg = c.text, bg = c.none },
+		NormalFloat = { fg = c.text, bg = c.none },
 		FloatBorder = { fg = c.border, bg = c.none },
-		FloatTitle = { fg = c.fg3, bg = c.none, bold = true },
+		FloatTitle = { fg = c.text, bg = c.none, bold = true },
 
 		-- Cursor and lines
-		Cursor = { fg = c.bg1, bg = c.cursor },
-		lCursor = { fg = c.bg1, bg = c.cursor },
-		CursorIM = { fg = c.bg1, bg = c.cursor },
+		Cursor = { fg = c.base, bg = c.cursor },
+		lCursor = { fg = c.base, bg = c.cursor },
+		CursorIM = { fg = c.base, bg = c.cursor },
 		CursorLine = { bg = c.cursorline },
-		CursorLineNr = { fg = c.fg3, bg = c.cursorline },
+		CursorLineNr = { fg = c.text, bg = c.cursorline },
 		CursorColumn = { bg = c.cursorline },
 
 		-- Line numbers and gutter
@@ -25,17 +25,17 @@ function M.get(c)
 		FoldColumn = { fg = c.line_number, bg = c.none },
 
 		-- Folds
-		Folded = { fg = c.fg2, bg = c.fold },
+		Folded = { fg = c.text1, bg = c.fold },
 
 		-- Visual selection
 		Visual = { bg = c.visual },
 		VisualNOS = { bg = c.visual },
 
 		-- Search
-		Search = { fg = c.fg3, bg = c.search },
-		IncSearch = { fg = c.fg3, bg = c.match },
-		CurSearch = { fg = c.fg3, bg = c.match },
-		Substitute = { fg = c.fg3, bg = c.match },
+		Search = { fg = c.text, bg = c.search },
+		IncSearch = { fg = c.text, bg = c.match },
+		CurSearch = { fg = c.text, bg = c.match },
+		Substitute = { fg = c.text, bg = c.match },
 
 		-- Matching
 		MatchParen = { bg = c.match, bold = true },
@@ -43,19 +43,19 @@ function M.get(c)
 		-- Splits and windows
 		VertSplit = { fg = c.border },
 		WinSeparator = { fg = c.border },
-		StatusLine = { fg = c.fg3, bg = c.bg3 },
-		StatusLineNC = { fg = c.fg2, bg = c.bg3 },
-		WinBar = { fg = c.fg3, bg = c.cursorline },
-		WinBarNC = { fg = c.fg2, bg = c.cursorline },
+		StatusLine = { fg = c.text, bg = c.base2 },
+		StatusLineNC = { fg = c.text1, bg = c.base2 },
+		WinBar = { fg = c.text, bg = c.cursorline },
+		WinBarNC = { fg = c.text1, bg = c.cursorline },
 
 		-- Tab line
-		TabLine = { fg = c.fg2, bg = c.bg3 },
-		TabLineFill = { bg = c.bg3 },
-		TabLineSel = { fg = c.fg3, bg = c.none, bold = true },
+		TabLine = { fg = c.text1, bg = c.base2 },
+		TabLineFill = { bg = c.base2 },
+		TabLineSel = { fg = c.text, bg = c.none, bold = true },
 
 		-- Popup menu
-		Pmenu = { fg = c.fg3, bg = c.none },
-		PmenuSel = { fg = c.fg3, bg = c.visual },
+		Pmenu = { fg = c.text, bg = c.none },
+		PmenuSel = { fg = c.text, bg = c.visual },
 		PmenuSbar = { bg = c.none },
 		PmenuThumb = { bg = c.border },
 		PmenuBorder = { fg = c.border, bg = c.none },
@@ -63,7 +63,7 @@ function M.get(c)
 		PmenuMatchSel = { fg = c.keyword, bg = c.visual, bold = true },
 
 		-- Messages and command line
-		MsgArea = { fg = c.fg3, bg = c.none },
+		MsgArea = { fg = c.text, bg = c.none },
 		MsgSeparator = { fg = c.border, bg = c.none },
 		ErrorMsg = { fg = c.error },
 		WarningMsg = { fg = c.warning },
@@ -72,12 +72,12 @@ function M.get(c)
 
 		-- Special UI elements
 		ColorColumn = { bg = c.color_column },
-		Conceal = { fg = c.fg1 },
+		Conceal = { fg = c.text2 },
 		Directory = { fg = c.identifier },
-		NonText = { fg = c.fg1 },
-		SpecialKey = { fg = c.fg1 },
+		NonText = { fg = c.text2 },
+		SpecialKey = { fg = c.text2 },
 		Title = { fg = c.func, bold = true },
-		Whitespace = { fg = c.fg1 },
+		Whitespace = { fg = c.text2 },
 
 		-- Spell checking
 		SpellBad = { sp = c.error, undercurl = true },
@@ -90,11 +90,19 @@ function M.get(c)
 		DiffChange = { bg = c.diff_change },
 		DiffDelete = { bg = c.diff_delete },
 		DiffText = { bg = c.diff_change },
+		Added = { fg = c.git_add },
+		Changed = { fg = c.git_change },
+		Removed = { fg = c.git_delete },
 
 		-- Quickfix and location list
 		QuickFixLine = { bg = c.cursorline },
 		qfLineNr = { fg = c.line_number },
 		qfFileName = { fg = c.identifier },
+
+		--- Neovim 0.10+ health checks
+		healthError = { fg = c.error },
+		healthSuccess = { fg = c.ok },
+		healthWarning = { fg = c.warning },
 	}
 end
 

@@ -56,7 +56,7 @@ function M.get(c, config)
 
 		-- Other
 		Underlined = { fg = c.link, underline = true },
-		Ignore = { fg = c.fg1 },
+		Ignore = { fg = c.text2 },
 		Error = { fg = c.error },
 		Todo = { fg = c.todo, bold = true },
 	}

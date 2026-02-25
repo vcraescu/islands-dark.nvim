@@ -51,10 +51,10 @@ function M.get(c)
 		LspSignatureActiveParameter = { fg = c.parameter, bold = true },
 
 		-- LSP inlay hints
-		LspInlayHint = { fg = c.fg1 },
+		LspInlayHint = { fg = c.text2 },
 
 		-- LSP Code Lens
-		LspCodeLens = { fg = c.fg1 },
+		LspCodeLens = { fg = c.text2 },
 		LspCodeLensSeparator = { fg = c.border },
 	}
 end

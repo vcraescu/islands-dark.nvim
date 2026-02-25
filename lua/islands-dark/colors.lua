@@ -73,7 +73,7 @@ M.purple1 = "#C77DBB" -- DEFAULT_CONSTANT (mauve)
 M.purple2 = "#B189F5" -- DEFAULT_TEMPLATE_LANGUAGE (lavender/bright purple)
 
 -- ───────────────────────────────────────────────────────────────────────────
--- Grays
+-- Grays (1=darkest → 2=lightest)
 -- ───────────────────────────────────────────────────────────────────────────
 M.gray1 = "#43454A" -- BORDER_COLOR (gray blue)
 
@@ -102,12 +102,12 @@ M.text2 = M.fg1
 -- Editor UI Elements
 -- ───────────────────────────────────────────────────────────────────────────
 M.border = M.gray1
-M.cursor = M.fg3
-M.cursorline = M.bg2
-M.visual = M.bg3
-M.line_number = M.fg1
-M.color_column = M.bg3
-M.fold = M.bg3
+M.cursor = M.text
+M.cursorline = M.base1
+M.visual = M.base2
+M.line_number = M.text2
+M.color_column = M.base2
+M.fold = M.base2
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Syntax Highlighting
@@ -130,32 +130,32 @@ M.func_builtin = M.blue2
 M.method = M.blue3
 
 -- Variables & Parameters
-M.variable = M.fg3
+M.variable = M.text
 M.variable_builtin = M.orange1
-M.parameter = M.fg3
+M.parameter = M.text
 M.property = M.purple1
 
 -- Types
 M.type = M.blue4
 M.type_builtin = M.orange1
 M.type_parameter = M.cyan2
-M.type_definition = M.fg3
+M.type_definition = M.text
 
 -- Constants
 M.constant = M.purple1
 
 -- Comments
-M.comment = M.fg1
+M.comment = M.text2
 M.comment_doc = M.green2
 
 -- Operators & Punctuation
-M.operator = M.fg3
-M.punctuation = M.fg3
-M.delimiter = M.fg3
+M.operator = M.text
+M.punctuation = M.text
+M.delimiter = M.text
 
 -- Tags & Attributes
 M.tag = M.yellow2
-M.attribute = M.fg3
+M.attribute = M.text
 
 -- Labels & Special
 M.label = M.orange2
@@ -164,7 +164,7 @@ M.identifier = M.blue3
 M.special = M.cyan2
 M.escape = M.orange2
 M.regex = M.cyan2
-M.braces = M.fg3
+M.braces = M.text
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Diagnostics & LSP
@@ -172,13 +172,13 @@ M.braces = M.fg3
 M.error = M.red2
 M.warning = M.yellow2
 M.info = M.blue4
-M.hint = M.fg1
+M.hint = M.text2
 M.ok = M.green2
 
 M.error_bg = M.red1
-M.warning_bg = M.bg3
-M.info_bg = M.bg3
-M.hint_bg = M.bg3
+M.warning_bg = M.base2
+M.info_bg = M.base2
+M.hint_bg = M.base2
 
 M.lsp_reference = M.cyan1
 
