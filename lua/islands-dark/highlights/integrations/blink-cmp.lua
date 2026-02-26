@@ -1,8 +1,8 @@
 local M = {}
 
 --- Load Blink CMP highlights
---- @param c table theme.Colors palette
---- @return table Highlight groups for Blink CMP
+--- @param c theme.Colors palette
+--- @return table highlights groups for Blink CMP
 function M.get(c)
 	return {
 		BlinkCmpMenu = { fg = c.text, bg = c.none },

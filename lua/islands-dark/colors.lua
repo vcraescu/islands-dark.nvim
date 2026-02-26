@@ -20,6 +20,7 @@ local M = {}
 M.bg1 = "#191A1C" -- EDITOR_BACKGROUND
 M.bg2 = "#1F2024" -- GUTTER_BACKGROUND
 M.bg3 = "#2B2D30" -- SELECTION_BACKGROUND
+M.bg4 = "#393b40" -- CURSOR_LINE_BACKGROUND_ALT
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Foregrounds (1=darkest → 3=lightest)
@@ -27,14 +28,16 @@ M.bg3 = "#2B2D30" -- SELECTION_BACKGROUND
 M.fg1 = "#7A7E85" -- COMMENT
 M.fg2 = "#A1A3AB" -- LINE_NUMBER
 M.fg3 = "#BCBEC4" -- DEFAULT_TEXT
+M.fg4 = "#d1d3d9"
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Blues (1=darkest → 4=lightest)
 -- ───────────────────────────────────────────────────────────────────────────
 M.blue1 = "#114957" -- SEARCH_RESULT_BACKGROUND (dark blue)
-M.blue2 = "#548AF7" -- DEFAULT_INSTANCE_METHOD (bright blue)
-M.blue3 = "#56A8F5" -- DEFAULT_FUNCTION_DECLARATION (standard blue)
-M.blue4 = "#6FAFBD" -- DEFAULT_CLASS_NAME (teal blue)
+M.blue2 = "#214283" -- VISUAL_SELECTION (blue)
+M.blue3 = "#548AF7" -- DEFAULT_INSTANCE_METHOD (bright blue)
+M.blue4 = "#56A8F5" -- DEFAULT_FUNCTION_DECLARATION (standard blue)
+M.blue5 = "#6FAFBD" -- DEFAULT_CLASS_NAME (teal blue)
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Cyans/Teals (1=darkest → 2=lightest)
@@ -93,10 +96,12 @@ M.none = "NONE"
 M.base = M.bg1
 M.base1 = M.bg2
 M.base2 = M.bg3
+M.base3 = M.bg4
 
 M.text = M.fg3
 M.text1 = M.fg2
 M.text2 = M.fg1
+M.text3 = M.fg4
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Editor UI Elements
@@ -104,7 +109,7 @@ M.text2 = M.fg1
 M.border = M.gray1
 M.cursor = M.text
 M.cursorline = M.base1
-M.visual = M.base2
+M.visual = M.blue2
 M.line_number = M.text2
 M.color_column = M.base2
 M.fold = M.base2
@@ -125,9 +130,9 @@ M.string_regex = M.cyan2
 M.number = M.cyan2
 
 -- Functions & Methods
-M.func = M.blue3
-M.func_builtin = M.blue2
-M.method = M.blue3
+M.func = M.blue4
+M.func_builtin = M.blue3
+M.method = M.blue4
 
 -- Variables & Parameters
 M.variable = M.text
@@ -136,7 +141,7 @@ M.parameter = M.text
 M.property = M.purple1
 
 -- Types
-M.type = M.blue4
+M.type = M.blue5
 M.type_builtin = M.orange1
 M.type_parameter = M.cyan2
 M.type_definition = M.text
@@ -160,7 +165,7 @@ M.attribute = M.text
 -- Labels & Special
 M.label = M.orange2
 M.metadata = M.yellow1
-M.identifier = M.blue3
+M.identifier = M.blue4
 M.special = M.cyan2
 M.escape = M.orange2
 M.regex = M.cyan2
@@ -171,14 +176,9 @@ M.braces = M.text
 -- ───────────────────────────────────────────────────────────────────────────
 M.error = M.red2
 M.warning = M.yellow2
-M.info = M.blue4
+M.info = M.blue5
 M.hint = M.text2
 M.ok = M.green2
-
-M.error_bg = M.red1
-M.warning_bg = M.base2
-M.info_bg = M.base2
-M.hint_bg = M.base2
 
 M.lsp_reference = M.cyan1
 
@@ -186,7 +186,7 @@ M.lsp_reference = M.cyan1
 -- Search & Matching
 -- ───────────────────────────────────────────────────────────────────────────
 M.search = M.green1
-M.search_match = M.blue3
+M.search_match = M.blue4
 M.match = M.blue1
 
 -- ───────────────────────────────────────────────────────────────────────────
@@ -197,7 +197,7 @@ M.diff_delete = M.red1
 M.diff_change = M.blue1
 
 M.git_add = M.green2
-M.git_change = M.blue3
+M.git_change = M.blue4
 M.git_delete = M.red2
 M.git_ignore = M.text2
 
@@ -205,7 +205,7 @@ M.git_ignore = M.text2
 -- Special Elements
 -- ───────────────────────────────────────────────────────────────────────────
 M.todo = M.yellow1
-M.note = M.blue4
-M.link = M.blue3
+M.note = M.blue5
+M.link = M.blue4
 
 return M

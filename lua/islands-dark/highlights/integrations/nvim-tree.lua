@@ -5,7 +5,7 @@ local M = {}
 --- @return table Highlight groups for nvim-tree
 function M.get(c)
 	return {
-		NvimTreeNormal = { fg = c.text, bg = c.none },
+		NvimTreeNormal = { fg = c.text3, bg = c.none },
 		NvimTreeWinSeparator = { fg = c.border, bg = c.none },
 
 		NvimTreeRootFolder = { fg = c.comment },
@@ -36,11 +36,11 @@ function M.get(c)
 		NvimTreeGitIgnored = { fg = c.git_ignore },
 		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },
 
-		NvimTreeCursorLine = { link = "Visual" },
+		NvimTreeCursorLine = { bg = c.base3 },
 
 		NvimTreeIndentMarker = { fg = c.comment },
 
-		NvimTreeWindowPicker = { bg = c.orange2, fg = c.base, bold = true },
+		NvimTreeWindowPicker = { bg = c.base3, bold = true },
 
 		NvimTreeStatusLineNC = { fg = c.comment, bg = c.visual },
 	}

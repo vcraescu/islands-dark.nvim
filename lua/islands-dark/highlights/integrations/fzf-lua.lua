@@ -11,9 +11,9 @@ function M.get(c)
 		FzfLuaPreviewNormal = { fg = c.text, bg = c.none },
 		FzfLuaPreviewBorder = { fg = c.border, bg = c.none },
 		FzfLuaPreviewTitle = { fg = c.text, bg = c.none, bold = true },
-		FzfLuaCursor = { fg = c.base, bg = c.cursor },
-		FzfLuaCursorLine = { bg = c.cursorline },
-		FzfLuaCursorLineNr = { fg = c.text, bg = c.cursorline },
+		FzfLuaCursor = { link = "Cursor" },
+		FzfLuaCursorLine = { link = "CursorLine" },
+		FzfLuaCursorLineNr = { link = "CursorLineNr" },
 		FzfLuaSearch = { fg = c.text, bg = c.search },
 		FzfLuaScrollBorderEmpty = { fg = c.border, bg = c.none },
 		FzfLuaScrollBorderFull = { fg = c.border, bg = c.none },
@@ -31,9 +31,9 @@ function M.get(c)
 		FzfLuaTabTitle = { fg = c.func, bg = c.none, bold = true },
 		FzfLuaTabMarker = { fg = c.constant, bg = c.none },
 
-		FzfLuaLiveSym = { fg = c.constant, bg = c.none },
+		FzfLuaLiveSym = { fg = c.text, bg = c.none },
 		FzfLuaFzfNormal = { fg = c.text, bg = c.none },
-		FzfLuaFzfCursorLine = { bg = c.cursorline },
+		FzfLuaFzfCursorLine = { link = "CursorLine" },
 		FzfLuaFzfMatch = { fg = c.search_match, bg = c.none, bold = true },
 		FzfLuaFzfBorder = { fg = c.border, bg = c.none },
 		FzfLuaFzfScrollbar = { fg = c.border, bg = c.none },
@@ -42,7 +42,7 @@ function M.get(c)
 
 		FzfLuaHeaderBind = { fg = c.keyword, bg = c.none },
 		FzfLuaHeaderText = { fg = c.text1, bg = c.none },
-		FzfLuaDirPart = { fg = c.text1, bg = c.none },
+		FzfLuaDirPart = { fg = c.text2, bg = c.none },
 		FzfLuaFilePart = { fg = c.text, bg = c.none },
 
 		FzfLuaFzfPointer = { fg = c.constant, bg = c.none },
