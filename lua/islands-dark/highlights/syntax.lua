@@ -1,6 +1,5 @@
 local M = {}
 
---- Setup syntax highlight groups
 --- @param c theme.Colors Color palette
 --- @param config theme.Config User configuration
 --- @return table Highlight groups for syntax elements

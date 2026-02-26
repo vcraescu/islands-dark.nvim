@@ -1,20 +1,12 @@
 local M = {}
 
+--- Load Blink CMP highlights
 --- @param c theme.Colors palette
---- @return table highlights groups for Blink CMP
+--- @return table highlight groups for Blink CMP
 function M.get(c)
 	return {
-		BlinkCmpMenu = { fg = c.text, bg = c.none },
-		BlinkCmpMenuBorder = { fg = c.border, bg = c.none },
-		BlinkCmpMenuSelection = { fg = c.text, bg = c.visual },
-		BlinkCmpScrollBarThumb = { bg = c.border },
-		BlinkCmpScrollBarGutter = { bg = c.none },
-
-		BlinkCmpLabel = { fg = c.text, bg = c.none },
-		BlinkCmpLabelDeprecated = { bg = c.none, strikethrough = true },
+		BlinkCmpMenuBorder = { link = "FloatBorder" },
 		BlinkCmpLabelMatch = { fg = c.search_match, bg = c.none, bold = true },
-		BlinkCmpLabelDetail = { fg = c.text1, bg = c.none },
-		BlinkCmpLabelDescription = { fg = c.text1, bg = c.none },
 
 		BlinkCmpKind = { fg = c.type, bg = c.none },
 		BlinkCmpKindClass = { fg = c.type, bg = c.none },
@@ -43,19 +35,10 @@ function M.get(c)
 		BlinkCmpKindValue = { fg = c.constant, bg = c.none },
 		BlinkCmpKindVariable = { fg = c.variable, bg = c.none },
 
-		BlinkCmpSource = { fg = c.text1, bg = c.none },
-		BlinkCmpSourceLSP = { fg = c.text1, bg = c.none },
-		BlinkCmpSourcePath = { fg = c.text1, bg = c.none },
-		BlinkCmpSourceSnippets = { fg = c.text1, bg = c.none },
-		BlinkCmpSourceBuffer = { fg = c.text1, bg = c.none },
+		BlinkCmpDocBorder = { link = "FloatBorder" },
+		BlinkCmpDocSeparator = { link = "FloatBorder" },
 
-		BlinkCmpDoc = { fg = c.text, bg = c.none },
-		BlinkCmpDocBorder = { fg = c.border, bg = c.none },
-		BlinkCmpDocSeparator = { fg = c.border, bg = c.none },
-		BlinkCmpDocCursorLine = { bg = c.cursorline },
-
-		BlinkCmpSignatureHelp = { fg = c.text, bg = c.none },
-		BlinkCmpSignatureHelpBorder = { fg = c.border, bg = c.none },
+		BlinkCmpSignatureHelpBorder = { link = "FloatBorder" },
 		BlinkCmpSignatureHelpActiveParameter = { fg = c.parameter, bg = c.none, bold = true },
 
 		BlinkCmpGhostText = { fg = c.text2 },

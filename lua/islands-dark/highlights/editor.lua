@@ -55,12 +55,14 @@ function M.get(c)
 
 		-- Popup menu
 		Pmenu = { fg = c.text, bg = c.none },
-		PmenuSel = { fg = c.text, bg = c.visual },
+		PmenuSel = { link = "CursorLine" },
 		PmenuSbar = { bg = c.none },
 		PmenuThumb = { bg = c.border },
 		PmenuBorder = { fg = c.border, bg = c.none },
-		PmenuMatch = { fg = c.keyword, bg = c.none, bold = true },
-		PmenuMatchSel = { fg = c.keyword, bg = c.visual, bold = true },
+		PmenuMatch = { fg = c.search_match, bg = c.none, bold = true },
+		PmenuMatchSel = { link = "PmenuSel" },
+		PmenuExtra = { fg = c.text1, bg = c.none },
+		PmenuKind = { fg = c.type, bg = c.none },
 
 		-- Messages and command line
 		MsgArea = { fg = c.text, bg = c.none },
