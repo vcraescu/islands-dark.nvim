@@ -1,7 +1,7 @@
 local M = {}
 
 -- Load integrations highlights
---- @param c table Color palette
+--- @param c theme.Colors Color palette
 --- @return table Highlight groups for plugin integrations
 function M.get(c)
 	local blink_cmp = require("islands-dark.highlights.integrations.blink-cmp")

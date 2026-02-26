@@ -1,7 +1,7 @@
 local M = {}
 
 --- Load fzf-lua highlights
---- @param c table Color palette
+--- @param c theme.Colors Color palette
 --- @return table Highlight groups for fzf-lua plugin
 function M.get(c)
 	return {

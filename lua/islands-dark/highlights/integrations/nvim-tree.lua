@@ -40,7 +40,7 @@ function M.get(c)
 
 		NvimTreeIndentMarker = { fg = c.comment },
 
-		NvimTreeWindowPicker = { bg = c.info, bold = true },
+		NvimTreeWindowPicker = { bg = c.info, fg = c.base, bold = true },
 
 		NvimTreeStatusLineNC = { fg = c.comment, bg = c.visual },
 	}

@@ -1,7 +1,7 @@
 local M = {}
 
 --- Load Blink CMP highlights
---- @param c table Color palette
+--- @param c table theme.Colors palette
 --- @return table Highlight groups for Blink CMP
 function M.get(c)
 	return {
