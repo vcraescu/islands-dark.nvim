@@ -24,7 +24,7 @@ M.bg3 = "#2B2D30" -- SELECTION_BACKGROUND
 -- ───────────────────────────────────────────────────────────────────────────
 -- Foregrounds (1=darkest → 3=lightest)
 -- ───────────────────────────────────────────────────────────────────────────
-M.fg1 = "#868991" -- COMMENT
+M.fg1 = "#7A7E85" -- COMMENT
 M.fg2 = "#A1A3AB" -- LINE_NUMBER
 M.fg3 = "#BCBEC4" -- DEFAULT_TEXT
 
