@@ -1,5 +1,3 @@
--- Configuration management for Islands Dark theme
-
 local M = {}
 
 --- Default configuration

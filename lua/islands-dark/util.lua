@@ -1,5 +1,3 @@
--- Utility functions for Islands Dark theme
-
 local M = {}
 
 --- Set highlight group

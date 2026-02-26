@@ -1,6 +1,5 @@
 local M = {}
 
--- Load integrations highlights
 --- @param c theme.Colors Color palette
 --- @return table Highlight groups for plugin integrations
 function M.get(c)

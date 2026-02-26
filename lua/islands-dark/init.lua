@@ -1,6 +1,3 @@
--- Islands Dark colorscheme for Neovim
--- A faithful port of JetBrains IntelliJ IDEA Islands Dark theme
-
 local M = {}
 
 --- Load the colorscheme

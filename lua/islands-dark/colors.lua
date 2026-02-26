@@ -1,10 +1,3 @@
--- Islands Dark Color Palette
--- Direct port from IslandsDark.icls
---
--- Naming convention:
---   - Base palette: bg1/bg2/bg3, fg1/fg2/fg3, color1/color2/etc (1=darkest)
---   - Semantic aliases: base/text for familiarity, descriptive names for colors
-
 --- @class theme.Colors
 local M = {}
 

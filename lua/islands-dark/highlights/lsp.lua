@@ -76,6 +76,9 @@ function M.get(c)
 		["@lsp.type.decorator.proto"] = { link = "@identifier" },
 		["@lsp.typemod.type.defaultLibrary.proto"] = { link = "@type.proto" },
 		["@lsp.type.type.proto"] = { link = "@type.proto" },
+
+		-- Lua
+		["@lsp.type.class.lua"] = { link = "@variable.lua" },
 	}
 end
 

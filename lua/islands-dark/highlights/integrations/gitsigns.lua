@@ -1,6 +1,5 @@
 local M = {}
 
---- Load gitsigns highlights
 --- @param c theme.Colors Color palette
 --- @return table Highlight groups for gitsigns plugin
 function M.get(c)
