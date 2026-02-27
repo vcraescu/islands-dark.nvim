@@ -54,11 +54,11 @@ function M.get(c)
 		TabLineSel = { fg = c.text, bg = c.none, bold = true },
 
 		-- Popup menu
-		Pmenu = { fg = c.text, bg = c.none },
-		PmenuSel = { link = "CursorLine" },
+		Pmenu = { link = "NormalFloat" },
+		PmenuSel = { link = "Visual" },
 		PmenuSbar = { bg = c.none },
 		PmenuThumb = { bg = c.border },
-		PmenuBorder = { fg = c.border, bg = c.none },
+		PmenuBorder = { link = "FloatBorder" },
 		PmenuMatch = { fg = c.search_match, bg = c.none, bold = true },
 		PmenuMatchSel = { link = "PmenuSel" },
 		PmenuExtra = { fg = c.text1, bg = c.none },
