@@ -17,7 +17,8 @@ function M.get(c)
 		FzfLuaTabTitle = { fg = c.func, bg = c.none, bold = true },
 		FzfLuaTabMarker = { fg = c.constant, bg = c.none },
 
-		FzfLuaLiveSym = { fg = c.text, bg = c.none },
+		FzfLuaLiveSym = { link = "FzfLuaLivePrompt" },
+		FzfLuaLivePrompt = { fg = c.text, bg = c.none },
 		FzfLuaFzfMatch = { fg = c.search_match, bg = c.none, bold = true },
 
 		FzfLuaHeaderBind = { fg = c.keyword, bg = c.none },
