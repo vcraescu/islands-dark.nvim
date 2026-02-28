@@ -4,9 +4,10 @@ local M = {}
 --- @return table Highlight groups for fzf-lua plugin
 function M.get(c)
 	return {
+		FzfLuaNormal = { link = "NormalFloat" },
 		FzfLuaBorder = { link = "FloatBorder" },
 		FzfLuaTitle = { link = "FloatTitle" },
-		FzfLuaCursorLine = { link = "CursorLine" },
+		FzfLuaBackdrop = { bg = c.base1 },
 
 		FzfLuaPathColNr = { fg = c.line_number, bg = c.none },
 		FzfLuaPathLineNr = { fg = c.line_number, bg = c.none },

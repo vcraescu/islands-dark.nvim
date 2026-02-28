@@ -12,9 +12,9 @@ function M.get(c)
 		FloatTitle = { fg = c.text, bg = c.none, bold = true },
 
 		-- Cursor and lines
-		Cursor = { fg = c.base, bg = c.cursor },
-		lCursor = { fg = c.base, bg = c.cursor },
-		CursorIM = { fg = c.base, bg = c.cursor },
+		Cursor = { bg = c.cursor },
+		lCursor = { bg = c.cursor },
+		CursorIM = { bg = c.cursor },
 		CursorLine = { bg = c.cursorline },
 		CursorLineNr = { fg = c.text, bg = c.cursorline },
 		CursorColumn = { bg = c.cursorline },

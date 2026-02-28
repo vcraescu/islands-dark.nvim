@@ -16,20 +16,19 @@ function M.load_highlights(groups)
 end
 
 --- Apply configuration overrides to colors
----@param colors table Base color palette
----@param config table User configuration
+---@param colors theme.Colors Base color palette
+---@param config theme.Config User configuration
 ---@return table Modified color palette
 function M.apply_overrides(colors, config)
 	if config.transparent then
-		colors.bg = "NONE"
-		colors.bg_alt = "NONE"
+		colors.base = colors.none
 	end
 
 	return colors
 end
 
 -- Get style options from config
---- @param opts table User configuration
+--- @param opts theme.Config User configuration
 --- @param style_type string Style type (comments, keywords, functions, etc.)
 --- @return function Function that takes highlight options and returns merged options with style applied
 function M.get_style(opts, style_type)
