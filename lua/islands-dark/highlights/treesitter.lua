@@ -10,11 +10,11 @@ function M.get(c, config)
 	return {
 		-- Comments
 		["@comment"] = styles.comments({ link = "Comment" }),
-		["@comment.documentation"] = styles.comments({ link = "SpecialComment" }),
+		["@comment.documentation"] = styles.comments({ link = "Comment" }),
 		["@comment.error"] = styles.comments({ fg = c.text, bg = c.error }),
 		["@comment.warning"] = styles.comments({ link = "Debug" }),
 		["@comment.note"] = styles.comments({ fg = c.info }),
-		["@comment.todo"] = styles.comments({ fg = c.text, bg = c.todo }),
+		["@comment.todo"] = styles.comments({ fg = c.base, bg = c.todo }),
 
 		-- Constants
 		["@constant"] = styles.constants({ link = "Constant" }),
