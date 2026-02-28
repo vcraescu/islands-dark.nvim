@@ -160,35 +160,58 @@ islands-dark.load()
 ==============================================================================
 5. COLOR PALETTE                                        *islands-dark-colors*
 
-Core Colors:
-    bg              #21252B     Editor background
-    fg              #BAC0C9     Default text
-    comment         #7A7E85     Comments
-    string          #6AAB73     String literals
-    number          #2AACB8     Numbers
-    keyword         #CF8E6D     Keywords
-    function        #56A8F5     Functions
-    type            #16BAAC     Types/Classes
-    variable        #BAC0C9     Variables
-    constant        #C77DBB     Constants
+Base Colors:
+    bg1             #191A1C     Editor background
+    bg2             #1F2024     Gutter background
+    bg3             #2B2D30     Selection background
+    bg4             #393B40     Cursor line alt background
+    fg1             #7A7E85     Comment color
+    fg2             #A1A3AB     Line number color
+    fg3             #BCBEC4     Default text
+    fg4             #D1D3D9     Lighter text
 
-UI Colors:
-    cursor_line     #2C313A     Current line background
-    selection       #2F4B5C     Visual selection
-    search          #B36100     Search matches
-    line_nr         #5F6672     Line numbers
-    border          #3A3F4B     Window borders
+Syntax Colors:
+    blue1           #114957     Search result background
+    blue2           #214283     Visual selection
+    blue3           #548AF7     Instance methods
+    blue4           #56A8F5     Functions
+    blue5           #6FAFBD     Class names/types
+    cyan1           #293C40     LSP reference background
+    cyan2           #2AACB8     Numbers
+    green1          #375239     Added lines background
+    green2          #6AAB73     Strings
+    red1            #5E3838     Deleted lines background
+    red2            #F75464     Errors
+    yellow1         #B3AE60     Todos
+    yellow2         #D5B778     Tags
+    orange1         #CC7832     Static fields
+    orange2         #CF8E6D     Keywords
+    purple1         #C77DBB     Constants
+    purple2         #B189F5     Template language
+    gray1           #43454A     Borders
 
-Diagnostic Colors:
-    error           #E65452     Error messages
-    warning         #CE9632     Warning messages
-    info            #57AAF7     Info messages
-    hint            #8EADB0     Hint messages
-
-Git Colors:
-    git_add         #58A55C     Added lines
-    git_change      #57AAF7     Changed lines
-    git_delete      #E65452     Deleted lines
+Semantic Aliases:
+    base            #191A1C     Editor background (bg1)
+    text            #BCBEC4     Default text (fg3)
+    border          #43454A     Borders (gray1)
+    cursor          #BCBEC4     Cursor color (text)
+    cursorline      #1F2024     Cursor line (bg2)
+    visual          #214283     Visual selection (blue2)
+    line_number     #7A7E85     Line numbers (fg1)
+    keyword         #CF8E6D     Keywords (orange2)
+    string          #6AAB73     Strings (green2)
+    number          #2AACB8     Numbers (cyan2)
+    func            #56A8F5     Functions (blue4)
+    type            #6FAFBD     Types (blue5)
+    constant        #C77DBB     Constants (purple1)
+    comment         #7A7E85     Comments (fg1)
+    error           #F75464     Errors (red2)
+    warning         #D5B778     Warnings (yellow2)
+    info            #6FAFBD     Info (blue5)
+    hint            #7A7E85     Hints (fg1)
+    git_add         #6AAB73     Git added (green2)
+    git_change      #56A8F5     Git changed (blue4)
+    git_delete      #F75464     Git deleted (red2)
 
 ==============================================================================
 6. HIGHLIGHT GROUPS                                  *islands-dark-highlights*
@@ -225,32 +248,47 @@ Diagnostic Highlights:
 Islands Dark includes optimized highlights for:
 
 Completion:
-    • nvim-cmp
     • blink.cmp
 
 File Explorers:
     • nvim-tree
-    • neo-tree
 
 Fuzzy Finders:
     • fzf-lua
-    • telescope.nvim
 
 Git Integration:
     • gitsigns
-    • diffview.nvim
-    • neogit
 
-Status Lines:
-    • lualine.nvim
-    • feline.nvim
+                                                  *islands-dark-fzf-lua*
+fzf-lua Configuration ~
 
-Other:
-    • which-key.nvim
-    • indent-blankline.nvim
-    • todo-comments.nvim
-    • trouble.nvim
-    • nvim-treesitter-context
+The colorscheme provides highlight groups for fzf-lua UI elements, but the
+selection cursor/bar requires additional configuration in your fzf-lua setup.
+
+To customize the selection cursor color in fzf-lua, add this to your config:
+>lua
+    require('fzf-lua').setup({
+      fzf_colors = {
+        ["bg+"] = { "bg", "Visual" },      -- Selection bar background
+        ["fg+"] = { "fg", "Normal" },      -- Selection bar text
+        ["hl+"] = { "fg", "Function" },    -- Highlighted matches
+      },
+    })
+<
+
+Or use raw hex colors from the Islands Dark palette:
+>lua
+    require('fzf-lua').setup({
+      fzf_colors = {
+        ["bg+"] = "#214283",  -- visual selection color
+        ["fg+"] = "#BCBEC4",  -- default text
+        ["hl+"] = "#56A8F5",  -- function color
+      },
+    })
+<
+
+Note: fzf-lua uses fzf's native color system, not Neovim highlight groups,
+for the selection cursor. The colorscheme cannot set this automatically.
 
 ==============================================================================
 8. TROUBLESHOOTING                              *islands-dark-troubleshooting*
@@ -285,7 +323,7 @@ Transparent background not working ~
 
 Islands Dark is distributed under the MIT License.
 
-Copyright (c) 2024 Viorel Craescu
+Copyright (c) 2026
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
