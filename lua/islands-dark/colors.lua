@@ -55,6 +55,8 @@ M.red2 = "#F75464" -- ERRORS_ATTRIBUTES (red)
 -- ───────────────────────────────────────────────────────────────────────────
 M.yellow1 = "#B3AE60" -- TODO_DEFAULT (olive/muted yellow)
 M.yellow2 = "#D5B778" -- DEFAULT_TAG (yellow)
+M.yellow3 = "#B09D79" -- FUNCTION_CALL (mustard yellow)
+M.yellow4 = "#AFBF7E"
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Oranges (1=darkest → 2=lightest)
@@ -124,7 +126,8 @@ M.number = M.cyan2
 
 -- Functions & Methods
 M.func = M.blue4
-M.func_builtin = M.blue3
+M.func_builtin = M.orange1
+M.func_call = M.yellow3
 M.method = M.blue4
 
 -- Variables & Parameters
@@ -156,7 +159,7 @@ M.tag = M.yellow2
 M.attribute = M.text
 
 -- Labels & Special
-M.label = M.orange2
+M.label = M.yellow4
 M.metadata = M.yellow1
 M.identifier = M.blue4
 M.special = M.cyan2

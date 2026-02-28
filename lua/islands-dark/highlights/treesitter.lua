@@ -11,15 +11,15 @@ function M.get(c, config)
 		-- Comments
 		["@comment"] = styles.comments({ link = "Comment" }),
 		["@comment.documentation"] = styles.comments({ link = "Comment" }),
-		["@comment.error"] = styles.comments({ fg = c.text, bg = c.error }),
+		["@comment.error"] = styles.comments({ link = "Error" }),
 		["@comment.warning"] = styles.comments({ link = "Debug" }),
 		["@comment.note"] = styles.comments({ fg = c.info }),
-		["@comment.todo"] = styles.comments({ fg = c.base, bg = c.todo }),
+		["@comment.todo"] = styles.comments({ link = "Todo" }),
 
 		-- Constants
 		["@constant"] = styles.constants({ link = "Constant" }),
-		["@constant.builtin"] = styles.constants({ link = "Keyword" }),
-		["@constant.macro"] = styles.constants({ link = "Macro" }),
+		["@constant.builtin"] = styles.constants({ link = "Constant" }),
+		["@constant.macro"] = styles.constants({ link = "Constant" }),
 
 		-- Strings
 		["@string"] = styles.strings({ link = "String" }),
@@ -36,18 +36,18 @@ function M.get(c, config)
 
 		-- Numbers
 		["@number"] = { link = "Number" },
-		["@number.float"] = { link = "@number" },
+		["@number.float"] = { link = "Number" },
 
 		-- Booleans
 		["@boolean"] = { link = "Boolean" },
 
 		-- Functions
 		["@function"] = styles.functions({ link = "Function" }),
-		["@function.builtin"] = styles.functions({ link = "Function" }),
-		["@function.call"] = styles.functions({ link = "Function" }),
+		["@function.builtin"] = styles.functions({ fg = c.func_builtin }),
+		["@function.call"] = styles.functions({ fg = c.func_call }),
 		["@function.macro"] = styles.functions({ fg = c.metadata }),
-		["@function.method"] = styles.functions({ fg = c.method }),
-		["@function.method.call"] = styles.functions({ link = "@function.method" }),
+		["@function.method"] = styles.functions({ link = "Function" }),
+		["@function.method.call"] = styles.functions({ link = "@function.call" }),
 
 		-- Constructors
 		["@constructor"] = { link = "@function.method" },
@@ -58,44 +58,30 @@ function M.get(c, config)
 
 		-- Keywords
 		["@keyword"] = styles.keywords({ link = "Keyword" }),
-		["@keyword.conditional"] = styles.keywords({ link = "@keyword" }),
 		["@keyword.conditional.ternary"] = styles.keywords({ link = "Operator" }),
-		["@keyword.coroutine"] = styles.keywords({ link = "@keyword" }),
-		["@keyword.debug"] = styles.keywords({ link = "@keyword" }),
-		["@keyword.directive"] = styles.keywords({ link = "@keyword" }),
-		["@keyword.directive.define"] = styles.keywords({ link = "@keyword" }),
 		["@keyword.exception"] = styles.keywords({ link = "Exception" }),
-		["@keyword.function"] = styles.keywords({ link = "@keyword" }),
-		["@keyword.import"] = styles.keywords({ link = "@keyword" }),
-		["@keyword.operator"] = styles.keywords({ link = "@keyword" }),
-		["@keyword.repeat"] = styles.keywords({ link = "@keyword" }),
-		["@keyword.return"] = styles.keywords({ link = "@keyword" }),
-		["@keyword.storage"] = styles.keywords({ link = "@keyword" }),
 
 		-- Operators
 		["@operator"] = { link = "Operator" },
 
 		-- Punctuation
-		["@punctuation.delimiter"] = { link = "Delimiter" },
-		["@punctuation.bracket"] = { link = "Delimiter" },
-		["@punctuation.special"] = { link = "Delimiter" },
+		["@punctuation"] = { link = "Delimiter" },
 
 		-- Types
-		["@type"] = { fg = c.type },
+		["@type"] = { link = "Type" },
 		["@type.builtin"] = { fg = c.type_builtin },
 		["@type.definition"] = { link = "Typedef" },
-		["@type.qualifier"] = { link = "@keyword" },
+		["@type.qualifier"] = { link = "Keyword" },
 
 		-- Attributes
 		["@attribute"] = { fg = c.metadata },
-		["@attribute.builtin"] = { fg = c.metadata },
 
 		-- Properties
 		["@property"] = { fg = c.property },
 
 		-- Variables
 		["@variable"] = styles.variables({ link = "Identifier" }),
-		["@variable.builtin"] = styles.variables({ link = "@keyword" }),
+		["@variable.builtin"] = styles.variables({ link = "Keyword" }),
 		["@variable.member"] = styles.variables({ link = "@property" }),
 		["@variable.parameter"] = styles.variables({ link = "@parameter" }),
 
@@ -109,7 +95,7 @@ function M.get(c, config)
 		-- Tags (HTML/XML)
 		["@tag"] = { link = "Tag" },
 		["@tag.attribute"] = { fg = c.attribute },
-		["@tag.delimiter"] = { link = "@tag" },
+		["@tag.delimiter"] = { link = "Tag" },
 		["@markup.heading.html"] = {},
 		["@markup.heading.1.html"] = {},
 		["@markup.heading.2.html"] = {},
@@ -117,7 +103,7 @@ function M.get(c, config)
 		["@markup.heading.4.html"] = {},
 		["@markup.heading.5.html"] = {},
 		["@markup.heading.6.html"] = {},
-		["@constant.html"] = { link = "@tag" },
+		["@constant.html"] = { link = "Tag" },
 		["@constant.builtin.xml"] = { link = "Special" },
 
 		-- Markup (Markdown, etc.)
@@ -125,20 +111,20 @@ function M.get(c, config)
 		["@markup.italic"] = { italic = true },
 		["@markup.strikethrough"] = { strikethrough = true },
 		["@markup.underline"] = { underline = true },
-		["@markup.heading"] = { link = "@constant" },
-		["@markup.quote"] = { fg = c.keyword },
-		["@markup.quote.markdown"] = { fg = c.string },
-		["@markup.math"] = { link = "@number" },
+		["@markup.heading"] = { link = "Constant" },
+		["@markup.quote"] = { link = "Keyword" },
+		["@markup.quote.markdown"] = { link = "String" },
+		["@markup.math"] = { link = "Number" },
 		["@markup.link"] = { link = "@string.special.url" },
 		["@markup.link.label"] = { link = "@markup.link" },
 		["@markup.link.url"] = { link = "@markup.link" },
-		["@markup.raw"] = { link = "@string" },
-		["@label.markdown"] = { link = "@constant" },
-		["@markup.list"] = { link = "@keyword" },
+		["@markup.raw"] = { link = "String" },
+		["@label.markdown"] = { link = "Constant" },
+		["@markup.list"] = { link = "Keyword" },
 		["@markup.list.checked"] = { fg = c.text },
 		["@markup.list.unchecked"] = { fg = c.text },
-		["@conceal.markdown_inline"] = { link = "@label" },
-		["@punctuation.special.markdown"] = { link = "@label" },
+		["@conceal.markdown_inline"] = { link = "Label" },
+		["@punctuation.special.markdown"] = { link = "Label" },
 
 		-- Diff
 		["@diff.plus"] = { link = "DiffAdd" },
@@ -151,55 +137,90 @@ function M.get(c, config)
 		-- Language-specific
 
 		-- Bash
-		["@function.builtin.bash"] = { link = "@keyword" },
+		["@function.builtin.bash"] = { link = "Keyword" },
 
 		-- Go
-		["@type.builtin.go"] = { link = "@keyword" },
-		["@constant.builtin.go"] = { link = "@keyword" },
+		["@type.builtin.go"] = { link = "Keyword" },
+		["@constant.builtin.go"] = { link = "Keyword" },
 		["@module.go"] = { fg = c.metadata },
 		["@namespace.go"] = { fg = c.metadata },
-		["@string.special.url.gomod"] = { link = "@string" },
-		["@string.special.url.gosum"] = { link = "@string" },
+		["@string.special.url.gomod"] = { link = "String" },
+		["@string.special.url.gosum"] = { link = "String" },
 
 		-- TypeScript/JavaScript
-		["@constructor.typescript"] = { link = "@keyword" },
-		["@constructor.javascript"] = { link = "@keyword" },
+		["@constructor.typescript"] = { link = "Keyword" },
+		["@constructor.javascript"] = { link = "Keyword" },
 		["@constructor.tsx"] = { link = "@constructor.typescript" },
+		["@constructor.typescriptreact"] = { link = "@constructor.typescript" },
+
 		["@type.parameter.typescript"] = { fg = c.type_parameter },
 		["@type.parameter.javascript"] = { fg = c.type_parameter },
 		["@type.parameter.tsx"] = { fg = c.type_parameter },
-		["@constant.typescript"] = { link = "@variable" },
-		["@constant.javascript"] = { link = "@variable" },
+		["@type.parameter.typescriptreact"] = { fg = c.type_parameter },
+
+		["@constant.typescript"] = { link = "Identifier" },
+		["@constant.javascript"] = { link = "@constant.typescript" },
+		["@constant.typescriptreact"] = { link = "@constant.typescript" },
+
+		["@function.method.call.typescript"] = { link = "Function" },
+		["@function.method.call.javascript"] = { link = "Function" },
+		["@function.method.call.tsx"] = { link = "Function" },
+		["@function.method.call.typescriptreact"] = { link = "Function" },
+
+		["@tag.builtin.tsx"] = { link = "Tag" },
+		["@tag.delimiter.tsx"] = { link = "Tag" },
+
+		["@type.typescript"] = { link = "Identifier" },
+		["@type.javascript"] = { link = "@type.typescript" },
+		["@type.tsx"] = { link = "@type.typescript" },
+		["@type.typescriptreact"] = { link = "@type.typescript" },
+
+		["@function.call.typescript"] = { link = "Function" },
+		["@function.call.javascript"] = { link = "@function.call.typescript" },
+		["@function.call.tsx"] = { link = "@function.call.typescript" },
+		["@function.call.typescriptreact"] = { link = "@function.call.typescript" },
+
+		["@variable.builtin.typescript"] = { link = "Constant" },
+		["@variable.builtin.javascript"] = { link = "@variable.builtin.typescript" },
+		["@variable.builtin.tsx"] = { link = "@variable.builtin.typescript" },
+		["@variable.builtin.typescriptreact"] = { link = "@variable.builtin.typescript" },
 
 		-- Lua
 		["@constructor.lua"] = { fg = c.braces },
 
 		-- Yaml
-		["@property.yaml"] = { link = "@keyword" },
-		["@type.yaml"] = { link = "@tag" },
+		["@property.yaml"] = { link = "Keyword" },
+		["@type.yaml"] = { link = "Tag" },
 
 		-- CSS
-		["@tag.css"] = { link = "@tag" },
-		["@constant.css"] = { link = "@tag" },
+		["@tag.css"] = { link = "Tag" },
+		["@constant.css"] = { link = "Tag" },
 		["@punctuation.delimiter.css"] = { link = "@tag.css" },
 
 		-- Proto
-		["@type.proto"] = { link = "@identifier" },
-		["@variable.member.proto"] = { link = "@identifier" },
+		["@type.proto"] = { link = "Identifier" },
+		["@variable.member.proto"] = { link = "Identifier" },
 
 		-- Python
-		["@constructor.python"] = { link = "@keyword" },
-		["@variable.member.python"] = { link = "@indentifier" },
+		["@constructor.python"] = { link = "Keyword" },
+		["@variable.member.python"] = { link = "Identifier" },
 
 		-- XML
-		["@keyword.directive.define.xml"] = { link = "@tag" },
-		["@keyword.directive.xml"] = { link = "@tag" },
-		["@number.xml"] = { link = "@string" },
-		["@string.special.xml"] = { link = "@string" },
+		["@keyword.directive.define.xml"] = { link = "Tag" },
+		["@keyword.directive.xml"] = { link = "Tag" },
+		["@number.xml"] = { link = "String" },
+		["@string.special.xml"] = { link = "String" },
 
 		-- Terraform
-		["@constant.terraform"] = { link = "@keyword" },
-		["@type.terraform"] = { link = "@keyword" },
+		["@constant.terraform"] = { link = "Keyword" },
+		["@type.terraform"] = { link = "Keyword" },
+
+		-- PHP
+		["@function.method.call.php"] = { link = "Function" },
+		["@function.call.php"] = { link = "Function" },
+		["@type.php"] = { link = "Identifier" },
+		["@constructor.php"] = { link = "Identifier" },
+		["@type.phpdoc"] = { link = "Identifier" },
 	}
 end
 
