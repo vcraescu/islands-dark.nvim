@@ -23,6 +23,8 @@ function M.get(c)
 
 		FzfLuaHeaderBind = { fg = c.keyword, bg = c.none },
 		FzfLuaHeaderText = { fg = c.text1, bg = c.none },
+
+		FzfLuaFzfPointer = { fg = c.comment },
 	}
 end
 
