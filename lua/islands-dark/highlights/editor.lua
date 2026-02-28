@@ -49,9 +49,9 @@ function M.get(c)
 		WinBarNC = { fg = c.text1, bg = c.cursorline },
 
 		-- Tab line
-		TabLine = { fg = c.text1, bg = c.base2 },
-		TabLineFill = { bg = c.base2 },
-		TabLineSel = { fg = c.text, bg = c.none, bold = true },
+		TabLine = {},
+		TabLineFill = {},
+		TabLineSel = { link = "Visual" },
 
 		-- Popup menu
 		Pmenu = { link = "NormalFloat" },
