@@ -8,21 +8,36 @@ selection-background = #2B2D30
 selection-foreground = #BCBEC4
 
 # ANSI Colors (0-15)
-palette = 0=#2B2D30
-palette = 1=#F75464
-palette = 2=#6AAB73
-palette = 3=#D5B778
-palette = 4=#56A8F5
-palette = 5=#C77DBB
-palette = 6=#2AACB8
-palette = 7=#BCBEC4
-palette = 8=#7A7E85
-palette = 9=#F75464
-palette = 10=#6AAB73
-palette = 11=#D5B778
-palette = 12=#548AF7
-palette = 13=#B189F5
-palette = 14=#6FAFBD
+# Black
+palette = 0=#191A1C
+palette = 8=#2B2D30
+
+# Red
+palette = 1=#F0524F
+palette = 9=#FF4050
+
+# Green
+palette = 2=#5C962C
+palette = 10=#4FC414
+
+# Yellow
+palette = 3=#A68A0D
+palette = 11=#E5BF00
+
+# Blue
+palette = 4=#3993D4
+palette = 12=#1FB0FF
+
+# Magenta
+palette = 5=#A771BF
+palette = 13=#ED7EED
+
+# Cyan
+palette = 6=#00A3A3
+palette = 14=#00E5E5
+
+# White
+palette = 7=#A1A3AB
 palette = 15=#BCBEC4
 
 split-divider-color = #43454A

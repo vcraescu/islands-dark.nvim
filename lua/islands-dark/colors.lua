@@ -205,4 +205,30 @@ M.todo = M.yellow1
 M.note = M.blue5
 M.link = M.blue4
 
+M.terminal = {
+	black = M.base,
+	bright_black = M.base2,
+
+	red = "#F0524F",
+	bright_red = "#FF4050",
+
+	green = "#5C962C",
+	bright_green = "#4FC414",
+
+	yellow = "#A68A0D",
+	bright_yellow = "#E5BF00",
+
+	blue = "#3993D4",
+	bright_blue = "#1FB0FF",
+
+	magenta = "#A771BF",
+	bright_magenta = "#ED7EED",
+
+	cyan = "#00A3A3",
+	bright_cyan = "#00E5E5",
+
+	white = M.text1,
+	bright_white = M.text,
+}
+
 return M

@@ -74,6 +74,7 @@ function M.get()
 		["@lsp.typemod.variable.defaultLibrary.typescript"] = { link = "@variable.builtin.typescript" },
 		["@lsp.typemod.variable.defaultLibrary.typescriptreact"] = { link = "@variable.builtin.typescript" },
 		["@lsp.typemod.variable.readonly"] = { link = "@lsp.mod.constant" },
+		["@lsp.typemod.variable.readonly.go"] = {},
 		["@lsp.typemod.variable.readonly.javascript"] = { link = "@constant.typescript" },
 		["@lsp.typemod.variable.readonly.tsx"] = { link = "@constant.typescript" },
 		["@lsp.typemod.variable.readonly.typescript"] = { link = "@constant.typescript" },
