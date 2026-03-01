@@ -6,6 +6,7 @@ function M.get()
 	return {
 		["@lsp.mod.constant"] = { link = "@constant" },
 		["@lsp.mod.defaultLibrary"] = { link = "@lsp.mod.keyword" },
+		["@lsp.mod.format"] = { link = "@string.escape" },
 		["@lsp.mod.readonly"] = { link = "@lsp.mod.constant" },
 		["@lsp.mod.readonly.javascript"] = {},
 		["@lsp.mod.readonly.tsx"] = {},
@@ -42,6 +43,7 @@ function M.get()
 		["@lsp.type.property"] = { link = "@property" },
 		["@lsp.type.property.javascript"] = {},
 		["@lsp.type.property.proto"] = { link = "@property.proto" },
+		["@lsp.type.string.go"] = {},
 		["@lsp.type.struct"] = { link = "@lsp.type.type" },
 		["@lsp.type.struct.proto"] = { link = "@type.proto" },
 		["@lsp.type.type"] = { link = "@type" },

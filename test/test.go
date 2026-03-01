@@ -123,6 +123,11 @@ func main() {
 	var d, c *int = nil, nil
 	_, _ = c, d
 	_, _ = true, false
+
+	// Test format string highlighting
+	err := fmt.Errorf("error: %w", someError)
+	fmt.Printf("name=%s, age=%d, value=%v\n", name, age, value)
+	fmt.Sprintf("hex=%#x, float=%.2f, pointer=%p", num, flt, ptr)
 }
 
 var ExportedVariableFunction = func() {}
