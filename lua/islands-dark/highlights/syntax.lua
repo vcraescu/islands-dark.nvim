@@ -8,56 +8,41 @@ function M.get(c, config)
 	local styles = util.get_styles(config)
 
 	return {
-		-- Comments
-		Comment = styles.comments({ fg = c.comment }),
-
-		-- Constants
-		Constant = { fg = c.constant },
-		String = { fg = c.string },
-		Character = { fg = c.string },
-		Number = { fg = c.number },
 		Boolean = { link = "Keyword" },
-		Float = { fg = c.number },
-
-		-- Identifiers
-		Identifier = styles.variables({ fg = c.variable }),
-		Function = styles.functions({ fg = c.func }),
-
-		-- Statements
-		Statement = { link = "Keyword" },
+		Character = { fg = c.string },
+		Comment = styles.comments({ fg = c.comment }),
 		Conditional = { link = "Keyword" },
-		Repeat = { link = "Keyword" },
-		Label = { fg = c.label },
-		Operator = { fg = c.operator },
-		Keyword = styles.keywords({ fg = c.keyword }),
-		Exception = { link = "Keyword" },
-
-		-- PreProc
-		PreProc = { fg = c.metadata },
-		Include = { link = "Keyword" },
+		Constant = { fg = c.constant },
+		Debug = { fg = c.warning },
 		Define = { link = "Keyword" },
+		Delimiter = { fg = c.punctuation },
+		Error = { fg = c.error },
+		Exception = { link = "Keyword" },
+		Float = { fg = c.number },
+		Function = styles.functions({ fg = c.func }),
+		Identifier = styles.variables({ fg = c.variable }),
+		Ignore = { fg = c.text2 },
+		Include = { link = "Keyword" },
+		Keyword = styles.keywords({ fg = c.keyword }),
+		Label = { fg = c.label },
 		Macro = styles.functions({ fg = c.metadata }),
+		Number = { fg = c.number },
+		Operator = { fg = c.operator },
 		PreCondit = { link = "Keyword" },
-
-		-- Types
-		Type = { fg = c.type },
-		StorageClass = { link = "Keyword" },
-		Structure = { link = "Keyword" },
-		Typedef = { fg = c.type_definition },
-
-		-- Special
+		PreProc = { fg = c.metadata },
+		Repeat = { link = "Keyword" },
 		Special = { fg = c.special },
 		SpecialChar = { link = "Special" },
-		Tag = { fg = c.tag },
-		Delimiter = { fg = c.punctuation },
 		SpecialComment = { fg = c.comment_doc },
-		Debug = { fg = c.warning },
-
-		-- Other
-		Underlined = { fg = c.link, underline = true },
-		Ignore = { fg = c.text2 },
-		Error = { fg = c.error },
+		Statement = { link = "Keyword" },
+		StorageClass = { link = "Keyword" },
+		String = { fg = c.string },
+		Structure = { link = "Keyword" },
+		Tag = { fg = c.tag },
 		Todo = { fg = c.todo, bold = true },
+		Type = { fg = c.type },
+		Typedef = { fg = c.type_definition },
+		Underlined = { fg = c.link, underline = true },
 	}
 end
 

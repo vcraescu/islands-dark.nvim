@@ -20,7 +20,7 @@ function M.setup(colors, config)
 		editor.get(colors),
 		syntax.get(colors, config),
 		treesitter.get(colors, config),
-		lsp.get(colors),
+		lsp.get(),
 		diagnostics.get(colors),
 		integrations.get(colors)
 	)

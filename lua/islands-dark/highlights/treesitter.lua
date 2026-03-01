@@ -97,88 +97,65 @@ end
 --- @return theme.Highlights
 function M.get_langs(c)
 	return {
-		-- Bash
-		["@function.builtin.bash"] = { link = "Keyword" },
-
-		-- Go
 		["@constant.builtin.go"] = { link = "Keyword" },
-		["@module.go"] = { fg = c.metadata },
-		["@namespace.go"] = { fg = c.metadata },
-		["@string.special.url.gomod"] = { link = "String" },
-		["@string.special.url.gosum"] = { link = "String" },
-		["@type.builtin.go"] = { link = "Keyword" },
-
-		-- TypeScript/JavaScript
+		["@constant.builtin.xml"] = { link = "Special" },
+		["@constant.css"] = { link = "Tag" },
+		["@constant.html"] = { link = "Tag" },
 		["@constant.javascript"] = { link = "@constant.typescript" },
+		["@constant.terraform"] = { link = "Keyword" },
 		["@constant.typescript"] = { link = "Identifier" },
 		["@constant.typescriptreact"] = { link = "@constant.typescript" },
 		["@constructor.javascript"] = { link = "Keyword" },
+		["@constructor.lua"] = { fg = c.braces },
+		["@constructor.php"] = { link = "Identifier" },
+		["@constructor.python"] = { link = "Keyword" },
 		["@constructor.tsx"] = { link = "@constructor.typescript" },
 		["@constructor.typescript"] = { link = "Keyword" },
 		["@constructor.typescriptreact"] = { link = "@constructor.typescript" },
+		["@function.builtin.bash"] = { link = "Keyword" },
 		["@function.call.javascript"] = { link = "@function.call.typescript" },
+		["@function.call.php"] = { link = "Function" },
 		["@function.call.tsx"] = { link = "@function.call.typescript" },
 		["@function.call.typescript"] = { link = "Function" },
 		["@function.call.typescriptreact"] = { link = "@function.call.typescript" },
 		["@function.method.call.javascript"] = { link = "Function" },
+		["@function.method.call.php"] = { link = "Function" },
 		["@function.method.call.tsx"] = { link = "Function" },
 		["@function.method.call.typescript"] = { link = "Function" },
 		["@function.method.call.typescriptreact"] = { link = "Function" },
+		["@keyword.directive.define.xml"] = { link = "Tag" },
+		["@keyword.directive.xml"] = { link = "Tag" },
+		["@module.go"] = { fg = c.metadata },
+		["@namespace.go"] = { fg = c.metadata },
+		["@number.xml"] = { link = "String" },
+		["@property.yaml"] = { link = "Keyword" },
+		["@punctuation.delimiter.css"] = { link = "@tag.css" },
+		["@string.special.url.gomod"] = { link = "String" },
+		["@string.special.url.gosum"] = { link = "String" },
+		["@string.special.xml"] = { link = "String" },
 		["@tag.builtin.tsx"] = { link = "Tag" },
+		["@tag.css"] = { link = "Tag" },
 		["@tag.delimiter.tsx"] = { link = "Tag" },
+		["@type.builtin.go"] = { link = "Keyword" },
 		["@type.javascript"] = { link = "@type.typescript" },
 		["@type.parameter.javascript"] = { fg = c.type_parameter },
 		["@type.parameter.tsx"] = { fg = c.type_parameter },
 		["@type.parameter.typescript"] = { fg = c.type_parameter },
 		["@type.parameter.typescriptreact"] = { fg = c.type_parameter },
+		["@type.php"] = { link = "Identifier" },
+		["@type.phpdoc"] = { link = "Identifier" },
+		["@type.proto"] = { link = "Identifier" },
+		["@type.terraform"] = { link = "Keyword" },
 		["@type.tsx"] = { link = "@type.typescript" },
 		["@type.typescript"] = { link = "Identifier" },
 		["@type.typescriptreact"] = { link = "@type.typescript" },
+		["@type.yaml"] = { link = "Tag" },
 		["@variable.builtin.javascript"] = { link = "@variable.builtin.typescript" },
 		["@variable.builtin.tsx"] = { link = "@variable.builtin.typescript" },
 		["@variable.builtin.typescript"] = { link = "Constant" },
 		["@variable.builtin.typescriptreact"] = { link = "@variable.builtin.typescript" },
-
-		-- Lua
-		["@constructor.lua"] = { fg = c.braces },
-
-		-- Yaml
-		["@property.yaml"] = { link = "Keyword" },
-		["@type.yaml"] = { link = "Tag" },
-
-		-- CSS
-		["@constant.css"] = { link = "Tag" },
-		["@punctuation.delimiter.css"] = { link = "@tag.css" },
-		["@tag.css"] = { link = "Tag" },
-
-		-- Proto
-		["@type.proto"] = { link = "Identifier" },
 		["@variable.member.proto"] = { link = "Identifier" },
-
-		-- Python
-		["@constructor.python"] = { link = "Keyword" },
 		["@variable.member.python"] = { link = "Identifier" },
-
-		-- XML
-		["@constant.builtin.xml"] = { link = "Special" },
-		["@keyword.directive.define.xml"] = { link = "Tag" },
-		["@keyword.directive.xml"] = { link = "Tag" },
-		["@number.xml"] = { link = "String" },
-		["@string.special.xml"] = { link = "String" },
-
-		-- HTML
-		["@constant.html"] = { link = "Tag" },
-
-		-- Terraform
-		["@constant.terraform"] = { link = "Keyword" },
-		["@type.terraform"] = { link = "Keyword" },
-
-		-- PHP
-		["@constructor.php"] = { link = "Identifier" },
-		["@function.call.php"] = { link = "Function" },
-		["@function.method.call.php"] = { link = "Function" },
-		["@type.php"] = { link = "Identifier" },
-		["@type.phpdoc"] = { link = "Identifier" },
 	}
 end
 

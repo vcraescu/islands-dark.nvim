@@ -7,55 +7,38 @@ local M = {}
 --- @return table Highlight groups for diagnostics and LSP features
 function M.get(c)
 	return {
-		-- Diagnostics (inline text)
 		DiagnosticError = { fg = c.error },
-		DiagnosticWarn = { fg = c.warning },
-		DiagnosticInfo = { fg = c.info },
-		DiagnosticHint = { fg = c.hint },
-		DiagnosticOk = { fg = c.string },
-
-		-- Diagnostics (underline)
-		DiagnosticUnderlineError = { sp = c.error, undercurl = true },
-		DiagnosticUnderlineWarn = { sp = c.warning, undercurl = true },
-		DiagnosticUnderlineInfo = { sp = c.info, undercurl = true },
-		DiagnosticUnderlineHint = { sp = c.hint, undercurl = true },
-		DiagnosticUnderlineOk = { sp = c.string, undercurl = true },
-
-		-- Diagnostics (virtual text)
-		DiagnosticVirtualTextError = { fg = c.error },
-		DiagnosticVirtualTextWarn = { fg = c.warning },
-		DiagnosticVirtualTextInfo = { fg = c.info },
-		DiagnosticVirtualTextHint = { fg = c.hint },
-		DiagnosticVirtualTextOk = { fg = c.string },
-
-		-- Diagnostics (signs in gutter)
-		DiagnosticSignError = { fg = c.error, bg = c.none },
-		DiagnosticSignWarn = { fg = c.warning, bg = c.none },
-		DiagnosticSignInfo = { fg = c.info, bg = c.none },
-		DiagnosticSignHint = { fg = c.hint, bg = c.none },
-		DiagnosticSignOk = { fg = c.string, bg = c.none },
-
-		-- Diagnostics (floating windows)
 		DiagnosticFloatingError = { fg = c.error, bg = c.none },
-		DiagnosticFloatingWarn = { fg = c.warning, bg = c.none },
-		DiagnosticFloatingInfo = { fg = c.info, bg = c.none },
 		DiagnosticFloatingHint = { fg = c.hint, bg = c.none },
+		DiagnosticFloatingInfo = { fg = c.info, bg = c.none },
 		DiagnosticFloatingOk = { fg = c.string, bg = c.none },
-
-		-- LSP references
-		LspReferenceText = { bg = c.lsp_reference },
-		LspReferenceRead = { bg = c.lsp_reference },
-		LspReferenceWrite = { bg = c.lsp_reference },
-
-		-- LSP signature help
-		LspSignatureActiveParameter = { fg = c.parameter, bold = true },
-
-		-- LSP inlay hints
-		LspInlayHint = { fg = c.text2 },
-
-		-- LSP Code Lens
+		DiagnosticFloatingWarn = { fg = c.warning, bg = c.none },
+		DiagnosticHint = { fg = c.hint },
+		DiagnosticInfo = { fg = c.info },
+		DiagnosticOk = { fg = c.string },
+		DiagnosticSignError = { fg = c.error, bg = c.none },
+		DiagnosticSignHint = { fg = c.hint, bg = c.none },
+		DiagnosticSignInfo = { fg = c.info, bg = c.none },
+		DiagnosticSignOk = { fg = c.string, bg = c.none },
+		DiagnosticSignWarn = { fg = c.warning, bg = c.none },
+		DiagnosticUnderlineError = { fg = c.error, undercurl = true },
+		DiagnosticUnderlineHint = { fg = c.hint, undercurl = true },
+		DiagnosticUnderlineInfo = { fg = c.info, undercurl = true },
+		DiagnosticUnderlineOk = { fg = c.string, undercurl = true },
+		DiagnosticUnderlineWarn = { fg = c.warning, undercurl = true },
+		DiagnosticVirtualTextError = { fg = c.error },
+		DiagnosticVirtualTextHint = { fg = c.hint },
+		DiagnosticVirtualTextInfo = { fg = c.info },
+		DiagnosticVirtualTextOk = { fg = c.string },
+		DiagnosticVirtualTextWarn = { fg = c.warning },
+		DiagnosticWarn = { fg = c.warning },
 		LspCodeLens = { fg = c.text2 },
 		LspCodeLensSeparator = { fg = c.border },
+		LspInlayHint = { fg = c.text2 },
+		LspReferenceRead = { bg = c.lsp_reference },
+		LspReferenceText = { bg = c.lsp_reference },
+		LspReferenceWrite = { bg = c.lsp_reference },
+		LspSignatureActiveParameter = { fg = c.parameter, bold = true },
 	}
 end
 
