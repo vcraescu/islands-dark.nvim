@@ -1,24 +1,19 @@
-local M = {}
-
---- Set highlight group
----@param group string Highlight group name
----@param opts table Highlight options (fg, bg, sp, bold, italic, underline, undercurl, strikethrough, etc.)
-function M.highlight(group, opts)
-	vim.api.nvim_set_hl(0, group, opts)
-end
+local M = {
+	styles_cache = {},
+}
 
 --- Load highlight groups
----@param groups table Table of highlight groups { group_name = opts }
+---@param groups theme.Highlights Table of highlight groups and their options
 function M.load_highlights(groups)
 	for group, opts in pairs(groups) do
-		M.highlight(group, opts)
+		vim.api.nvim_set_hl(0, group, opts)
 	end
 end
 
 --- Apply configuration overrides to colors
 ---@param colors theme.Colors Base color palette
 ---@param config theme.Config User configuration
----@return table Modified color palette
+---@return theme.Colors
 function M.apply_overrides(colors, config)
 	if config.transparent then
 		colors.base = colors.none
@@ -29,14 +24,14 @@ end
 
 -- Get style options from config
 --- @param opts theme.Config User configuration
---- @param style_type string Style type (comments, keywords, functions, etc.)
---- @return function Function that takes highlight options and returns merged options with style applied
+--- @param style_type theme.StyleType
+--- @return fun(opts: vim.api.keyset.highlight): vim.api.keyset.highlight
 function M.get_style(opts, style_type)
 	opts = opts or {}
 
 	if not opts.styles or not opts.styles[style_type] then
-		return function(o)
-			return o
+		return function(hl)
+			return hl
 		end
 	end
 
@@ -63,13 +58,25 @@ function M.get_style(opts, style_type)
 		style.strikethrough = true
 	end
 
-	return function(o)
-		return vim.tbl_deep_extend("force", o, style)
+	return function(hl)
+		if hl.link then
+			return hl
+		end
+
+		return vim.tbl_deep_extend("force", hl, style)
 	end
 end
 
+--- @param opts theme.Config User configuration
+--- @return theme.Styles
 function M.get_styles(opts)
-	return {
+	local cache_key = vim.inspect(opts.styles or {})
+
+	if M.styles_cache[cache_key] then
+		return M.styles_cache[cache_key]
+	end
+
+	M.styles_cache[cache_key] = {
 		comments = M.get_style(opts, "comments"),
 		keywords = M.get_style(opts, "keywords"),
 		functions = M.get_style(opts, "functions"),
@@ -77,24 +84,8 @@ function M.get_styles(opts)
 		strings = M.get_style(opts, "strings"),
 		constants = M.get_style(opts, "constants"),
 	}
-end
 
---- Merge two tables deeply
----@param base table Base table
----@param override table Override table
----@return table Merged table
-function M.deep_merge(base, override)
-	local result = vim.deepcopy(base)
-
-	for key, value in pairs(override) do
-		if type(value) == "table" and type(result[key]) == "table" then
-			result[key] = M.deep_merge(result[key], value)
-		else
-			result[key] = value
-		end
-	end
-
-	return result
+	return M.styles_cache[cache_key]
 end
 
 return M
