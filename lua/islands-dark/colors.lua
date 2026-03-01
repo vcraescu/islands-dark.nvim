@@ -144,6 +144,7 @@ M.type_definition = M.text
 
 -- Constants
 M.constant = M.purple1
+M.constant_builtin = M.orange1
 
 -- Comments
 M.comment = M.text2

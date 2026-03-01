@@ -1,7 +1,8 @@
 local M = {}
 
+--- Get GitSigns highlight groups
 --- @param c theme.Colors Color palette
---- @return table Highlight groups for gitsigns plugin
+--- @return theme.Highlights
 function M.get(c)
 	return {
 		GitSignsAdd = { fg = c.git_add, bg = c.none },

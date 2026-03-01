@@ -22,6 +22,7 @@ function M.get(c, config)
 		["@comment.warning"] = styles.comments({ link = "Debug" }),
 		["@conceal.markdown_inline"] = { link = "Label" },
 		["@constant"] = { link = "Constant" },
+		["@constant.builtin"] = { fg = c.constant_builtin },
 		["@constructor"] = { link = "Function" },
 		["@diff.delta"] = { link = "DiffChange" },
 		["@diff.minus"] = { link = "DiffDelete" },
@@ -84,7 +85,7 @@ function M.get(c, config)
 		["@type.definition"] = { link = "Typedef" },
 		["@type.qualifier"] = { link = "Keyword" },
 		["@variable"] = { link = "Identifier" },
-		["@variable.builtin"] = { link = "Keyword" },
+		["@variable.builtin"] = { fg = c.variable_builtin },
 		["@variable.member"] = { link = "@property" },
 		["@variable.parameter"] = { link = "@parameter" },
 	}
@@ -97,7 +98,7 @@ end
 --- @return theme.Highlights
 function M.get_langs(c)
 	return {
-		["@constant.builtin.go"] = { link = "Keyword" },
+		["@constant.builtin.php"] = { link = "Constant" },
 		["@constant.builtin.xml"] = { link = "Special" },
 		["@constant.css"] = { link = "Tag" },
 		["@constant.html"] = { link = "Tag" },
@@ -125,8 +126,6 @@ function M.get_langs(c)
 		["@function.method.call.typescriptreact"] = { link = "Function" },
 		["@keyword.directive.define.xml"] = { link = "Tag" },
 		["@keyword.directive.xml"] = { link = "Tag" },
-		["@module.go"] = { fg = c.metadata },
-		["@namespace.go"] = { fg = c.metadata },
 		["@number.xml"] = { link = "String" },
 		["@property.yaml"] = { link = "Keyword" },
 		["@punctuation.delimiter.css"] = { link = "@tag.css" },

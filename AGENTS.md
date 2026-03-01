@@ -57,15 +57,20 @@ lua/islands-dark/
 ├── init.lua              # Main entry point, exports setup() and load()
 ├── config.lua            # Configuration management with defaults
 ├── colors.lua            # Color palette from IslandsDark.icls
-├── util.lua              # Helper functions (highlight, merge, etc.)
+├── util.lua              # Helper functions (load_highlights, apply_overrides, get_style)
 └── highlights/
-    ├── init.lua          # Highlight loader, applies overrides
+    ├── init.lua          # Highlight loader, applies overrides and on_highlights
     ├── editor.lua        # Editor UI highlights (statusline, cursor, etc.)
     ├── syntax.lua        # Basic syntax highlights
     ├── treesitter.lua    # Treesitter-specific highlights
     ├── lsp.lua           # LSP semantic tokens (priority 125)
     ├── diagnostics.lua   # Diagnostic highlights
-    └── plugins.lua       # Plugin-specific highlights
+    └── integrations/     # Plugin-specific highlights
+        ├── init.lua      # Loads all plugin integrations
+        ├── blink-cmp.lua # blink.cmp completion highlights
+        ├── fzf-lua.lua   # fzf-lua fuzzy finder highlights
+        ├── gitsigns.lua  # gitsigns git integration highlights
+        └── nvim-tree.lua # nvim-tree file explorer highlights
 ```
 
 ### Naming Conventions
@@ -220,53 +225,148 @@ end
 4. If a needed color doesn't exist in `.icls`, find the closest semantic match
 
 ### Configuration Callbacks
-The theme supports TWO callback styles (both must work):
+The theme supports THREE callback styles (all must work):
 
 ```lua
--- Style 1: overrides (returns table)
+-- Style 1: on_colors (modifies colors before applying - NEW)
+on_colors = function(colors)
+	colors.keyword = "#FF0000"  -- Modify colors directly
+	colors.bg1 = "#000000"
+end
+
+-- Style 2: overrides (returns table of highlight overrides)
 overrides = function(colors)
 	return {
-		Function = { fg = colors.blue, bold = true }
+		Function = { fg = colors.blue4, bold = true }
 	}
 end
 
--- Style 2: on_highlights (modifies in-place, two signatures)
+-- Style 3: on_highlights (modifies highlights in-place)
 on_highlights = function(highlights, colors)
-	highlights.Function = { fg = colors.blue, bold = true }
-end
-
--- Also support backward compatibility
-on_highlights = function(highlights)
-	highlights.Function.bold = true
+	highlights.Function = { fg = colors.blue4, bold = true }
 end
 ```
 
-### LSP Semantic Token Priority
-LSP semantic tokens MUST have priority 125 (higher than Treesitter):
+### Highlight Priorities
+Highlight priorities MUST be set in the correct order:
 ```lua
-vim.highlight.priorities.semantic_tokens = 125
+-- In init.lua load() function:
+vim.highlight.priorities.semantic_tokens = 125  -- LSP (highest)
+vim.highlight.priorities.treesitter = 100      -- Treesitter (default)
+vim.highlight.priorities.syntax = 50           -- Traditional syntax (lowest)
+```
+
+This ensures LSP semantic tokens override Treesitter, which overrides traditional syntax.
+
+## Highlight Linking Strategy
+
+### When to Use Links vs Direct Colors
+
+The theme uses a hybrid approach:
+
+**1. Link to syntax groups when they exist:**
+```lua
+-- In treesitter.lua - Link to base syntax groups (NO style wrapper)
+["@function"] = { link = "Function" },
+["@keyword"] = { link = "Keyword" },
+["@string"] = { link = "String" },
+["@comment"] = { link = "Comment" },
+```
+
+**2. Use direct colors for Treesitter-specific granular captures:**
+```lua
+-- These don't exist in traditional syntax, so use direct colors WITH style wrapper
+["@function.builtin"] = styles.functions({ fg = c.func_builtin }),
+["@function.call"] = styles.functions({ fg = c.func_call }),
+["@function.method"] = styles.functions({ fg = c.method }),
+```
+
+**3. Link to parent Treesitter captures for inheritance:**
+```lua
+-- These inherit from their parent Treesitter capture
+["@keyword.return"] = { link = "@keyword" },
+["@keyword.conditional"] = { link = "@keyword" },
+```
+
+### Important: Links and Styles Don't Mix
+
+Never wrap links with style functions - it does nothing:
+```lua
+-- ❌ WRONG - style wrapper is ignored
+["@keyword"] = styles.keywords({ link = "Keyword" })
+
+-- ✅ CORRECT - link without wrapper
+["@keyword"] = { link = "Keyword" }
+
+-- ✅ CORRECT - direct color with style wrapper
+["@keyword.special"] = styles.keywords({ fg = c.keyword })
+```
+
+Why? Because `link` is a special property that tells Neovim to "use all properties from the target group." Any other properties (italic, bold, fg, etc.) are ignored when link is present.
+
+### How User Styles Work
+
+**For linked highlights:**
+Styles are applied to the base syntax group in syntax.lua:
+```lua
+-- In syntax.lua
+Function = styles.functions({ fg = c.func })  -- If user sets italic, this gets it
+
+-- In treesitter.lua
+["@function"] = { link = "Function" }  -- Automatically inherits italic from Function
+```
+
+**For direct color highlights:**
+Styles are applied via the wrapper function:
+```lua
+-- User sets: styles = { functions = { italic = true } }
+["@function.builtin"] = styles.functions({ fg = c.func_builtin })
+// Result: { fg = "#548AF7", italic = true }
 ```
 
 ## Common Tasks
 
 ### Adding a New Highlight Group
-1. Determine which module it belongs to (editor, syntax, treesitter, lsp, diagnostics, plugins)
+1. Determine which module it belongs to (editor, syntax, treesitter, lsp, diagnostics, integrations)
 2. Use ONLY colors from the palette in `colors.lua`
-3. Add the highlight with proper structure:
+3. Decide on linking strategy:
+   - If a base syntax group exists → Link to it: `{ link = "Function" }`
+   - If it's Treesitter-specific → Use direct color: `styles.functions({ fg = c.func_builtin })`
+   - If inheriting from parent capture → Link to parent: `{ link = "@keyword" }`
+4. Add the highlight:
    ```lua
-   highlights.NewGroup = { fg = c.keyword, bg = c.none }
+   -- With link (no style wrapper)
+   highlights.NewGroup = { link = "Function" }
+   
+   -- OR with direct color (with style wrapper)
+   highlights.NewGroup = styles.functions({ fg = c.func, bold = true })
    ```
-4. Test with appropriate test file
+5. Test with appropriate test file
 
 ### Adding Plugin Support
-1. Add to `lua/islands-dark/highlights/plugins.lua`
-2. Group highlights with comment header:
+1. Create new file in `lua/islands-dark/highlights/integrations/plugin-name.lua`
+2. Follow this template:
    ```lua
-   -- ============================================================================
-   -- plugin-name
-   -- ============================================================================
+   local M = {}
+   
+   --- Get highlights for plugin-name
+   --- @param c theme.Colors Color palette
+   --- @return table Highlight groups for plugin-name
+   function M.get(c)
+   	return {
+   		PluginHighlight = { fg = c.text, bg = c.none },
+   		-- ... more highlights
+   	}
+   end
+   
+   return M
    ```
-3. Document in README.md under "Plugin Support"
+3. Add to `lua/islands-dark/highlights/integrations/init.lua`:
+   ```lua
+   local plugin = require("islands-dark.highlights.integrations.plugin-name")
+   highlights = vim.tbl_deep_extend("force", highlights, plugin.get(colors))
+   ```
+4. Document in README.md under "Plugin Support"
 
 ### Fixing Color Inconsistencies
 1. Check `IslandsDark.icls` for the correct color
@@ -280,14 +380,17 @@ vim.highlight.priorities.semantic_tokens = 125
 Before submitting changes:
 - [ ] Open test files and verify colors look correct
 - [ ] Test with `transparent = true` configuration
+- [ ] Test `on_colors` callback works (new)
 - [ ] Test `overrides` callback works
-- [ ] Test `on_highlights` callback works (both signatures)
+- [ ] Test `on_highlights` callback works
 - [ ] Verify no custom colors were added (all from `.icls`)
 - [ ] Check that all new functions have LuaDoc annotations
-- [ ] Verify LSP semantic tokens work (priority 125)
+- [ ] Verify highlight priorities are set (LSP: 125, Treesitter: 100, Syntax: 50)
+- [ ] Verify no links are wrapped with style functions
+- [ ] Test user styles apply correctly to base groups and granular captures
+- [ ] Check that linked groups update when base group changes
 - [ ] Test statusbar is visible (not transparent)
-- [ ] Check nvim-tree folders are gray, not blue
-- [ ] Verify git colors match between gitsigns and nvim-tree
+- [ ] Verify plugin integrations work (blink-cmp, fzf-lua, nvim-tree, gitsigns)
 
 ## Notes
 

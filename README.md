@@ -101,16 +101,25 @@ require("islands-dark").setup({
     variables = { italic = false },
   },
 
-  -- Color overrides
-  on_colors = function(colors)
-    -- Customize any color from the palette
-    colors.keyword = "#FF0000"  -- Example: change keyword color to red
+  -- Override callback - returns table of highlight overrides (Method 1)
+  overrides = function(colors)
+    return {
+      Function = { fg = colors.blue4, bold = true },
+      Comment = { fg = colors.comment, italic = true },
+    }
   end,
 
-  -- Highlight overrides
+  -- OR use on_colors to modify colors before highlights are created (Method 2)
+  on_colors = function(colors)
+    -- Modify colors directly before any highlights are generated
+    colors.keyword = "#FF0000"  -- Change keyword color
+    colors.bg = "#1a1a1a"       -- Darker background
+  end,
+
+  -- OR use on_highlights to modify highlights in-place (Method 3)
   on_highlights = function(highlights, colors)
-    -- Customize specific highlight groups
-    highlights.Function = { fg = colors.blue, bold = true }
+    -- Modify highlights table directly
+    highlights.Function = { fg = colors.blue4, bold = true }
     highlights.Comment = { fg = colors.comment, italic = true }
   end,
 })
@@ -155,14 +164,34 @@ Available style properties:
 - `undercurl` - Apply undercurl (for diagnostics)
 - `strikethrough` - Apply strikethrough
 
-### Color Overrides
+### Customization Methods
 
-Override any color from the palette:
+Islands Dark supports three different callback methods for customization:
+
+#### Method 1: `overrides` (Recommended)
+
+Return a table of highlight group overrides:
+
+```lua
+require("islands-dark").setup({
+  overrides = function(colors)
+    return {
+      Function = { fg = colors.func, bold = true },
+      Comment = { fg = colors.comment, italic = true },
+      Visual = { bg = colors.selection },
+    }
+  end,
+})
+```
+
+#### Method 2: `on_colors`
+
+Modify the color palette before highlights are created:
 
 ```lua
 require("islands-dark").setup({
   on_colors = function(colors)
-    -- Change any color
+    -- Modify colors directly
     colors.bg = "#1a1a1a"        -- Darker background
     colors.keyword = "#ff6b9d"    -- Pink keywords
     colors.string = "#98c379"     -- Different green for strings
@@ -170,58 +199,72 @@ require("islands-dark").setup({
 })
 ```
 
-### Highlight Group Overrides
+**Note**: `on_colors` modifies the base palette, affecting ALL highlight groups that use those colors.
 
-Customize specific highlight groups:
+#### Method 3: `on_highlights`
+
+Modify highlights table in-place:
 
 ```lua
 require("islands-dark").setup({
   on_highlights = function(highlights, colors)
-    -- Customize Function highlighting
+    -- Modify highlights directly
     highlights.Function = {
-      fg = colors.blue,
+      fg = colors.func,
       bold = true,
       italic = true,
     }
 
-    -- Customize Comment highlighting
     highlights.Comment = {
       fg = colors.comment,
       italic = true,
-    }
-
-    -- Customize Visual selection
-    highlights.Visual = {
-      bg = colors.selection,
     }
   end,
 })
 ```
 
+**Choose one method** based on your needs:
+- Use `overrides` for simple highlight customizations (cleanest API)
+- Use `on_colors` to change base colors that affect multiple highlights
+- Use `on_highlights` for complex modifications with conditional logic
+
 ## 🔌 Plugin Support
 
-Islands Dark has been optimized for popular Neovim plugins:
+Islands Dark includes optimized highlighting for popular Neovim plugins. Plugin integrations are modular and automatically loaded:
 
 ### Completion
 
-- **blink.cmp**: Matching highlight support
+- **[blink.cmp](https://github.com/Saghen/blink.cmp)**: Complete menu, matching, and kind highlights
 
 ### File Explorers
 
-- **nvim-tree**: Complete icon and folder highlighting
+- **[nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)**: Icon colors, folder highlighting, git status indicators
 
 ### Fuzzy Finders
 
-- **fzf-lua**: Optimized colors for search results and prompts
+- **[fzf-lua](https://github.com/ibhagwan/fzf-lua)**: Search results, prompts, and preview window colors
 
 ### Git Integration
 
-- **gitsigns**: Added/changed/deleted line indicators
+- **[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)**: Add/change/delete line indicators, blame highlights
 
-### Syntax
+### Syntax & LSP
 
-- **Treesitter**: Full support for all language parsers
-- **LSP Semantic Tokens**: Priority highlighting over Treesitter
+- **[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)**: Full support for all language parsers with granular captures
+- **LSP Semantic Tokens**: Priority highlighting (125) over Treesitter (100) for accurate semantics
+- **Diagnostics**: Error, warning, info, and hint highlights with underlines
+
+### Color Palette
+
+The theme uses an extended color palette including:
+
+- **Granular function colors**: `func_builtin` (built-ins), `func_call` (calls), `method` (methods)
+- **Type colors**: `type_builtin` (built-in types), `type` (user-defined types)
+- **Semantic colors**: `keyword`, `string`, `number`, `boolean`, `operator`
+- **VCS colors**: `vcs_added`, `vcs_modified`, `vcs_removed`
+- **UI colors**: `cursor_line`, `line_number`, `border`, `visual`, `selection`
+
+All colors are sourced from the original IntelliJ IDEA Islands Dark theme (`IslandsDark.icls`).
 
 ## 🌲 Treesitter Support
 

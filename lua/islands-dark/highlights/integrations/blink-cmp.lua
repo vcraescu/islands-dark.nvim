@@ -1,8 +1,8 @@
 local M = {}
 
---- Load Blink CMP highlights
+--- Get BlinkCmp highlight groups
 --- @param c theme.Colors palette
---- @return table highlight groups for Blink CMP
+--- @return theme.Highlights
 function M.get(c)
 	return {
 		BlinkCmpMenuBorder = { link = "FloatBorder" },

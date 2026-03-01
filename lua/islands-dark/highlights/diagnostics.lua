@@ -1,10 +1,8 @@
 local M = {}
 
 --- Diagnostics and LSP highlights
---- This includes for diagnostic messages, LSP references, signature help, inlay hints, and code lens.
---- The colors are based on the theme's color palette, and styles can be customized through the user configuration.
 --- @param c theme.Colors Color palette
---- @return table Highlight groups for diagnostics and LSP features
+--- @return theme.Highlights
 function M.get(c)
 	return {
 		DiagnosticError = { fg = c.error },
@@ -21,11 +19,11 @@ function M.get(c)
 		DiagnosticSignInfo = { fg = c.info, bg = c.none },
 		DiagnosticSignOk = { fg = c.string, bg = c.none },
 		DiagnosticSignWarn = { fg = c.warning, bg = c.none },
-		DiagnosticUnderlineError = { fg = c.error, undercurl = true },
-		DiagnosticUnderlineHint = { fg = c.hint, undercurl = true },
-		DiagnosticUnderlineInfo = { fg = c.info, undercurl = true },
-		DiagnosticUnderlineOk = { fg = c.string, undercurl = true },
-		DiagnosticUnderlineWarn = { fg = c.warning, undercurl = true },
+		DiagnosticUnderlineError = { sp = c.error, undercurl = true },
+		DiagnosticUnderlineHint = { sp = c.hint, undercurl = true },
+		DiagnosticUnderlineInfo = { sp = c.info, undercurl = true },
+		DiagnosticUnderlineOk = { sp = c.string, undercurl = true },
+		DiagnosticUnderlineWarn = { sp = c.warning, undercurl = true },
 		DiagnosticVirtualTextError = { fg = c.error },
 		DiagnosticVirtualTextHint = { fg = c.hint },
 		DiagnosticVirtualTextInfo = { fg = c.info },

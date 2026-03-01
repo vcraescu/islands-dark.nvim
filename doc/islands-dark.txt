@@ -121,6 +121,16 @@ islands-dark.setup({opts})
             Signature: function(colors) -> nil
             Modifies colors table in place
 
+        • on_colors (function)
+            Callback to modify colors before applying highlights
+            Signature: function(colors) -> nil
+            Modifies colors table in place
+
+        • overrides (function)
+            Callback to return highlight group overrides
+            Signature: function(colors) -> table
+            Returns table of highlight groups to merge
+
         • on_highlights (function)
             Callback to modify highlight groups before applying
             Signature: function(highlights, colors) -> nil
@@ -138,17 +148,27 @@ Example configuration:
         functions = { italic = false },
         strings = { italic = false },
         variables = { italic = false },
+        constants = { italic = false },
       },
       
+      -- Modify colors before highlights are created
       on_colors = function(colors)
-        colors.keyword = "#ff6b9d"
+        colors.keyword = "#ff6b9d"  -- Pink keywords
+        colors.bg1 = "#000000"      -- Darker background
       end,
       
-      on_highlights = function(highlights, colors)
-        highlights.Function = {
-          fg = colors.blue,
-          bold = true,
+      -- Return highlight group overrides
+      overrides = function(colors)
+        return {
+          Function = { fg = colors.blue4, bold = true },
+          Comment = { fg = colors.comment, italic = true },
         }
+      end,
+      
+      -- Or modify highlights in-place
+      on_highlights = function(highlights, colors)
+        highlights.Function = { fg = colors.blue4, bold = true }
+        highlights.Visual = { bg = colors.visual }
       end,
     })
 <
@@ -202,7 +222,11 @@ Semantic Aliases:
     string          #6AAB73     Strings (green2)
     number          #2AACB8     Numbers (cyan2)
     func            #56A8F5     Functions (blue4)
+    func_builtin    #548AF7     Built-in functions (blue3)
+    func_call       #B09D79     Function calls (yellow3)
+    method          #56A8F5     Methods (blue4)
     type            #6FAFBD     Types (blue5)
+    type_builtin    #CC7832     Built-in types (orange1)
     constant        #C77DBB     Constants (purple1)
     comment         #7A7E85     Comments (fg1)
     error           #F75464     Errors (red2)
@@ -226,38 +250,53 @@ Vim Syntax Groups:
     SpecialChar, Tag, Delimiter, SpecialComment, Debug, Underlined,
     Ignore, Error, Todo
 
+                                               *islands-dark-treesitter*
 Treesitter Highlights:
-    @variable, @function, @keyword, @string, @number, @boolean,
-    @type, @constant, @comment, @operator, @punctuation,
-    and many more...
+    Base captures link to syntax groups:
+      @function → Function, @keyword → Keyword, @string → String
+    
+    Granular captures use direct colors:
+      @function.builtin, @function.call, @function.method,
+      @variable.builtin, @variable.member, @variable.parameter,
+      @type.builtin, @constant.builtin, and many more...
+    
+    Note: User styles apply to base syntax groups and propagate to
+    linked Treesitter captures automatically.
 
+                                                      *islands-dark-lsp*
 LSP Semantic Tokens:
+    LSP semantic tokens have priority 125 (higher than Treesitter 100)
+    to provide accurate semantic highlighting.
+    
     @lsp.type.function, @lsp.type.method, @lsp.type.variable,
     @lsp.type.parameter, @lsp.type.type, @lsp.type.class,
     @lsp.type.interface, @lsp.type.namespace, @lsp.type.enum,
-    and many more...
+    @lsp.mod.readonly, @lsp.mod.constant, and many more...
 
+                                              *islands-dark-diagnostics*
 Diagnostic Highlights:
     DiagnosticError, DiagnosticWarn, DiagnosticInfo, DiagnosticHint,
     DiagnosticUnderlineError, DiagnosticUnderlineWarn,
+    DiagnosticVirtualTextError, DiagnosticSignError,
     and related groups...
 
 ==============================================================================
 7. PLUGIN SUPPORT                                       *islands-dark-plugins*
 
-Islands Dark includes optimized highlights for:
+Islands Dark includes optimized highlights for popular plugins.
+All plugin integrations are in lua/islands-dark/highlights/integrations/
 
 Completion:
-    • blink.cmp
+    • blink.cmp - Completion menu highlights
 
 File Explorers:
-    • nvim-tree
+    • nvim-tree - File tree, folders, git status
 
 Fuzzy Finders:
-    • fzf-lua
+    • fzf-lua - Search prompts, matches, borders
 
 Git Integration:
-    • gitsigns
+    • gitsigns - Line signs, inline diffs, blame
 
                                                   *islands-dark-fzf-lua*
 fzf-lua Configuration ~

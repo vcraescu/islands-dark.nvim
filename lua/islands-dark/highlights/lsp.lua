@@ -1,7 +1,7 @@
 local M = {}
 
---- Setup LSP semantic token highlights
---- @return table Highlight groups for LSP semantic tokens
+--- Get LSP highlight groups
+--- @return theme.Highlights
 function M.get()
 	return {
 		["@lsp.mod.constant"] = { link = "@constant" },

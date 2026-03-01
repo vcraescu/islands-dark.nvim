@@ -1,6 +1,6 @@
 local M = {}
 
---- Basic editor UI highlights
+--- Get editor UI highlight groups
 --- @param c theme.Colors Color palette
 --- @return table Highlight groups for editor UI elements
 function M.get(c)

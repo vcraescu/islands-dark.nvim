@@ -1,5 +1,6 @@
 local M = {}
 
+--- Get syntax highlight groups
 --- @param c theme.Colors Color palette
 --- @param config theme.Config User configuration
 --- @return theme.Highlights
@@ -22,7 +23,7 @@ function M.get(c, config)
 		Function = styles.functions({ fg = c.func }),
 		Identifier = styles.variables({ fg = c.variable }),
 		Ignore = { fg = c.text2 },
-		Include = { link = "Keyword" },
+		Include = { fg = c.label },
 		Keyword = styles.keywords({ fg = c.keyword }),
 		Label = { fg = c.label },
 		Macro = styles.functions({ fg = c.metadata }),

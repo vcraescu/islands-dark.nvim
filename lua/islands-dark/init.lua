@@ -66,24 +66,24 @@ function M.get_fzf_colors()
 	local colors = require("islands-dark.colors")
 
 	return table.concat({
-		'fg:' .. colors.text,
-		'bg:' .. colors.base,
-		'hl:' .. colors.search_match,
-		'fg+:' .. colors.text3,
-		'bg+:' .. colors.visual,
-		'hl+:' .. colors.search_match,
-		'info:' .. colors.warning,
-		'prompt:' .. colors.keyword,
-		'pointer:' .. colors.constant,
-		'marker:' .. colors.git_add,
-		'spinner:' .. colors.number,
-		'header:' .. colors.type,
-		'border:' .. colors.border,
-		'label:' .. colors.text,
-		'query:' .. colors.text,
-		'gutter:' .. colors.base,
-		'selected-bg:' .. colors.base2,
-	}, ',')
+		"fg:" .. colors.text,
+		"bg:" .. colors.base,
+		"hl:" .. colors.search_match,
+		"fg+:" .. colors.text3,
+		"bg+:" .. colors.visual,
+		"hl+:" .. colors.search_match,
+		"info:" .. colors.warning,
+		"prompt:" .. colors.keyword,
+		"pointer:" .. colors.constant,
+		"marker:" .. colors.git_add,
+		"spinner:" .. colors.number,
+		"header:" .. colors.type,
+		"border:" .. colors.border,
+		"label:" .. colors.text,
+		"query:" .. colors.text,
+		"gutter:" .. colors.base,
+		"selected-bg:" .. colors.base2,
+	}, ",")
 end
 
 return M

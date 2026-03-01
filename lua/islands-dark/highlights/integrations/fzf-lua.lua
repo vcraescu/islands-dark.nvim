@@ -1,7 +1,8 @@
 local M = {}
 
+--- Get FzfLua highlight groups
 --- @param c theme.Colors Color palette
---- @return table Highlight groups for fzf-lua plugin
+--- @return theme.Highlights
 function M.get(c)
 	return {
 		FzfLuaNormal = { link = "NormalFloat" },
