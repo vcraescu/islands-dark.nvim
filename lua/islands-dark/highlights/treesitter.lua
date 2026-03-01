@@ -24,7 +24,6 @@ function M.get(c, config)
 		["@constant"] = { link = "Constant" },
 		["@constant.builtin"] = { fg = c.constant_builtin },
 		["@constructor"] = { link = "Function" },
-		["@constructor.go"] = { link = "@function.call" },
 		["@diff.delta"] = { link = "DiffChange" },
 		["@diff.minus"] = { link = "DiffDelete" },
 		["@diff.plus"] = { link = "DiffAdd" },
@@ -88,16 +87,16 @@ function M.get(c, config)
 		["@variable"] = { link = "Identifier" },
 		["@variable.builtin"] = { fg = c.variable_builtin },
 		["@variable.member"] = { link = "@property" },
-		["@variable.parameter"] = { link = "@parameter" },
 	}
 
-	return vim.tbl_deep_extend("force", base, M.get_langs(c))
+	return vim.tbl_deep_extend("force", base, M.get_langs(c, styles))
 end
 
 --- Get language-specific Treesitter highlights
 --- @param c theme.Colors Color palette
+--- @param styles theme.Styles Styles configuration
 --- @return theme.Highlights
-function M.get_langs(c)
+function M.get_langs(c, styles)
 	return {
 		["@constant.builtin.php"] = { link = "Constant" },
 		["@constant.builtin.xml"] = { link = "Special" },
@@ -105,11 +104,12 @@ function M.get_langs(c)
 		["@constant.html"] = { link = "Tag" },
 		["@constant.javascript"] = { link = "@constant.typescript" },
 		["@constant.terraform"] = { fg = c.keyword },
-		["@constant.typescript"] = { fg = c.identifier },
+		["@constant.typescript"] = { fg = c.variable },
 		["@constant.typescriptreact"] = { link = "@constant.typescript" },
+		["@constructor.go"] = { link = "@function.call" },
 		["@constructor.javascript"] = { link = "Keyword" },
 		["@constructor.lua"] = { fg = c.braces },
-		["@constructor.php"] = { fg = c.identifier },
+		["@constructor.php"] = { fg = c.variable },
 		["@constructor.python"] = { link = "Keyword" },
 		["@constructor.tsx"] = { link = "@constructor.typescript" },
 		["@constructor.typescript"] = { link = "Keyword" },
@@ -127,6 +127,7 @@ function M.get_langs(c)
 		["@function.method.call.typescriptreact"] = { link = "Function" },
 		["@keyword.directive.define.xml"] = { link = "Tag" },
 		["@keyword.directive.xml"] = { link = "Tag" },
+		["@module.php"] = { fg = c.variable },
 		["@number.xml"] = { link = "String" },
 		["@property.go"] = { fg = c.variable },
 		["@property.yaml"] = { link = "Keyword" },
@@ -143,12 +144,12 @@ function M.get_langs(c)
 		["@type.parameter.tsx"] = { fg = c.type_parameter },
 		["@type.parameter.typescript"] = { fg = c.type_parameter },
 		["@type.parameter.typescriptreact"] = { fg = c.type_parameter },
-		["@type.php"] = { fg = c.identifier },
+		["@type.php"] = { fg = c.variable },
 		["@type.phpdoc"] = { link = "@type.php" },
 		["@type.proto"] = { link = "@type.php" },
 		["@type.terraform"] = { fg = c.identifier },
 		["@type.tsx"] = { link = "@type.typescript" },
-		["@type.typescript"] = { fg = c.identifier },
+		["@type.typescript"] = { fg = c.variable },
 		["@type.typescriptreact"] = { link = "@type.typescript" },
 		["@type.yaml"] = { link = "Tag" },
 		["@variable.builtin.javascript"] = { link = "@variable.builtin.typescript" },
@@ -158,6 +159,7 @@ function M.get_langs(c)
 		["@variable.member.go"] = { link = "@property.go" },
 		["@variable.member.proto"] = { fg = c.identifier },
 		["@variable.member.python"] = { fg = c.identifier },
+		["@variable.php"] = styles.variables({ fg = c.constant }),
 	}
 end
 

@@ -38,7 +38,7 @@ function M.get()
 		["@lsp.type.method"] = {},
 		["@lsp.type.module"] = { link = "@lsp.type.namespace" },
 		["@lsp.type.namespace"] = { link = "@label" },
-		["@lsp.type.namespace.proto"] = { link = "@variable.member.proto" },
+		["@lsp.type.namespace.proto"] = { link = "@variable" },
 		["@lsp.type.parameter"] = { link = "@lsp.type.variable" },
 		["@lsp.type.property"] = { link = "@property" },
 		["@lsp.type.property.javascript"] = {},
