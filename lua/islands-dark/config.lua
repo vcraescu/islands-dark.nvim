@@ -16,8 +16,6 @@ local defaults = {
 		keywords = {},
 		functions = {},
 		variables = {},
-		strings = {},
-		constants = {},
 	},
 
 	-- Function that receives colors table and returns highlight overrides

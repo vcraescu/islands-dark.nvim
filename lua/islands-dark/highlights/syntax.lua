@@ -2,7 +2,7 @@ local M = {}
 
 --- @param c theme.Colors Color palette
 --- @param config theme.Config User configuration
---- @return table Highlight groups for syntax elements
+--- @return theme.Highlights
 function M.get(c, config)
 	local util = require("islands-dark.util")
 	local styles = util.get_styles(config)
@@ -12,8 +12,8 @@ function M.get(c, config)
 		Comment = styles.comments({ fg = c.comment }),
 
 		-- Constants
-		Constant = styles.comments({ fg = c.constant }),
-		String = styles.strings({ fg = c.string }),
+		Constant = { fg = c.constant },
+		String = { fg = c.string },
 		Character = { fg = c.string },
 		Number = { fg = c.number },
 		Boolean = { link = "Keyword" },
@@ -36,7 +36,7 @@ function M.get(c, config)
 		PreProc = { fg = c.metadata },
 		Include = { link = "Keyword" },
 		Define = { link = "Keyword" },
-		Macro = { fg = c.metadata },
+		Macro = styles.functions({ fg = c.metadata }),
 		PreCondit = { link = "Keyword" },
 
 		-- Types

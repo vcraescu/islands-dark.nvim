@@ -78,11 +78,9 @@ function M.get_styles(opts)
 
 	M.styles_cache[cache_key] = {
 		comments = M.get_style(opts, "comments"),
-		keywords = M.get_style(opts, "keywords"),
 		functions = M.get_style(opts, "functions"),
+		keywords = M.get_style(opts, "keywords"),
 		variables = M.get_style(opts, "variables"),
-		strings = M.get_style(opts, "strings"),
-		constants = M.get_style(opts, "constants"),
 	}
 
 	return M.styles_cache[cache_key]
