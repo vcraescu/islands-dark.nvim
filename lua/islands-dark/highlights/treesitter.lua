@@ -156,8 +156,8 @@ function M.get_langs(c, styles)
 		["@variable.builtin.typescript"] = { link = "Constant" },
 		["@variable.builtin.typescriptreact"] = { link = "@variable.builtin.typescript" },
 		["@variable.member.go"] = { link = "@property.go" },
-		["@variable.member.proto"] = { fg = c.identifier },
-		["@variable.member.python"] = { fg = c.identifier },
+		["@variable.member.proto"] = { link = "Variable" },
+		["@variable.member.python"] = { link = "Variable" },
 		["@variable.php"] = styles.variables({ fg = c.constant }),
 	}
 end
