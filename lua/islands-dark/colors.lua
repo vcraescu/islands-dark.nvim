@@ -207,7 +207,7 @@ M.link = M.blue4
 
 M.terminal = {
 	black = M.base,
-	bright_black = M.base2,
+	bright_black = M.text2,
 
 	red = "#F0524F",
 	bright_red = "#FF4050",

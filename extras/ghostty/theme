@@ -4,13 +4,13 @@ foreground = #BCBEC4
 cursor-color = #BCBEC4
 cursor-text = #191A1C
 
-selection-background = #2B2D30
-selection-foreground = #BCBEC4
+selection-background = #214283
+selection-foreground = #191A1C
 
 # ANSI Colors (0-15)
 # Black
 palette = 0=#191A1C
-palette = 8=#2B2D30
+palette = 8=#7A7E85
 
 # Red
 palette = 1=#F0524F
