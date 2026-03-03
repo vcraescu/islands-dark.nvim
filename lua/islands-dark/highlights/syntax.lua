@@ -13,7 +13,7 @@ function M.get(c, config)
 		Character = { fg = c.string },
 		Comment = styles.comments({ fg = c.comment }),
 		Conditional = { link = "Keyword" },
-		Constant = { fg = c.constant, italic = true },
+		Constant = { fg = c.constant },
 		Debug = { fg = c.warning },
 		Define = { link = "Keyword" },
 		Delimiter = { fg = c.punctuation },
