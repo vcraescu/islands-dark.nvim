@@ -11,6 +11,7 @@ local defaults = {
 	terminal_colors = true,
 
 	-- Style customization for different syntax groups
+	--- @type theme.Styles
 	styles = {
 		comments = {},
 		keywords = {},

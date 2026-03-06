@@ -248,14 +248,12 @@ end
 ```
 
 ### Highlight Priorities
-Highlight priorities MUST be set in the correct order:
-```lua
--- In init.lua load() function:
-vim.highlight.priorities.semantic_tokens = 125  -- LSP (highest)
-vim.highlight.priorities.treesitter = 100      -- Treesitter (default)
-vim.highlight.priorities.syntax = 50           -- Traditional syntax (lowest)
-```
+Neovim automatically sets highlight priorities with these defaults (0.9+):
+- **LSP Semantic Tokens**: 125 (highest priority)
+- **Treesitter**: 100 (medium priority)
+- **Syntax**: 50 (lowest priority)
 
+These priorities are already set by Neovim and **do NOT need to be set explicitly** in the theme.
 This ensures LSP semantic tokens override Treesitter, which overrides traditional syntax.
 
 ## Highlight Linking Strategy
@@ -385,7 +383,7 @@ Before submitting changes:
 - [ ] Test `on_highlights` callback works
 - [ ] Verify no custom colors were added (all from `.icls`)
 - [ ] Check that all new functions have LuaDoc annotations
-- [ ] Verify highlight priorities are set (LSP: 125, Treesitter: 100, Syntax: 50)
+- [ ] Verify highlight priorities work correctly (Neovim sets these by default)
 - [ ] Verify no links are wrapped with style functions
 - [ ] Test user styles apply correctly to base groups and granular captures
 - [ ] Check that linked groups update when base group changes

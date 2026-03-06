@@ -1,14 +1,19 @@
+//go:build (linux || windows) && arm
+// +build linux windows
+// +build arm
+
 /*
  * Go highlight sample
  */
-//go:build (linux || windows) && arm
-// +build linux,arm windows,arm
 
 // Package main
 package main
 
-import "fmt"
-import alias "fmt"
+import (
+	"fmt"
+	alias "fmt"
+	"net/http"
+)
 
 //go:generate go tool yacc -o gopher.go -p parser gopher.y
 
@@ -124,6 +129,7 @@ func main() {
 	_, _ = c, d
 	_, _ = true, false
 
+	fmt.Println(http.StateActive)
 	// Test format string highlighting
 	err := fmt.Errorf("error: %w", someError)
 	fmt.Printf("name=%s, age=%d, value=%v\n", name, age, value)
