@@ -19,7 +19,7 @@ function M.get(c)
 		DiffChange = { bg = c.diff_change },
 		DiffDelete = { bg = c.diff_delete },
 		DiffText = { bg = c.diff_change },
-		Directory = { fg = c.identifier },
+		Directory = { fg = c.blue4 },
 		ErrorMsg = { fg = c.error },
 		FloatBorder = { fg = c.border, bg = c.none },
 		FloatTitle = { fg = c.text, bg = c.none, bold = true },
@@ -72,8 +72,8 @@ function M.get(c)
 		healthSuccess = { fg = c.ok },
 		healthWarning = { fg = c.warning },
 		lCursor = { bg = c.cursor },
-		qfFileName = { fg = c.identifier },
-		qfLineNr = { fg = c.line_number },
+		qfFileName = { link = "Directory" },
+		qfLineNr = { link = "LineNr" },
 	}
 end
 

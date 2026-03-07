@@ -1,5 +1,6 @@
 <?php
 
+const PI = "test";
 /**
  * This is a doc comment for testing
  * @param string $name The user name

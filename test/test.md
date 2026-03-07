@@ -44,7 +44,7 @@ Image: ![My image](http://www.foo.bar/image.png)
 
 ## Code
 
-```
+```json
 This
   is
     code

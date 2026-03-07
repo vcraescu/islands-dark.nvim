@@ -43,6 +43,7 @@ M.cyan2 = "#2AACB8" -- DEFAULT_NUMBER (cyan)
 -- ───────────────────────────────────────────────────────────────────────────
 M.green1 = "#375239" -- ADDED_LINES_COLOR (dark green)
 M.green2 = "#6AAB73" -- DEFAULT_STRING (green)
+M.green3 = "#8BB33D"
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Reds (1=darkest → 2=lightest)
@@ -162,7 +163,6 @@ M.attribute = M.text
 -- Labels & Special
 M.label = M.yellow4
 M.metadata = M.yellow1
-M.identifier = M.blue4
 M.special = M.cyan2
 M.escape = M.orange2
 M.regex = M.cyan2
@@ -201,7 +201,7 @@ M.git_ignore = M.text2
 -- ───────────────────────────────────────────────────────────────────────────
 -- Special Elements
 -- ───────────────────────────────────────────────────────────────────────────
-M.todo = M.yellow1
+M.todo = M.green3
 M.note = M.blue5
 M.link = M.blue4
 

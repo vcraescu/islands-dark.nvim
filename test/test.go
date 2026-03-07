@@ -88,6 +88,7 @@ func variableFunc(demo1 int, demo2 demoInt) {
 	b := privateStruct{}
 	b.privateFunc()
 	demo2 = 4
+	tes = 5
 	if demo1, demo2 := privateFunc(); demo1 != 3 {
 		_ = demo1
 		_ = demo2
@@ -119,6 +120,8 @@ demoLabel:
 	println("builtin function")
 }
 
+// TODO: some comment
+// FIXME: some comment
 func main() {
 	const LocalConst = 1
 	const localConst = 2

@@ -9,7 +9,7 @@ function M.get(c, config)
 	local styles = util.get_styles(config)
 
 	return {
-		Boolean = { link = "Keyword" },
+		Boolean = { fg = c.variable_builtin },
 		Character = { fg = c.string },
 		Comment = styles.comments({ fg = c.comment }),
 		Conditional = { link = "Keyword" },
@@ -20,12 +20,12 @@ function M.get(c, config)
 		Error = { fg = c.error },
 		Exception = { link = "Keyword" },
 		Float = { fg = c.number },
-		Function = styles.functions({ fg = c.func }),
-		Identifier = styles.variables({ fg = c.variable }),
+		Function = styles.functions({ fg = c.func, nocombine = true }),
+		Identifier = styles.variables({ fg = c.variable, nocombine = true }),
 		Ignore = { fg = c.text2 },
 		Include = { fg = c.label },
 		Keyword = styles.keywords({ fg = c.keyword }),
-		Label = { fg = c.label },
+		Label = { fg = c.text },
 		Macro = styles.functions({ fg = c.metadata }),
 		Number = { fg = c.number },
 		Operator = { fg = c.operator },
@@ -40,10 +40,11 @@ function M.get(c, config)
 		String = { fg = c.string },
 		Structure = { link = "Keyword" },
 		Tag = { fg = c.tag },
-		Todo = { fg = c.todo, bold = true },
-		Type = { fg = c.type },
+		Todo = { fg = c.todo, italic = true },
+		Type = { fg = c.type, nocombine = true },
 		Typedef = { fg = c.type_definition },
 		Underlined = { fg = c.link, underline = true },
+		envField = { fg = c.keyword },
 	}
 end
 

@@ -18,7 +18,7 @@ function M.get(c)
 		BlinkCmpKindEvent = { fg = c.constant, bg = c.none },
 		BlinkCmpKindField = { fg = c.property, bg = c.none },
 		BlinkCmpKindFile = { fg = c.text, bg = c.none },
-		BlinkCmpKindFolder = { fg = c.identifier, bg = c.none },
+		BlinkCmpKindFolder = { link = "Directory" },
 		BlinkCmpKindFunction = { fg = c.func, bg = c.none },
 		BlinkCmpKindInterface = { fg = c.type, bg = c.none },
 		BlinkCmpKindKeyword = { fg = c.keyword, bg = c.none },
