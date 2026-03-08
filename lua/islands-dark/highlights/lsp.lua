@@ -4,6 +4,7 @@ local M = {}
 --- @return theme.Highlights
 function M.get()
 	return {
+		["@lsp.mod.documentation"] = { link = "@comment.documentation" },
 		["@lsp.mod.format"] = { link = "@string.escape" },
 		["@lsp.mod.readonly"] = { link = "@constant" },
 		["@lsp.mod.signature"] = { link = "@function.call" },
@@ -22,6 +23,7 @@ function M.get()
 		["@lsp.typemod.function.definition"] = { link = "@function" },
 		["@lsp.typemod.function.local"] = { link = "@function" },
 		["@lsp.typemod.interface.declaration"] = { link = "@type.definition" },
+		["@lsp.typemod.keyword.documentation"] = { link = "@comment.attribute" },
 		["@lsp.typemod.method.definition"] = { link = "@function" },
 		["@lsp.typemod.property.static"] = { link = "@constant" },
 		["@lsp.typemod.type.declaration"] = { link = "@type.definition" },

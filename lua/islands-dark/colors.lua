@@ -44,6 +44,9 @@ M.cyan2 = "#2AACB8" -- DEFAULT_NUMBER (cyan)
 M.green1 = "#375239" -- ADDED_LINES_COLOR (dark green)
 M.green2 = "#6AAB73" -- DEFAULT_STRING (green)
 M.green3 = "#8BB33D"
+M.green4 = "#5F826B"
+M.green5 = "#67A37C"
+M.green6 = "#2FBAA3"
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Reds (1=darkest → 2=lightest)
@@ -119,8 +122,6 @@ M.boolean = M.orange2
 
 -- Strings
 M.string = M.green2
-M.string_escape = M.orange2
-M.string_regex = M.cyan2
 
 -- Numbers
 M.number = M.cyan2
@@ -149,24 +150,26 @@ M.constant_builtin = M.orange1
 
 -- Comments
 M.comment = M.text2
-M.comment_doc = M.green2
+M.comment_doc = M.green4
+M.comment_tag = M.green5
 
 -- Operators & Punctuation
 M.operator = M.text
-M.punctuation = M.text
 M.delimiter = M.text
 
 -- Tags & Attributes
 M.tag = M.yellow2
-M.attribute = M.text
+M.attribute = M.yellow2
+M.special_tag = M.green6
 
 -- Labels & Special
-M.label = M.yellow4
+M.label = M.text
 M.metadata = M.yellow1
 M.special = M.cyan2
+M.special_char = M.blue4
 M.escape = M.orange2
 M.regex = M.cyan2
-M.braces = M.text
+M.include = M.yellow4
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Diagnostics & LSP

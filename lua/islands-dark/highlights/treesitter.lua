@@ -10,10 +10,12 @@ function M.get(c, config)
 
 	return {
 		["@annotation"] = { link = "PreProc" },
-		["@attribute"] = { link = "Tag" },
+		["@attribute"] = { fg = c.attribute },
 		["@character"] = { link = "Character" },
 		["@character.special"] = { link = "SpecialChar" },
 		["@comment"] = styles.comments({ link = "Comment" }),
+		["@comment.attribute"] = styles.comments({ fg = c.comment_tag }),
+		["@comment.documentation"] = { link = "@comment" },
 		["@comment.error"] = styles.comments({ link = "Todo" }),
 		["@comment.hint"] = styles.comments({ link = "Todo" }),
 		["@comment.info"] = styles.comments({ link = "Todo" }),
@@ -33,6 +35,8 @@ function M.get(c, config)
 		["@function.method"] = { link = "Function" },
 		["@function.method.call"] = { link = "@function.call" },
 		["@keyword.conditional.ternary"] = { link = "Operator" },
+		["@keyword.directive"] = { link = "PreProc" },
+		["@keyword.directive.define"] = { link = "Define" },
 		["@label"] = { link = "Label" },
 		["@markup"] = { fg = c.text },
 		["@markup.heading"] = { link = "@markup" },
@@ -45,6 +49,7 @@ function M.get(c, config)
 		["@markup.math"] = { link = "Number" },
 		["@markup.quote"] = { fg = c.string },
 		["@markup.raw"] = { fg = c.string },
+		["@markup.raw.block"] = { fg = c.string, bg = c.cyan1 },
 		["@markup.strikethrough"] = { strikethrough = true },
 		["@markup.strong"] = { bold = true },
 		["@markup.underline"] = { underline = true },
@@ -61,10 +66,11 @@ function M.get(c, config)
 		["@string.escape"] = { fg = c.escape },
 		["@string.regexp"] = { fg = c.regex },
 		["@string.special"] = { link = "SpecialChar" },
+		["@string.special.path"] = { fg = c.text },
 		["@string.special.symbol"] = { fg = c.constant },
 		["@string.special.url"] = { link = "Underlined" },
 		["@tag"] = { link = "Tag" },
-		["@tag.attribute"] = { fg = c.attribute },
+		["@tag.attribute"] = { fg = c.text },
 		["@tag.builtin"] = { link = "Tag" },
 		["@tag.delimiter"] = { link = "Tag" },
 		["@type"] = { link = "Type" },
@@ -80,7 +86,6 @@ function M.get(c, config)
 		["@constructor.lua"] = { link = "@punctuation.bracket" },
 
 		-- YAML
-		["@label.yaml"] = { link = "Tag" },
 		["@property.yaml"] = { fg = c.keyword },
 
 		-- Proto
@@ -117,18 +122,23 @@ function M.get(c, config)
 
 		-- Bash
 		["@constant.bash"] = {},
-		["@keyword.bash"] = { fg = c.variable_builtin },
-		["@keyword.directive.bash"] = { fg = c.text, bold = true },
-
-		-- SQL
-		["@type.sql"] = { fg = c.text },
+		["@function.call.bash"] = { link = "@function.builtin" },
 
 		-- PHP
 		["@constructor.php"] = { link = "@function" },
+		["@attribute.phpdoc"] = { link = "@comment.attribute" },
+		["@type.phpdoc"] = styles.comments({ link = "@type.definition" }),
+		["@keyword.phpdoc"] = styles.comments({ link = "@variable" }),
+		["@variable.parameter.phpdoc"] = styles.comments({ link = "@variable" }),
 
 		-- CSS
 		["@attribute.css"] = { link = "@tag" },
 		["@property.css"] = {},
+
+		-- Typescript / Javascript
+		["@keyword.jsdoc"] = { link = "@comment.attribute" },
+		["@type.jsdoc"] = styles.comments({ link = "@type.definition" }),
+		["@tag.tsx"] = { fg = c.special_tag },
 	}
 end
 

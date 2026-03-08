@@ -20,6 +20,7 @@ nvim -u minimal_init.lua test/test.lua
 ## Commands Reference
 
 ### Testing
+
 ```bash
 # Manual testing - open test files to verify syntax highlighting
 nvim test/test.lua        # Lua syntax test
@@ -33,12 +34,14 @@ nvim -c "lua require('islands-dark').setup({transparent=true})" -c "colorscheme 
 ```
 
 ### Linting
+
 ```bash
 # No official linter configured
 # Use lua-language-server or luacheck manually if needed
 ```
 
 ### Format
+
 ```bash
 # No formatter configured
 # Manual formatting following the existing code style
@@ -47,11 +50,13 @@ nvim -c "lua require('islands-dark').setup({transparent=true})" -c "colorscheme 
 ## Code Style Guidelines
 
 ### General Principles
+
 - **Source of truth**: All colors MUST come from `IslandsDark.icls` file - NO custom colors
 - **Compatibility**: Target Neovim 0.9+ with `vim.api.nvim_set_hl()`
 - **Pure Lua**: No VimL, no external dependencies, standard library only
 
 ### File Structure
+
 ```
 lua/islands-dark/
 ├── init.lua              # Main entry point, exports setup() and load()
@@ -76,18 +81,23 @@ lua/islands-dark/
 ### Naming Conventions
 
 **Variables and functions:**
+
 - `snake_case` for all variables and functions
 - Module tables: `local M = {}`
 - Descriptive names: `highlight_groups`, not `hg`
 
 **Highlight groups:**
+
 - Follow Neovim conventions: `CamelCase` (e.g., `Function`, `@variable.builtin`)
 - Plugin-specific: `PluginNameGroup` (e.g., `NvimTreeFolderName`, `GitSignsAdd`)
 
 **Color variables:**
-- Short, semantic names: `fg`, `bg`, `keyword`, `string`, `func`, `error`
-- UI elements: `cursor_line`, `line_number`, `border`, `visual`
-- VCS: `vcs_added`, `vcs_modified`, `vcs_removed`
+
+- Base palette: Numbered colors by hue: `bg1`-`bg4`, `fg1`-`fg4`, `blue1`-`blue5`, `green1`-`green3`, etc.
+- Semantic aliases: Descriptive names: `keyword`, `string`, `func`, `comment`, `error`
+- Base aliases: `base`, `base1`, `base2`, `text`, `text1`, `text2`
+- UI elements: `cursor`, `cursorline`, `line_number`, `border`, `visual`
+- Git: `git_add`, `git_change`, `git_delete`, `diff_add`, `diff_delete`, `diff_change`
 - Special: `none = "NONE"` for transparency
 
 ### Code Formatting
@@ -97,6 +107,7 @@ lua/islands-dark/
 **Line length:** No hard limit, but keep reasonable (~120 chars)
 
 **Spacing:**
+
 ```lua
 -- Good
 local function foo(bar, baz)
@@ -114,6 +125,7 @@ end
 ```
 
 **Tables:**
+
 ```lua
 -- Inline for short tables
 local simple = { fg = c.keyword, bg = c.none }
@@ -130,6 +142,7 @@ vim.tbl_extend("force", { fg = c.func }, { bold = true })
 ```
 
 ### Imports
+
 ```lua
 -- Standard order:
 -- 1. Local module table
@@ -182,16 +195,29 @@ end
 ```
 
 **Classes:**
+
 ```lua
---- @class Config
+--- @class theme.Config
 --- @field transparent boolean Use transparent background
 --- @field terminal_colors boolean Set terminal ANSI colors
---- @field styles table Style customization (comments, keywords, etc.)
+--- @field styles theme.Styles Style customization (comments, keywords, etc.)
+--- @field overrides function(colors: theme.Colors): table Returns highlight overrides
+--- @field on_highlights function(highlights: table, colors: theme.Colors) Modifies highlights in-place
+
+--- @class theme.Styles
+--- @field comments table Comment styles
+--- @field keywords table Keyword styles
+--- @field functions table Function styles
+--- @field variables table Variable styles
+
+--- @class theme.Colors
+--- All color fields documented in colors.lua
 ```
 
 ### Error Handling
 
 Minimal error handling - let Neovim handle errors naturally:
+
 ```lua
 -- Good - simple and clear
 local config = require("islands-dark.config").get()
@@ -205,6 +231,7 @@ end
 ```
 
 Exception: Use `pcall` when calling user-provided functions:
+
 ```lua
 -- Call user override function safely
 local ok, result = pcall(config.overrides, colors)
@@ -216,39 +243,40 @@ end
 ## Critical Constraints
 
 ### Color Palette Rules
+
 1. **ALL colors must exist in `IslandsDark.icls`** - no exceptions
 2. Each color must have a comment indicating its `.icls` source:
    ```lua
-   keyword = "#CF8E6D", -- DEFAULT_KEYWORD
+   M.orange2 = "#CF8E6D" -- DEFAULT_KEYWORD
    ```
-3. When adding new highlight groups, use existing palette colors only
-4. If a needed color doesn't exist in `.icls`, find the closest semantic match
+3. Colors are organized in two sections:
+   - **Section 1**: Base palette with numbered colors (e.g., `blue1`, `blue2`, `green1`)
+   - **Section 2**: Semantic aliases that reference base palette (e.g., `keyword = orange2`)
+4. When adding new highlight groups, use existing semantic aliases
+5. If a needed color doesn't exist in `.icls`, find the closest semantic match
 
 ### Configuration Callbacks
-The theme supports THREE callback styles (all must work):
+
+The theme supports TWO callback styles (all must work):
 
 ```lua
--- Style 1: on_colors (modifies colors before applying - NEW)
-on_colors = function(colors)
-	colors.keyword = "#FF0000"  -- Modify colors directly
-	colors.bg1 = "#000000"
-end
-
--- Style 2: overrides (returns table of highlight overrides)
+-- Style 1: overrides (returns table of highlight overrides)
 overrides = function(colors)
 	return {
 		Function = { fg = colors.blue4, bold = true }
 	}
 end
 
--- Style 3: on_highlights (modifies highlights in-place)
+-- Style 2: on_highlights (modifies highlights in-place)
 on_highlights = function(highlights, colors)
 	highlights.Function = { fg = colors.blue4, bold = true }
 end
 ```
 
 ### Highlight Priorities
+
 Neovim automatically sets highlight priorities with these defaults (0.9+):
+
 - **LSP Semantic Tokens**: 125 (highest priority)
 - **Treesitter**: 100 (medium priority)
 - **Syntax**: 50 (lowest priority)
@@ -263,6 +291,7 @@ This ensures LSP semantic tokens override Treesitter, which overrides traditiona
 The theme uses a hybrid approach:
 
 **1. Link to syntax groups when they exist:**
+
 ```lua
 -- In treesitter.lua - Link to base syntax groups (NO style wrapper)
 ["@function"] = { link = "Function" },
@@ -272,6 +301,7 @@ The theme uses a hybrid approach:
 ```
 
 **2. Use direct colors for Treesitter-specific granular captures:**
+
 ```lua
 -- These don't exist in traditional syntax, so use direct colors WITH style wrapper
 ["@function.builtin"] = styles.functions({ fg = c.func_builtin }),
@@ -280,6 +310,7 @@ The theme uses a hybrid approach:
 ```
 
 **3. Link to parent Treesitter captures for inheritance:**
+
 ```lua
 -- These inherit from their parent Treesitter capture
 ["@keyword.return"] = { link = "@keyword" },
@@ -289,6 +320,7 @@ The theme uses a hybrid approach:
 ### Important: Links and Styles Don't Mix
 
 Never wrap links with style functions - it does nothing:
+
 ```lua
 -- ❌ WRONG - style wrapper is ignored
 ["@keyword"] = styles.keywords({ link = "Keyword" })
@@ -306,6 +338,7 @@ Why? Because `link` is a special property that tells Neovim to "use all properti
 
 **For linked highlights:**
 Styles are applied to the base syntax group in syntax.lua:
+
 ```lua
 -- In syntax.lua
 Function = styles.functions({ fg = c.func })  -- If user sets italic, this gets it
@@ -316,6 +349,7 @@ Function = styles.functions({ fg = c.func })  -- If user sets italic, this gets 
 
 **For direct color highlights:**
 Styles are applied via the wrapper function:
+
 ```lua
 -- User sets: styles = { functions = { italic = true } }
 ["@function.builtin"] = styles.functions({ fg = c.func_builtin })
@@ -325,6 +359,7 @@ Styles are applied via the wrapper function:
 ## Common Tasks
 
 ### Adding a New Highlight Group
+
 1. Determine which module it belongs to (editor, syntax, treesitter, lsp, diagnostics, integrations)
 2. Use ONLY colors from the palette in `colors.lua`
 3. Decide on linking strategy:
@@ -332,41 +367,48 @@ Styles are applied via the wrapper function:
    - If it's Treesitter-specific → Use direct color: `styles.functions({ fg = c.func_builtin })`
    - If inheriting from parent capture → Link to parent: `{ link = "@keyword" }`
 4. Add the highlight:
+
    ```lua
    -- With link (no style wrapper)
    highlights.NewGroup = { link = "Function" }
-   
+
    -- OR with direct color (with style wrapper)
    highlights.NewGroup = styles.functions({ fg = c.func, bold = true })
    ```
+
 5. Test with appropriate test file
 
 ### Adding Plugin Support
+
 1. Create new file in `lua/islands-dark/highlights/integrations/plugin-name.lua`
 2. Follow this template:
+
    ```lua
    local M = {}
-   
+
    --- Get highlights for plugin-name
    --- @param c theme.Colors Color palette
-   --- @return table Highlight groups for plugin-name
+   --- @return table<string, table> Highlight groups for plugin-name
    function M.get(c)
    	return {
    		PluginHighlight = { fg = c.text, bg = c.none },
    		-- ... more highlights
    	}
    end
-   
+
    return M
    ```
+
 3. Add to `lua/islands-dark/highlights/integrations/init.lua`:
    ```lua
    local plugin = require("islands-dark.highlights.integrations.plugin-name")
    highlights = vim.tbl_deep_extend("force", highlights, plugin.get(colors))
    ```
 4. Document in README.md under "Plugin Support"
+5. Test the plugin integration with actual plugin installed
 
 ### Fixing Color Inconsistencies
+
 1. Check `IslandsDark.icls` for the correct color
 2. Update `colors.lua` with the correct hex value and comment
 3. Find all usages of the wrong color
@@ -376,9 +418,9 @@ Styles are applied via the wrapper function:
 ## Testing Checklist
 
 Before submitting changes:
+
 - [ ] Open test files and verify colors look correct
 - [ ] Test with `transparent = true` configuration
-- [ ] Test `on_colors` callback works (new)
 - [ ] Test `overrides` callback works
 - [ ] Test `on_highlights` callback works
 - [ ] Verify no custom colors were added (all from `.icls`)
@@ -389,6 +431,8 @@ Before submitting changes:
 - [ ] Check that linked groups update when base group changes
 - [ ] Test statusbar is visible (not transparent)
 - [ ] Verify plugin integrations work (blink-cmp, fzf-lua, nvim-tree, gitsigns)
+- [ ] Check terminal colors are set correctly (test with `:terminal`)
+- [ ] Verify all colors use semantic aliases, not direct palette references in highlights
 
 ## Notes
 
