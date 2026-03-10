@@ -14,7 +14,7 @@ function M.setup(colors, config)
 	local integrations = require("islands-dark.highlights.integrations")
 
 	-- Combine all highlights
-	local highlights = vim.tbl_deep_extend(
+	local highlights = vim.tbl_extend(
 		"force",
 		{},
 		editor.get(colors),
@@ -27,7 +27,7 @@ function M.setup(colors, config)
 
 	-- Apply user overrides (supports both 'overrides' and 'on_highlights')
 	if config.overrides and type(config.overrides) == "function" then
-		highlights = vim.tbl_deep_extend("force", highlights, config.overrides(colors))
+		highlights = vim.tbl_extend("force", highlights, config.overrides(colors))
 	end
 
 	-- Apply on_highlights (receives highlights table and can modify it directly)

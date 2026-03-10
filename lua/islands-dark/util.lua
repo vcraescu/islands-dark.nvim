@@ -63,7 +63,7 @@ function M.get_style(opts, style_type)
 			return hl
 		end
 
-		return vim.tbl_deep_extend("force", hl, style)
+		return vim.tbl_extend("force", hl, style)
 	end
 end
 

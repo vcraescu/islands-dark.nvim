@@ -402,7 +402,7 @@ Styles are applied via the wrapper function:
 3. Add to `lua/islands-dark/highlights/integrations/init.lua`:
    ```lua
    local plugin = require("islands-dark.highlights.integrations.plugin-name")
-   highlights = vim.tbl_deep_extend("force", highlights, plugin.get(colors))
+   highlights = vim.tbl_extend("force", highlights, plugin.get(colors))
    ```
 4. Document in README.md under "Plugin Support"
 5. Test the plugin integration with actual plugin installed

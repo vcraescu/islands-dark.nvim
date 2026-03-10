@@ -3,12 +3,16 @@
 // Test file for class names and method invocations
 
 // 1. Class name in declaration - should this be different from usage?
-class MyClass {
-    public function myMethod() {}
+class MyClass
+{
+    public function myMethod()
+    {
+    }
 }
 
 // 2. Class name as type hint
-function createUser(MyClass $obj): MyClass {
+function createUser(MyClass $obj): MyClass
+{
     return $obj;
 }
 
@@ -54,18 +58,27 @@ try {
 }
 
 // 13. Interface and trait names
-interface MyInterface {}
-trait MyTrait {}
+interface MyInterface
+{
+}
+trait MyTrait
+{
+}
 
 // 14. Abstract and extends
-abstract class BaseClass {}
-class ChildClass extends BaseClass implements MyInterface {
+abstract class BaseClass
+{
+}
+class ChildClass extends BaseClass implements MyInterface
+{
     use MyTrait;
 }
 
 // 15. Anonymous class
 $obj = new class {
-    public function test() {}
+    public function test()
+    {
+    }
 };
 
 // 16. Type parameters/generics (PHP doesn't have these, but for reference)

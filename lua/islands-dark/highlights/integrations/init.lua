@@ -8,10 +8,7 @@ function M.get(c)
 	local gitsigns = require("islands-dark.highlights.integrations.gitsigns")
 	local nvim_tree = require("islands-dark.highlights.integrations.nvim-tree")
 
-	local highlights =
-		vim.tbl_deep_extend("force", {}, blink_cmp.get(c), fzf_lua.get(c), gitsigns.get(c), nvim_tree.get(c))
-
-	return highlights
+	return vim.tbl_extend("force", {}, blink_cmp.get(c), fzf_lua.get(c), gitsigns.get(c), nvim_tree.get(c))
 end
 
 return M

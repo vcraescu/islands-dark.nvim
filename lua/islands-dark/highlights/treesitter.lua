@@ -90,6 +90,7 @@ function M.get(c, config)
 
 		-- Proto
 		["@property.proto"] = { fg = c.text },
+		["@type.proto"] = { link = "@type.definition" },
 
 		-- Python
 		["@variable.member.python"] = { fg = c.text },
@@ -124,10 +125,11 @@ function M.get(c, config)
 		["@function.call.bash"] = { link = "@function.builtin" },
 
 		-- PHP
-		["@constructor.php"] = { link = "@function" },
 		["@attribute.phpdoc"] = { link = "@comment.attribute" },
-		["@type.phpdoc"] = styles.comments({ link = "@type.definition" }),
+		["@constructor.php"] = { link = "@function" },
 		["@keyword.phpdoc"] = styles.comments({ link = "@variable" }),
+		["@type.php"] = { fg = c.text },
+		["@type.phpdoc"] = styles.comments({ link = "@type.definition" }),
 		["@variable.parameter.phpdoc"] = styles.comments({ link = "@variable" }),
 
 		-- CSS
