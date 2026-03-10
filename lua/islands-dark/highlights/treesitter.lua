@@ -105,10 +105,9 @@ function M.get(c, config)
 		["@markup.heading.html"] = { link = "@markup" },
 
 		-- Go
-		["@property.go"] = { fg = c.text },
 		["@string.special.url.gomod"] = { fg = c.string },
 		["@string.special.url.gosum"] = { fg = c.string },
-		["@variable.member.go"] = { link = "@property.go" },
+		["@variable.member.go"] = { fg = c.variable },
 
 		-- Markdown
 		["@conceal.markdown_inline"] = { fg = c.keyword },
