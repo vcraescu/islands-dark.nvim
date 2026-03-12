@@ -108,6 +108,7 @@ M.text3 = M.fg4
 M.border = M.gray1
 M.cursor = M.text
 M.cursorline = M.base1
+M.quickfixline = M.base3
 M.visual = M.blue2
 M.line_number = M.text2
 M.color_column = M.base2

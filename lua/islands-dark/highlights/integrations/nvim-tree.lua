@@ -36,7 +36,7 @@ function M.get(c)
 		NvimTreeGitIgnored = { fg = c.git_ignore },
 		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },
 
-		NvimTreeCursorLine = { bg = c.base3 },
+		NvimTreeCursorLine = { link = "QuickFixLine" },
 
 		NvimTreeIndentMarker = { fg = c.comment },
 

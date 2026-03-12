@@ -44,7 +44,7 @@ function M.get(c)
 		PmenuSel = { link = "Visual" },
 		PmenuThumb = { bg = c.border },
 		Question = { fg = c.info },
-		QuickFixLine = { bg = c.cursorline },
+		QuickFixLine = { bg = c.quickfixline },
 		Removed = { fg = c.git_delete },
 		Search = { fg = c.text, bg = c.search },
 		SignColumn = { fg = c.line_number, bg = c.none },
