@@ -13,7 +13,7 @@ local M = {}
 M.bg1 = "#191A1C" -- EDITOR_BACKGROUND
 M.bg2 = "#1F2024" -- GUTTER_BACKGROUND
 M.bg3 = "#2B2D30" -- SELECTION_BACKGROUND
-M.bg4 = "#393b40" -- CURSOR_LINE_BACKGROUND_ALT
+M.bg4 = "#393b40" -- CURSOR_LINE_BACKGROUND_ALT, INLAY_BG
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Foregrounds (1=darkest → 3=lightest)
@@ -22,6 +22,7 @@ M.fg1 = "#7A7E85" -- COMMENT
 M.fg2 = "#A1A3AB" -- LINE_NUMBER
 M.fg3 = "#BCBEC4" -- DEFAULT_TEXT
 M.fg4 = "#d1d3d9"
+M.fg5 = "#868A91" -- INLAY_FG
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Blues (1=darkest → 4=lightest)
@@ -101,6 +102,7 @@ M.text = M.fg3
 M.text1 = M.fg2
 M.text2 = M.fg1
 M.text3 = M.fg4
+M.text4 = M.fg5
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Editor UI Elements

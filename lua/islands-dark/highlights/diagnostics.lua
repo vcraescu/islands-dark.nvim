@@ -32,7 +32,7 @@ function M.get(c)
 		DiagnosticWarn = { fg = c.warning },
 		LspCodeLens = { fg = c.text2 },
 		LspCodeLensSeparator = { fg = c.border },
-		LspInlayHint = { fg = c.text2 },
+		LspInlayHint = { fg = c.text4, bg = c.base3 },
 		LspReferenceRead = { bg = c.lsp_reference },
 		LspReferenceText = { bg = c.lsp_reference },
 		LspReferenceWrite = { bg = c.lsp_reference },
