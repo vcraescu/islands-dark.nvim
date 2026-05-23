@@ -109,6 +109,7 @@ function M.get(c, config)
 		["@string.special.url.gomod"] = { fg = c.string },
 		["@string.special.url.gosum"] = { fg = c.string },
 		["@variable.member.go"] = { fg = c.variable },
+		["@property.go"] = { link = "@variable.member.go" },
 
 		-- Markdown
 		["@conceal.markdown_inline"] = { fg = c.keyword },
