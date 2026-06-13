@@ -7,8 +7,17 @@ function M.get(c)
 	local fzf_lua = require("islands-dark.highlights.integrations.fzf-lua")
 	local gitsigns = require("islands-dark.highlights.integrations.gitsigns")
 	local nvim_tree = require("islands-dark.highlights.integrations.nvim-tree")
+	local minuet_ai = require("islands-dark.highlights.integrations.minuet-ai")
 
-	return vim.tbl_extend("force", {}, blink_cmp.get(c), fzf_lua.get(c), gitsigns.get(c), nvim_tree.get(c))
+	return vim.tbl_extend(
+		"force",
+		{},
+		blink_cmp.get(c),
+		fzf_lua.get(c),
+		gitsigns.get(c),
+		nvim_tree.get(c),
+		minuet_ai.get(c)
+	)
 end
 
 return M
