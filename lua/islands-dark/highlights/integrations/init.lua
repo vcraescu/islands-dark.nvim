@@ -4,6 +4,7 @@ local M = {}
 --- @return theme.Highlights
 function M.get(c)
 	local blink_cmp = require("islands-dark.highlights.integrations.blink-cmp")
+	local codediff = require("islands-dark.highlights.integrations.codediff")
 	local fzf_lua = require("islands-dark.highlights.integrations.fzf-lua")
 	local gitsigns = require("islands-dark.highlights.integrations.gitsigns")
 	local nvim_tree = require("islands-dark.highlights.integrations.nvim-tree")
@@ -13,6 +14,7 @@ function M.get(c)
 		"force",
 		{},
 		blink_cmp.get(c),
+		codediff.get(c),
 		fzf_lua.get(c),
 		gitsigns.get(c),
 		nvim_tree.get(c),

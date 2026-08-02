@@ -14,7 +14,7 @@ A faithful port of JetBrains IntelliJ IDEA Islands Dark theme for Neovim.
 - 🎨 **Faithful Port**: Accurately reproduces IntelliJ IDEA Islands Dark colors
 - 🌲 **Treesitter Support**: Full support for Treesitter syntax highlighting
 - 🔍 **LSP Integration**: Semantic tokens and diagnostics highlighting
-- 🔌 **Plugin Support**: Optimized for popular plugins (blink-cmp, fzf-lua, nvim-tree, gitsigns)
+- 🔌 **Plugin Support**: Optimized for popular plugins (blink-cmp, CodeDiff, fzf-lua, nvim-tree, gitsigns)
 - ⚙️ **Customizable**: Configure transparent backgrounds, styles, and color overrides
 - 🎯 **Semantic Priority**: LSP semantic tokens take precedence over Treesitter for accurate highlighting
 - 🖥️ **Terminal Colors**: 16 ANSI colors matching the theme
@@ -224,13 +224,15 @@ require("islands-dark").setup({
 ```
 
 **Choose one method** based on your needs:
+
 - Use `overrides` for simple highlight customizations (cleanest API)
 - Use `on_colors` to change base colors that affect multiple highlights
 - Use `on_highlights` for complex modifications with conditional logic
 
 ## 🔌 Plugin Support
 
-Islands Dark includes optimized highlighting for popular Neovim plugins. Plugin integrations are modular and automatically loaded:
+Islands Dark includes optimized highlighting for popular Neovim plugins. Plugin integrations are modular and
+automatically loaded:
 
 ### Completion
 
@@ -238,7 +240,8 @@ Islands Dark includes optimized highlighting for popular Neovim plugins. Plugin 
 
 ### File Explorers
 
-- **[nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)**: Icon colors, folder highlighting, git status indicators
+- **[nvim-tree.lua](https://github.com/nvim-tree/nvim-tree.lua)**: Icon colors, folder highlighting, git status
+  indicators
 
 ### Fuzzy Finders
 
@@ -246,11 +249,14 @@ Islands Dark includes optimized highlighting for popular Neovim plugins. Plugin 
 
 ### Git Integration
 
+- **[CodeDiff.nvim](https://github.com/esmuellert/codediff.nvim)**: Diff lines, changed characters, moved code, file
+  statuses, and conflict signs
 - **[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)**: Add/change/delete line indicators, blame highlights
 
 ### Syntax & LSP
 
-- **[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)**: Full support for all language parsers with granular captures
+- **[nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)**: Full support for all language parsers with
+  granular captures
 - **LSP Semantic Tokens**: Priority highlighting (125) over Treesitter (100) for accurate semantics
 - **Diagnostics**: Error, warning, info, and hint highlights with underlines
 

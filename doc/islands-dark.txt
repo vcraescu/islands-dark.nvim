@@ -296,6 +296,7 @@ Fuzzy Finders:
     • fzf-lua - Search prompts, matches, borders
 
 Git Integration:
+    • CodeDiff - Diff highlights, file statuses, conflict signs
     • gitsigns - Line signs, inline diffs, blame
 
                                                   *islands-dark-fzf-lua*
