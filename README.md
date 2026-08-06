@@ -14,7 +14,8 @@ A faithful port of JetBrains IntelliJ IDEA Islands Dark theme for Neovim.
 - 🎨 **Faithful Port**: Accurately reproduces IntelliJ IDEA Islands Dark colors
 - 🌲 **Treesitter Support**: Full support for Treesitter syntax highlighting
 - 🔍 **LSP Integration**: Semantic tokens and diagnostics highlighting
-- 🔌 **Plugin Support**: Optimized for popular plugins (blink-cmp, CodeDiff, fzf-lua, nvim-tree, gitsigns)
+- 🔌 **Plugin Support**: Optimized for popular plugins (blink-cmp, CodeDiff, Copilot, copilot.lua, fzf-lua, nvim-tree,
+  gitsigns)
 - ⚙️ **Customizable**: Configure transparent backgrounds, styles, and color overrides
 - 🎯 **Semantic Priority**: LSP semantic tokens take precedence over Treesitter for accurate highlighting
 - 🖥️ **Terminal Colors**: 16 ANSI colors matching the theme
@@ -237,6 +238,11 @@ automatically loaded:
 ### Completion
 
 - **[blink.cmp](https://github.com/Saghen/blink.cmp)**: Complete menu, matching, and kind highlights
+
+### AI Assistance
+
+- **[GitHub Copilot](https://github.com/github/copilot.vim)**: Inline suggestions and cycling annotations
+- **[copilot.lua](https://github.com/zbirenbaum/copilot.lua)**: Inline suggestions and panel annotations
 
 ### File Explorers
 
