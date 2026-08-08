@@ -19,6 +19,7 @@ function M.get(c)
 		DiffChange = { bg = c.diff_change },
 		DiffDelete = { bg = c.diff_delete },
 		DiffText = { bg = c.diff_change },
+		DiffTextAdd = { bg = c.git_add, fg = c.base3 },
 		Directory = { fg = c.blue4 },
 		ErrorMsg = { fg = c.error },
 		FloatBorder = { fg = c.border, bg = c.none },
