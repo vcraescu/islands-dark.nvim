@@ -22,7 +22,7 @@ M.fg1 = "#7A7E85" -- COMMENT
 M.fg2 = "#A1A3AB" -- LINE_NUMBER
 M.fg3 = "#BCBEC4" -- DEFAULT_TEXT
 M.fg4 = "#d1d3d9"
-M.fg5 = "#868A91" -- INLAY_FG
+M.fg5 = "#858A94" -- INLAY_FG
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Blues (1=darkest → 4=lightest)
@@ -79,6 +79,7 @@ M.purple2 = "#B189F5" -- DEFAULT_TEMPLATE_LANGUAGE (lavender/bright purple)
 -- Grays (1=darkest → 2=lightest)
 -- ───────────────────────────────────────────────────────────────────────────
 M.gray1 = "#43454A" -- BORDER_COLOR (gray blue)
+M.gray2 = "#4B5059" -- LINE_NUMBERS_COLOR
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Special
@@ -112,9 +113,11 @@ M.cursor = M.text
 M.cursorline = M.base1
 M.quickfixline = M.base3
 M.visual = M.blue2
-M.line_number = M.text2
+M.line_number = M.gray2
+M.line_number_current = M.text1
 M.color_column = M.base2
 M.fold = M.base2
+M.ghost_text = M.line_number
 
 -- ───────────────────────────────────────────────────────────────────────────
 -- Syntax Highlighting

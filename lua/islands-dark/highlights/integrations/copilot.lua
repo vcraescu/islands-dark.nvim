@@ -5,7 +5,7 @@ local M = {}
 --- @return theme.Highlights
 function M.get(c)
 	return {
-		CopilotSuggestion = { fg = c.text2 },
+		CopilotSuggestion = { fg = c.ghost_text },
 		CopilotAnnotation = { link = "MoreMsg" },
 	}
 end

@@ -41,7 +41,7 @@ function M.get(c)
 		BlinkCmpSignatureHelpBorder = { link = "FloatBorder" },
 		BlinkCmpSignatureHelpActiveParameter = { fg = c.parameter, bg = c.none, bold = true },
 
-		BlinkCmpGhostText = { fg = c.text2 },
+		BlinkCmpGhostText = { fg = c.ghost_text },
 	}
 end
 

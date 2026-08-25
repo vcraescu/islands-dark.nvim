@@ -14,7 +14,7 @@ function M.get(c)
 		CursorColumn = { bg = c.cursorline },
 		CursorIM = { bg = c.cursor },
 		CursorLine = { bg = c.cursorline },
-		CursorLineNr = { fg = c.text, bg = c.cursorline },
+		CursorLineNr = { fg = c.line_number_current, bg = c.cursorline },
 		DiffAdd = { bg = c.diff_add },
 		DiffChange = { bg = c.diff_change },
 		DiffDelete = { bg = c.diff_delete },

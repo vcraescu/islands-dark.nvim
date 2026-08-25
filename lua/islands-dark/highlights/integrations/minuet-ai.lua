@@ -5,7 +5,7 @@ local M = {}
 --- @return theme.Highlights
 function M.get(c)
 	return {
-		MinuetVirtualText = { fg = c.text2 },
+		MinuetVirtualText = { fg = c.ghost_text },
 
 		MinuetDuetAdd = { link = "DiffAdd" },
 		MinuetDuetDelete = { link = "DiffDelete" },
