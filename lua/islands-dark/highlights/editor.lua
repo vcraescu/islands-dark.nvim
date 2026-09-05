@@ -57,7 +57,7 @@ function M.get(c)
 		SpellLocal = { sp = c.hint, undercurl = true },
 		SpellRare = { sp = c.info, undercurl = true },
 		StatusLine = { fg = c.text, bg = c.base2 },
-		StatusLineNC = { fg = c.text1, bg = c.base2 },
+		StatusLineNC = { fg = c.text2, bg = c.base1 },
 		Substitute = { fg = c.text, bg = c.match },
 		TabLine = {},
 		TabLineFill = {},

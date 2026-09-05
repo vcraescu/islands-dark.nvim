@@ -36,13 +36,16 @@ function M.get(c)
 		NvimTreeGitIgnored = { fg = c.git_ignore },
 		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },
 
-		NvimTreeCursorLine = { link = "QuickFixLine" },
+		NvimTreeCursorLine = { link = "PmenuSel" },
+		--- this is not standard highlight group, but it is used in nvim-tree.lua to highlight the cursor line in the tree
+		NvimTreeCursorLineNC = { link = "QuickFixLine" },
 
 		NvimTreeIndentMarker = { fg = c.comment },
 
-		NvimTreeWindowPicker = { bg = c.base3, bold = true },
+		NvimTreeWindowPicker = { link = "PmenuSel" },
 
-		NvimTreeStatusLineNC = { fg = c.comment, bg = c.visual },
+		NvimTreeStatusLine = { link = "StatusLine" },
+		NvimTreeStatusLineNC = { link = "StatusLineNC" },
 	}
 end
 
