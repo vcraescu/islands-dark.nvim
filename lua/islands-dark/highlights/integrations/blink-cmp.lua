@@ -35,6 +35,8 @@ function M.get(c)
 		BlinkCmpKindValue = { fg = c.constant, bg = c.none },
 		BlinkCmpKindVariable = { fg = c.variable, bg = c.none },
 
+		BlinkCmpLabelDetail = { fg = c.comment, bg = c.none },
+
 		BlinkCmpDocBorder = { link = "FloatBorder" },
 		BlinkCmpDocSeparator = { link = "FloatBorder" },
 
