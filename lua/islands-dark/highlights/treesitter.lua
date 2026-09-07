@@ -53,6 +53,8 @@ function M.get(c, config)
 		["@markup.strikethrough"] = { strikethrough = true },
 		["@markup.strong"] = { bold = true },
 		["@markup.underline"] = { underline = true },
+		["@method"] = { link = "@function.method" },
+		["@method.call"] = { link = "@function.method.call" },
 		["@module"] = { link = "Include" },
 		["@module.builtin"] = { fg = c.keyword },
 		["@number"] = { link = "Number" },
@@ -80,7 +82,6 @@ function M.get(c, config)
 		["@variable"] = { link = "Identifier" },
 		["@variable.builtin"] = { fg = c.variable_builtin },
 		["@variable.member"] = { link = "@property" },
-
 		-- Lua
 		["@constant.lua"] = {},
 		["@constructor.lua"] = { link = "@punctuation.bracket" },
