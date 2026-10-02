@@ -3,17 +3,17 @@ local M = {}
 local palette = require("islands-dark.palette")
 
 -- Backgrounds
-M.background = palette.bg1
-M.background_gutter = palette.bg2
-M.background_surface = palette.bg3
-M.background_highlight = palette.bg4
+M.bg = palette.bg1
+M.bg_gutter = palette.bg2
+M.bg_surface = palette.bg3
+M.bg_highlight = palette.bg4
 
 -- Foregrounds
-M.foreground = palette.fg3
-M.foreground_muted = palette.fg2
-M.foreground_dim = palette.fg1
-M.foreground_bright = palette.fg4
-M.foreground_inlay = palette.fg5
+M.fg = palette.fg3
+M.fg_muted = palette.fg2
+M.fg_dim = palette.fg1
+M.fg_bright = palette.fg4
+M.fg_inlay = palette.fg5
 
 -- Editor
 M.border = palette.gray1
@@ -24,15 +24,14 @@ M.visual = palette.blue2
 M.line_number = palette.gray2
 M.line_number_current = palette.fg2
 M.color_column = palette.bg3
-M.fold = palette.bg4
-M.fold_foreground = palette.fg6
+M.fold_bg = palette.bg4
+M.fold_fg = palette.fg6
 M.ghost_text = palette.gray2
 M.directory = palette.blue4
-M.markup_code_background = palette.cyan1
+M.markup_code_bg = palette.cyan1
 
 -- Keywords and literals
 M.keyword = palette.orange2
-M.boolean = palette.orange2
 M.string = palette.green2
 M.number = palette.cyan2
 
@@ -40,7 +39,6 @@ M.number = palette.cyan2
 M.func = palette.blue4
 M.func_builtin = palette.orange1
 M.func_call = palette.yellow3
-M.method = palette.blue4
 
 -- Variables and parameters
 M.variable = palette.fg3
@@ -51,7 +49,6 @@ M.property = palette.purple1
 -- Types and constants
 M.type = palette.blue5
 M.type_builtin = palette.orange1
-M.type_parameter = palette.cyan2
 M.type_definition = palette.fg3
 M.constant = palette.purple1
 M.constant_builtin = palette.orange1
@@ -118,7 +115,6 @@ M.git_merge = palette.purple1
 
 -- Special elements
 M.todo = palette.green3
-M.note = palette.blue5
 M.link = palette.blue4
 M.none = "NONE"
 

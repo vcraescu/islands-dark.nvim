@@ -48,6 +48,26 @@ end
 
 assert(colors.changes.delete.fg == "#868A91")
 
+for _, name in ipairs({ "blue3", "red1", "purple2" }) do
+	assert(palette[name] == nil, "Unused palette color retained: " .. name)
+end
+for _, name in ipairs({
+	"boolean",
+	"method",
+	"type_parameter",
+	"note",
+	"fold",
+	"fold_foreground",
+	"markup_code_background",
+}) do
+	assert(colors[name] == nil, "Old color alias retained: " .. name)
+end
+
+for name in pairs(colors) do
+	assert(not name:find("foreground", 1, true), "Long-form color field retained: " .. name)
+	assert(not name:find("background", 1, true), "Long-form color field retained: " .. name)
+end
+
 -- Raw colors must not leak into the semantic API.
 for name in pairs(palette) do
 	if name ~= "terminal" then
@@ -111,8 +131,8 @@ for _, kind in ipairs({ "Add", "Change", "Delete" }) do
 		assert(git_groups["GitSigns" .. kind .. "Inline"].fg == palette.fg4)
 	end
 end
-assert(editor_groups.DiffDelete.bg == custom_colors.background_gutter)
-assert(editor_groups.DiffDelete.fg == custom_colors.foreground_dim)
+assert(editor_groups.DiffDelete.bg == custom_colors.bg_gutter)
+assert(editor_groups.DiffDelete.fg == custom_colors.fg_dim)
 assert(editor_groups.DiffText.bg == palette.bg4)
 assert(editor_groups.DiffText.fg == palette.fg4)
 assert(editor_groups.DiffTextAdd.link == "DiffText")
@@ -133,15 +153,15 @@ assert(tree_groups.NvimTreeGitDeleted.fg == palette.fg3)
 
 -- Transparent loads must not mutate either color module.
 local transparent_colors = util.apply_overrides(colors, { transparent = true })
-assert(transparent_colors.background == colors.none)
-assert(transparent_colors.fold == colors.none)
-assert(colors.background == palette.bg1)
-assert(colors.fold == "#393B40")
-assert(colors.fold_foreground == "#868991")
-assert(colors.fold ~= colors.background)
-assert(colors.fold ~= colors.changes.delete.line_bg)
+assert(transparent_colors.bg == colors.none)
+assert(transparent_colors.fold_bg == colors.none)
+assert(colors.bg == palette.bg1)
+assert(colors.fold_bg == "#393B40")
+assert(colors.fold_fg == "#868991")
+assert(colors.fold_bg ~= colors.bg)
+assert(colors.fold_bg ~= colors.changes.delete.line_bg)
 transparent_colors.changes.add.fg = palette.fg1
-transparent_colors.terminal.red = palette.red1
+transparent_colors.terminal.red = palette.red2
 assert(colors.changes.add.fg == palette.green2)
 assert(colors.terminal.red == palette.terminal.red)
 
@@ -149,20 +169,21 @@ for _, transparent in ipairs({ false, true, false }) do
 	theme.setup({ transparent = transparent })
 	theme.load()
 	assert(vim.g.colors_name == "islands-dark")
-	assert_highlight("Normal", "fg", colors.foreground)
-	assert_highlight("Normal", "bg", transparent and colors.none or colors.background)
-	assert_highlight("FloatTitle", "bg", transparent and colors.none or colors.background)
+	assert_highlight("Normal", "fg", colors.fg)
+	assert_highlight("Normal", "bg", transparent and colors.none or colors.bg)
+	assert_highlight("FloatTitle", "bg", transparent and colors.none or colors.bg)
+	assert_highlight("@markup.raw.block", "bg", colors.markup_code_bg)
 	assert_highlight("Folded", "fg", "#868991")
 	assert_highlight("Folded", "bg", transparent and colors.none or "#393B40")
 	local folded = vim.api.nvim_get_hl(0, { name = "Folded", link = false })
 	assert(not folded.italic)
 	assert(not folded.bold)
-	assert_highlight("StatusLine", "bg", colors.background_surface)
-	assert_highlight("StatusLineNC", "bg", colors.background_gutter)
+	assert_highlight("StatusLine", "bg", colors.bg_surface)
+	assert_highlight("StatusLineNC", "bg", colors.bg_gutter)
 	assert_highlight("DiffAdd", "bg", colors.changes.add.line_bg)
 	assert_highlight("DiffChange", "bg", colors.changes.change.line_bg)
-	assert_highlight("DiffDelete", "bg", colors.background_gutter)
-	assert_highlight("DiffDelete", "fg", colors.foreground_dim)
+	assert_highlight("DiffDelete", "bg", colors.bg_gutter)
+	assert_highlight("DiffDelete", "fg", colors.fg_dim)
 	assert_highlight("DiffText", "bg", colors.changes.change.text_bg)
 	assert_highlight("DiffText", "fg", colors.changes.change.text_fg)
 	assert_highlight("DiffTextAdd", "bg", colors.changes.change.text_bg)
@@ -210,10 +231,10 @@ for _, transparent in ipairs({ false, true, false }) do
 		assert(vim.g["terminal_color_" .. (index - 1)] == colors.terminal[name])
 	end
 	local fzf_colors = theme.get_fzf_colors()
-	local background = transparent and colors.none or colors.background
-	assert(fzf_colors:find("fg:" .. colors.foreground, 1, true))
-	assert(fzf_colors:find("bg:" .. background, 1, true))
-	assert(fzf_colors:find("gutter:" .. background, 1, true))
+	local bg = transparent and colors.none or colors.bg
+	assert(fzf_colors:find("fg:" .. colors.fg, 1, true))
+	assert(fzf_colors:find("bg:" .. bg, 1, true))
+	assert(fzf_colors:find("gutter:" .. bg, 1, true))
 end
 
 for index = 0, 15 do
@@ -229,7 +250,7 @@ end
 --- @param c theme.Colors Semantic colors
 --- @return theme.Highlights
 local function overrides(c)
-	return { Function = { fg = c.foreground_bright, bold = true } }
+	return { Function = { fg = c.fg_bright, bold = true } }
 end
 
 --- Modify highlights using shared change colors.
@@ -242,7 +263,7 @@ end
 
 theme.setup({ overrides = overrides, on_highlights = on_highlights })
 theme.load()
-assert_highlight("Function", "fg", colors.foreground_bright)
+assert_highlight("Function", "fg", colors.fg_bright)
 assert(vim.api.nvim_get_hl(0, { name = "Function", link = false }).bold)
 assert_highlight("GitSignsAdd", "fg", colors.changes.change.fg)
 
@@ -279,7 +300,7 @@ assert_highlight(insertion_group, "bg", "#385570")
 assert_highlight("DiffChange", "bg", "#25323E")
 vim.api.nvim_set_current_win(before_window)
 assert(vim.fn.diff_filler(4) == 1)
-assert_highlight("DiffDelete", "bg", colors.background_gutter)
+assert_highlight("DiffDelete", "bg", colors.bg_gutter)
 vim.api.nvim_set_current_win(after_window)
 vim.api.nvim_buf_set_lines(after, 1, 2, false, { "return amount" })
 vim.cmd("diffupdate")

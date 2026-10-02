@@ -23,7 +23,6 @@ M.fg6 = "#868991" -- FOLDED_TEXT_ATTRIBUTES.FOREGROUND
 -- Blues
 M.blue1 = "#114957" -- TEXT_SEARCH_RESULT_ATTRIBUTES.BACKGROUND
 M.blue2 = "#214283" -- Unverified: original .icls not included
-M.blue3 = "#548AF7" -- HYPERLINK_ATTRIBUTES.FOREGROUND
 M.blue4 = "#56A8F5" -- DEFAULT_FUNCTION_DECLARATION.FOREGROUND
 M.blue5 = "#6FAFBD" -- Unverified: original .icls not included
 M.blue6 = "#25323E" -- User-specified changed line background
@@ -44,7 +43,6 @@ M.green7 = "#1F2B26" -- User-specified added line background
 M.green8 = "#294436" -- User-specified added text background
 
 -- Reds
-M.red1 = "#5E3838" -- LINE_NONE_COVERAGE.FOREGROUND
 M.red2 = "#F75464" -- BAD_CHARACTER.FOREGROUND
 
 -- Yellows
@@ -59,7 +57,6 @@ M.orange2 = "#CF8E6D" -- DEFAULT_KEYWORD.FOREGROUND
 
 -- Purples
 M.purple1 = "#C77DBB" -- DEFAULT_CONSTANT.FOREGROUND
-M.purple2 = "#B189F5" -- TEMPLATE_VARIABLE_ATTRIBUTES.FOREGROUND
 
 -- Grays
 M.gray1 = "#43454A" -- METHOD_SEPARATORS_COLOR

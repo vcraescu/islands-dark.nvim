@@ -5,7 +5,7 @@ local M = {}
 --- @return theme.Highlights
 function M.get(c)
 	return {
-		NvimTreeNormal = { fg = c.foreground_bright, bg = c.none },
+		NvimTreeNormal = { fg = c.fg_bright, bg = c.none },
 		NvimTreeWinSeparator = { fg = c.border, bg = c.none },
 
 		NvimTreeRootFolder = { fg = c.comment },

@@ -33,7 +33,6 @@
 --- @field fg6 string Folded text foreground
 --- @field blue1 string
 --- @field blue2 string
---- @field blue3 string
 --- @field blue4 string
 --- @field blue5 string
 --- @field blue6 string User-specified changed line background
@@ -48,7 +47,6 @@
 --- @field green6 string
 --- @field green7 string User-specified added line background
 --- @field green8 string User-specified added text background
---- @field red1 string
 --- @field red2 string
 --- @field yellow1 string
 --- @field yellow2 string
@@ -57,7 +55,6 @@
 --- @field orange1 string
 --- @field orange2 string
 --- @field purple1 string
---- @field purple2 string
 --- @field gray1 string
 --- @field gray2 string
 --- @field gray3 string User-specified deleted line background
@@ -77,15 +74,15 @@
 --- @field delete theme.ChangeColors
 
 --- @class theme.Colors
---- @field background string Editor background
---- @field background_gutter string Gutter and inactive surface background
---- @field background_surface string Statusline and surface background
---- @field background_highlight string Emphasized surface background
---- @field foreground string Default text
---- @field foreground_muted string Secondary text
---- @field foreground_dim string Dim text
---- @field foreground_bright string Emphasized text
---- @field foreground_inlay string Inlay hint text
+--- @field bg string Editor background
+--- @field bg_gutter string Gutter and inactive surface background
+--- @field bg_surface string Statusline and surface background
+--- @field bg_highlight string Emphasized surface background
+--- @field fg string Default text
+--- @field fg_muted string Secondary text
+--- @field fg_dim string Dim text
+--- @field fg_bright string Emphasized text
+--- @field fg_inlay string Inlay hint text
 --- @field border string
 --- @field cursor string
 --- @field cursorline string
@@ -94,26 +91,23 @@
 --- @field line_number string
 --- @field line_number_current string
 --- @field color_column string
---- @field fold string Folded text background
---- @field fold_foreground string Folded text foreground
+--- @field fold_bg string Folded text background
+--- @field fold_fg string Folded text foreground
 --- @field ghost_text string
 --- @field directory string
---- @field markup_code_background string
+--- @field markup_code_bg string
 --- @field keyword string
---- @field boolean string
 --- @field string string
 --- @field number string
 --- @field func string
 --- @field func_builtin string
 --- @field func_call string
---- @field method string
 --- @field variable string
 --- @field variable_builtin string
 --- @field parameter string
 --- @field property string
 --- @field type string
 --- @field type_builtin string
---- @field type_parameter string
 --- @field type_definition string
 --- @field constant string
 --- @field constant_builtin string
@@ -145,7 +139,6 @@
 --- @field git_ignore string
 --- @field git_merge string
 --- @field todo string
---- @field note string
 --- @field link string
 --- @field none string Transparency sentinel
 --- @field terminal theme.TerminalColors

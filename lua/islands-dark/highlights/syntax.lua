@@ -22,7 +22,7 @@ function M.get(c, config)
 		Float = { fg = c.number },
 		Function = styles.functions({ fg = c.func, nocombine = true }),
 		Identifier = styles.variables({ fg = c.variable, nocombine = true }),
-		Ignore = { fg = c.foreground_dim },
+		Ignore = { fg = c.fg_dim },
 		Include = { fg = c.include },
 		Keyword = styles.keywords({ fg = c.keyword }),
 		Label = { fg = c.label },

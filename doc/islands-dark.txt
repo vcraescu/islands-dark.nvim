@@ -175,19 +175,22 @@ Semantic colors:
     lua/islands-dark/colors.lua maps the palette to highlight roles.
     Highlight modules and callbacks use these names:
 
-    background              Editor background
-    background_gutter       Gutter and inactive surface background
-    background_surface      Statusline and surface background
-    background_highlight    Emphasized surface background
-    foreground              Default text
-    foreground_muted        Secondary text
-    foreground_dim          Dim text
-    foreground_bright       Emphasized text
-    foreground_inlay        Inlay hint text
+    bg                      Editor background
+    bg_gutter               Gutter and inactive surface background
+    bg_surface              Statusline and surface background
+    bg_highlight            Emphasized surface background
+    fg                      Default text
+    fg_muted                Secondary text
+    fg_dim                  Dim text
+    fg_bright               Emphasized text
+    fg_inlay                Inlay hint text
     border                  Borders
     cursorline              Cursor line background
     visual                  Visual selection background
     line_number             Line numbers
+    fold_fg                 Folded text foreground
+    fold_bg                 Folded text background
+    markup_code_bg          Code-block background
     keyword                 Keywords
     string                  Strings
     number                  Numbers
@@ -224,7 +227,7 @@ Shared Git and diff colors:
     Changed     #25323E             #385570
     Deleted     #2C2D2E             #484A4A
 
-    All inline regions use foreground_bright. Explicit text_fg values prevent
+    All inline regions use fg_bright. Explicit text_fg values prevent
     inline text from inheriting dark syntax colors.
 
     GitSignsAddLnInline, GitSignsChangeLnInline, and GitSignsDeleteLnInline
@@ -239,6 +242,11 @@ Shared Git and diff colors:
     DiffText region.
 
 Migration:
+    Color fields use fg and bg, including prefixes and suffixes. Update
+    callbacks to use colors.fg, colors.bg, colors.fg_bright, and
+    colors.bg_surface instead of the long-form names. Fold colors use
+    fold_fg and fold_bg; code-block backgrounds use markup_code_bg.
+
     Numbered palette fields, base*, text*, git_add, git_change, git_delete,
     and diff_* are no longer exported by colors.lua. Use semantic names
     and changes in callbacks. To inspect raw numbered colors, use:

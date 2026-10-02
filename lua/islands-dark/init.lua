@@ -67,13 +67,13 @@ end
 function M.get_fzf_colors()
 	local colors = require("islands-dark.colors")
 	local config = require("islands-dark.config").get()
-	local background = config.transparent and colors.none or colors.background
+	local bg = config.transparent and colors.none or colors.bg
 
 	return table.concat({
-		"fg:" .. colors.foreground,
-		"bg:" .. background,
+		"fg:" .. colors.fg,
+		"bg:" .. bg,
 		"hl:" .. colors.search_match,
-		"fg+:" .. colors.foreground_bright,
+		"fg+:" .. colors.fg_bright,
 		"bg+:" .. colors.visual,
 		"hl+:" .. colors.search_match,
 		"info:" .. colors.warning,
@@ -83,10 +83,10 @@ function M.get_fzf_colors()
 		"spinner:" .. colors.number,
 		"header:" .. colors.type,
 		"border:" .. colors.border,
-		"label:" .. colors.foreground,
-		"query:" .. colors.foreground,
-		"gutter:" .. background,
-		"selected-bg:" .. colors.background_surface,
+		"label:" .. colors.fg,
+		"query:" .. colors.fg,
+		"gutter:" .. bg,
+		"selected-bg:" .. colors.bg_surface,
 	}, ",")
 end
 

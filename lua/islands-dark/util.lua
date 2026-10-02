@@ -17,8 +17,8 @@ end
 function M.apply_overrides(colors, config)
 	colors = vim.deepcopy(colors)
 	if config.transparent then
-		colors.background = colors.none
-		colors.fold = colors.none
+		colors.bg = colors.none
+		colors.fold_bg = colors.none
 	end
 
 	return colors

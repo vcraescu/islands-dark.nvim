@@ -258,10 +258,11 @@ Colors are separated into two modules:
 
 Use semantic names when you define highlights:
 
-- **Backgrounds**: `background`, `background_gutter`, `background_surface`, `background_highlight`
-- **Foregrounds**: `foreground`, `foreground_muted`, `foreground_dim`, `foreground_bright`, `foreground_inlay`
+- **Backgrounds**: `bg`, `bg_gutter`, `bg_surface`, `bg_highlight`
+- **Foregrounds**: `fg`, `fg_muted`, `fg_dim`, `fg_bright`, `fg_inlay`
 - **Syntax**: `keyword`, `string`, `number`, `func`, `func_builtin`, `func_call`, `type`, `comment`
-- **UI**: `cursorline`, `line_number`, `border`, `visual`, `directory`
+- **UI**: `cursorline`, `line_number`, `border`, `visual`, `directory`, `fold_fg`, `fold_bg`
+- **Markup**: `markup_code_bg`
 - **Diagnostics**: `error`, `warning`, `info`, `hint`, `ok`
 
 Git signs, native diff, and file-tree Git markers share `colors.changes`:
@@ -280,8 +281,8 @@ Edit the shared definitions in `colors.lua` to change these colors together. Git
 | Changed | `#25323E`       | `#385570`         |
 | Deleted | `#2C2D2E`       | `#484A4A`         |
 
-All inline regions use the light `foreground_bright` color. Explicit `text_fg` values prevent inline text from
-inheriting dark syntax colors.
+All inline regions use the light `fg_bright` color. Explicit `text_fg` values prevent inline text from inheriting dark
+syntax colors.
 
 GitSigns buffer word-diff groups (`GitSignsAddLnInline`, `GitSignsChangeLnInline`, and `GitSignsDeleteLnInline`) use the
 changed-text blue because they mark edits inside changed lines. Added and deleted inline previews keep their respective
@@ -295,6 +296,10 @@ versions, `DiffText` can include unchanged text between the first and last diffe
 **Breaking change:** Numbered palette fields, `base*`, `text*`, `git_add`, `git_change`, `git_delete`, and `diff_*` are
 no longer exported by `colors.lua`. Update callbacks to use semantic names and `changes`. Raw numbered colors are
 available only through `require("islands-dark.palette")`.
+
+Color fields use `fg` and `bg`, including prefixes and suffixes. Update callbacks to use `colors.fg`, `colors.bg`,
+`colors.fg_bright`, and `colors.bg_surface` instead of the long-form names. Fold colors use `fold_fg` and `fold_bg`;
+code-block backgrounds use `markup_code_bg`.
 
 The original `IslandsDark.icls` is not included. Source comments were checked against `test/IslandsDark.xml` where
 possible. Existing values that are absent from that export are preserved and marked as unverified in `palette.lua`. The
