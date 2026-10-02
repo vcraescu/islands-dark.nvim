@@ -27,7 +27,7 @@ function M.get(c)
 		FloatBorder = { fg = c.border, bg = c.none },
 		FloatTitle = { fg = c.foreground, bg = c.background, bold = true },
 		FoldColumn = { fg = c.line_number, bg = c.none },
-		Folded = { fg = c.foreground_muted, bg = c.fold },
+		Folded = { fg = c.fold_foreground, bg = c.fold },
 		IncSearch = { fg = c.foreground, bg = c.match },
 		LineNr = { fg = c.line_number, bg = c.none },
 		MatchParen = { bg = c.match, bold = true },

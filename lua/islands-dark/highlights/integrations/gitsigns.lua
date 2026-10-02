@@ -8,6 +8,8 @@ function M.get(c)
 		GitSignsAdd = { fg = c.changes.add.fg, bg = c.none },
 		GitSignsChange = { fg = c.changes.change.fg, bg = c.none },
 		GitSignsDelete = { fg = c.changes.delete.fg, bg = c.none },
+		GitSignsTopdelete = { link = "GitSignsDelete" },
+		GitSignsChangedelete = { link = "GitSignsDelete" },
 		GitSignsAddLn = { bg = c.changes.add.line_bg },
 		GitSignsChangeLn = { bg = c.changes.change.line_bg },
 		GitSignsDeleteVirtLn = { bg = c.changes.delete.line_bg },

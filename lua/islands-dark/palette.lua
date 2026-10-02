@@ -18,6 +18,7 @@ M.fg2 = "#A1A3AB" -- LINE_NUMBER_ON_CARET_ROW_COLOR
 M.fg3 = "#BCBEC4" -- TEXT.FOREGROUND
 M.fg4 = "#D1D3D9" -- Unverified: original .icls not included
 M.fg5 = "#858A94" -- INLINE_PARAMETER_HINT.FOREGROUND
+M.fg6 = "#868991" -- FOLDED_TEXT_ATTRIBUTES.FOREGROUND
 
 -- Blues
 M.blue1 = "#114957" -- TEXT_SEARCH_RESULT_ATTRIBUTES.BACKGROUND
@@ -45,8 +46,6 @@ M.green8 = "#294436" -- User-specified added text background
 -- Reds
 M.red1 = "#5E3838" -- LINE_NONE_COVERAGE.FOREGROUND
 M.red2 = "#F75464" -- BAD_CHARACTER.FOREGROUND
-M.red3 = "#2B2322" -- User-specified deleted line background
-M.red4 = "#45302B" -- User-specified deleted text background
 
 -- Yellows
 M.yellow1 = "#B3AE60" -- DEFAULT_METADATA.FOREGROUND
@@ -65,6 +64,9 @@ M.purple2 = "#B189F5" -- TEMPLATE_VARIABLE_ATTRIBUTES.FOREGROUND
 -- Grays
 M.gray1 = "#43454A" -- METHOD_SEPARATORS_COLOR
 M.gray2 = "#4B5059" -- LINE_NUMBERS_COLOR
+M.gray3 = "#2C2D2E" -- User-specified deleted line background
+M.gray4 = "#484A4A" -- User-specified deleted text background
+M.gray5 = "#868A91" -- DELETED_LINES_COLOR
 
 -- ANSI colors: original .icls sources are not included in the theme export.
 M.terminal = {

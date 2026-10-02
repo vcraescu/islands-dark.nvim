@@ -37,7 +37,7 @@ end
 local expected_changes = {
 	add = { line_bg = "#1F2B26", text_bg = "#294436" },
 	change = { line_bg = "#25323E", text_bg = "#385570" },
-	delete = { line_bg = "#2B2322", text_bg = "#45302B" },
+	delete = { line_bg = "#2C2D2E", text_bg = "#484A4A" },
 }
 for kind, change_colors in pairs(colors.changes) do
 	assert(change_colors.line_bg == expected_changes[kind].line_bg)
@@ -45,6 +45,8 @@ for kind, change_colors in pairs(colors.changes) do
 	assert(change_colors.text_fg == palette.fg4)
 	assert(luminance(change_colors.text_fg) > luminance(change_colors.text_bg))
 end
+
+assert(colors.changes.delete.fg == "#868A91")
 
 -- Raw colors must not leak into the semantic API.
 for name in pairs(palette) do
@@ -114,6 +116,8 @@ assert(editor_groups.DiffDelete.fg == custom_colors.foreground_dim)
 assert(editor_groups.DiffText.bg == palette.bg4)
 assert(editor_groups.DiffText.fg == palette.fg4)
 assert(editor_groups.DiffTextAdd.link == "DiffText")
+assert(git_groups.GitSignsTopdelete.link == "GitSignsDelete")
+assert(git_groups.GitSignsChangedelete.link == "GitSignsDelete")
 assert(git_groups.GitSignsAddLn.bg == palette.bg2)
 assert(git_groups.GitSignsChangeLn.bg == palette.bg2)
 assert(git_groups.GitSignsDeleteVirtLn.bg == palette.bg2)
@@ -130,7 +134,12 @@ assert(tree_groups.NvimTreeGitDeleted.fg == palette.fg3)
 -- Transparent loads must not mutate either color module.
 local transparent_colors = util.apply_overrides(colors, { transparent = true })
 assert(transparent_colors.background == colors.none)
+assert(transparent_colors.fold == colors.none)
 assert(colors.background == palette.bg1)
+assert(colors.fold == "#393B40")
+assert(colors.fold_foreground == "#868991")
+assert(colors.fold ~= colors.background)
+assert(colors.fold ~= colors.changes.delete.line_bg)
 transparent_colors.changes.add.fg = palette.fg1
 transparent_colors.terminal.red = palette.red1
 assert(colors.changes.add.fg == palette.green2)
@@ -143,6 +152,11 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert_highlight("Normal", "fg", colors.foreground)
 	assert_highlight("Normal", "bg", transparent and colors.none or colors.background)
 	assert_highlight("FloatTitle", "bg", transparent and colors.none or colors.background)
+	assert_highlight("Folded", "fg", "#868991")
+	assert_highlight("Folded", "bg", transparent and colors.none or "#393B40")
+	local folded = vim.api.nvim_get_hl(0, { name = "Folded", link = false })
+	assert(not folded.italic)
+	assert(not folded.bold)
 	assert_highlight("StatusLine", "bg", colors.background_surface)
 	assert_highlight("StatusLineNC", "bg", colors.background_gutter)
 	assert_highlight("DiffAdd", "bg", colors.changes.add.line_bg)
@@ -158,6 +172,10 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert_highlight("GitSignsAddLnInline", "bg", "#385570")
 	assert_highlight("GitSignsDeleteVirtLn", "bg", colors.changes.delete.line_bg)
 	assert_highlight("GitSignsDeletePreview", "bg", colors.changes.delete.line_bg)
+	for _, group in ipairs({ "GitSignsDelete", "GitSignsTopdelete", "GitSignsChangedelete" }) do
+		assert_highlight(group, "fg", "#868A91")
+		assert_highlight(group, "bg", colors.none)
+	end
 	for _, kind in ipairs({ "Add", "Change", "Delete" }) do
 		local change_colors = colors.changes[kind:lower()]
 		assert_highlight("GitSigns" .. kind, "fg", change_colors.fg)

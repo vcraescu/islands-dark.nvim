@@ -222,14 +222,14 @@ Shared Git and diff colors:
     Change      Line background     Inline background
     Added       #1F2B26             #294436
     Changed     #25323E             #385570
-    Deleted     #2B2322             #45302B
+    Deleted     #2C2D2E             #484A4A
 
     All inline regions use foreground_bright. Explicit text_fg values prevent
     inline text from inheriting dark syntax colors.
 
     GitSignsAddLnInline, GitSignsChangeLnInline, and GitSignsDeleteLnInline
     use the changed-text blue for edits inside changed lines. Added and
-    deleted inline previews retain green and red backgrounds.
+    deleted inline previews retain green and gray backgrounds.
 
     DiffText highlights changed text within changed lines. Neovim 0.12+
     uses DiffTextAdd for inserted text within changed lines with

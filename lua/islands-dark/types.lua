@@ -30,6 +30,7 @@
 --- @field fg3 string
 --- @field fg4 string
 --- @field fg5 string
+--- @field fg6 string Folded text foreground
 --- @field blue1 string
 --- @field blue2 string
 --- @field blue3 string
@@ -49,8 +50,6 @@
 --- @field green8 string User-specified added text background
 --- @field red1 string
 --- @field red2 string
---- @field red3 string User-specified deleted line background
---- @field red4 string User-specified deleted text background
 --- @field yellow1 string
 --- @field yellow2 string
 --- @field yellow3 string
@@ -61,6 +60,9 @@
 --- @field purple2 string
 --- @field gray1 string
 --- @field gray2 string
+--- @field gray3 string User-specified deleted line background
+--- @field gray4 string User-specified deleted text background
+--- @field gray5 string Deleted signs and markers
 --- @field terminal theme.TerminalPalette
 
 --- @class theme.ChangeColors
@@ -92,7 +94,8 @@
 --- @field line_number string
 --- @field line_number_current string
 --- @field color_column string
---- @field fold string
+--- @field fold string Folded text background
+--- @field fold_foreground string Folded text foreground
 --- @field ghost_text string
 --- @field directory string
 --- @field markup_code_background string

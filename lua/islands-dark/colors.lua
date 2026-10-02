@@ -24,7 +24,8 @@ M.visual = palette.blue2
 M.line_number = palette.gray2
 M.line_number_current = palette.fg2
 M.color_column = palette.bg3
-M.fold = palette.bg3
+M.fold = palette.bg4
+M.fold_foreground = palette.fg6
 M.ghost_text = palette.gray2
 M.directory = palette.blue4
 M.markup_code_background = palette.cyan1
@@ -106,9 +107,9 @@ M.changes = {
 		text_fg = palette.fg4,
 	},
 	delete = {
-		fg = palette.red2,
-		line_bg = palette.red3,
-		text_bg = palette.red4,
+		fg = palette.gray5,
+		line_bg = palette.gray3,
+		text_bg = palette.gray4,
 		text_fg = palette.fg4,
 	},
 }

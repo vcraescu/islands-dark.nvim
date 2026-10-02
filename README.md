@@ -278,14 +278,14 @@ Edit the shared definitions in `colors.lua` to change these colors together. Git
 | ------- | --------------- | ----------------- |
 | Added   | `#1F2B26`       | `#294436`         |
 | Changed | `#25323E`       | `#385570`         |
-| Deleted | `#2B2322`       | `#45302B`         |
+| Deleted | `#2C2D2E`       | `#484A4A`         |
 
 All inline regions use the light `foreground_bright` color. Explicit `text_fg` values prevent inline text from
 inheriting dark syntax colors.
 
 GitSigns buffer word-diff groups (`GitSignsAddLnInline`, `GitSignsChangeLnInline`, and `GitSignsDeleteLnInline`) use the
 changed-text blue because they mark edits inside changed lines. Added and deleted inline previews keep their respective
-green and red backgrounds.
+green and gray backgrounds.
 
 `DiffText` highlights changed text inside a changed line. Neovim 0.12+ also uses `DiffTextAdd` for inserted text inside
 changed lines with `diffopt` set to `inline:char` or `inline:word`. `DiffTextAdd` links to `DiffText`, so insertions
