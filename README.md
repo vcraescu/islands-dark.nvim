@@ -14,8 +14,7 @@ A faithful port of JetBrains IntelliJ IDEA Islands Dark theme for Neovim.
 - 🎨 **Faithful Port**: Accurately reproduces IntelliJ IDEA Islands Dark colors
 - 🌲 **Treesitter Support**: Full support for Treesitter syntax highlighting
 - 🔍 **LSP Integration**: Semantic tokens and diagnostics highlighting
-- 🔌 **Plugin Support**: Optimized for popular plugins (blink-cmp, CodeDiff, Copilot, copilot.lua, fzf-lua, nvim-tree,
-  gitsigns)
+- 🔌 **Plugin Support**: Optimized for popular plugins (blink-cmp, Copilot, copilot.lua, fzf-lua, nvim-tree, gitsigns)
 - ⚙️ **Customizable**: Configure transparent backgrounds, styles, and color overrides
 - 🎯 **Semantic Priority**: LSP semantic tokens take precedence over Treesitter for accurate highlighting
 - 🖥️ **Terminal Colors**: 16 ANSI colors matching the theme
@@ -105,22 +104,15 @@ require("islands-dark").setup({
   -- Override callback - returns table of highlight overrides (Method 1)
   overrides = function(colors)
     return {
-      Function = { fg = colors.blue4, bold = true },
+      Function = { fg = colors.func, bold = true },
       Comment = { fg = colors.comment, italic = true },
     }
   end,
 
-  -- OR use on_colors to modify colors before highlights are created (Method 2)
-  on_colors = function(colors)
-    -- Modify colors directly before any highlights are generated
-    colors.keyword = "#FF0000"  -- Change keyword color
-    colors.bg = "#1a1a1a"       -- Darker background
-  end,
-
-  -- OR use on_highlights to modify highlights in-place (Method 3)
+  -- OR use on_highlights to modify highlights in-place (Method 2)
   on_highlights = function(highlights, colors)
     -- Modify highlights table directly
-    highlights.Function = { fg = colors.blue4, bold = true }
+    highlights.Function = { fg = colors.func, bold = true }
     highlights.Comment = { fg = colors.comment, italic = true }
   end,
 })
@@ -167,7 +159,7 @@ Available style properties:
 
 ### Customization Methods
 
-Islands Dark supports three different callback methods for customization:
+Islands Dark supports two callback methods for customization:
 
 #### Method 1: `overrides` (Recommended)
 
@@ -179,30 +171,13 @@ require("islands-dark").setup({
     return {
       Function = { fg = colors.func, bold = true },
       Comment = { fg = colors.comment, italic = true },
-      Visual = { bg = colors.selection },
+      Visual = { bg = colors.visual },
     }
   end,
 })
 ```
 
-#### Method 2: `on_colors`
-
-Modify the color palette before highlights are created:
-
-```lua
-require("islands-dark").setup({
-  on_colors = function(colors)
-    -- Modify colors directly
-    colors.bg = "#1a1a1a"        -- Darker background
-    colors.keyword = "#ff6b9d"    -- Pink keywords
-    colors.string = "#98c379"     -- Different green for strings
-  end,
-})
-```
-
-**Note**: `on_colors` modifies the base palette, affecting ALL highlight groups that use those colors.
-
-#### Method 3: `on_highlights`
+#### Method 2: `on_highlights`
 
 Modify highlights table in-place:
 
@@ -227,7 +202,6 @@ require("islands-dark").setup({
 **Choose one method** based on your needs:
 
 - Use `overrides` for simple highlight customizations (cleanest API)
-- Use `on_colors` to change base colors that affect multiple highlights
 - Use `on_highlights` for complex modifications with conditional logic
 
 ## 🔌 Plugin Support
@@ -255,9 +229,17 @@ automatically loaded:
 
 ### Git Integration
 
-- **[CodeDiff.nvim](https://github.com/esmuellert/codediff.nvim)**: Diff lines, changed characters, moved code, file
-  statuses, and conflict signs
-- **[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)**: Add/change/delete line indicators, blame highlights
+- **[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)**: Signs, line backgrounds, inline changes, deleted
+  virtual lines, and blame highlights
+
+To show GitSigns line and inline backgrounds, enable them in your GitSigns configuration:
+
+```lua
+require("gitsigns").setup({
+  linehl = true,
+  word_diff = true,
+})
+```
 
 ### Syntax & LSP
 
@@ -268,15 +250,55 @@ automatically loaded:
 
 ### Color Palette
 
-The theme uses an extended color palette including:
+Colors are separated into two modules:
 
-- **Granular function colors**: `func_builtin` (built-ins), `func_call` (calls), `method` (methods)
-- **Type colors**: `type_builtin` (built-in types), `type` (user-defined types)
-- **Semantic colors**: `keyword`, `string`, `number`, `boolean`, `operator`
-- **VCS colors**: `vcs_added`, `vcs_modified`, `vcs_removed`
-- **UI colors**: `cursor_line`, `line_number`, `border`, `visual`, `selection`
+- `lua/islands-dark/palette.lua`: Raw hex values, grouped by hue, with source comments. Numbers are stable identifiers,
+  not brightness ranks.
+- `lua/islands-dark/colors.lua`: Semantic roles used by highlight modules and configuration callbacks.
 
-All colors are sourced from the original IntelliJ IDEA Islands Dark theme (`IslandsDark.icls`).
+Use semantic names when you define highlights:
+
+- **Backgrounds**: `background`, `background_gutter`, `background_surface`, `background_highlight`
+- **Foregrounds**: `foreground`, `foreground_muted`, `foreground_dim`, `foreground_bright`, `foreground_inlay`
+- **Syntax**: `keyword`, `string`, `number`, `func`, `func_builtin`, `func_call`, `type`, `comment`
+- **UI**: `cursorline`, `line_number`, `border`, `visual`, `directory`
+- **Diagnostics**: `error`, `warning`, `info`, `hint`, `ok`
+
+Git signs, native diff, and file-tree Git markers share `colors.changes`:
+
+| Change  | Sign foreground     | Line background          | Inline background        | Inline foreground        |
+| ------- | ------------------- | ------------------------ | ------------------------ | ------------------------ |
+| Added   | `changes.add.fg`    | `changes.add.line_bg`    | `changes.add.text_bg`    | `changes.add.text_fg`    |
+| Changed | `changes.change.fg` | `changes.change.line_bg` | `changes.change.text_bg` | `changes.change.text_fg` |
+| Deleted | `changes.delete.fg` | `changes.delete.line_bg` | `changes.delete.text_bg` | `changes.delete.text_fg` |
+
+Edit the shared definitions in `colors.lua` to change these colors together. Git and diff use the supplied backgrounds:
+
+| Change  | Line background | Inline background |
+| ------- | --------------- | ----------------- |
+| Added   | `#1F2B26`       | `#294436`         |
+| Changed | `#25323E`       | `#385570`         |
+| Deleted | `#2B2322`       | `#45302B`         |
+
+All inline regions use the light `foreground_bright` color. Explicit `text_fg` values prevent inline text from
+inheriting dark syntax colors.
+
+GitSigns buffer word-diff groups (`GitSignsAddLnInline`, `GitSignsChangeLnInline`, and `GitSignsDeleteLnInline`) use the
+changed-text blue because they mark edits inside changed lines. Added and deleted inline previews keep their respective
+green and red backgrounds.
+
+`DiffText` highlights changed text inside a changed line. Neovim 0.12+ also uses `DiffTextAdd` for inserted text inside
+changed lines with `diffopt` set to `inline:char` or `inline:word`. `DiffTextAdd` links to `DiffText`, so insertions
+inside changed lines use the changed-text blue, not the added-text green. Older versions ignore `DiffTextAdd`. On older
+versions, `DiffText` can include unchanged text between the first and last differences.
+
+**Breaking change:** Numbered palette fields, `base*`, `text*`, `git_add`, `git_change`, `git_delete`, and `diff_*` are
+no longer exported by `colors.lua`. Update callbacks to use semantic names and `changes`. Raw numbered colors are
+available only through `require("islands-dark.palette")`.
+
+The original `IslandsDark.icls` is not included. Source comments were checked against `test/IslandsDark.xml` where
+possible. Existing values that are absent from that export are preserved and marked as unverified in `palette.lua`. The
+six supplied Git and diff backgrounds are marked as user-specified colors, not theme-export values.
 
 ## 🌲 Treesitter Support
 
@@ -363,7 +385,13 @@ Test files are included to verify syntax highlighting across multiple languages:
 - `test/test.json` - JSON syntax
 - `test/test.md` - Markdown syntax
 
-Open these files in Neovim with Islands Dark applied to verify the theme works correctly.
+Run the headless checks with Neovim 0.9+:
+
+```bash
+nvim --headless -u NONE -l test/check_theme.lua
+```
+
+Open the syntax test files in Neovim with Islands Dark applied to check the visual result.
 
 ## 🐛 Troubleshooting
 

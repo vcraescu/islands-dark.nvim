@@ -1,5 +1,151 @@
 --- @class theme.Config
+
+--- @class theme.TerminalPalette
+--- @field red string
+--- @field bright_red string
+--- @field green string
+--- @field bright_green string
+--- @field yellow string
+--- @field bright_yellow string
+--- @field blue string
+--- @field bright_blue string
+--- @field magenta string
+--- @field bright_magenta string
+--- @field cyan string
+--- @field bright_cyan string
+
+--- @class theme.TerminalColors: theme.TerminalPalette
+--- @field black string
+--- @field bright_black string
+--- @field white string
+--- @field bright_white string
+
+--- @class theme.Palette
+--- @field bg1 string
+--- @field bg2 string
+--- @field bg3 string
+--- @field bg4 string
+--- @field fg1 string
+--- @field fg2 string
+--- @field fg3 string
+--- @field fg4 string
+--- @field fg5 string
+--- @field blue1 string
+--- @field blue2 string
+--- @field blue3 string
+--- @field blue4 string
+--- @field blue5 string
+--- @field blue6 string User-specified changed line background
+--- @field blue7 string User-specified changed text background
+--- @field cyan1 string
+--- @field cyan2 string
+--- @field green1 string
+--- @field green2 string
+--- @field green3 string
+--- @field green4 string
+--- @field green5 string
+--- @field green6 string
+--- @field green7 string User-specified added line background
+--- @field green8 string User-specified added text background
+--- @field red1 string
+--- @field red2 string
+--- @field red3 string User-specified deleted line background
+--- @field red4 string User-specified deleted text background
+--- @field yellow1 string
+--- @field yellow2 string
+--- @field yellow3 string
+--- @field yellow4 string
+--- @field orange1 string
+--- @field orange2 string
+--- @field purple1 string
+--- @field purple2 string
+--- @field gray1 string
+--- @field gray2 string
+--- @field terminal theme.TerminalPalette
+
+--- @class theme.ChangeColors
+--- @field fg string Sign and marker foreground
+--- @field line_bg string Full-line background
+--- @field text_bg string Inline text background
+--- @field text_fg string Inline text foreground
+
+--- @class theme.Changes
+--- @field add theme.ChangeColors
+--- @field change theme.ChangeColors
+--- @field delete theme.ChangeColors
+
 --- @class theme.Colors
+--- @field background string Editor background
+--- @field background_gutter string Gutter and inactive surface background
+--- @field background_surface string Statusline and surface background
+--- @field background_highlight string Emphasized surface background
+--- @field foreground string Default text
+--- @field foreground_muted string Secondary text
+--- @field foreground_dim string Dim text
+--- @field foreground_bright string Emphasized text
+--- @field foreground_inlay string Inlay hint text
+--- @field border string
+--- @field cursor string
+--- @field cursorline string
+--- @field quickfixline string
+--- @field visual string
+--- @field line_number string
+--- @field line_number_current string
+--- @field color_column string
+--- @field fold string
+--- @field ghost_text string
+--- @field directory string
+--- @field markup_code_background string
+--- @field keyword string
+--- @field boolean string
+--- @field string string
+--- @field number string
+--- @field func string
+--- @field func_builtin string
+--- @field func_call string
+--- @field method string
+--- @field variable string
+--- @field variable_builtin string
+--- @field parameter string
+--- @field property string
+--- @field type string
+--- @field type_builtin string
+--- @field type_parameter string
+--- @field type_definition string
+--- @field constant string
+--- @field constant_builtin string
+--- @field comment string
+--- @field comment_doc string
+--- @field comment_tag string
+--- @field operator string
+--- @field delimiter string
+--- @field tag string
+--- @field attribute string
+--- @field special_tag string
+--- @field label string
+--- @field metadata string
+--- @field special string
+--- @field special_char string
+--- @field escape string
+--- @field regex string
+--- @field include string
+--- @field error string
+--- @field warning string
+--- @field info string
+--- @field hint string
+--- @field ok string
+--- @field lsp_reference string
+--- @field search string
+--- @field search_match string
+--- @field match string
+--- @field changes theme.Changes Shared Git and diff colors
+--- @field git_ignore string
+--- @field git_merge string
+--- @field todo string
+--- @field note string
+--- @field link string
+--- @field none string Transparency sentinel
+--- @field terminal theme.TerminalColors
 
 --- @alias theme.Highlights table<string, vim.api.keyset.highlight>
 --- @alias theme.StyleType "comments" | "keywords" | "functions" | "variables"

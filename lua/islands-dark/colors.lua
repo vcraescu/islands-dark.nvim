@@ -1,243 +1,144 @@
---- @class theme.Colors
+--- @type theme.Colors
 local M = {}
+local palette = require("islands-dark.palette")
 
--- ============================================================================
--- SECTION 1: BASE PALETTE (Source of Truth)
--- All hex values from IslandsDark.icls
--- Naming: {color}{number} where 1=darkest, increasing=lighter
--- ============================================================================
+-- Backgrounds
+M.background = palette.bg1
+M.background_gutter = palette.bg2
+M.background_surface = palette.bg3
+M.background_highlight = palette.bg4
 
--- ───────────────────────────────────────────────────────────────────────────
--- Backgrounds (1=darkest → 3=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.bg1 = "#191A1C" -- EDITOR_BACKGROUND
-M.bg2 = "#1F2024" -- GUTTER_BACKGROUND
-M.bg3 = "#2B2D30" -- SELECTION_BACKGROUND
-M.bg4 = "#393b40" -- CURSOR_LINE_BACKGROUND_ALT, INLAY_BG
+-- Foregrounds
+M.foreground = palette.fg3
+M.foreground_muted = palette.fg2
+M.foreground_dim = palette.fg1
+M.foreground_bright = palette.fg4
+M.foreground_inlay = palette.fg5
 
--- ───────────────────────────────────────────────────────────────────────────
--- Foregrounds (1=darkest → 3=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.fg1 = "#7A7E85" -- COMMENT
-M.fg2 = "#A1A3AB" -- LINE_NUMBER
-M.fg3 = "#BCBEC4" -- DEFAULT_TEXT
-M.fg4 = "#d1d3d9"
-M.fg5 = "#858A94" -- INLAY_FG
+-- Editor
+M.border = palette.gray1
+M.cursor = palette.fg3
+M.cursorline = palette.bg2
+M.quickfixline = palette.bg4
+M.visual = palette.blue2
+M.line_number = palette.gray2
+M.line_number_current = palette.fg2
+M.color_column = palette.bg3
+M.fold = palette.bg3
+M.ghost_text = palette.gray2
+M.directory = palette.blue4
+M.markup_code_background = palette.cyan1
 
--- ───────────────────────────────────────────────────────────────────────────
--- Blues (1=darkest → 4=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.blue1 = "#114957" -- SEARCH_RESULT_BACKGROUND (dark blue)
-M.blue2 = "#214283" -- VISUAL_SELECTION (blue)
-M.blue3 = "#548AF7" -- DEFAULT_INSTANCE_METHOD (bright blue)
-M.blue4 = "#56A8F5" -- DEFAULT_FUNCTION_DECLARATION (standard blue)
-M.blue5 = "#6FAFBD" -- DEFAULT_CLASS_NAME (teal blue)
+-- Keywords and literals
+M.keyword = palette.orange2
+M.boolean = palette.orange2
+M.string = palette.green2
+M.number = palette.cyan2
 
--- ───────────────────────────────────────────────────────────────────────────
--- Cyans/Teals (1=darkest → 2=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.cyan1 = "#293C40" -- LSP_REFERENCE_BACKGROUND (dark teal)
-M.cyan2 = "#2AACB8" -- DEFAULT_NUMBER (cyan)
+-- Functions and methods
+M.func = palette.blue4
+M.func_builtin = palette.orange1
+M.func_call = palette.yellow3
+M.method = palette.blue4
 
--- ───────────────────────────────────────────────────────────────────────────
--- Greens (1=darkest → 2=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.green1 = "#375239" -- ADDED_LINES_COLOR (dark green)
-M.green2 = "#6AAB73" -- DEFAULT_STRING (green)
-M.green3 = "#8BB33D"
-M.green4 = "#5F826B"
-M.green5 = "#67A37C"
-M.green6 = "#2FBAA3"
+-- Variables and parameters
+M.variable = palette.fg3
+M.variable_builtin = palette.orange1
+M.parameter = palette.fg3
+M.property = palette.purple1
 
--- ───────────────────────────────────────────────────────────────────────────
--- Reds (1=darkest → 2=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.red1 = "#5E3838" -- DELETED_LINES_COLOR (dark red)
-M.red2 = "#F75464" -- ERRORS_ATTRIBUTES (red)
-
--- ───────────────────────────────────────────────────────────────────────────
--- Yellows (1=darkest → 2=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.yellow1 = "#B3AE60" -- TODO_DEFAULT (olive/muted yellow)
-M.yellow2 = "#D5B778" -- DEFAULT_TAG (yellow)
-M.yellow3 = "#B09D79" -- FUNCTION_CALL (mustard yellow)
-M.yellow4 = "#AFBF7E"
-
--- ───────────────────────────────────────────────────────────────────────────
--- Oranges (1=darkest → 2=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.orange1 = "#CC7832" -- DEFAULT_STATIC_FIELD (rust orange)
-M.orange2 = "#CF8E6D" -- DEFAULT_KEYWORD (orange)
-
--- ───────────────────────────────────────────────────────────────────────────
--- Purples (1=darkest → 2=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.purple1 = "#C77DBB" -- DEFAULT_CONSTANT (mauve)
-M.purple2 = "#B189F5" -- DEFAULT_TEMPLATE_LANGUAGE (lavender/bright purple)
-
--- ───────────────────────────────────────────────────────────────────────────
--- Grays (1=darkest → 2=lightest)
--- ───────────────────────────────────────────────────────────────────────────
-M.gray1 = "#43454A" -- BORDER_COLOR (gray blue)
-M.gray2 = "#4B5059" -- LINE_NUMBERS_COLOR
-
--- ───────────────────────────────────────────────────────────────────────────
--- Special
--- ───────────────────────────────────────────────────────────────────────────
-M.none = "NONE"
-
--- ============================================================================
--- SECTION 2: SEMANTIC ALIASES (How Colors Are Used)
--- Provides descriptive names for highlight definitions
--- ============================================================================
-
--- ───────────────────────────────────────────────────────────────────────────
--- Base Aliases (Familiar Naming)
--- ───────────────────────────────────────────────────────────────────────────
-M.base = M.bg1
-M.base1 = M.bg2
-M.base2 = M.bg3
-M.base3 = M.bg4
-
-M.text = M.fg3
-M.text1 = M.fg2
-M.text2 = M.fg1
-M.text3 = M.fg4
-M.text4 = M.fg5
-
--- ───────────────────────────────────────────────────────────────────────────
--- Editor UI Elements
--- ───────────────────────────────────────────────────────────────────────────
-M.border = M.gray1
-M.cursor = M.text
-M.cursorline = M.base1
-M.quickfixline = M.base3
-M.visual = M.blue2
-M.line_number = M.gray2
-M.line_number_current = M.text1
-M.color_column = M.base2
-M.fold = M.base2
-M.ghost_text = M.line_number
-
--- ───────────────────────────────────────────────────────────────────────────
--- Syntax Highlighting
--- ───────────────────────────────────────────────────────────────────────────
--- Keywords & Control Flow
-M.keyword = M.orange2
-M.boolean = M.orange2
-
--- Strings
-M.string = M.green2
-
--- Numbers
-M.number = M.cyan2
-
--- Functions & Methods
-M.func = M.blue4
-M.func_builtin = M.orange1
-M.func_call = M.yellow3
-M.method = M.blue4
-
--- Variables & Parameters
-M.variable = M.text
-M.variable_builtin = M.orange1
-M.parameter = M.text
-M.property = M.purple1
-
--- Types
-M.type = M.blue5
-M.type_builtin = M.orange1
-M.type_parameter = M.cyan2
-M.type_definition = M.text
-
--- Constants
-M.constant = M.purple1
-M.constant_builtin = M.orange1
+-- Types and constants
+M.type = palette.blue5
+M.type_builtin = palette.orange1
+M.type_parameter = palette.cyan2
+M.type_definition = palette.fg3
+M.constant = palette.purple1
+M.constant_builtin = palette.orange1
 
 -- Comments
-M.comment = M.text2
-M.comment_doc = M.green4
-M.comment_tag = M.green5
+M.comment = palette.fg1
+M.comment_doc = palette.green4
+M.comment_tag = palette.green5
 
--- Operators & Punctuation
-M.operator = M.text
-M.delimiter = M.text
+-- Operators and punctuation
+M.operator = palette.fg3
+M.delimiter = palette.fg3
 
--- Tags & Attributes
-M.tag = M.yellow2
-M.attribute = M.yellow2
-M.special_tag = M.green6
+-- Tags and attributes
+M.tag = palette.yellow2
+M.attribute = palette.yellow2
+M.special_tag = palette.green6
 
--- Labels & Special
-M.label = M.text
-M.metadata = M.yellow1
-M.special = M.cyan2
-M.special_char = M.blue4
-M.escape = M.orange2
-M.regex = M.cyan2
-M.include = M.yellow4
+-- Labels and special syntax
+M.label = palette.fg3
+M.metadata = palette.yellow1
+M.special = palette.cyan2
+M.special_char = palette.blue4
+M.escape = palette.orange2
+M.regex = palette.cyan2
+M.include = palette.yellow4
 
--- ───────────────────────────────────────────────────────────────────────────
--- Diagnostics & LSP
--- ───────────────────────────────────────────────────────────────────────────
-M.error = M.red2
-M.warning = M.yellow2
-M.info = M.blue5
-M.hint = M.text2
-M.ok = M.green2
+-- Diagnostics and LSP
+M.error = palette.red2
+M.warning = palette.yellow2
+M.info = palette.blue5
+M.hint = palette.fg1
+M.ok = palette.green2
+M.lsp_reference = palette.cyan1
 
-M.lsp_reference = M.cyan1
+-- Search
+M.search = palette.green1
+M.search_match = palette.blue4
+M.match = palette.blue1
 
--- ───────────────────────────────────────────────────────────────────────────
--- Search & Matching
--- ───────────────────────────────────────────────────────────────────────────
-M.search = M.green1
-M.search_match = M.blue4
-M.match = M.blue1
+-- Shared Git and diff colors
+M.changes = {
+	add = {
+		fg = palette.green2,
+		line_bg = palette.green7,
+		text_bg = palette.green8,
+		text_fg = palette.fg4,
+	},
+	change = {
+		fg = palette.blue4,
+		line_bg = palette.blue6,
+		text_bg = palette.blue7,
+		text_fg = palette.fg4,
+	},
+	delete = {
+		fg = palette.red2,
+		line_bg = palette.red3,
+		text_bg = palette.red4,
+		text_fg = palette.fg4,
+	},
+}
+M.git_ignore = palette.fg1
+M.git_merge = palette.purple1
 
--- ───────────────────────────────────────────────────────────────────────────
--- Diff & Version Control
--- ───────────────────────────────────────────────────────────────────────────
-M.diff_add = M.green1
-M.diff_delete = M.red1
-M.diff_change = M.blue1
+-- Special elements
+M.todo = palette.green3
+M.note = palette.blue5
+M.link = palette.blue4
+M.none = "NONE"
 
-M.git_add = M.green2
-M.git_change = M.blue4
-M.git_delete = M.red2
-M.git_ignore = M.text2
-
--- ───────────────────────────────────────────────────────────────────────────
--- Special Elements
--- ───────────────────────────────────────────────────────────────────────────
-M.todo = M.green3
-M.note = M.blue5
-M.link = M.blue4
-
+-- Terminal
 M.terminal = {
-	black = M.base,
-	bright_black = M.text2,
-
-	red = "#F0524F",
-	bright_red = "#FF4050",
-
-	green = "#5C962C",
-	bright_green = "#4FC414",
-
-	yellow = "#A68A0D",
-	bright_yellow = "#E5BF00",
-
-	blue = "#3993D4",
-	bright_blue = "#1FB0FF",
-
-	magenta = "#A771BF",
-	bright_magenta = "#ED7EED",
-
-	cyan = "#00A3A3",
-	bright_cyan = "#00E5E5",
-
-	white = M.text1,
-	bright_white = M.text,
+	black = palette.bg1,
+	bright_black = palette.fg1,
+	red = palette.terminal.red,
+	bright_red = palette.terminal.bright_red,
+	green = palette.terminal.green,
+	bright_green = palette.terminal.bright_green,
+	yellow = palette.terminal.yellow,
+	bright_yellow = palette.terminal.bright_yellow,
+	blue = palette.terminal.blue,
+	bright_blue = palette.terminal.bright_blue,
+	magenta = palette.terminal.magenta,
+	bright_magenta = palette.terminal.bright_magenta,
+	cyan = palette.terminal.cyan,
+	bright_cyan = palette.terminal.bright_cyan,
+	white = palette.fg2,
+	bright_white = palette.fg3,
 }
 
 return M

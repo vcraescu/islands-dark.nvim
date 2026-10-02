@@ -15,8 +15,9 @@ end
 ---@param config theme.Config User configuration
 ---@return theme.Colors
 function M.apply_overrides(colors, config)
+	colors = vim.deepcopy(colors)
 	if config.transparent then
-		colors.base = colors.none
+		colors.background = colors.none
 	end
 
 	return colors

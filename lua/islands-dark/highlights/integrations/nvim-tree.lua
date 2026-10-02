@@ -5,7 +5,7 @@ local M = {}
 --- @return theme.Highlights
 function M.get(c)
 	return {
-		NvimTreeNormal = { fg = c.text3, bg = c.none },
+		NvimTreeNormal = { fg = c.foreground_bright, bg = c.none },
 		NvimTreeWinSeparator = { fg = c.border, bg = c.none },
 
 		NvimTreeRootFolder = { fg = c.comment },
@@ -21,17 +21,17 @@ function M.get(c)
 		NvimTreeImageFile = { fg = c.constant },
 		NvimTreeSymlink = { fg = c.link, underline = true },
 
-		NvimTreeGitDirty = { fg = c.git_change },
+		NvimTreeGitDirty = { fg = c.changes.change.fg },
 		NvimTreeGitDirtyIcon = { link = "NvimTreeGitDirty" },
-		NvimTreeGitStaged = { fg = c.git_change },
+		NvimTreeGitStaged = { fg = c.changes.change.fg },
 		NvimTreeGitStagedIcon = { link = "NvimTreeGitStaged" },
-		NvimTreeGitMerge = { fg = c.purple1 },
+		NvimTreeGitMerge = { fg = c.git_merge },
 		NvimTreeGitMergeIcon = { link = "NvimTreeGitMerge" },
-		NvimTreeGitRenamed = { fg = c.git_change },
+		NvimTreeGitRenamed = { fg = c.changes.change.fg },
 		NvimTreeGitRenamedIcon = { link = "NvimTreeGitRenamed" },
-		NvimTreeGitNew = { fg = c.git_add },
+		NvimTreeGitNew = { fg = c.changes.add.fg },
 		NvimTreeGitNewIcon = { link = "NvimTreeGitNew" },
-		NvimTreeGitDeleted = { fg = c.git_delete },
+		NvimTreeGitDeleted = { fg = c.changes.delete.fg },
 		NvimTreeGitDeletedIcon = { link = "NvimTreeGitDeleted" },
 		NvimTreeGitIgnored = { fg = c.git_ignore },
 		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },
