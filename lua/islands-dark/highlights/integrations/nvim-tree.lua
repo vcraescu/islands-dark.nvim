@@ -17,7 +17,7 @@ function M.get(c)
 
 		NvimTreeOpenedFile = { link = "NvimTreeNormal" },
 		NvimTreeSpecialFile = { link = "NvimTreeNormal" },
-		NvimTreeExecFile = { fg = c.keyword },
+		NvimTreeExecFile = { fg = c.fg },
 		NvimTreeImageFile = { fg = c.constant },
 		NvimTreeSymlink = { fg = c.link, underline = true },
 
@@ -31,9 +31,9 @@ function M.get(c)
 		NvimTreeGitRenamedIcon = { link = "NvimTreeGitRenamed" },
 		NvimTreeGitNew = { fg = c.changes.add.fg },
 		NvimTreeGitNewIcon = { link = "NvimTreeGitNew" },
-		NvimTreeGitDeleted = { fg = c.error },
+		NvimTreeGitDeleted = { fg = c.changes.conflict.fg },
 		NvimTreeGitDeletedIcon = { link = "NvimTreeGitDeleted" },
-		NvimTreeGitIgnored = { fg = c.git_ignore },
+		NvimTreeGitIgnored = { link = "Ignore" },
 		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },
 
 		NvimTreeCursorLine = { link = "PmenuSel" },

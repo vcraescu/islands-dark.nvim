@@ -267,11 +267,11 @@ Use semantic names when you define highlights:
 
 Git signs, native diff, and file-tree Git markers share `colors.changes`:
 
-| Change  | Sign foreground     | Line background          | Inline background        | Inline foreground        |
-| ------- | ------------------- | ------------------------ | ------------------------ | ------------------------ |
-| Added   | `changes.add.fg`    | `changes.add.line_bg`    | `changes.add.text_bg`    | `changes.add.text_fg`    |
-| Changed | `changes.change.fg` | `changes.change.line_bg` | `changes.change.text_bg` | `changes.change.text_fg` |
-| Deleted | `changes.delete.fg` | `changes.delete.line_bg` | `changes.delete.text_bg` | `changes.delete.text_fg` |
+| Change  | Sign foreground     | Line background          | Inline background        |
+| ------- | ------------------- | ------------------------ | ------------------------ |
+| Added   | `changes.add.fg`    | `changes.add.line_bg`    | `changes.add.text_bg`    |
+| Changed | `changes.change.fg` | `changes.change.line_bg` | `changes.change.text_bg` |
+| Deleted | `changes.delete.fg` | `changes.delete.line_bg` | `changes.delete.text_bg` |
 
 Edit the shared definitions in `colors.lua` to change these colors together. Git and diff use the supplied backgrounds:
 
@@ -281,8 +281,7 @@ Edit the shared definitions in `colors.lua` to change these colors together. Git
 | Changed | `#25323E`       | `#385570`         |
 | Deleted | `#2C2D2E`       | `#484A4A`         |
 
-All inline regions use the light `fg_bright` color. Explicit `text_fg` values prevent inline text from inheriting dark
-syntax colors.
+Inline diff highlights set only the background, so text keeps its syntax foreground.
 
 GitSigns buffer word-diff groups (`GitSignsAddLnInline`, `GitSignsChangeLnInline`, and `GitSignsDeleteLnInline`) use the
 changed-text blue because they mark edits inside changed lines. Added and deleted inline previews keep their respective

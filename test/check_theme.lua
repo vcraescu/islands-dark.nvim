@@ -20,36 +20,33 @@ local function assert_highlight(group, attribute, expected)
 	assert(actual == value, group .. "." .. attribute .. ": " .. vim.inspect(highlight))
 end
 
---- Calculate relative luminance for contrast checks.
---- @param color string Hex color
---- @return number
-local function luminance(color)
-	local channels = {}
-	for index = 1, 3 do
-		local offset = 2 + (index - 1) * 2
-		local channel = tonumber(color:sub(offset, offset + 1), 16) / 255
-		channels[index] = channel <= 0.04045 and channel / 12.92 or ((channel + 0.055) / 1.055) ^ 2.4
-	end
-	return channels[1] * 0.2126 + channels[2] * 0.7152 + channels[3] * 0.0722
-end
-
--- Preserve the supplied backgrounds and use a light inline foreground.
+-- Preserve the supplied backgrounds without overriding syntax foregrounds.
 local expected_changes = {
 	add = { line_bg = "#1F2B26", text_bg = "#294436" },
 	change = { line_bg = "#25323E", text_bg = "#385570" },
+	conflict = { line_bg = "#2B2322", text_bg = "#45302B" },
 	delete = { line_bg = "#2C2D2E", text_bg = "#484A4A" },
 }
 for kind, change_colors in pairs(colors.changes) do
 	assert(change_colors.line_bg == expected_changes[kind].line_bg)
 	assert(change_colors.text_bg == expected_changes[kind].text_bg)
-	assert(change_colors.text_fg == palette.fg4)
-	assert(luminance(change_colors.text_fg) > luminance(change_colors.text_bg))
 end
 
+assert(colors.changes.add.fg == "#6AAB73")
+assert(colors.changes.change.fg == "#56A8F5")
 assert(colors.changes.delete.fg == "#868A91")
+assert(colors.changes.conflict.fg == palette.red1)
 
-for _, name in ipairs({ "blue3", "red1", "purple2" }) do
-	assert(palette[name] == nil, "Unused palette color retained: " .. name)
+-- Each numbered palette group must start at 1 without gaps.
+for name in pairs(palette) do
+	local prefix, number = name:match("^(%a+)(%d+)$")
+	if prefix then
+		assert(tonumber(number) >= 1, "Invalid palette index: " .. name)
+		for index = 1, tonumber(number) do
+			local color_name = prefix .. index
+			assert(palette[color_name] ~= nil, "Missing palette color: " .. color_name)
+		end
+	end
 end
 for _, name in ipairs({
 	"boolean",
@@ -115,11 +112,11 @@ for _, kind in ipairs({ "add", "change", "delete" }) do
 		fg = palette.fg3,
 		line_bg = palette.bg2,
 		text_bg = palette.bg4,
-		text_fg = palette.fg4,
 	}
 end
 local editor_groups = editor.get(custom_colors)
 local git_groups = gitsigns.get(custom_colors)
+custom_colors.changes.conflict.fg = palette.fg2
 local tree_groups = nvim_tree.get(custom_colors)
 for _, kind in ipairs({ "Add", "Change", "Delete" }) do
 	if kind ~= "Delete" then
@@ -128,13 +125,13 @@ for _, kind in ipairs({ "Add", "Change", "Delete" }) do
 	assert(git_groups["GitSigns" .. kind].fg == palette.fg3)
 	if kind ~= "Change" then
 		assert(git_groups["GitSigns" .. kind .. "Inline"].bg == palette.bg4)
-		assert(git_groups["GitSigns" .. kind .. "Inline"].fg == palette.fg4)
+		assert(git_groups["GitSigns" .. kind .. "Inline"].fg == nil)
 	end
 end
 assert(editor_groups.DiffDelete.bg == custom_colors.bg_gutter)
 assert(editor_groups.DiffDelete.fg == custom_colors.fg_dim)
 assert(editor_groups.DiffText.bg == palette.bg4)
-assert(editor_groups.DiffText.fg == palette.fg4)
+assert(editor_groups.DiffText.fg == nil)
 assert(editor_groups.DiffTextAdd.link == "DiffText")
 assert(git_groups.GitSignsTopdelete.link == "GitSignsDelete")
 assert(git_groups.GitSignsChangedelete.link == "GitSignsDelete")
@@ -145,13 +142,16 @@ assert(git_groups.GitSignsDeletePreview.link == "GitSignsDeleteVirtLn")
 assert(git_groups.GitSignsChangeInline.link == "GitSignsAddInline")
 assert(git_groups.GitSignsAddLnInline.link == "GitSignsChangeLnInline")
 assert(git_groups.GitSignsChangeLnInline.bg == palette.bg4)
-assert(git_groups.GitSignsChangeLnInline.fg == palette.fg4)
+assert(git_groups.GitSignsChangeLnInline.fg == nil)
 assert(git_groups.GitSignsDeleteLnInline.link == "GitSignsChangeLnInline")
 assert(tree_groups.NvimTreeGitNew.fg == palette.fg3)
 assert(tree_groups.NvimTreeGitDirty.fg == palette.fg3)
-assert(tree_groups.NvimTreeGitDeleted.fg == palette.red2)
+assert(tree_groups.NvimTreeGitDeleted.fg == custom_colors.changes.conflict.fg)
 assert(tree_groups.NvimTreeGitDeleted.fg ~= custom_colors.changes.delete.fg)
 assert(tree_groups.NvimTreeGitDeletedIcon.link == "NvimTreeGitDeleted")
+assert(tree_groups.NvimTreeGitIgnored.link == "Ignore")
+assert(tree_groups.NvimTreeGitIgnoredIcon.link == "NvimTreeGitIgnored")
+assert(git_groups.GitSignsCurrentLineBlame.link == "Ignore")
 
 -- Transparent loads must not mutate either color module.
 local transparent_colors = util.apply_overrides(colors, { transparent = true })
@@ -163,7 +163,7 @@ assert(colors.fold_fg == "#868991")
 assert(colors.fold_bg ~= colors.bg)
 assert(colors.fold_bg ~= colors.changes.delete.line_bg)
 transparent_colors.changes.add.fg = palette.fg1
-transparent_colors.terminal.red = palette.red2
+transparent_colors.terminal.red = palette.red1
 assert(colors.changes.add.fg == palette.green2)
 assert(colors.terminal.red == palette.terminal.red)
 
@@ -187,14 +187,14 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert_highlight("DiffDelete", "bg", colors.bg_gutter)
 	assert_highlight("DiffDelete", "fg", colors.fg_dim)
 	assert_highlight("DiffText", "bg", colors.changes.change.text_bg)
-	assert_highlight("DiffText", "fg", colors.changes.change.text_fg)
+	assert_highlight("DiffText", "fg", "NONE")
 	assert_highlight("DiffTextAdd", "bg", colors.changes.change.text_bg)
 	assert_highlight("@diff.minus", "bg", colors.changes.delete.line_bg)
 	assert_highlight("GitSignsAddLn", "bg", colors.changes.add.line_bg)
 	assert_highlight("GitSignsChangeLn", "bg", "#25323E")
 	assert_highlight("GitSignsAddLnInline", "bg", "#385570")
-	assert_highlight("NvimTreeGitDeleted", "fg", palette.red2)
-	assert_highlight("NvimTreeGitDeletedIcon", "fg", palette.red2)
+	assert_highlight("NvimTreeGitDeleted", "fg", colors.changes.conflict.fg)
+	assert_highlight("NvimTreeGitDeletedIcon", "fg", colors.changes.conflict.fg)
 	assert_highlight("GitSignsDeleteVirtLn", "bg", colors.changes.delete.line_bg)
 	assert_highlight("GitSignsDeletePreview", "bg", colors.changes.delete.line_bg)
 	for _, group in ipairs({ "GitSignsDelete", "GitSignsTopdelete", "GitSignsChangedelete" }) do
@@ -206,13 +206,13 @@ for _, transparent in ipairs({ false, true, false }) do
 		assert_highlight("GitSigns" .. kind, "fg", change_colors.fg)
 		local preview_colors = kind == "Change" and colors.changes.add or change_colors
 		assert_highlight("GitSigns" .. kind .. "Inline", "bg", preview_colors.text_bg)
-		assert_highlight("GitSigns" .. kind .. "Inline", "fg", preview_colors.text_fg)
+		assert_highlight("GitSigns" .. kind .. "Inline", "fg", "NONE")
 		assert_highlight("GitSigns" .. kind .. "LnInline", "bg", colors.changes.change.text_bg)
-		assert_highlight("GitSigns" .. kind .. "LnInline", "fg", colors.changes.change.text_fg)
+		assert_highlight("GitSigns" .. kind .. "LnInline", "fg", "NONE")
 	end
 	assert_highlight("GitSignsDeleteVirtLnInLine", "bg", colors.changes.delete.text_bg)
-	assert_highlight("GitSignsDeleteVirtLnInLine", "fg", colors.changes.delete.text_fg)
-	assert_highlight("DiffTextAdd", "fg", colors.changes.change.text_fg)
+	assert_highlight("GitSignsDeleteVirtLnInLine", "fg", "NONE")
+	assert_highlight("DiffTextAdd", "fg", "NONE")
 	local terminal_names = {
 		"black",
 		"red",
@@ -278,6 +278,10 @@ for _, group in ipairs({ "Function", "@function", "@function.builtin", "Comment"
 end
 vim.api.nvim_set_hl(0, "Function", { fg = tonumber(colors.keyword:sub(2), 16) })
 assert_highlight("@function", "fg", colors.keyword)
+vim.api.nvim_set_hl(0, "Ignore", { fg = tonumber(colors.fg_muted:sub(2), 16) })
+for _, group in ipairs({ "NvimTreeGitIgnored", "NvimTreeGitIgnoredIcon", "GitSignsCurrentLineBlame" }) do
+	assert_highlight(group, "fg", colors.fg_muted)
+end
 
 -- Verify which groups native diff actually uses on each supported version.
 local before = vim.api.nvim_create_buf(false, true)

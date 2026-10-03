@@ -208,15 +208,12 @@ Shared Git and diff colors:
     changes.add.fg          Added signs and markers
     changes.add.line_bg     Added line background
     changes.add.text_bg     Added inline text background
-    changes.add.text_fg     Added inline text foreground
     changes.change.fg       Changed signs and markers
     changes.change.line_bg  Changed line background
     changes.change.text_bg  Changed inline text background
-    changes.change.text_fg  Changed inline text foreground
     changes.delete.fg       Deleted signs and markers
     changes.delete.line_bg  Deleted line background
     changes.delete.text_bg  Deleted inline text background
-    changes.delete.text_fg  Deleted inline text foreground
 
     Edit these shared definitions in colors.lua to update GitSigns, native
     diff, and file-tree Git markers together. The supplied backgrounds
@@ -227,8 +224,8 @@ Shared Git and diff colors:
     Changed     #25323E             #385570
     Deleted     #2C2D2E             #484A4A
 
-    All inline regions use fg_bright. Explicit text_fg values prevent
-    inline text from inheriting dark syntax colors.
+    Inline diff highlights set only the background, so text keeps its
+    syntax foreground.
 
     GitSignsAddLnInline, GitSignsChangeLnInline, and GitSignsDeleteLnInline
     use the changed-text blue for edits inside changed lines. Added and

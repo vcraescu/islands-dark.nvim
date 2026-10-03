@@ -14,16 +14,16 @@ function M.get(c)
 		GitSignsChangeLn = { bg = c.changes.change.line_bg },
 		GitSignsDeleteVirtLn = { bg = c.changes.delete.line_bg },
 		GitSignsDeletePreview = { link = "GitSignsDeleteVirtLn" },
-		GitSignsAddInline = { bg = c.changes.add.text_bg, fg = c.changes.add.text_fg },
+		GitSignsAddInline = { bg = c.changes.add.text_bg },
 		-- Preview replacements are inside added lines.
 		GitSignsChangeInline = { link = "GitSignsAddInline" },
-		GitSignsDeleteInline = { bg = c.changes.delete.text_bg, fg = c.changes.delete.text_fg },
+		GitSignsDeleteInline = { bg = c.changes.delete.text_bg },
 		-- Buffer word diffs are inside changed lines.
 		GitSignsAddLnInline = { link = "GitSignsChangeLnInline" },
-		GitSignsChangeLnInline = { bg = c.changes.change.text_bg, fg = c.changes.change.text_fg },
+		GitSignsChangeLnInline = { bg = c.changes.change.text_bg },
 		GitSignsDeleteLnInline = { link = "GitSignsChangeLnInline" },
 		GitSignsDeleteVirtLnInLine = { link = "GitSignsDeleteInline" },
-		GitSignsCurrentLineBlame = { fg = c.git_ignore },
+		GitSignsCurrentLineBlame = { link = "Ignore" },
 	}
 end
 

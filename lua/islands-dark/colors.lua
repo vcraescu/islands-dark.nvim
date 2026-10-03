@@ -27,7 +27,7 @@ M.color_column = palette.bg3
 M.fold_bg = palette.bg4
 M.fold_fg = palette.fg6
 M.ghost_text = palette.gray2
-M.directory = palette.blue4
+M.directory = palette.blue3
 M.markup_code_bg = palette.cyan1
 
 -- Keywords and literals
@@ -36,7 +36,7 @@ M.string = palette.green2
 M.number = palette.cyan2
 
 -- Functions and methods
-M.func = palette.blue4
+M.func = palette.blue3
 M.func_builtin = palette.orange1
 M.func_call = palette.yellow3
 
@@ -47,7 +47,7 @@ M.parameter = palette.fg3
 M.property = palette.purple1
 
 -- Types and constants
-M.type = palette.blue5
+M.type = palette.blue4
 M.type_builtin = palette.orange1
 M.type_definition = palette.fg3
 M.constant = palette.purple1
@@ -71,22 +71,22 @@ M.special_tag = palette.green6
 M.label = palette.fg3
 M.metadata = palette.yellow1
 M.special = palette.cyan2
-M.special_char = palette.blue4
+M.special_char = palette.blue3
 M.escape = palette.orange2
 M.regex = palette.cyan2
 M.include = palette.yellow4
 
 -- Diagnostics and LSP
-M.error = palette.red2
+M.error = palette.red1
 M.warning = palette.yellow2
-M.info = palette.blue5
+M.info = palette.blue4
 M.hint = palette.fg1
 M.ok = palette.green2
 M.lsp_reference = palette.cyan1
 
 -- Search
 M.search = palette.green1
-M.search_match = palette.blue4
+M.search_match = palette.blue3
 M.match = palette.blue1
 
 -- Shared Git and diff colors
@@ -95,27 +95,28 @@ M.changes = {
 		fg = palette.green2,
 		line_bg = palette.green7,
 		text_bg = palette.green8,
-		text_fg = palette.fg4,
 	},
 	change = {
-		fg = palette.blue4,
-		line_bg = palette.blue6,
-		text_bg = palette.blue7,
-		text_fg = palette.fg4,
+		fg = palette.blue3,
+		line_bg = palette.blue5,
+		text_bg = palette.blue6,
+	},
+	conflict = {
+		fg = palette.red1,
+		line_bg = palette.red2,
+		text_bg = palette.red3,
 	},
 	delete = {
 		fg = palette.gray5,
 		line_bg = palette.gray3,
 		text_bg = palette.gray4,
-		text_fg = palette.fg4,
 	},
 }
-M.git_ignore = palette.fg1
 M.git_merge = palette.purple1
 
 -- Special elements
 M.todo = palette.green3
-M.link = palette.blue4
+M.link = palette.blue3
 M.none = "NONE"
 
 -- Terminal

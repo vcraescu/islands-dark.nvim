@@ -1,7 +1,7 @@
 --- @type theme.Palette
 local M = {}
 
--- Numbers are stable identifiers, not brightness ranks.
+-- Numbers start at 1 without gaps; they are not brightness ranks.
 -- Source names refer to the theme export in test/IslandsDark.xml.
 -- Unverified values are preserved until IslandsDark.icls is available.
 -- User-specified diff backgrounds are marked below.
@@ -23,10 +23,11 @@ M.fg6 = "#868991" -- FOLDED_TEXT_ATTRIBUTES.FOREGROUND
 -- Blues
 M.blue1 = "#114957" -- TEXT_SEARCH_RESULT_ATTRIBUTES.BACKGROUND
 M.blue2 = "#214283" -- Unverified: original .icls not included
-M.blue4 = "#56A8F5" -- DEFAULT_FUNCTION_DECLARATION.FOREGROUND
-M.blue5 = "#6FAFBD" -- Unverified: original .icls not included
-M.blue6 = "#25323E" -- User-specified changed line background
-M.blue7 = "#385570" -- User-specified changed text background
+M.blue3 = "#56A8F5" -- DEFAULT_FUNCTION_DECLARATION.FOREGROUND
+M.blue4 = "#6FAFBD" -- Unverified: original .icls not included
+M.blue5 = "#25323E" -- User-specified changed line background
+M.blue6 = "#385570" -- User-specified changed text background
+M.blue7 = "#43698D" -- User-specified changed signs and markers
 
 -- Cyans
 M.cyan1 = "#293C40" -- INJECTED_LANGUAGE_FRAGMENT.BACKGROUND
@@ -41,9 +42,13 @@ M.green5 = "#67A37C" -- DEFAULT_DOC_COMMENT_TAG.FOREGROUND
 M.green6 = "#2FBAA3" -- HTML_CUSTOM_TAG_NAME.FOREGROUND
 M.green7 = "#1F2B26" -- User-specified added line background
 M.green8 = "#294436" -- User-specified added text background
+M.green9 = "#447152" -- User-specified added signs and markers
 
 -- Reds
-M.red2 = "#F75464" -- BAD_CHARACTER.FOREGROUND
+M.red1 = "#F75464" -- BAD_CHARACTER.FOREGROUND
+M.red2 = "#2B2322" -- User-specified conflict line background
+M.red3 = "#45302B" -- User-specified conflict text background
+M.red4 = "#8F5247" -- User-specified conflict foreground
 
 -- Yellows
 M.yellow1 = "#B3AE60" -- DEFAULT_METADATA.FOREGROUND

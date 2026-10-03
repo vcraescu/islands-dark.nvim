@@ -19,7 +19,7 @@ function M.get(c)
 		DiffChange = { bg = c.changes.change.line_bg },
 		-- Native diff uses this for missing-line filler rows.
 		DiffDelete = { fg = c.fg_dim, bg = c.bg_gutter },
-		DiffText = { bg = c.changes.change.text_bg, fg = c.changes.change.text_fg },
+		DiffText = { bg = c.changes.change.text_bg },
 		-- Neovim 0.12+ uses this for insertions inside changed lines.
 		DiffTextAdd = { link = "DiffText" },
 		Directory = { fg = c.directory },

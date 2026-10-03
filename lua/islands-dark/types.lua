@@ -33,10 +33,11 @@
 --- @field fg6 string Folded text foreground
 --- @field blue1 string
 --- @field blue2 string
+--- @field blue3 string
 --- @field blue4 string
---- @field blue5 string
---- @field blue6 string User-specified changed line background
---- @field blue7 string User-specified changed text background
+--- @field blue5 string User-specified changed line background
+--- @field blue6 string User-specified changed text background
+--- @field blue7 string Changed signs and markers
 --- @field cyan1 string
 --- @field cyan2 string
 --- @field green1 string
@@ -47,7 +48,11 @@
 --- @field green6 string
 --- @field green7 string User-specified added line background
 --- @field green8 string User-specified added text background
---- @field red2 string
+--- @field green9 string Added signs and markers
+--- @field red1 string
+--- @field red2 string User-specified conflict line background
+--- @field red3 string User-specified conflict text background
+--- @field red4 string User-specified conflict foreground
 --- @field yellow1 string
 --- @field yellow2 string
 --- @field yellow3 string
@@ -62,16 +67,16 @@
 --- @field gray5 string Deleted signs and markers
 --- @field terminal theme.TerminalPalette
 
---- @class theme.ChangeColors
+--- @class islands_dark.ChangeColors
 --- @field fg string Sign and marker foreground
 --- @field line_bg string Full-line background
 --- @field text_bg string Inline text background
---- @field text_fg string Inline text foreground
 
---- @class theme.Changes
---- @field add theme.ChangeColors
---- @field change theme.ChangeColors
---- @field delete theme.ChangeColors
+--- @class islands_dark.Changes
+--- @field add islands_dark.ChangeColors
+--- @field change islands_dark.ChangeColors
+--- @field conflict islands_dark.ChangeColors
+--- @field delete islands_dark.ChangeColors
 
 --- @class theme.Colors
 --- @field bg string Editor background
@@ -135,8 +140,7 @@
 --- @field search string
 --- @field search_match string
 --- @field match string
---- @field changes theme.Changes Shared Git and diff colors
---- @field git_ignore string
+--- @field changes islands_dark.Changes Shared Git and diff colors
 --- @field git_merge string
 --- @field todo string
 --- @field link string
