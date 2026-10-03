@@ -31,7 +31,7 @@ function M.get(c)
 		NvimTreeGitRenamedIcon = { link = "NvimTreeGitRenamed" },
 		NvimTreeGitNew = { fg = c.changes.add.fg },
 		NvimTreeGitNewIcon = { link = "NvimTreeGitNew" },
-		NvimTreeGitDeleted = { fg = c.changes.delete.fg },
+		NvimTreeGitDeleted = { fg = c.error },
 		NvimTreeGitDeletedIcon = { link = "NvimTreeGitDeleted" },
 		NvimTreeGitIgnored = { fg = c.git_ignore },
 		NvimTreeGitIgnoredIcon = { link = "NvimTreeGitIgnored" },

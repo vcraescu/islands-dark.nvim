@@ -149,7 +149,9 @@ assert(git_groups.GitSignsChangeLnInline.fg == palette.fg4)
 assert(git_groups.GitSignsDeleteLnInline.link == "GitSignsChangeLnInline")
 assert(tree_groups.NvimTreeGitNew.fg == palette.fg3)
 assert(tree_groups.NvimTreeGitDirty.fg == palette.fg3)
-assert(tree_groups.NvimTreeGitDeleted.fg == palette.fg3)
+assert(tree_groups.NvimTreeGitDeleted.fg == palette.red2)
+assert(tree_groups.NvimTreeGitDeleted.fg ~= custom_colors.changes.delete.fg)
+assert(tree_groups.NvimTreeGitDeletedIcon.link == "NvimTreeGitDeleted")
 
 -- Transparent loads must not mutate either color module.
 local transparent_colors = util.apply_overrides(colors, { transparent = true })
@@ -191,6 +193,8 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert_highlight("GitSignsAddLn", "bg", colors.changes.add.line_bg)
 	assert_highlight("GitSignsChangeLn", "bg", "#25323E")
 	assert_highlight("GitSignsAddLnInline", "bg", "#385570")
+	assert_highlight("NvimTreeGitDeleted", "fg", palette.red2)
+	assert_highlight("NvimTreeGitDeletedIcon", "fg", palette.red2)
 	assert_highlight("GitSignsDeleteVirtLn", "bg", colors.changes.delete.line_bg)
 	assert_highlight("GitSignsDeletePreview", "bg", colors.changes.delete.line_bg)
 	for _, group in ipairs({ "GitSignsDelete", "GitSignsTopdelete", "GitSignsChangedelete" }) do
