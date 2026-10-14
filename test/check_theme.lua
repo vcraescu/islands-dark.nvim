@@ -25,7 +25,7 @@ local expected_changes = {
 	add = { line_bg = "#1F2B26", text_bg = "#294436" },
 	change = { line_bg = "#25323E", text_bg = "#385570" },
 	conflict = { line_bg = "#2B2322", text_bg = "#45302B" },
-	delete = { line_bg = "#2C2D2E", text_bg = "#484A4A" },
+	delete = { line_bg = "#2B2322", text_bg = "#45302B" },
 }
 for kind, change_colors in pairs(colors.changes) do
 	assert(change_colors.line_bg == expected_changes[kind].line_bg)
@@ -128,8 +128,8 @@ for _, kind in ipairs({ "Add", "Change", "Delete" }) do
 		assert(git_groups["GitSigns" .. kind .. "Inline"].fg == nil)
 	end
 end
-assert(editor_groups.DiffDelete.bg == custom_colors.bg_gutter)
-assert(editor_groups.DiffDelete.fg == custom_colors.fg_dim)
+assert(editor_groups.DiffDelete.bg == custom_colors.changes.delete.line_bg)
+assert(editor_groups.DiffDelete.fg == custom_colors.changes.delete.fg)
 assert(editor_groups.DiffText.bg == palette.bg4)
 assert(editor_groups.DiffText.fg == nil)
 assert(editor_groups.DiffTextAdd.link == "DiffText")
@@ -184,8 +184,8 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert_highlight("StatusLineNC", "bg", colors.bg_gutter)
 	assert_highlight("DiffAdd", "bg", colors.changes.add.line_bg)
 	assert_highlight("DiffChange", "bg", colors.changes.change.line_bg)
-	assert_highlight("DiffDelete", "bg", colors.bg_gutter)
-	assert_highlight("DiffDelete", "fg", colors.fg_dim)
+	assert_highlight("DiffDelete", "bg", colors.changes.delete.line_bg)
+	assert_highlight("DiffDelete", "fg", colors.changes.delete.fg)
 	assert_highlight("DiffText", "bg", colors.changes.change.text_bg)
 	assert_highlight("DiffText", "fg", "NONE")
 	assert_highlight("DiffTextAdd", "bg", colors.changes.change.text_bg)
@@ -308,7 +308,7 @@ assert_highlight(insertion_group, "bg", "#385570")
 assert_highlight("DiffChange", "bg", "#25323E")
 vim.api.nvim_set_current_win(before_window)
 assert(vim.fn.diff_filler(4) == 1)
-assert_highlight("DiffDelete", "bg", colors.bg_gutter)
+assert_highlight("DiffDelete", "bg", colors.changes.delete.line_bg)
 vim.api.nvim_set_current_win(after_window)
 vim.api.nvim_buf_set_lines(after, 1, 2, false, { "return amount" })
 vim.cmd("diffupdate")

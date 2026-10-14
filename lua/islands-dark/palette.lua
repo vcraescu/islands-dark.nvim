@@ -2,73 +2,69 @@
 local M = {}
 
 -- Numbers start at 1 without gaps; they are not brightness ranks.
--- Source names refer to the theme export in test/IslandsDark.xml.
+-- Comments describe current theme usage.
 -- Unverified values are preserved until IslandsDark.icls is available.
--- User-specified diff backgrounds are marked below.
 
 -- Backgrounds
-M.bg1 = "#191A1C" -- TEXT.BACKGROUND
-M.bg2 = "#1F2024" -- CARET_ROW_COLOR
-M.bg3 = "#2B2D30" -- DIFF_SEPARATORS_BACKGROUND
-M.bg4 = "#393B40" -- INLINE_PARAMETER_HINT.BACKGROUND
+M.bg1 = "#191A1C" -- Editor background, terminal black
+M.bg2 = "#1F2024" -- Cursor line, gutter, inactive statusline background
+M.bg3 = "#2B2D30" -- Statusline, color column background
+M.bg4 = "#393B40" -- Folded text, quickfix line, inlay hint background
 
 -- Foregrounds
-M.fg1 = "#7A7E85" -- DEFAULT_LINE_COMMENT.FOREGROUND
-M.fg2 = "#A1A3AB" -- LINE_NUMBER_ON_CARET_ROW_COLOR
-M.fg3 = "#BCBEC4" -- TEXT.FOREGROUND
-M.fg4 = "#D1D3D9" -- Unverified: original .icls not included
-M.fg5 = "#858A94" -- INLINE_PARAMETER_HINT.FOREGROUND
-M.fg6 = "#868991" -- FOLDED_TEXT_ATTRIBUTES.FOREGROUND
+M.fg1 = "#7A7E85" -- Comments, dim text, diagnostic hints, terminal bright black
+M.fg2 = "#A1A3AB" -- Muted text, current line number, terminal white
+M.fg3 = "#BCBEC4" -- Text, variables, parameters, operators, delimiters, cursor, terminal bright white
+M.fg4 = "#D1D3D9" -- File explorer text, selected fzf entry foreground; source unverified
+M.fg5 = "#858A94" -- Inlay hint foreground
+M.fg6 = "#868991" -- Folded text foreground
 
 -- Blues
-M.blue1 = "#114957" -- TEXT_SEARCH_RESULT_ATTRIBUTES.BACKGROUND
-M.blue2 = "#214283" -- Unverified: original .icls not included
-M.blue3 = "#56A8F5" -- DEFAULT_FUNCTION_DECLARATION.FOREGROUND
-M.blue4 = "#6FAFBD" -- Unverified: original .icls not included
-M.blue5 = "#25323E" -- User-specified changed line background
-M.blue6 = "#385570" -- User-specified changed text background
-M.blue7 = "#43698D" -- User-specified changed signs and markers
+M.blue1 = "#114957" -- Current search, incremental search, matching bracket background
+M.blue2 = "#214283" -- Visual selection background; source unverified
+M.blue3 = "#56A8F5" -- Functions, directories, links, match text, changed signs
+M.blue4 = "#6FAFBD" -- Types, diagnostic information; source unverified
+M.blue5 = "#25323E" -- Changed line background; user-specified
+M.blue6 = "#385570" -- Changed text background; user-specified
 
 -- Cyans
-M.cyan1 = "#293C40" -- INJECTED_LANGUAGE_FRAGMENT.BACKGROUND
-M.cyan2 = "#2AACB8" -- DEFAULT_NUMBER.FOREGROUND
+M.cyan1 = "#293C40" -- Markup code, LSP reference background
+M.cyan2 = "#2AACB8" -- Numbers, special syntax, regular expressions
 
 -- Greens
-M.green1 = "#375239" -- LINE_FULL_COVERAGE.FOREGROUND
-M.green2 = "#6AAB73" -- DEFAULT_STRING.FOREGROUND
-M.green3 = "#8BB33D" -- TODO_DEFAULT_ATTRIBUTES.FOREGROUND
-M.green4 = "#5F826B" -- DEFAULT_DOC_COMMENT.FOREGROUND
-M.green5 = "#67A37C" -- DEFAULT_DOC_COMMENT_TAG.FOREGROUND
-M.green6 = "#2FBAA3" -- HTML_CUSTOM_TAG_NAME.FOREGROUND
-M.green7 = "#1F2B26" -- User-specified added line background
-M.green8 = "#294436" -- User-specified added text background
-M.green9 = "#447152" -- User-specified added signs and markers
+M.green1 = "#375239" -- Search result background
+M.green2 = "#6AAB73" -- Strings, success messages, added signs
+M.green3 = "#8BB33D" -- TODO comment foreground
+M.green4 = "#5F826B" -- Documentation comments
+M.green5 = "#67A37C" -- Documentation comment tags
+M.green6 = "#2FBAA3" -- Special tag names
+M.green7 = "#1F2B26" -- Added line background; user-specified
+M.green8 = "#294436" -- Added text, replacement preview background; user-specified
 
 -- Reds
-M.red1 = "#F75464" -- BAD_CHARACTER.FOREGROUND
-M.red2 = "#2B2322" -- User-specified conflict line background
-M.red3 = "#45302B" -- User-specified conflict text background
-M.red4 = "#8F5247" -- User-specified conflict foreground
+M.red1 = "#F75464" -- Errors, conflict foreground
+M.red2 = "#2B2322" -- Conflict line, deleted virtual line, deletion preview background; user-specified
+M.red3 = "#45302B" -- Conflict text, deleted text background; user-specified
 
 -- Yellows
-M.yellow1 = "#B3AE60" -- DEFAULT_METADATA.FOREGROUND
-M.yellow2 = "#D5B778" -- HTML_TAG_NAME.FOREGROUND
-M.yellow3 = "#B09D79" -- Unverified: original .icls not included
-M.yellow4 = "#AFBF7E" -- Unverified: original .icls not included
+M.yellow1 = "#B3AE60" -- Metadata, macros, preprocessor directives
+M.yellow2 = "#D5B778" -- Tags, attributes, warnings
+M.yellow3 = "#B09D79" -- Function calls; source unverified
+M.yellow4 = "#AFBF7E" -- Include directives; source unverified
 
 -- Oranges
-M.orange1 = "#CC7832" -- Unverified: original .icls not included
-M.orange2 = "#CF8E6D" -- DEFAULT_KEYWORD.FOREGROUND
+M.orange1 = "#CC7832" -- Built-in functions, variables, types, constants; source unverified
+M.orange2 = "#CF8E6D" -- Keywords, escape sequences
 
 -- Purples
-M.purple1 = "#C77DBB" -- DEFAULT_CONSTANT.FOREGROUND
+M.purple1 = "#C77DBB" -- Constants, properties, Git merge indicators
 
 -- Grays
-M.gray1 = "#43454A" -- METHOD_SEPARATORS_COLOR
-M.gray2 = "#4B5059" -- LINE_NUMBERS_COLOR
-M.gray3 = "#2C2D2E" -- User-specified deleted line background
-M.gray4 = "#484A4A" -- User-specified deleted text background
-M.gray5 = "#868A91" -- DELETED_LINES_COLOR
+M.gray1 = "#43454A" -- Borders, separators, completion scrollbar thumb
+M.gray2 = "#4B5059" -- Line numbers, ghost text
+M.gray3 = "#2C2D2E" -- Unused; user-specified
+M.gray4 = "#484A4A" -- Unused; user-specified
+M.gray5 = "#868A91" -- Deleted signs, removed text foreground
 
 -- ANSI colors: original .icls sources are not included in the theme export.
 M.terminal = {

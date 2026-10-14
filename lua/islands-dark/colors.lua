@@ -107,9 +107,9 @@ M.changes = {
 		text_bg = palette.red3,
 	},
 	delete = {
-		fg = palette.gray5,
-		line_bg = palette.gray3,
-		text_bg = palette.gray4,
+		fg = palette.red1,
+		line_bg = palette.red2,
+		text_bg = palette.red3,
 	},
 }
 M.git_merge = palette.purple1
