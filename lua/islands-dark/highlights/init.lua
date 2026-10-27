@@ -3,7 +3,7 @@ local M = {}
 --- Load and combine highlights from all modules
 --- @param colors theme.Colors Color palette
 --- @param config theme.Config User configuration
---- @return table Combined highlight groups
+--- @return theme.Highlights Combined highlight groups
 function M.setup(colors, config)
 	-- Load all highlight modules
 	local editor = require("islands-dark.highlights.editor")

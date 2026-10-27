@@ -1,4 +1,4 @@
---- @type theme.Palette
+--- @class theme.Palette
 local M = {}
 
 -- Numbers start at 1 without gaps; they are not brightness ranks.
@@ -62,9 +62,6 @@ M.purple1 = "#C77DBB" -- Constants, properties, Git merge indicators
 -- Grays
 M.gray1 = "#43454A" -- Borders, separators, completion scrollbar thumb
 M.gray2 = "#4B5059" -- Line numbers, ghost text
-M.gray3 = "#2C2D2E" -- Unused; user-specified
-M.gray4 = "#484A4A" -- Unused; user-specified
-M.gray5 = "#868A91" -- Deleted signs, removed text foreground
 
 -- ANSI colors: original .icls sources are not included in the theme export.
 M.terminal = {

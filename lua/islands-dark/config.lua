@@ -20,21 +20,18 @@ local defaults = {
 	},
 
 	-- Function that receives colors table and returns highlight overrides
-	--- @param colors theme.Colors Base color palette
-	overrides = function(colors)
+	--- @type fun(colors: theme.Colors): theme.Highlights
+	overrides = function()
 		return {}
 	end,
 
 	-- Function that receives the final highlights table and can modify it directly
-	--- @param highlights table Final highlights table that will be applied
-	--- @param colors theme.Colors Base color palette
-	on_highlights = function(highlights, colors)
-		-- This function can be used to modify the highlights table directly
-	end,
+	--- @type fun(highlights: theme.Highlights, colors: theme.Colors)
+	on_highlights = function() end,
 }
 
 --- Setup configuration
----@param opts theme.Config|nil User configuration
+---@param opts? theme.Opts User configuration
 function M.setup(opts)
 	M.config = vim.tbl_deep_extend("force", defaults, opts or {})
 end

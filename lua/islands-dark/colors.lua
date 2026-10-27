@@ -1,18 +1,27 @@
---- @type theme.Colors
+--- @class theme.Colors
 local M = {}
 local palette = require("islands-dark.palette")
 
 -- Backgrounds
+--- Editor background
 M.bg = palette.bg1
+--- Gutter and inactive surface background
 M.bg_gutter = palette.bg2
+--- Statusline and surface background
 M.bg_surface = palette.bg3
+--- Emphasized surface background
 M.bg_highlight = palette.bg4
 
 -- Foregrounds
+--- Default text
 M.fg = palette.fg3
+--- Secondary text
 M.fg_muted = palette.fg2
+--- Dim text
 M.fg_dim = palette.fg1
+--- Emphasized text
 M.fg_bright = palette.fg4
+--- Inlay hint text
 M.fg_inlay = palette.fg5
 
 -- Editor
@@ -24,7 +33,9 @@ M.visual = palette.blue2
 M.line_number = palette.gray2
 M.line_number_current = palette.fg2
 M.color_column = palette.bg3
+--- Folded text background
 M.fold_bg = palette.bg4
+--- Folded text foreground
 M.fold_fg = palette.fg6
 M.ghost_text = palette.gray2
 M.directory = palette.blue3
@@ -89,7 +100,7 @@ M.search = palette.green1
 M.search_match = palette.blue3
 M.match = palette.blue1
 
--- Shared Git and diff colors
+-- Shared Git and diff colors: sign and marker `fg`, full-line `line_bg`, inline `text_bg`
 M.changes = {
 	add = {
 		fg = palette.green2,
@@ -117,6 +128,7 @@ M.git_merge = palette.purple1
 -- Special elements
 M.todo = palette.green3
 M.link = palette.blue3
+--- Transparency sentinel
 M.none = "NONE"
 
 -- Terminal

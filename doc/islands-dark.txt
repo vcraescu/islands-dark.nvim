@@ -103,18 +103,9 @@ islands-dark.setup({opts})
             Set terminal colors (default: true)
 
         • styles (table)
-            Style overrides for syntax elements:
-            - comments: Style for comments
-            - keywords: Style for keywords
-            - functions: Style for functions
-            - strings: Style for strings
-            - variables: Style for variables
-
-            Each style can have:
-            - italic: boolean
-            - bold: boolean
-            - underline: boolean
-            - strikethrough: boolean
+            Styles for comments, keywords, functions, and variables.
+            Each style can set italic, bold, underline, undercurl, and
+            strikethrough.
 
         • overrides (function)
             Callback to return highlight group overrides
@@ -136,7 +127,6 @@ Example configuration:
         comments = { italic = true },
         keywords = { bold = false },
         functions = { italic = false },
-        strings = { italic = false },
         variables = { italic = false },
         constants = { italic = false },
       },
@@ -222,14 +212,14 @@ Shared Git and diff colors:
     Change      Line background     Inline background
     Added       #1F2B26             #294436
     Changed     #25323E             #385570
-    Deleted     #2C2D2E             #484A4A
+    Deleted     #2B2322             #45302B
 
     Inline diff highlights set only the background, so text keeps its
     syntax foreground.
 
     GitSignsAddLnInline, GitSignsChangeLnInline, and GitSignsDeleteLnInline
     use the changed-text blue for edits inside changed lines. Added and
-    deleted inline previews retain green and gray backgrounds.
+    deleted inline previews retain green and red backgrounds.
 
     DiffText highlights changed text within changed lines. Neovim 0.12+
     uses DiffTextAdd for inserted text within changed lines with

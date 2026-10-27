@@ -24,10 +24,10 @@ function M.apply_overrides(colors, config)
 	return colors
 end
 
--- Get style options from config
+--- Get style options from config
 --- @param opts theme.Config User configuration
 --- @param style_type theme.StyleType
---- @return fun(opts: vim.api.keyset.highlight): vim.api.keyset.highlight
+--- @return theme.StyleFn
 function M.get_style(opts, style_type)
 	opts = opts or {}
 
@@ -69,8 +69,9 @@ function M.get_style(opts, style_type)
 	end
 end
 
+--- Get style functions for all style types
 --- @param opts theme.Config User configuration
---- @return theme.Styles
+--- @return theme.StyleFns
 function M.get_styles(opts)
 	local cache_key = vim.inspect(opts.styles or {})
 

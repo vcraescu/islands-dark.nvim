@@ -17,15 +17,15 @@ function M.get(c, config)
 		["@character"] = { link = "Character" },
 		["@character.special"] = { link = "SpecialChar" },
 		["@class"] = { link = "@type" },
-		["@comment"] = styles.comments({ link = "Comment" }),
+		["@comment"] = { link = "Comment" },
 		["@comment.attribute"] = styles.comments({ fg = c.comment_tag }),
 		["@comment.documentation"] = { link = "@comment" },
-		["@comment.error"] = styles.comments({ link = "Todo" }),
-		["@comment.hint"] = styles.comments({ link = "Todo" }),
-		["@comment.info"] = styles.comments({ link = "Todo" }),
-		["@comment.note"] = styles.comments({ link = "Todo" }),
-		["@comment.todo"] = styles.comments({ link = "Todo" }),
-		["@comment.warning"] = styles.comments({ link = "Todo" }),
+		["@comment.error"] = { link = "Todo" },
+		["@comment.hint"] = { link = "Todo" },
+		["@comment.info"] = { link = "Todo" },
+		["@comment.note"] = { link = "Todo" },
+		["@comment.todo"] = { link = "Todo" },
+		["@comment.warning"] = { link = "Todo" },
 		["@constant"] = { link = "Constant" },
 		["@constant.builtin"] = { fg = c.constant_builtin, nocombine = true },
 		["@constructor"] = { fg = c.keyword },
@@ -98,7 +98,7 @@ function M.get(c, config)
 		["@type.qualifier"] = { link = "Keyword" },
 		["@typeparameter"] = { link = "@type" },
 		["@variable"] = { link = "Identifier" },
-		["@variable.builtin"] = { fg = c.variable_builtin },
+		["@variable.builtin"] = styles.variables({ fg = c.variable_builtin }),
 		["@variable.member"] = { link = "@property" },
 		["@variable.parameter"] = { link = "@parameter" },
 		["@variable.parameter.builtin"] = { link = "@variable.builtin" },
@@ -150,10 +150,10 @@ function M.get(c, config)
 		-- PHP
 		["@attribute.phpdoc"] = { link = "@comment.attribute" },
 		["@constructor.php"] = { link = "@function" },
-		["@keyword.phpdoc"] = styles.comments({ link = "@variable" }),
+		["@keyword.phpdoc"] = { link = "@variable" },
 		["@type.php"] = { fg = c.fg },
-		["@type.phpdoc"] = styles.comments({ link = "@type.definition" }),
-		["@variable.parameter.phpdoc"] = styles.comments({ link = "@variable" }),
+		["@type.phpdoc"] = { link = "@type.definition" },
+		["@variable.parameter.phpdoc"] = { link = "@variable" },
 
 		-- CSS
 		["@attribute.css"] = { link = "@tag" },
@@ -161,7 +161,7 @@ function M.get(c, config)
 
 		-- Typescript / Javascript
 		["@keyword.jsdoc"] = { link = "@comment.attribute" },
-		["@type.jsdoc"] = styles.comments({ link = "@type.definition" }),
+		["@type.jsdoc"] = { link = "@type.definition" },
 		["@tag.tsx"] = { fg = c.special_tag },
 	}
 end

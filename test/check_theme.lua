@@ -34,7 +34,7 @@ end
 
 assert(colors.changes.add.fg == "#6AAB73")
 assert(colors.changes.change.fg == "#56A8F5")
-assert(colors.changes.delete.fg == "#868A91")
+assert(colors.changes.delete.fg == palette.red1)
 assert(colors.changes.conflict.fg == palette.red1)
 
 -- Each numbered palette group must start at 1 without gaps.
@@ -119,17 +119,14 @@ local git_groups = gitsigns.get(custom_colors)
 custom_colors.changes.conflict.fg = palette.fg2
 local tree_groups = nvim_tree.get(custom_colors)
 for _, kind in ipairs({ "Add", "Change", "Delete" }) do
-	if kind ~= "Delete" then
-		assert(editor_groups["Diff" .. kind].bg == palette.bg2)
-	end
+	assert(editor_groups["Diff" .. kind].bg == palette.bg2)
+	assert(editor_groups["Diff" .. kind].fg == nil)
 	assert(git_groups["GitSigns" .. kind].fg == palette.fg3)
 	if kind ~= "Change" then
 		assert(git_groups["GitSigns" .. kind .. "Inline"].bg == palette.bg4)
 		assert(git_groups["GitSigns" .. kind .. "Inline"].fg == nil)
 	end
 end
-assert(editor_groups.DiffDelete.bg == custom_colors.changes.delete.line_bg)
-assert(editor_groups.DiffDelete.fg == custom_colors.changes.delete.fg)
 assert(editor_groups.DiffText.bg == palette.bg4)
 assert(editor_groups.DiffText.fg == nil)
 assert(editor_groups.DiffTextAdd.link == "DiffText")
@@ -185,7 +182,7 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert_highlight("DiffAdd", "bg", colors.changes.add.line_bg)
 	assert_highlight("DiffChange", "bg", colors.changes.change.line_bg)
 	assert_highlight("DiffDelete", "bg", colors.changes.delete.line_bg)
-	assert_highlight("DiffDelete", "fg", colors.changes.delete.fg)
+	assert_highlight("DiffDelete", "fg", "NONE")
 	assert_highlight("DiffText", "bg", colors.changes.change.text_bg)
 	assert_highlight("DiffText", "fg", "NONE")
 	assert_highlight("DiffTextAdd", "bg", colors.changes.change.text_bg)
@@ -198,7 +195,7 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert_highlight("GitSignsDeleteVirtLn", "bg", colors.changes.delete.line_bg)
 	assert_highlight("GitSignsDeletePreview", "bg", colors.changes.delete.line_bg)
 	for _, group in ipairs({ "GitSignsDelete", "GitSignsTopdelete", "GitSignsChangedelete" }) do
-		assert_highlight(group, "fg", "#868A91")
+		assert_highlight(group, "fg", colors.changes.delete.fg)
 		assert_highlight(group, "bg", colors.none)
 	end
 	for _, kind in ipairs({ "Add", "Change", "Delete" }) do

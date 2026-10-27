@@ -53,7 +53,7 @@ function M.load()
 end
 
 --- Setup the colorscheme with custom configuration
----@param opts theme.Config|nil User configuration options
+---@param opts? theme.Opts User configuration
 ---@return nil
 function M.setup(opts)
 	opts = opts or {}

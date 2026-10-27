@@ -29,3 +29,4 @@ doc/tags
 
 # Plugin manager artifacts
 lazy-lock.json
+nvim.log

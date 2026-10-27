@@ -2,7 +2,7 @@ local M = {}
 
 --- Get editor UI highlight groups
 --- @param c theme.Colors Color palette
---- @return table Highlight groups for editor UI elements
+--- @return theme.Highlights
 function M.get(c)
 	return {
 		Added = { fg = c.changes.add.fg },
