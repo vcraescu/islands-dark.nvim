@@ -8,7 +8,6 @@ function M.get(c)
 		FzfLuaNormal = { link = "NormalFloat" },
 		FzfLuaBorder = { link = "FloatBorder" },
 		FzfLuaTitle = { link = "FloatTitle" },
-		FzfLuaBackdrop = { bg = c.bg_gutter },
 
 		FzfLuaPathColNr = { fg = c.line_number, bg = c.none },
 		FzfLuaPathLineNr = { fg = c.line_number, bg = c.none },
