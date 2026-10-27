@@ -26,6 +26,7 @@ function M.get(c)
 		FzfLuaHeaderText = { fg = c.fg_muted, bg = c.none },
 
 		FzfLuaFzfPointer = { fg = c.comment },
+		FzfLuaFzfCursorLine = { link = "PmenuSel" },
 	}
 end
 
