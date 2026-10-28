@@ -4,8 +4,8 @@ Agent instructions for working on the islands-dark.nvim codebase.
 
 ## Project Overview
 
-This is a Neovim colorscheme plugin that ports the JetBrains IntelliJ IDEA "Islands Dark" theme.
-It's a Lua-based plugin with no build step, no dependencies, and requires Neovim 0.9+.
+This is a Neovim colorscheme plugin that ports the JetBrains IntelliJ IDEA "Islands Dark" theme. It's a Lua-based plugin
+with no build step, no dependencies, and requires Neovim 0.9+.
 
 ## Quick Start
 
@@ -51,7 +51,8 @@ nvim -c "lua require('islands-dark').setup({transparent=true})" -c "colorscheme 
 
 ### General Principles
 
-- **Source of truth**: All colors MUST come from `IslandsDark.icls` file - NO custom colors
+- **Source of truth**: All colors MUST come from `reference/IslandsDark.xml` (extends `reference/Darcula.xml`) - NO
+  custom colors
 - **Compatibility**: Target Neovim 0.9+ with `vim.api.nvim_set_hl()`
 - **Pure Lua**: No VimL, no external dependencies, standard library only
 
@@ -281,8 +282,8 @@ Neovim automatically sets highlight priorities with these defaults (0.9+):
 - **Treesitter**: 100 (medium priority)
 - **Syntax**: 50 (lowest priority)
 
-These priorities are already set by Neovim and **do NOT need to be set explicitly** in the theme.
-This ensures LSP semantic tokens override Treesitter, which overrides traditional syntax.
+These priorities are already set by Neovim and **do NOT need to be set explicitly** in the theme. This ensures LSP
+semantic tokens override Treesitter, which overrides traditional syntax.
 
 ## Highlight Linking Strategy
 
@@ -332,12 +333,12 @@ Never wrap links with style functions - it does nothing:
 ["@keyword.special"] = styles.keywords({ fg = c.keyword })
 ```
 
-Why? Because `link` is a special property that tells Neovim to "use all properties from the target group." Any other properties (italic, bold, fg, etc.) are ignored when link is present.
+Why? Because `link` is a special property that tells Neovim to "use all properties from the target group." Any other
+properties (italic, bold, fg, etc.) are ignored when link is present.
 
 ### How User Styles Work
 
-**For linked highlights:**
-Styles are applied to the base syntax group in syntax.lua:
+**For linked highlights:** Styles are applied to the base syntax group in syntax.lua:
 
 ```lua
 -- In syntax.lua
@@ -347,8 +348,7 @@ Function = styles.functions({ fg = c.func })  -- If user sets italic, this gets 
 ["@function"] = { link = "Function" }  -- Automatically inherits italic from Function
 ```
 
-**For direct color highlights:**
-Styles are applied via the wrapper function:
+**For direct color highlights:** Styles are applied via the wrapper function:
 
 ```lua
 -- User sets: styles = { functions = { italic = true } }
