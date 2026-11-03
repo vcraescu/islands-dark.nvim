@@ -10,6 +10,7 @@ M.bg1 = "#191A1C" -- Editor background, terminal black
 M.bg2 = "#1F2024" -- Cursor line, gutter, inactive statusline background
 M.bg3 = "#2B2D30" -- Statusline, color column background
 M.bg4 = "#393B40" -- Folded text, quickfix line, inlay hint background
+M.bg5 = "#27282B" -- Pmenu and floating window background (LOOKUP_COLOR, DOCUMENTATION_COLOR)
 
 -- Foregrounds
 M.fg1 = "#7A7E85" -- Comments, dim text, diagnostic hints, terminal bright black

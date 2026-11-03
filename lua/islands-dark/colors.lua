@@ -11,6 +11,8 @@ M.bg_gutter = palette.bg2
 M.bg_surface = palette.bg3
 --- Emphasized surface background
 M.bg_highlight = palette.bg4
+--- Pmenu and floating window background
+M.bg_float = palette.bg5
 
 -- Foregrounds
 --- Default text
