@@ -132,6 +132,8 @@ require("islands-dark").setup({
 })
 ```
 
+Floating windows and the completion menu keep the `bg_float` background, so they stay visible on a transparent editor.
+
 ### Style Customization
 
 Customize styles for different syntax elements:
@@ -230,6 +232,9 @@ automatically loaded:
 - **[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)**: Signs, line backgrounds, inline changes, deleted
   virtual lines, and blame highlights
 
+Each sign has the line background of its change type. Thus, the sign fills its full cell in the sign column. Staged
+signs use the same background with a dimmer sign color.
+
 To show GitSigns line and inline backgrounds, enable them in your GitSigns configuration:
 
 ```lua
@@ -256,14 +261,14 @@ Colors are separated into two modules:
 
 Use semantic names when you define highlights:
 
-- **Backgrounds**: `bg`, `bg_gutter`, `bg_surface`, `bg_highlight`
+- **Backgrounds**: `bg`, `bg_gutter`, `bg_surface`, `bg_highlight`, `bg_float`
 - **Foregrounds**: `fg`, `fg_muted`, `fg_dim`, `fg_bright`, `fg_inlay`
 - **Syntax**: `keyword`, `string`, `number`, `func`, `func_builtin`, `func_call`, `type`, `comment`
 - **UI**: `cursorline`, `line_number`, `border`, `visual`, `directory`, `fold_fg`, `fold_bg`
 - **Markup**: `markup_code_bg`
 - **Diagnostics**: `error`, `warning`, `info`, `hint`, `ok`
 
-Git signs, native diff, and file-tree Git markers share `colors.changes`:
+Git signs, native diff, and Treesitter diff captures share `colors.changes`:
 
 | Change  | Sign foreground     | Line background          | Inline background        |
 | ------- | ------------------- | ------------------------ | ------------------------ |
@@ -271,13 +276,20 @@ Git signs, native diff, and file-tree Git markers share `colors.changes`:
 | Changed | `changes.change.fg` | `changes.change.line_bg` | `changes.change.text_bg` |
 | Deleted | `changes.delete.fg` | `changes.delete.line_bg` | `changes.delete.text_bg` |
 
-Edit the shared definitions in `colors.lua` to change these colors together. Git and diff use the supplied backgrounds:
+Edit the shared definitions in `colors.lua` to change these colors together. The backgrounds have these values:
 
 | Change  | Line background | Inline background |
 | ------- | --------------- | ----------------- |
 | Added   | `#1F2B26`       | `#294436`         |
 | Changed | `#25323E`       | `#385570`         |
-| Deleted | `#2B2322`       | `#45302B`         |
+| Deleted | `#352627`       | `#5E3838`         |
+
+Each inline background is a color from the reference export. Each line background is the inline color mixed 40% with the
+editor background. Added and changed lines use `DIFF_INSERTED` and `DIFF_MODIFIED`. Deleted lines use
+`LINE_NONE_COVERAGE`, because the `DIFF_DELETED` color of the reference export is gray.
+
+File explorers use `colors.file_status` for Git file markers: `modified`, `deleted`, `conflict`, `untracked`, and
+`ignored`.
 
 Inline diff highlights set only the background, so text keeps its syntax foreground.
 
@@ -298,9 +310,9 @@ Color fields use `fg` and `bg`, including prefixes and suffixes. Update callback
 `colors.fg_bright`, and `colors.bg_surface` instead of the long-form names. Fold colors use `fold_fg` and `fold_bg`;
 code-block backgrounds use `markup_code_bg`.
 
-The original `IslandsDark.icls` is not included. Source comments were checked against `test/IslandsDark.xml` where
-possible. Existing values that are absent from that export are preserved and marked as unverified in `palette.lua`. The
-six supplied Git and diff backgrounds are marked as user-specified colors, not theme-export values.
+The original `IslandsDark.icls` is not included. The `reference/` directory contains the theme export `IslandsDark.xml`
+and its parent scheme `DarculaDark.xml`. Source comments in `palette.lua` refer to the options in these files. Values
+that are not in these files are marked as unverified.
 
 ## 🌲 Treesitter Support
 
@@ -379,13 +391,11 @@ Or view the help file: [doc/islands-dark.txt](doc/islands-dark.txt)
 
 Test files are included to verify syntax highlighting across multiple languages:
 
-- `test/test.lua` - Lua syntax
-- `test/test.go` - Go syntax
-- `test/test.ts` - TypeScript/TSX syntax
-- `test/test.sh` - Bash syntax
-- `test/test.yaml` - YAML syntax
-- `test/test.json` - JSON syntax
-- `test/test.md` - Markdown syntax
+- Languages: Lua, Go, Python, PHP, JavaScript, TypeScript, TSX, Bash, SQL, GraphQL, and Protocol Buffers
+- Markup and styles: HTML, XML, CSS, and Markdown
+- Data and configuration: JSON, YAML, `.env`, and Dockerfile
+
+All test files are in the `test/` directory.
 
 Run the headless checks with Neovim 0.9+:
 
@@ -426,5 +436,3 @@ Make sure your LSP server supports semantic tokens. Most modern LSP servers do, 
 MIT License - see [LICENSE](LICENSE) for details
 
 Made with ❤️ for Neovim
-
-</div>

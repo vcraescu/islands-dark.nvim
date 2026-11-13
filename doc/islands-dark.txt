@@ -98,6 +98,7 @@ islands-dark.setup({opts})
 
         • transparent (boolean)
             Enable transparent background (default: false)
+            Floating windows keep the `bg_float` background.
 
         • terminal_colors (boolean)
             Set terminal colors (default: true)

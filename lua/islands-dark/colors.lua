@@ -115,16 +115,16 @@ M.changes = {
 		text_bg = palette.blue6,
 	},
 	delete = {
-		fg = palette.gray3,
-		line_bg = palette.gray6,
-		text_bg = palette.gray5,
+		fg = palette.red2,
+		line_bg = palette.red4,
+		text_bg = palette.red5,
 	},
 }
 
 -- Git file status in file explorers
 M.file_status = {
 	modified = palette.blue8,
-	deleted = palette.gray4,
+	deleted = palette.gray3,
 	conflict = palette.red2,
 	untracked = palette.red3,
 	ignored = palette.orange3,

@@ -5,9 +5,9 @@ local M = {}
 --- @return theme.Highlights
 function M.get(c)
 	return {
-		GitSignsAdd = { fg = c.changes.add.fg, bg = c.none },
-		GitSignsChange = { fg = c.changes.change.fg, bg = c.none },
-		GitSignsDelete = { fg = c.changes.delete.fg, bg = c.none },
+		GitSignsAdd = { fg = c.changes.add.fg, bg = c.changes.add.line_bg },
+		GitSignsChange = { fg = c.changes.change.fg, bg = c.changes.change.line_bg },
+		GitSignsDelete = { fg = c.changes.delete.fg, bg = c.changes.delete.line_bg },
 		GitSignsTopdelete = { link = "GitSignsDelete" },
 		GitSignsChangedelete = { link = "GitSignsDelete" },
 		GitSignsAddLn = { bg = c.changes.add.line_bg },

@@ -49,6 +49,8 @@ M.green9 = "#549159" -- Added signs (ADDED_LINES_COLOR)
 M.red1 = "#F75464" -- Errors
 M.red2 = "#DE6A66" -- Conflicted file status (FILESTATUS_IDEA_FILESTATUS_MERGED_WITH_CONFLICTS)
 M.red3 = "#E88F89" -- Untracked file status (FILESTATUS_UNKNOWN)
+M.red4 = "#352627" -- Deleted line background (LINE_NONE_COVERAGE mixed 40% with editor background)
+M.red5 = "#5E3838" -- Deleted text background (LINE_NONE_COVERAGE)
 
 -- Yellows
 M.yellow1 = "#B3AE60" -- Metadata, macros, preprocessor directives
@@ -67,10 +69,7 @@ M.purple1 = "#C77DBB" -- Constants, properties
 -- Grays
 M.gray1 = "#43454A" -- Borders, separators, completion scrollbar thumb
 M.gray2 = "#4B5059" -- Line numbers, ghost text
-M.gray3 = "#868A91" -- Deleted signs (DELETED_LINES_COLOR)
-M.gray4 = "#6F737A" -- Deleted file status (FILESTATUS_DELETED)
-M.gray5 = "#484A4A" -- Deleted text background (DIFF_DELETED)
-M.gray6 = "#2C2D2E" -- Deleted line background (DIFF_DELETED mixed 40% with editor background)
+M.gray3 = "#6F737A" -- Deleted file status (FILESTATUS_DELETED)
 
 -- ANSI colors: original .icls sources are not included in the theme export.
 M.terminal = {

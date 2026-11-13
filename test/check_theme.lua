@@ -20,22 +20,20 @@ local function assert_highlight(group, attribute, expected)
 	assert(actual == value, group .. "." .. attribute .. ": " .. vim.inspect(highlight))
 end
 
--- Preserve the supplied backgrounds without overriding syntax foregrounds.
+-- Keep the reference diff backgrounds without overriding syntax foregrounds.
 local expected_changes = {
 	add = { line_bg = "#1F2B26", text_bg = "#294436" },
 	change = { line_bg = "#25323E", text_bg = "#385570" },
-	conflict = { line_bg = "#2B2322", text_bg = "#45302B" },
-	delete = { line_bg = "#2B2322", text_bg = "#45302B" },
+	delete = { line_bg = "#352627", text_bg = "#5E3838" },
 }
 for kind, change_colors in pairs(colors.changes) do
 	assert(change_colors.line_bg == expected_changes[kind].line_bg)
 	assert(change_colors.text_bg == expected_changes[kind].text_bg)
 end
 
-assert(colors.changes.add.fg == "#6AAB73")
-assert(colors.changes.change.fg == "#56A8F5")
-assert(colors.changes.delete.fg == palette.red1)
-assert(colors.changes.conflict.fg == palette.red1)
+assert(colors.changes.add.fg == palette.green9)
+assert(colors.changes.change.fg == palette.blue7)
+assert(colors.changes.delete.fg == palette.red2)
 
 -- Each numbered palette group must start at 1 without gaps.
 for name in pairs(palette) do
@@ -116,12 +114,15 @@ for _, kind in ipairs({ "add", "change", "delete" }) do
 end
 local editor_groups = editor.get(custom_colors)
 local git_groups = gitsigns.get(custom_colors)
-custom_colors.changes.conflict.fg = palette.fg2
+for kind in pairs(custom_colors.file_status) do
+	custom_colors.file_status[kind] = palette.fg2
+end
 local tree_groups = nvim_tree.get(custom_colors)
 for _, kind in ipairs({ "Add", "Change", "Delete" }) do
 	assert(editor_groups["Diff" .. kind].bg == palette.bg2)
 	assert(editor_groups["Diff" .. kind].fg == nil)
 	assert(git_groups["GitSigns" .. kind].fg == palette.fg3)
+	assert(git_groups["GitSigns" .. kind].bg == palette.bg2)
 	if kind ~= "Change" then
 		assert(git_groups["GitSigns" .. kind .. "Inline"].bg == palette.bg4)
 		assert(git_groups["GitSigns" .. kind .. "Inline"].fg == nil)
@@ -141,13 +142,11 @@ assert(git_groups.GitSignsAddLnInline.link == "GitSignsChangeLnInline")
 assert(git_groups.GitSignsChangeLnInline.bg == palette.bg4)
 assert(git_groups.GitSignsChangeLnInline.fg == nil)
 assert(git_groups.GitSignsDeleteLnInline.link == "GitSignsChangeLnInline")
-assert(tree_groups.NvimTreeGitNew.fg == palette.fg3)
-assert(tree_groups.NvimTreeGitDirty.fg == palette.fg3)
-assert(tree_groups.NvimTreeGitDeleted.fg == custom_colors.changes.conflict.fg)
+for _, status in ipairs({ "Dirty", "Staged", "Merge", "Renamed", "New", "Deleted", "Ignored" }) do
+	assert(tree_groups["NvimTreeGit" .. status].fg == palette.fg2)
+	assert(tree_groups["NvimTreeGit" .. status .. "Icon"].link == "NvimTreeGit" .. status)
+end
 assert(tree_groups.NvimTreeGitDeleted.fg ~= custom_colors.changes.delete.fg)
-assert(tree_groups.NvimTreeGitDeletedIcon.link == "NvimTreeGitDeleted")
-assert(tree_groups.NvimTreeGitIgnored.link == "Ignore")
-assert(tree_groups.NvimTreeGitIgnoredIcon.link == "NvimTreeGitIgnored")
 assert(git_groups.GitSignsCurrentLineBlame.link == "Ignore")
 
 -- Transparent loads must not mutate either color module.
@@ -161,7 +160,7 @@ assert(colors.fold_bg ~= colors.bg)
 assert(colors.fold_bg ~= colors.changes.delete.line_bg)
 transparent_colors.changes.add.fg = palette.fg1
 transparent_colors.terminal.red = palette.red1
-assert(colors.changes.add.fg == palette.green2)
+assert(colors.changes.add.fg == palette.green9)
 assert(colors.terminal.red == palette.terminal.red)
 
 for _, transparent in ipairs({ false, true, false }) do
@@ -170,7 +169,7 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert(vim.g.colors_name == "islands-dark")
 	assert_highlight("Normal", "fg", colors.fg)
 	assert_highlight("Normal", "bg", transparent and colors.none or colors.bg)
-	assert_highlight("FloatTitle", "bg", transparent and colors.none or colors.bg)
+	assert_highlight("FloatTitle", "bg", colors.bg_float)
 	assert_highlight("@markup.raw.block", "bg", colors.markup_code_bg)
 	assert_highlight("Folded", "fg", "#868991")
 	assert_highlight("Folded", "bg", transparent and colors.none or "#393B40")
@@ -190,17 +189,18 @@ for _, transparent in ipairs({ false, true, false }) do
 	assert_highlight("GitSignsAddLn", "bg", colors.changes.add.line_bg)
 	assert_highlight("GitSignsChangeLn", "bg", "#25323E")
 	assert_highlight("GitSignsAddLnInline", "bg", "#385570")
-	assert_highlight("NvimTreeGitDeleted", "fg", colors.changes.conflict.fg)
-	assert_highlight("NvimTreeGitDeletedIcon", "fg", colors.changes.conflict.fg)
+	assert_highlight("NvimTreeGitDeleted", "fg", colors.file_status.deleted)
+	assert_highlight("NvimTreeGitDeletedIcon", "fg", colors.file_status.deleted)
 	assert_highlight("GitSignsDeleteVirtLn", "bg", colors.changes.delete.line_bg)
 	assert_highlight("GitSignsDeletePreview", "bg", colors.changes.delete.line_bg)
 	for _, group in ipairs({ "GitSignsDelete", "GitSignsTopdelete", "GitSignsChangedelete" }) do
 		assert_highlight(group, "fg", colors.changes.delete.fg)
-		assert_highlight(group, "bg", colors.none)
+		assert_highlight(group, "bg", colors.changes.delete.line_bg)
 	end
 	for _, kind in ipairs({ "Add", "Change", "Delete" }) do
 		local change_colors = colors.changes[kind:lower()]
 		assert_highlight("GitSigns" .. kind, "fg", change_colors.fg)
+		assert_highlight("GitSigns" .. kind, "bg", change_colors.line_bg)
 		local preview_colors = kind == "Change" and colors.changes.add or change_colors
 		assert_highlight("GitSigns" .. kind .. "Inline", "bg", preview_colors.text_bg)
 		assert_highlight("GitSigns" .. kind .. "Inline", "fg", "NONE")
@@ -276,9 +276,7 @@ end
 vim.api.nvim_set_hl(0, "Function", { fg = tonumber(colors.keyword:sub(2), 16) })
 assert_highlight("@function", "fg", colors.keyword)
 vim.api.nvim_set_hl(0, "Ignore", { fg = tonumber(colors.fg_muted:sub(2), 16) })
-for _, group in ipairs({ "NvimTreeGitIgnored", "NvimTreeGitIgnoredIcon", "GitSignsCurrentLineBlame" }) do
-	assert_highlight(group, "fg", colors.fg_muted)
-end
+assert_highlight("GitSignsCurrentLineBlame", "fg", colors.fg_muted)
 
 -- Verify which groups native diff actually uses on each supported version.
 local before = vim.api.nvim_create_buf(false, true)
