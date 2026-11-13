@@ -51,7 +51,7 @@ nvim -c "lua require('islands-dark').setup({transparent=true})" -c "colorscheme 
 
 ### General Principles
 
-- **Source of truth**: All colors MUST come from `reference/IslandsDark.xml` (extends `reference/Darcula.xml`) - NO
+- **Source of truth**: All colors MUST come from `reference/IslandsDark.xml` (extends `reference/DarculaDark.xml`) - NO
   custom colors
 - **Compatibility**: Target Neovim 0.9+ with `vim.api.nvim_set_hl()`
 - **Pure Lua**: No VimL, no external dependencies, standard library only

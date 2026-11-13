@@ -102,30 +102,33 @@ M.search = palette.green1
 M.search_match = palette.blue3
 M.match = palette.blue1
 
--- Shared Git and diff colors: sign and marker `fg`, full-line `line_bg`, inline `text_bg`
+-- Shared Git and diff colors: sign `fg`, full-line `line_bg`, inline `text_bg`
 M.changes = {
 	add = {
-		fg = palette.green2,
+		fg = palette.green9,
 		line_bg = palette.green7,
 		text_bg = palette.green8,
 	},
 	change = {
-		fg = palette.blue3,
+		fg = palette.blue7,
 		line_bg = palette.blue5,
 		text_bg = palette.blue6,
 	},
-	conflict = {
-		fg = palette.red1,
-		line_bg = palette.red2,
-		text_bg = palette.red3,
-	},
 	delete = {
-		fg = palette.red1,
-		line_bg = palette.red2,
-		text_bg = palette.red3,
+		fg = palette.gray3,
+		line_bg = palette.gray6,
+		text_bg = palette.gray5,
 	},
 }
-M.git_merge = palette.purple1
+
+-- Git file status in file explorers
+M.file_status = {
+	modified = palette.blue8,
+	deleted = palette.gray4,
+	conflict = palette.red2,
+	untracked = palette.red3,
+	ignored = palette.orange3,
+}
 
 -- Special elements
 M.todo = palette.green3

@@ -79,7 +79,7 @@ function M.get_fzf_colors()
 		"info:" .. colors.warning,
 		"prompt:" .. colors.keyword,
 		"pointer:" .. colors.constant,
-		"marker:" .. colors.changes.add.fg,
+		"marker:" .. colors.string,
 		"spinner:" .. colors.number,
 		"header:" .. colors.type,
 		"border:" .. colors.border,
