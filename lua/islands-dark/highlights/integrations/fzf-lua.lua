@@ -5,9 +5,9 @@ local M = {}
 --- @return theme.Highlights
 function M.get(c)
 	return {
-		FzfLuaNormal = { link = "NormalFloat" },
-		FzfLuaBorder = { link = "FloatBorder" },
-		FzfLuaTitle = { link = "FloatTitle" },
+		FzfLuaNormal = { link = "Normal" },
+		FzfLuaBorder = { fg = c.border, bg = c.bg },
+		FzfLuaTitle = { fg = c.fg, bg = c.bg, bold = true },
 
 		FzfLuaPathColNr = { fg = c.line_number, bg = c.none },
 		FzfLuaPathLineNr = { fg = c.line_number, bg = c.none },
